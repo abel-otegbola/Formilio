@@ -1,19 +1,20 @@
 "use client"
 import { usePathname } from "next/navigation";
-import { FaAtom, FaBoxes, FaBoxOpen, FaChartLine, FaCog, FaFolderPlus, FaMoneyBill, FaRobot, FaSignOutAlt } from "react-icons/fa";
+import { FaArrowAltCircleRight, FaAtom, FaBoxes, FaBoxOpen, FaChartLine, FaCog, FaFolderPlus, FaInfoCircle, FaMoneyBill, FaPlusCircle, FaRobot, FaSignOutAlt } from "react-icons/fa";
+import { FiCheckCircle } from "react-icons/fi";
 
 export default function Sidebar() {
     const path = usePathname()
 
     const links = [
-        { name: "Dashboard", to: "", icon: <FaAtom /> },
-        { name: "Builder", to: "/builder", icon: <FaRobot /> },
-        { name: "Entries", to: "/entries", icon: <FaBoxOpen /> },
-        { name: "Manage forms", to: "/manage", icon: <FaBoxes /> },
-        { name: "Analytics", to: "/analytics", icon: <FaChartLine /> },
-        { name: "Settings", to: "/settings", icon: <FaCog /> },
-        { name: "Billing & Payments", to: "/billing", icon: <FaMoneyBill /> },
-        { name: "Logout", to: "/", icon: <FaSignOutAlt /> },
+        { name: "Dashboard", to: "", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
+        { name: "Builder", to: "/builder", icon: <FaRobot />,  iconRight: <FaPlusCircle/> },
+        { name: "Entries", to: "/entries", icon: <FaBoxOpen />,  iconRight: <span className="bg-purple-400 text-white p-1 rounded text-[8px]">new</span> },
+        { name: "Manage forms", to: "/manage", icon: <FaBoxes />,  iconRight: <span className="bg-green-400 text-white p-1 px-2 rounded text-[8px]">3</span> },
+        { name: "Analytics", to: "/analytics", icon: <FaChartLine />,  iconRight: <FaArrowAltCircleRight/> },
+        { name: "Settings", to: "/settings", icon: <FaCog />,  iconRight: <FaInfoCircle/> },
+        { name: "Billing & Payments", to: "/billing", icon: <FaMoneyBill />,  iconRight: <FiCheckCircle/> },
+        { name: "Logout", to: "/", icon: <FaSignOutAlt />,  iconRight: <FaArrowAltCircleRight/> },
     ]
 
     return(
@@ -23,7 +24,15 @@ export default function Sidebar() {
                 {
                     links.slice(0,4).map((link,i) => {
                         return (
-                            <li key={i} className="flex w-full my-1"><a href={`/dashboard${link.to}`} className={`p-[10px] flex items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}><div className="mr-2 text-xl text-gray-300">{link.icon}</div> {link.name}</a></li> 
+                            <li key={i} className="flex w-full my-1">
+                                <a href={`/dashboard${link.to}`} className={`p-[10px] flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}>
+                                    <div className="flex items-center">
+                                        <div className="mr-2 text-xl text-gray-300">{link.icon}</div> 
+                                        {link.name}
+                                    </div>
+                                    <span className="text-gray-300">{link.iconRight}</span>
+                                </a>
+                            </li> 
                         )
                     })
                 }
@@ -33,7 +42,15 @@ export default function Sidebar() {
                 {
                     links.slice(5,9).map((link,i) => {
                         return (
-                            <li key={i} className="flex w-full my-1"><a href={`/dashboard${link.to}`} className={`p-[10px] flex items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}><div className="mr-2 text-xl text-gray-300">{link.icon}</div> {link.name}</a></li> 
+                            <li key={i} className="flex w-full my-1">
+                                <a href={`/dashboard${link.to}`} className={`p-[10px] flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}>
+                                    <div className="flex items-center">
+                                        <div className="mr-2 text-xl text-gray-300">{link.icon}</div> 
+                                        {link.name}
+                                    </div>
+                                    <span className="text-gray-300">{link.iconRight}</span>
+                                </a>
+                            </li> 
                         )
                     })
                 }

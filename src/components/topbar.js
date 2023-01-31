@@ -18,7 +18,10 @@ export default function Topbar() {
             </ul>
             <div className="flex items-center">
                 <FiSearch className="mr-[40px] text-gray-500 font-bold text-2xl" />
-                <FiBell className="mr-[40px] text-gray-500 font-bold text-2xl" />
+                <div className="relative mr-[40px] text-gray-500 font-bold text-2xl">
+                    <FiBell />
+                    <sup className="absolute -top-2 -right-4 p-[5px] py-[7px] text-[8px] bg-purple-400 text-white rounded-full">2</sup>
+                </div>
                 <Link href="/login" className="flex items-center p-[10px] px-[20px] bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
             </div>
         </div>
