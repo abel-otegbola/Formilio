@@ -3,7 +3,7 @@
 export default function AppFooter() {
     return (
         <div className="bg-slate-100 dark:bg-gray-800">
-            <div className="flex flex-wrap justify-between px-[10%] py-[7%]">
+            <div className="flex flex-wrap justify-between md:px-[10%] px-[5%] py-[7%]">
                 <ul className="md:w-[25%] my-2 pr-[40px]">
                     <h3 className="text-xl font-bold my-3">PRODUCTS</h3>
                     <li className="w-full flex"><a href="/" className="w-full py-2 hover:text-blue">Dashboard</a></li>
@@ -25,7 +25,7 @@ export default function AppFooter() {
                     <li className="w-full flex"><a href="/" className="w-full py-2 hover:text-blue">Mailme Tutorials</a></li>
                     <li className="w-full flex"><a href="/" className="w-full py-2 hover:text-blue">Examples</a></li>
                 </ul>
-                <ul className="md:w-[25%] my-2 pl-[40px]">
+                <ul className="md:w-[25%] my-2">
                     <h3 className="text-xl font-bold my-3">FORM CODE EXAMPLES</h3>
                     <li className="w-full flex"><a href="/" className="w-full py-2 hover:text-blue">HTML form</a></li>
                     <li className="w-full flex"><a href="/" className="w-full py-2 hover:text-blue">React form</a></li>
