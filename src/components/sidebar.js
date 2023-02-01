@@ -1,9 +1,12 @@
 "use client"
 import { usePathname } from "next/navigation";
-import { FaArrowAltCircleRight, FaAtom, FaBoxes, FaBoxOpen, FaChartLine, FaCog, FaFolderPlus, FaInfoCircle, FaMoneyBill, FaPlusCircle, FaRobot, FaSignOutAlt } from "react-icons/fa";
+import { useState } from "react";
+import { FaArrowAltCircleRight, FaAtom, FaBoxes, FaBoxOpen, FaChartLine, FaCog, FaFolderPlus, FaInfoCircle, FaMoneyBill, FaPlusCircle, FaRobot, FaSignOutAlt, FaTimes } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
+import { BsLayoutSidebarInset } from "react-icons/bs";
 
 export default function Sidebar() {
+    const [open, setOpen] = useState(false)
     const path = usePathname()
 
     const links = [
@@ -18,8 +21,15 @@ export default function Sidebar() {
     ]
 
     return(
-        <div className="w-[250px] p-2 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-300">
-            <ul className="mt-3 w-full">
+        <>
+        <div className="absolute top-1 left-1 text-gray-500 font-bold text-2xl p-4 border border-gray-100/[0.2] md:hidden block z-50" onClick={() => setOpen(!open)} >
+                    {
+                        open ? <FaTimes /> : <BsLayoutSidebarInset />
+                    }
+        </div>
+        <div className={`md:relative absolute md:pt-0 pt-[50px] top-0 left-0 w-[250px] bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "md:w-[250px] w-0"}`}>
+            
+            <ul className="mt-3 w-full p-2">
                 <h4 className="text-lg text-gray-300">GENERAL</h4>
                 {
                     links.slice(0,4).map((link,i) => {
@@ -37,7 +47,7 @@ export default function Sidebar() {
                     })
                 }
             </ul>
-            <ul className="mt-7 w-full">
+            <ul className="mt-7 w-full p-2">
                 <h4 className="text-lg text-gray-300">OTHERS</h4>
                 {
                     links.slice(5,9).map((link,i) => {
@@ -55,10 +65,11 @@ export default function Sidebar() {
                     })
                 }
             </ul>
-            <div className="flex flex-col items-center justify-center w-full p-[20%] mt-[40px] bg-slate-200 dark:bg-gray-800 rounded text-center">
+            <div className="flex flex-col items-center justify-center m-2 p-[20%] mt-[40px] bg-slate-200 dark:bg-gray-800 rounded text-center">
                 <a href="/dashboard/builder"><FaFolderPlus className="p-3 mb-10 text-5xl bg-gray-600/[0.2] text-blue" /></a>
                 <a href="/dashboard/builder">Build new form</a>
             </div>
         </div>
+        </>
     )
 }

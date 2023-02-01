@@ -12,7 +12,7 @@ export default function Home() {
                         With user-friendly interface and intuitive drag and drop functionality,, you can effortlessly design forms that meet your specific need.
                     </p>
                     <div className="md:flex mt-7">
-                        <a href="/signup" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 bg-blue hover:bg-hoverblue text-white rounded">Get Started <FaPaperPlane className="ml-2"/></a>
+                        <a href="/signup" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-2 mb-6 bg-blue hover:bg-hoverblue text-white rounded">Get Started <FaPaperPlane className="ml-2"/></a>
                         <a href="/try" className="flex items-center justify-center p-[10px] px-[20px] md:ml-4 hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Try it out <FiArrowRightCircle className="ml-2"/></a>
                     </div>
                 </div>

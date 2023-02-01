@@ -12,7 +12,7 @@ export default function Topbar() {
 
     return (
         <div className="flex font-body justify-between items-center p-2 md:py-2 py-4 md:px-[10%] px-[5%] bg-white dark:bg-gray-900 border border-slate-50/[0.1] border-b-gray-100 dark:border-b-gray-200/[0.1]">
-            <h3 className="text-2xl font-bold">Mail<span className="text-blue">me</span></h3>
+            <h3 className={`text-2xl font-bold ${router.indexOf("dashboard") !== -1 ? "md:ml-0 ml-[40px]" : ""}`}>Mail<span className="text-blue">me</span></h3>
             <ul className={`bg-white dark:bg-gray-900 flex md:flex-row flex-col md:w-auto h-full md:relative absolute top-0 right-0 transition-all duration-700 overflow-hidden ml-[4%] z-10 ${open ? "w-[75%]": "w-0"}`}>
                 <li className="flex md:p-0 p-2"><a href="/" className={`lg:mx-3 md:mx-2 mdp-2 px-4 p-4 hover:text-blue ${router === "/"? "text-blue": ""}`}>Home</a></li>
                 <li className="flex md:p-0 p-2"><a href="/about" className={`lg:mx-3 md:mx-2 mdp-2 px-4 p-4 hover:text-blue ${router === "/about"? "text-blue": ""}`}>About</a></li>
