@@ -34,44 +34,33 @@ export default function Builder() {
                             <li className={`p-3 px-5 border border-gray-400/[0.1] hover:bg-blue hover:text-white cursor-pointer rounded mr-2 ${show === "Connect" ? "bg-blue text-white": ""}`}>Connect</li>
                         </ul>
                     </div>
-                    <DragDropContext onDragEnd={() => onDragEnd}>
-                        <Droppable droppableId="1">
                         {
-                            // components.length < 1 ?
-                            // <DropBox />
-                            // :
-                            (provided) => {
+                            components.length < 1 ?
+                            <DropBox />
+                            :
                                 <div 
-                                    innerRef={provided.innerRef}
-                                    {...provided.droppableProps}
-                                    className="p-2 bg-gray-300/[0.2]">
+                                    className="p-2 bg-gray-300/[0.2] dark:bg-gray-800">
                                     { 
                                         components.map((item, index) => {
                                             return (
-                                                <Draggable draggableId={item.id} index={index}> key={item.id} 
-                                                    {(provided) => { 
-                                                        <div 
-                                                            innerRef={provided.innerRef} 
-                                                            {...provided.draggableProps}
-                                                            {...provided.dragHandleProps}
-                                                            onClick={() => setActive(item.id)} 
-                                                            className="my-2">
-                                                            <InputBlock active={active === item.id ? true: false}  id={item.id} index={index}></InputBlock>
-                                                        </div>
-                                                    }}
-                                                    
-                                                </Draggable>
+                                                <div 
+                                                    key={item.id}
+                                                    onClick={() => setActive(item.id)} 
+                                                    className="my-2">
+                                                    {
+                                                    item.title === "input" ? <InputBlock active={active === item.id ? true: false}  id={item.id} index={index}></InputBlock> : 
+                                                    item.title === "heading" ? <HeadingBlock active={active === item.id ? true: false} id={item.id} index={index}></HeadingBlock> :
+                                                    item.title === "para" ? <ParaBlock active={active === item.id ? true: false} id={item.id} index={index}></ParaBlock>: 
+                                                    item.title === "textarea" ? <TextAreaBlock active={active === item.id ? true: false} id={item.id} index={index}></TextAreaBlock> : ""
+                                                    }
+                                                </div>
                                             )
                                         })
                                         
                                     }
-                                    {provided.placeholder}
                                 </div>
                             }
-                                
-                        }
-                        </Droppable>
-                    </DragDropContext>
+        
                     <code>
                         {
                             components.map(item => {

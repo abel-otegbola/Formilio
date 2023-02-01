@@ -8,8 +8,8 @@ export default function TextAreaBlock({ active }) {
 
     return (
         <div className={`relative w-fit border ${active ? "border-blue": "border-gray-400/[0.2]"}`}>
-            <div className={`flex items-center bg-white w-fit overflow-hidden`} onFocus={() => setActions(true)} onMouseOut={() => setActions(false)} onMouseOver={() => setActions(true)}>
-                <textarea ref={ref} className="p-2 border border-gray-400/[0.2] focus:outline focus:outline-blue"></textarea>
+            <div className={`flex items-center bg-white dark:bg-gray-900 w-fit overflow-hidden`} onFocus={() => setActions(true)} onMouseOut={() => setActions(false)} onMouseOver={() => setActions(true)}>
+                <textarea className="p-2 border border-gray-400/[0.2] dark:bg-gray-900 focus:outline focus:outline-blue"></textarea>
                 <div className={`flex items-center ${actions ? "w-[70px]" : "w-0"}`}>
                     <span className="p-2 cursor-pointer" onClick={() => setEdit(!edit)}>Edit</span>
                     <FaTrashAlt className="text-3xl p-2 text-orange-400" onClick={() => setEdit(!edit)} />
@@ -26,9 +26,9 @@ export default function TextAreaBlock({ active }) {
                     </div>
                 </div>
                 <div className="grid md:grid-cols-3 grid-cols-1 gap-2 m-2">
-                    <input className="p-2 border border-gray-400/[0.2] focus:outline focus:outline-blue" placeholder="Id..." />
-                    <input className="p-2 border border-gray-400/[0.2] focus:outline focus:outline-blue" placeholder="Placeholder..." />
-                    <input className="p-2 border border-gray-400/[0.2] focus:outline focus:outline-blue" placeholder="name..." />
+                    <input className="p-2 border border-gray-400/[0.2] dark:bg-gray-900 focus:outline focus:outline-blue" placeholder="Id..." />
+                    <input className="p-2 border border-gray-400/[0.2] dark:bg-gray-900 focus:outline focus:outline-blue" placeholder="Placeholder..." />
+                    <input className="p-2 border border-gray-400/[0.2] dark:bg-gray-900 focus:outline focus:outline-blue" placeholder="name..." />
                 </div>
             </div>
         </div>
