@@ -26,7 +26,7 @@ export default function Builder() {
         <div className="">
             <h3 className="font-semibold text-lg text-gray-300">DASHBOARD / BUILDER</h3>
             <div className="flex">
-                <div className="flex-1 mr-2">
+                <div className="flex-1">
                     <div className="flex items-center justify-between mt-5">
                         <ul className="flex">
                             <li className={`p-3 px-5 border border-gray-400/[0.1] hover:bg-blue hover:text-white cursor-pointer rounded mr-2 ${show === "Build" ? "bg-blue text-white": ""}`}>Build</li>

@@ -5,12 +5,17 @@ import { FaPlusSquare, FaTextHeight, FaTimes, FaTrashAlt } from "react-icons/fa"
 export default function InputBlock({ active }) {
     const [edit, setEdit] = useState(false)
     const [type, setType] = useState("text")
+    const [placeholder, setPlaceholder] = useState("")
+    const [id, setId] = useState("")
+    const [label, setLabel] = useState("")
+    const [name, setName] = useState("")
     const [actions, setActions] = useState(false)
 
     return (
-        <div className={`relative w-fit border ${active ? "border-blue": "border-gray-400/[0.2]"}`}>
-            <div className={`flex items-center bg-white dark:bg-gray-900 w-fit overflow-hidden`} onFocus={() => setActions(true)} onMouseOut={() => setActions(false)} onMouseOver={() => setActions(true)}>
-                <input className="p-2 border dark:bg-gray-900 border-gray-400/[0.2] focus:outline focus:outline-blue" type={type}/>
+        <div className={`relative border ${active ? "border-blue": "border-gray-100/[0.2]"}`}>
+            <label>{label}</label>
+            <div className={`flex items-center bg-white dark:bg-gray-900 w-full overflow-hidden`} onFocus={() => setActions(true)} onMouseOut={() => setActions(false)} onMouseOver={() => setActions(true)}>
+                <input className="p-2 border dark:bg-gray-900 flex-1 border-gray-400/[0.2] focus:outline focus:outline-blue" type={type} name={name} placeholder={placeholder} id={id}/>
                 <div className={`flex items-center dark:bg-gray-800 ${actions ? "w-[70px]" : "w-0"}`}>
                     <span className="p-2 cursor-pointer" onClick={() => setEdit(!edit)}>Edit</span>
                     <FaTrashAlt className="text-3xl p-2 text-orange-400" onClick={() => setEdit(!edit)} />
@@ -35,10 +40,11 @@ export default function InputBlock({ active }) {
                         <FaTimes className="" onClick={() => setEdit(false)}/>
                     </div>
                 </div>
-                <div className="grid md:grid-cols-3 grid-cols-1 gap-2 m-2">
-                    <input className="p-2 border dark:bg-gray-900 border-gray-400/[0.2] focus:outline focus:outline-blue" placeholder="Id..." />
-                    <input className="p-2 border dark:bg-gray-900 border-gray-400/[0.2] focus:outline focus:outline-blue" placeholder="Placeholder..." />
-                    <input className="p-2 border dark:bg-gray-900 border-gray-400/[0.2] focus:outline focus:outline-blue" placeholder="name..." />
+                <div className="grid md:grid-cols-2 grid-cols-1 gap-2 m-2">
+                    <input className="p-2 border dark:bg-gray-900 border-gray-400/[0.2] focus:outline focus:outline-blue" placeholder="Id..." onChange={(e) => setId(e.target.value)} />
+                    <input className="p-2 border dark:bg-gray-900 border-gray-400/[0.2] focus:outline focus:outline-blue" placeholder="Label..." onChange={(e) => setLabel(e.target.value)} />
+                    <input className="p-2 border dark:bg-gray-900 border-gray-400/[0.2] focus:outline focus:outline-blue" placeholder="Placeholder..." onChange={(e) => setPlaceholder(e.target.value)} />
+                    <input className="p-2 border dark:bg-gray-900 border-gray-400/[0.2] focus:outline focus:outline-blue" placeholder="name..." onChange={(e) => setName(e.target.value)} />
                 </div>
             </div>
         </div>

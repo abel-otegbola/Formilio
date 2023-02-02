@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
       <Head />
       <body>
         <Topbar />
-        <main>{children}</main>
+        <main className='pt-[50px]'>{children}</main>
         <AppFooter />
       </body>
     </html>

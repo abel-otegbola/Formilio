@@ -16,7 +16,7 @@ export default function BuilderSidebar() {
                         open ? <FaTimes /> : <BsLayoutSidebarInsetReverse />
                     }
         </div>
-        <div className={`lg:relative absolute lg:pt-0 pt-[115px] top-0 right-2 h-full w-[250px] lg:mt-[20px] bg-gray-200/[0.3] dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
+        <div className={`lg:relative absolute lg:pt-0 pt-[115px] top-0 right-2 h-full w-[250px] lg:mt-[20px] bg-slate-100 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
             <h4 className="m-2 p-2 border-2 border-gray-50/[0.1] border-b-blue">LAYOUTS</h4>
 
             <div className="grid grid-cols-2 gap-2 m-2 my-5">

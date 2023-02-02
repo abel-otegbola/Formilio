@@ -30,7 +30,7 @@ export default function Sidebar() {
         <div className={`md:relative absolute md:pt-0 pt-[50px] top-0 left-0 w-[250px] h-full md:h-auto z-10 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "md:w-[250px] w-0"}`}>
             
             <ul className="mt-3 w-full p-2">
-                <h4 className="text-lg text-gray-300">GENERAL</h4>
+                <h4 className="text-lg text-gray-300 ml-3">GENERAL</h4>
                 {
                     links.slice(0,4).map((link,i) => {
                         return (
@@ -48,7 +48,7 @@ export default function Sidebar() {
                 }
             </ul>
             <ul className="mt-7 w-full p-2">
-                <h4 className="text-lg text-gray-300">OTHERS</h4>
+                <h4 className="text-lg text-gray-300 ml-3">OTHERS</h4>
                 {
                     links.slice(5,9).map((link,i) => {
                         return (
