@@ -4,8 +4,8 @@ import Link from "next/link";
 import { FiBell, FiChevronRight, FiSearch, FiUser } from "react-icons/fi";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { useSession } from "next-auth/react";
+import { FaBars, FaSignOutAlt, FaTimes } from "react-icons/fa";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
 export default function Topbar() {
@@ -32,7 +32,11 @@ export default function Topbar() {
                 <li className="flex md:p-0 p-2"><a href="/doc" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/doc"? "text-blue": ""}`}>Doc</a></li>
                 <li className="flex md:p-0 p-2"><a href="/contact" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/contact"? "text-blue": ""}`}>Contact</a></li>
                 {
-                    session ? "" :<Link href="/login" className="md:hidden flex items-center justify-center p-[10px] px-4 mx-[4%] mt-4 bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
+                    session ? 
+                    <li className="flex md:p-0 p-2"><a href="/" onClick={() => signOut()} className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaSignOutAlt className="mr-3" /> Logout</a></li> :
+                    
+                    <Link href="/login" className="md:hidden flex items-center justify-center p-[10px] px-4 mx-[4%] mt-4 bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
+                    
                 }
             </ul>
             <div className="flex items-center">
