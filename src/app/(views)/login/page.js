@@ -1,17 +1,12 @@
 'use client'
-import { getProviders, signIn } from "next-auth/react";
-import React, { useEffect, useState } from "react";
+import { signIn } from "next-auth/react";
+import React, { useState } from "react";
 import { FaEnvelope, FaEye, FaEyeSlash, FaGithub, FaLock } from "react-icons/fa";
 import { FcGoogle } from 'react-icons/fc'
 
 export default function Login() {
     const [show, setShow] = useState(false)
-    const [providers, setProviders] = useState([])
 
-    useEffect(() => {
-        getProviders()
-        .then(res => setProviders(Object.values(res)))
-    })
 
     return (
         <div className="md:px-[10%] px-[5%] py-[5%] dark:bg-gray-900">
@@ -22,7 +17,7 @@ export default function Login() {
 
                 <div className="py-[30px] grid md:grid-cols-2 grid-cols-1 gap-2">
                     {
-                        providers.map((provider) => ( 
+                        [{id: "google", name: "Google"}, {id: "github", name: "Github"}].map((provider) => ( 
                             <a onClick={() => signIn(provider.id)} className="flex items-center justify-center bg-white dark:bg-gray-900 cursor-pointer p-4 my-2 rounded border border-gray-400">
                                 { provider.name === "Google" ? <FcGoogle className="mr-2" />: <FaGithub className="mr-2" /> } 
                                 Login with {provider.name}
