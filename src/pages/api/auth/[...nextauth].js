@@ -4,7 +4,7 @@ import GitHubProvider from "next-auth/providers/github"
 
 export const authOptions = {
   // Configure one or more authentication providers
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || "gbengaotes1234",
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
