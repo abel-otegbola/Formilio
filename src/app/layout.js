@@ -6,8 +6,7 @@ import AuthContext from './AuthContext'
 
 export default function RootLayout({ children, session }) {
   return (
-    <html>
-      <Head />
+    <html lang='en'>
       <body>
         <AuthContext session={session}>
           <Topbar />
