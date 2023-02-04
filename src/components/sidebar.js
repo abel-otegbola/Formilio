@@ -4,6 +4,7 @@ import { useState } from "react";
 import { FaArrowAltCircleRight, FaAtom, FaBoxes, FaBoxOpen, FaChartLine, FaCog, FaFolderPlus, FaInfoCircle, FaMoneyBill, FaPlusCircle, FaRobot, FaSignOutAlt, FaTimes } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
 import { BsLayoutSidebarInset } from "react-icons/bs";
+import { signOut } from "next-auth/react";
 
 export default function Sidebar() {
     const [open, setOpen] = useState(false)
@@ -53,7 +54,7 @@ export default function Sidebar() {
                     links.slice(5,9).map((link,i) => {
                         return (
                             <li key={i} className="flex w-full my-1">
-                                <a href={`/dashboard${link.to}`} className={`p-[10px] flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}>
+                                <a href={`/dashboard${link.to}`} onClick={() => link.name === "Logout" ? signOut() : ""} className={`p-[10px] flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}>
                                     <div className="flex items-center">
                                         <div className="mr-2 text-xl text-gray-300">{link.icon}</div> 
                                         {link.name}

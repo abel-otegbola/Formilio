@@ -1,15 +1,35 @@
 'use client'
-import React, { useState } from "react";
-import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
+import Google from "next-auth/providers/google";
+import { getProviders, getSession, signIn } from "next-auth/react";
+import React, { useEffect, useState } from "react";
+import { FaEnvelope, FaEye, FaEyeSlash, FaGithub, FaGoogle, FaLock } from "react-icons/fa";
 
 export default function Login() {
     const [show, setShow] = useState(false)
+    const [providers, setProviders] = useState([])
+
+    useEffect(() => {
+        getProviders()
+        .then(res => setProviders(Object.values(res)))
+    })
 
     return (
         <div className="md:px-[10%] px-[5%] py-[5%] dark:bg-gray-900">
             <form className="p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded md:w-[500px] w-full m-auto">
+
                 <h1 className="text-center py-2 text-2xl font-bold">Sign in to your Account</h1>
                 <p className="text-center pb-10">Sign in to access all your forms, manage submissions and create new ones with ease</p>
+
+                <div className="py-[30px] grid md:grid-cols-2 grid-cols-1 gap-2">
+                    {
+                        providers && providers.map((provider) => ( 
+                            <a onClick={() => signIn(provider.id)} className="flex items-center dark:bg-gray-900 cursor-pointer p-3 rounded border border-red-400">
+                                { provider.name === "Google" ? <FaGoogle className="mr-2" />: <FaGithub className="mr-2" /> } 
+                                Login with {provider.name}
+                            </a>
+                        ))
+                    }
+                </div>
 
                 <label className="pb-2">Email:</label>
                 <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-5">
