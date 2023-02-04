@@ -21,24 +21,29 @@ export default function Login() {
                 <p className="text-center pb-10">Sign in to access all your forms, manage submissions and create new ones with ease</p>
 
                 <div className="py-[30px] grid md:grid-cols-2 grid-cols-1 gap-2">
-                    {
+                    {/* {
                         providers.map((provider) => ( 
                             <a onClick={() => signIn(provider.id)} className="flex items-center justify-center bg-white dark:bg-gray-900 cursor-pointer p-4 my-2 rounded border border-gray-400">
                                 { provider.name === "Google" ? <FcGoogle className="mr-2" />: <FaGithub className="mr-2" /> } 
                                 Login with {provider.name}
                             </a>
                         ))
-                    }
+                    } */}
+                     
+                    <a onClick={() => signIn("google")} className="flex items-center justify-center bg-white dark:bg-gray-900 cursor-pointer p-4 my-2 rounded border border-gray-400">
+                        <FcGoogle className="mr-2" /> 
+                        Login with Google
+                    </a>
                 </div>
 
-                <label className="pb-2">Email:</label>
-                <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-5">
+                <label className="mb-2">Email:</label>
+                <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-7 mt-2">
                     <FaEnvelope className="m-2 mx-3 text-xl text-gray-500" />
                     <input type="email" className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " />
                 </div>
                 
-                <label className="pb-2">Password:</label>
-                <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-5">
+                <label className="mb-2">Password:</label>
+                <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-7 mt-2">
                     <FaLock className="m-2 mx-3 text-xl text-gray-500" />
                     <input type={show ? "text" : "password"} className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " />
                     <div className="p-2 px-3 text-xl text-gray-500" onClick={() => setShow(!show)}>
