@@ -24,8 +24,7 @@ export const authOptions = {
   ],
   pages: {
     signIn: "/login"
-  },
-  site: process.env.NEXTAUTH_URL
+  }
 }
 
 export default NextAuth(authOptions)
