@@ -17,7 +17,7 @@ export default function Login() {
 
                 <div className="py-[30px] grid md:grid-cols-2 grid-cols-1 gap-2">
                     {
-                        [{id: "google", name: "Google"}, {id: "github", name: "Github"}].map((provider) => ( 
+                        [{key: 1, id: "google", name: "Google"}, {key: 2, id: "github", name: "Github"}].map((provider) => ( 
                             <a onClick={() => signIn(provider.id)} className="flex items-center justify-center bg-white dark:bg-gray-900 cursor-pointer p-4 my-2 rounded border border-gray-400">
                                 { provider.name === "Google" ? <FcGoogle className="mr-2" />: <FaGithub className="mr-2" /> } 
                                 Login with {provider.name}
