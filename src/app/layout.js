@@ -1,7 +1,6 @@
 import Topbar from '@/components/topbar'
 import './globals.css'
 import AppFooter from '@/components/footer'
-import Head from './head'
 import AuthContext from './AuthContext'
 
 export default function RootLayout({ children, session }) {
