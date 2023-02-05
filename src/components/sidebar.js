@@ -1,7 +1,7 @@
 "use client"
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { FaArrowAltCircleRight, FaAtom, FaBoxes, FaBoxOpen, FaChartLine, FaCog, FaFolderPlus, FaInfoCircle, FaMoneyBill, FaPlusCircle, FaRobot, FaSignOutAlt, FaTimes } from "react-icons/fa";
+import { FaAdjust, FaArrowAltCircleRight, FaAtom, FaBoxes, FaBoxOpen, FaChartLine, FaCog, FaCommentAlt, FaFolderPlus, FaInfoCircle, FaMoneyBill, FaPlusCircle, FaRobot, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
 import { BsLayoutSidebarInset } from "react-icons/bs";
 import { signOut } from "next-auth/react";
@@ -14,8 +14,10 @@ export default function Sidebar() {
         { name: "Dashboard", to: "", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
         { name: "Builder", to: "/builder", icon: <FaRobot />,  iconRight: <FaPlusCircle/> },
         { name: "Entries", to: "/entries", icon: <FaBoxOpen />,  iconRight: <span className="bg-purple-400 text-white p-1 rounded text-[8px]">new</span> },
-        { name: "Manage forms", to: "/manage", icon: <FaBoxes />,  iconRight: <span className="bg-green-400 text-white p-1 px-2 rounded text-[8px]">3</span> },
+        { name: "Manage forms", to: "/manage", icon: <FaBoxes />,  iconRight: <span className="bg-green-500 text-white p-1 px-2 rounded text-[8px]">3</span> },
         { name: "Analytics", to: "/analytics", icon: <FaChartLine />,  iconRight: <FaArrowAltCircleRight/> },
+        { name: "Notifications", to: "/notifications", icon: <FaCommentAlt />,  iconRight: <span className="bg-purple-400 text-white p-1 px-2 rounded text-[8px]">3</span> },
+        { name: "Profile", to: "/profile", icon: <FaUserCircle />,  iconRight: <FaAdjust/> },
         { name: "Settings", to: "/settings", icon: <FaCog />,  iconRight: <FaInfoCircle/> },
         { name: "Billing & Payments", to: "/billing", icon: <FaMoneyBill />,  iconRight: <FiCheckCircle/> },
         { name: "Logout", to: "/", icon: <FaSignOutAlt />,  iconRight: <FaArrowAltCircleRight/> },
@@ -30,8 +32,7 @@ export default function Sidebar() {
         </div>
         <div className={`md:relative fixed md:pt-0 pt-[50px] top-0 left-0 w-[250px] h-full md:h-auto z-10 bg-white dark:bg-gray-900 shadow-lg text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "md:w-[250px] w-0"}`}>
             
-            <ul className="mt-3 w-full p-2">
-                <h4 className="text-lg text-gray-300 ml-3">GENERAL</h4>
+            <ul className="my-4 w-full p-2">
                 {
                     links.slice(0,4).map((link,i) => {
                         return (
@@ -48,10 +49,10 @@ export default function Sidebar() {
                     })
                 }
             </ul>
-            <ul className="mt-7 w-full p-2">
-                <h4 className="text-lg text-gray-300 ml-3">OTHERS</h4>
+            <hr className="mx-2 text-gray-200/[0.2]" />
+            <ul className="my-4 w-full p-2">
                 {
-                    links.slice(5,9).map((link,i) => {
+                    links.slice(5,10).map((link,i) => {
                         return (
                             <li key={i} className="flex w-full my-1">
                                 <a href={`/dashboard${link.to}`} onClick={() => link.name === "Logout" ? signOut() : ""} className={`p-[10px] flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}>

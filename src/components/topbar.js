@@ -1,12 +1,11 @@
 'use client'
 
 import Link from "next/link";
-import { FiBell, FiChevronRight, FiSearch, FiUser } from "react-icons/fi";
+import { FiBell, FiSearch, FiUser } from "react-icons/fi";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FaBars, FaSignOutAlt, FaTimes } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
 
 export default function Topbar() {
     const [open, setOpen] = useState(false)

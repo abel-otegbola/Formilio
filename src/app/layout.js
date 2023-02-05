@@ -9,7 +9,7 @@ export default function RootLayout({ children, session }) {
       <body>
         <AuthContext session={session}>
           <Topbar />
-            <main className='pt-[50px]' >{children}</main>
+            <main className='pt-[55px]' >{children}</main>
           <AppFooter />
         </AuthContext>
       </body>
