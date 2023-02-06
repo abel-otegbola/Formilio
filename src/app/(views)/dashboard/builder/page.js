@@ -50,7 +50,7 @@ export default function Builder() {
                                     { 
                                         components.map((item, index) => {
                                             return (
-                                                <DragCard id={item.id} key={item.id} setActive={setActive} handleDrag={handleDrag} index={index} active={active} handleComponents={[components, setComponents]} item={item} />
+                                                <DragCard id={item.id} key={item.id} setActive={setActive} handleDrag={handleDrag} index={index} active={active} handleComponents={{components, setComponents}} item={item} />
                                             )
                                         })
                                         
