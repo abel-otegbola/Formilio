@@ -6,7 +6,7 @@ export default function Preview({ components }) {
 
     return (
         <div className="m-2 p-4 rounded">
-            <h4>Preview :</h4>
+            <h4 className="text-semibold text-xl">Preview :</h4>
             <div ref={hRef}>
             {
                 components.map(item => (
@@ -18,7 +18,7 @@ export default function Preview({ components }) {
                                 width: "100%", 
                                 padding: "20px",
                                 fontWeight: item.styles.bold ? "700" : "400",
-                                fontStyle: item.styles.italic ? "italic" : "none",
+                                fontStyle: item.styles.italic ? "italic" : "",
                                 textDecoration: item.styles.underline ? "underline" : "none"
                           }}>{item.text}</h1>
                     : item.title === "para" ? 
@@ -40,8 +40,12 @@ export default function Preview({ components }) {
                 ))
             }
             </div>
-                { hRef.current && hRef.current.innerHTML }
-            <div>
+            <div className="bg-gray-200 dark:bg-gray-800 p-4">
+                <h4 className="text-semibold text-xl">HTML code:</h4>
+                <div className="py-3">
+                    { hRef.current && hRef.current.innerHTML }
+                </div>
+                
             </div>
         </div>
     )
