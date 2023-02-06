@@ -57,7 +57,7 @@ export default function ParaBlock({ active, item, handleComponent }) {
                 <FaTrashAlt className="p-2 text-3xl text-blue mr-2" />
             </div>
                 <input 
-                    className={`w-full bg-gray-100 dark-bg-gray-800 rounded-b-xl p-2 ${styles.bold ? "font-bold" : ""} ${styles.italic ? "italic" : ""} ${styles.underline ? "underline" : ""} ${styles.strike ? "line-through" : ""}`}
+                    className={`w-full bg-gray-100 dark:bg-gray-800 rounded-b-xl p-2 ${styles.bold ? "font-bold" : ""} ${styles.italic ? "italic" : ""} ${styles.underline ? "underline" : ""} ${styles.strike ? "line-through" : ""}`}
                     style={{ fontSize: styles.size, textAlign: styles.align }}
                     contentEditable="true"
                     onChange={(e) => handleText(e.target.value)}
