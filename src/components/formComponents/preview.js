@@ -7,7 +7,7 @@ export default function Preview({ components }) {
     return (
         <div className="m-2 p-4 rounded">
             <h4 className="text-semibold text-xl">Preview :</h4>
-            <div ref={hRef}>
+            <div ref={hRef} className="p-4 mb-10 bg-gray-100 dark:bg-gray-900">
             {
                 components.map(item => (
                     item.title === "heading" ? 
