@@ -40,7 +40,7 @@ export default function Preview({ components }) {
                 ))
             }
             </div>
-                { hRef.current.innerHTML }
+                { hRef.current && hRef.current.innerHTML }
             <div>
             </div>
         </div>
