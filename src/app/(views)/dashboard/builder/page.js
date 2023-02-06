@@ -6,16 +6,15 @@ import InputBlock from "@/components/formComponents/InputBlock";
 import ParaBlock from "@/components/formComponents/paraBlock";
 import TextAreaBlock from "@/components/formComponents/textAreaBlock";
 import { useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 export default function Builder() {
     const [active, setActive] = useState()
     const [show, setShow] = useState("Build")
     const [components, setComponents] = useState([
-        { id: 1, title: 'heading', html: '<h1>heading</h1>'},
-        { id: 2, title: 'para', html: '<p>Paragraph</p>' },
-        { id: 3, title: 'input', html: '<input type="text" placeholder="input" />' },
-        { id: 4, title: 'textarea', html: '<textarea>Message...</textarea>' }
+        { id: 1, title: 'heading', text: "Lorem", styles: { align: "center", size: 24, italic: false, underline: false }},
+        { id: 2, title: 'para', text: "Lorem ipsum dolor", styles: { align: "center", bold: false, size: 14, italic: false, underline: false, link: false, strike: false } },
+        { id: 3, title: 'input', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false } },
+        { id: 4, title: 'textarea', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false } }
     ])
 
     const onDragEnd = () => {
@@ -39,19 +38,19 @@ export default function Builder() {
                             <DropBox />
                             :
                                 <div 
-                                    className="p-2 bg-gray-300/[0.2] dark:bg-gray-800">
+                                    className="p-4 bg-gray-300/[0.2] dark:bg-gray-800">
                                     { 
-                                        components.map((item, index) => {
+                                        components.map((item) => {
                                             return (
                                                 <div 
                                                     key={item.id}
                                                     onClick={() => setActive(item.id)} 
                                                     className="my-2">
                                                     {
-                                                    item.title === "input" ? <InputBlock active={active === item.id ? true: false}  id={item.id} index={index}></InputBlock> : 
-                                                    item.title === "heading" ? <HeadingBlock active={active === item.id ? true: false} id={item.id} index={index}></HeadingBlock> :
-                                                    item.title === "para" ? <ParaBlock active={active === item.id ? true: false} id={item.id} index={index}></ParaBlock>: 
-                                                    item.title === "textarea" ? <TextAreaBlock active={active === item.id ? true: false} id={item.id} index={index}></TextAreaBlock> : ""
+                                                    item.title === "input" ? <InputBlock active={active === item.id ? true: false} handleComponent={{components, setComponents}} item={item}></InputBlock> : 
+                                                    item.title === "heading" ? <HeadingBlock handleComponent={{components, setComponents}} item={item} active={active === item.id ? true: false}></HeadingBlock> :
+                                                    item.title === "para" ? <ParaBlock handleComponent={{components, setComponents}} item={item} active={active === item.id ? true: false}></ParaBlock>: 
+                                                    item.title === "textarea" ? <TextAreaBlock active={active === item.id ? true: false} handleComponent={{components, setComponents}} item={item}></TextAreaBlock> : ""
                                                     }
                                                 </div>
                                             )
@@ -61,15 +60,6 @@ export default function Builder() {
                                 </div>
                             }
         
-                    <code>
-                        {
-                            components.map(item => {
-                                return (
-                                    <div key={item.id}>{item.html}</div>
-                                )
-                            })
-                        }
-                    </code>
                 </div>
                 <BuilderSidebar />
             </div>
