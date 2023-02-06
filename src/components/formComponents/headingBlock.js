@@ -34,7 +34,7 @@ export default function HeadingBlock({ active, item, handleComponent }) {
 
 
     return(
-        <div className={`bg-white dark:bg-gray-900 rounded-xl border shadow-lg cursor-pointer ${active ? "border-blue": "border-gray-300/[0.2]"}`}>
+        <div className={`bg-white dark:bg-gray-900 rounded-xl border shadow-lg cursor-pointer mb-4 ${active ? "border-blue": "border-gray-300/[0.2]"}`}>
             <div className="flex items-center justify-between dark:bg-gray-900/[0.3]">
                 <div className="flex items-center">
                     <div className="flex">

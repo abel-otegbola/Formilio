@@ -1,10 +1,7 @@
 'use client'
 import BuilderSidebar from "@/components/builderSidebar";
+import DragCard from "@/components/formComponents/dragCard";
 import DropBox from "@/components/formComponents/dropBox";
-import HeadingBlock from "@/components/formComponents/headingBlock";
-import InputBlock from "@/components/formComponents/InputBlock";
-import ParaBlock from "@/components/formComponents/paraBlock";
-import TextAreaBlock from "@/components/formComponents/textAreaBlock";
 import { useState } from "react";
 
 export default function Builder() {
@@ -16,10 +13,20 @@ export default function Builder() {
         { id: 3, title: 'input', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false } },
         { id: 4, title: 'textarea', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false } }
     ])
+    
 
-    const onDragEnd = () => {
-
+    const handleDrag = (dragIndex, hoverIndex) => {
+        setComponents(prev => {
+            const copy = [...prev];
+            const component = copy[dragIndex];
+            //remove origin
+            copy.splice(dragIndex, 1);
+            // add to target
+            copy.splice(hoverIndex, 0, component);
+            return copy;
+        })
     }
+
 
     return (
         <div className="">
@@ -38,21 +45,12 @@ export default function Builder() {
                             <DropBox />
                             :
                                 <div 
-                                    className="p-4 bg-gray-300/[0.2] dark:bg-gray-800">
+                                    className="p-4 bg-gray-300/[0.2] dark:bg-gray-800"
+                                    >
                                     { 
-                                        components.map((item) => {
+                                        components.map((item, index) => {
                                             return (
-                                                <div 
-                                                    key={item.id}
-                                                    onClick={() => setActive(item.id)} 
-                                                    className="my-4">
-                                                    {
-                                                    item.title === "input" ? <InputBlock active={active === item.id ? true: false} handleComponent={{components, setComponents}} item={item}></InputBlock> : 
-                                                    item.title === "heading" ? <HeadingBlock handleComponent={{components, setComponents}} item={item} active={active === item.id ? true: false}></HeadingBlock> :
-                                                    item.title === "para" ? <ParaBlock handleComponent={{components, setComponents}} item={item} active={active === item.id ? true: false}></ParaBlock>: 
-                                                    item.title === "textarea" ? <TextAreaBlock active={active === item.id ? true: false} handleComponent={{components, setComponents}} item={item}></TextAreaBlock> : ""
-                                                    }
-                                                </div>
+                                                <DragCard id={item.id} key={item.id} setActive={setActive} handleDrag={handleDrag} index={index} active={active} handleComponents={[components, setComponents]} item={item} />
                                             )
                                         })
                                         

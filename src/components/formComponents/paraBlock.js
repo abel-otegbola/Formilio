@@ -33,7 +33,7 @@ export default function ParaBlock({ active, item, handleComponent }) {
     }
 
     return(
-        <div className={`bg-white dark:bg-gray-900 shadow-lg rounded-xl border ${active ? "border-blue": "border-gray-100/[0.2]"}`}>
+        <div className={`bg-white dark:bg-gray-900 shadow-lg rounded-xl border cursor-pointer mb-4 ${active ? "border-blue": "border-gray-100/[0.2]"}`}>
             <div className="flex items-center justify-between dark:bg-gray-900/[0.3]">
                 <div className="flex items-center">
                     <div className="flex">

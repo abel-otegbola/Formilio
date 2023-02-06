@@ -21,7 +21,7 @@ export default function TextAreaBlock({ active, handleComponent, item }) {
     }
 
     return (
-        <div className={`bg-white dark:bg-gray-900 rounded-xl border shadow-lg cursor-pointer relative border ${active ? "border-blue": "border-gray-100/[0.2]"}`}>
+        <div className={`bg-white dark:bg-gray-900 rounded-xl border shadow-lg cursor-pointer mb-4 relative border ${active ? "border-blue": "border-gray-100/[0.2]"}`}>
             <div className="flex items-center justify-between px-2 py-1">
                 <h4 className="font-semibold text-blue flex items-center"><FaTextHeight className="p-2 mr-2 rounded bg-gray-300/[0.3] dark:bg-gray-800 text-3xl"/> Textarea</h4>
                 <div className="flex items-center">
