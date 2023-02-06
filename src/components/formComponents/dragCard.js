@@ -6,7 +6,7 @@ import TextAreaBlock from "./textAreaBlock";
 import { useDrop, useDrag } from 'react-dnd';
 import { useRef } from "react";
 
-export default function DragCard({ id, index, handleDrag, handleComponents, item, active, setActive }) {
+export default function DragCard({ id, index, handleDrag, handleDelete, handleComponents, item, active, setActive }) {
 
     const ref = useRef(null);
     
@@ -67,10 +67,10 @@ export default function DragCard({ id, index, handleDrag, handleComponents, item
             data-handler-id={handlerId}
             >
             {
-            item.title === "input" ? <InputBlock active={active === item.id ? true: false} handleComponent={handleComponents} item={item}></InputBlock> : 
-            item.title === "heading" ? <HeadingBlock handleComponent={handleComponents} item={item} active={active === item.id ? true: false}></HeadingBlock> :
-            item.title === "para" ? <ParaBlock handleComponent={handleComponents} item={item} active={active === item.id ? true: false}></ParaBlock>: 
-            item.title === "textarea" ? <TextAreaBlock active={active === item.id ? true: false} handleComponent={handleComponents} item={item}></TextAreaBlock> : ""
+            item.title === "input" ? <InputBlock active={active === item.id ? true: false} handleComponent={handleComponents} handleDelete={handleDelete} item={item}></InputBlock> : 
+            item.title === "heading" ? <HeadingBlock handleComponent={handleComponents} handleDelete={handleDelete} item={item} active={active === item.id ? true: false}></HeadingBlock> :
+            item.title === "para" ? <ParaBlock handleComponent={handleComponents} handleDelete={handleDelete} item={item} active={active === item.id ? true: false}></ParaBlock>: 
+            item.title === "textarea" ? <TextAreaBlock active={active === item.id ? true: false} handleComponent={handleComponents} handleDelete={handleDelete} item={item}></TextAreaBlock> : ""
             }
         </div>
     )

@@ -5,7 +5,7 @@ import { BsFileText, BsInputCursorText, BsLayoutSidebarInsetReverse, BsTextParag
 import { FaHeading, FaTimes } from "react-icons/fa"
 import { TfiLayoutColumn2Alt, TfiLayoutColumn3Alt } from "react-icons/tfi"
 
-export default function BuilderSidebar() {
+export default function BuilderSidebar({ addComponent }) {
     const [open, setOpen] = useState(false)
     const components = [
         {
@@ -38,7 +38,7 @@ export default function BuilderSidebar() {
                         open ? <FaTimes /> : <BsLayoutSidebarInsetReverse />
                     }
         </div>
-        <div className={`lg:relative absolute lg:pt-0 pt-[115px] top-0 lg:right-0 right-2 h-full w-[250px] lg:mt-[20px] bg-slate-100 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
+        <div className={`lg:relative absolute lg:pt-0 pt-[115px] top-0 lg:right-0 right-2 h-full w-[250px] lg:mt-[20px] bg-slate-50 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
            
             <h4 className="m-2 p-2 border-2 border-gray-50/[0.1] border-b-blue">COMPONENTS</h4>
 
@@ -46,7 +46,7 @@ export default function BuilderSidebar() {
                 {
                     components.map((item) => {
                         return (
-                            <div key={item.id} onDrag={(e) => e.dataTransfer.setData("Text", item)}  draggable="true" className="flex items-center p-2 py-4 my-2 border border-gray-100/[0.1] shadow-lg bg-white dark:bg-gray-800 hover:bg-blue hover:text-white cursor-pointer rounded">
+                            <div key={item.id} onClick={() => addComponent(item.title)}  draggable="true" className="flex items-center p-2 py-4 my-2 border border-gray-100/[0.1] shadow-lg bg-white dark:bg-gray-800 hover:bg-blue hover:text-white cursor-pointer rounded">
                                 <span className="text-hoverblue">{item.icon}</span>
                                 <p className="ml-2 text-sm">{item.title}</p>
                             </div>

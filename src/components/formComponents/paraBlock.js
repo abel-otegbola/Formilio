@@ -2,7 +2,7 @@ import { BsFillEmojiSmileFill, BsTextCenter, BsTextLeft, BsTextRight } from "rea
 import { FaStrikethrough, FaTrashAlt } from "react-icons/fa";
 import { FiBold, FiItalic, FiLink, FiUnderline } from "react-icons/fi";
 
-export default function ParaBlock({ active, item, handleComponent }) {
+export default function ParaBlock({ active, item, handleComponent, handleDelete }) {
 
     const { text, id, styles } = item
 
@@ -54,7 +54,7 @@ export default function ParaBlock({ active, item, handleComponent }) {
                     <FiLink className={`p-2 text-3xl ${styles.link ? "text-blue": ""}`} onClick={() => handleStyle("link")} />
                     <FaStrikethrough className={`p-2 text-3xl ${styles.strike ? "text-blue": ""}`} onClick={() => handleStyle("strike")} />
                 </div>
-                <FaTrashAlt className="p-2 text-3xl text-blue mr-2" />
+                <FaTrashAlt className="p-2 text-3xl text-blue mr-2" onClick={() => handleDelete(id)} />
             </div>
                 <input 
                     className={`w-full bg-gray-100 dark:bg-gray-800 rounded-b-xl p-2 ${styles.bold ? "font-bold" : ""} ${styles.italic ? "italic" : ""} ${styles.underline ? "underline" : ""} ${styles.strike ? "line-through" : ""}`}

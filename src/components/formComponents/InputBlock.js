@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FaTextHeight, FaTimes, FaTrashAlt } from "react-icons/fa";
 
-export default function InputBlock({ active, handleComponent, item }) {
+export default function InputBlock({ active, handleComponent, handleDelete, item }) {
     const [edit, setEdit] = useState(false)
 
     const { id, title, styles, options, settings } = item
@@ -32,12 +32,12 @@ export default function InputBlock({ active, handleComponent, item }) {
                 <h4 className="font-semibold text-blue flex items-center"><FaTextHeight className="p-2 mr-2 rounded bg-gray-300/[0.3] dark:bg-gray-800 text-3xl"/> Input</h4>
                 <div className="flex items-center">
                     <span className="p-2 text-[10px] px-3 bg-blue hover:bg-hoverblue text-white rounded cursor-pointer mr-3" onClick={() => setEdit(!edit)}>Options</span>
-                    <FaTrashAlt className="text-3xl p-2 text-blue" onClick={() => setEdit(!edit)} />
+                    <FaTrashAlt className="text-3xl p-2 text-blue" onClick={() => handleDelete(id)} />
                 </div>
             </div>
-            <div className={`bg-gray-100 dark:bg-gray-900 w-full rounded-b-xl overflow-hidden p-2 pt-3 ${options.type === "checkbox" ? "flex items-center" : ""}`}>
-                {options.type === "checkbox" ? "" : <label >{options.label}{settings.required ? <sup className="text-red-500 ml-2">*</sup> : ""}</label>}
-                <input className={`border dark:bg-gray-900 border-gray-400/[0.2] focus:outline focus:outline-blue ${options.type === "checkbox" ? "w-[25px]" : "w-full mt-2 p-2"}`}
+            <div className={`bg-gray-100 dark:bg-gray-900 w-full rounded-b-xl overflow-hidden p-2 pt-3 ${(options.type === "checkbox" || options.type === "radio") ? "flex items-center" : ""}`}>
+                {(options.type === "checkbox" || options.type === "radio") ? "" : <label >{options.label}{settings.required ? <sup className="text-red-500 ml-2">*</sup> : ""}</label>}
+                <input className={`border dark:bg-gray-900 border-gray-400/[0.2] focus:outline focus:outline-blue ${(options.type === "checkbox" || options.type === "radio") ? "w-[25px]" : "w-full mt-2 p-2"}`}
                     type={options.type} 
                     name={options.name} 
                     placeholder={options.placeholder} 
@@ -46,7 +46,7 @@ export default function InputBlock({ active, handleComponent, item }) {
                     disabled={settings.disabled}
                 />
                 
-                {options.type === "checkbox" ? <label for={options.id} >{options.label}{settings.required ? <sup className="text-red-500 ml-2">*</sup> : ""}</label> : ""}
+                {(options.type === "checkbox" || options.type === "radio") ? <label for={options.id} >{options.label}{settings.required ? <sup className="text-red-500 ml-2">*</sup> : ""}</label> : ""}
             </div>
             <div className={`absolute top-[40px] right-0 rounded shagow-xl border border-gray-300/[0.2] bg-white dark:bg-gray-900 z-50 ${!edit ? "hidden": ""}`}>
                 <div className="flex justify-between items-center p-4 bg-gray-300/[0.3]">

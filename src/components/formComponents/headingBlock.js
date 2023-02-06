@@ -2,7 +2,7 @@ import { BsTextCenter, BsTextLeft, BsTextRight } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
 import { FiBold, FiItalic, FiUnderline } from "react-icons/fi";
 
-export default function HeadingBlock({ active, item, handleComponent }) {
+export default function HeadingBlock({ active, item, handleComponent, handleDelete }) {
 
     const { text, id, styles } = item
     
@@ -53,13 +53,12 @@ export default function HeadingBlock({ active, item, handleComponent }) {
                     <FiItalic className={`p-2 text-3xl ${styles.italic ? "text-blue": ""}`} onClick={() => handleStyle("italic")} />
                     <FiUnderline className={`p-2 text-3xl ${styles.underline ? "text-blue": ""}`} onClick={() => handleStyle("underline")} />
                 </div>
-                <FaTrashAlt className="p-2 text-3xl text-blue mr-2" />
+                <FaTrashAlt className="p-2 text-3xl text-blue mr-2" onClick={() => handleDelete(id)} />
             </div>
             
             <input
                 className={`w-full bg-gray-100 dark:bg-gray-800 rounded-b-xl p-2 ${styles.bold ? "font-bold" : ""} ${styles.italic ? "italic" : ""} ${styles.underline ? "underline" : ""} ${styles.strike ? "line-through" : ""}`}
                 style={{ fontSize: styles.size, textAlign: styles.align }}
-                contentEditable="true"
                 onChange={(e) => handleText(e.target.value)}
                 value={text}
             />
