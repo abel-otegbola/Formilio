@@ -26,10 +26,16 @@ export default function HeadingBlock({ active, item, handleComponent, handleDele
     }
 
     const handleText = (value) => {
-        handleComponent.setComponents([
+        // let changed = handleComponent.components.filter(item => item.id === id)[0]
+        // changed.text = value;
+        // const newComp = handleComponent.components.filter(item => item !== id)
+        // newComp.
+
+        const changed = handleComponent.components.filter(item => item.id === id)[0]
+        console.log([
             ...handleComponent.components,
-            handleComponent.components.filter(item => item.id === id)[0].title = value
-        ]) 
+            { ...changed, text : value }
+        ])
     }
 
 
@@ -60,7 +66,7 @@ export default function HeadingBlock({ active, item, handleComponent, handleDele
                 className={`w-full bg-gray-100 dark:bg-gray-800 rounded-b-xl p-2 ${styles.bold ? "font-bold" : ""} ${styles.italic ? "italic" : ""} ${styles.underline ? "underline" : ""} ${styles.strike ? "line-through" : ""}`}
                 style={{ fontSize: styles.size, textAlign: styles.align }}
                 onChange={(e) => handleText(e.target.value)}
-                value={text}
+                defaultValue={text}
             />
         </div>
     )

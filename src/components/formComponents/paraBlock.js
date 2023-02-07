@@ -61,7 +61,7 @@ export default function ParaBlock({ active, item, handleComponent, handleDelete 
                     style={{ fontSize: styles.size, textAlign: styles.align }}
                     contentEditable="true"
                     onChange={(e) => handleText(e.target.value)}
-                    value={text}
+                    defaultValue={text}
                 />
         </div>
     )

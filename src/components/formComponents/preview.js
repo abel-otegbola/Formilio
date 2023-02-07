@@ -9,9 +9,10 @@ export default function Preview({ components }) {
             <h4 className="text-semibold text-xl">Preview :</h4>
             <div ref={hRef} className="p-4 mb-10 bg-gray-100 dark:bg-gray-900">
             {
-                components.map(item => (
+                components.map((item, i) => (
                     item.title === "heading" ? 
                         <h1
+                            key={i}
                             style={{ 
                                 fontSize: item.styles.size, 
                                 textAlign: item.styles.align, 
@@ -23,6 +24,7 @@ export default function Preview({ components }) {
                           }}>{item.text}</h1>
                     : item.title === "para" ? 
                         <p
+                            key={i}
                             style={{ 
                                 fontSize: item.styles.size, 
                                 textAlign: item.styles.align, 
@@ -33,9 +35,9 @@ export default function Preview({ components }) {
                                 textDecoration: item.styles.underline ? "underline" : item.styles.strike ? "strike-through" : "none"
                             }}>{item.text}</p>
                     : item.title === "input" ? 
-                        <input />
+                        <input key={i} />
                     : item.title === "textarea" ? 
-                        <textarea></textarea>
+                        <textarea key={i}></textarea>
                     : ""
                 ))
             }
