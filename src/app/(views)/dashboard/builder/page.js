@@ -8,37 +8,33 @@ import { useState } from "react";
 export default function Builder() {
     const [active, setActive] = useState()
     const [show, setShow] = useState("Build")
-    const [components, setComponents] = useState([
-        // { id: 1, title: 'heading', text: "Lorem", styles: { align: "center", size: 24, italic: false, underline: false }},
-        // { id: 2, title: 'para', text: "Lorem ipsum dolor", styles: { align: "center", bold: false, size: 14, italic: false, underline: false, link: false, strike: false } },
-        // { id: 3, title: 'input', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false } },
-        // { id: 4, title: 'textarea', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false } }
-    ])
+    const [components, setComponents] = useState([])
     
 
-    // const handleDrag = (dragIndex, hoverIndex) => {
-    //     setComponents(prev => {
-    //         const copy = [...prev];
-    //         const component = copy[dragIndex];
-    //         //remove origin
-    //         copy.splice(dragIndex, 1);
-    //         // add to target
-    //         copy.splice(hoverIndex, 0, component);
-    //         return copy;
-    //     })
-    // }
+    const handleDrag = (dragIndex, hoverIndex) => {
+        setComponents(prev => {
+            const copy = [...prev];
+            const component = copy[dragIndex];
+            //remove origin
+            copy.splice(dragIndex, 1);
+            // add to target
+            copy.splice(hoverIndex, 0, component);
+            return copy;
+        })
+    }
+
 
     const handleAdd = (title) => {
             setComponents([
                 ...components,
                 title === "Input Field" ?
-                    {id: components.length + 1, title: 'input', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false }}
+                    {id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'input', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false }}
                 : title === "Text Area" ?
-                    { id: components.length + 1, title: 'textarea', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false } }
+                    { id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'textarea', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false } }
                 : title === "Heading" ?
-                    { id: components.length + 1, title: 'heading', text: "Lorem", styles: { align: "center", size: 24, italic: false, underline: false }}
+                    { id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'heading', text: "Lorem", styles: { align: "center", size: 24, italic: false, underline: false }}
                 : title === "Text" ?
-                    { id: components.length + 1, title: 'para', text: "Lorem ipsum dolor", styles: { align: "center", bold: false, size: 14, italic: false, underline: false, link: false, strike: false } }
+                    { id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'para', text: "Lorem ipsum dolor", styles: { align: "center", bold: false, size: 14, italic: false, underline: false, link: false, strike: false } }
                 : ""
             ])
     }
@@ -73,7 +69,7 @@ export default function Builder() {
                                     { 
                                         components.map((item, index) => {
                                             return (
-                                                <DragCard id={item.id} key={item.id} setActive={setActive}  handleDelete={handleDelete} index={index} active={active} handleComponents={{components, setComponents}} item={item} />
+                                                <DragCard id={item.id} key={item.id} setActive={setActive} handleDrag={handleDrag} handleDelete={handleDelete} index={index} active={active} handleComponents={{components, setComponents}} item={item} />
                                             )
                                         })
                                         
