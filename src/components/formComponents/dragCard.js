@@ -5,6 +5,7 @@ import ParaBlock from "./paraBlock";
 import TextAreaBlock from "./textAreaBlock";
 import { useDrop, useDrag } from 'react-dnd';
 import { useRef } from "react";
+import ButtonBlock from "./buttonBlock";
 
 export default function DragCard({ id, index, handleDrag, handleDelete, handleComponents, item, active, setActive }) {
 
@@ -70,7 +71,8 @@ export default function DragCard({ id, index, handleDrag, handleDelete, handleCo
             item.title === "input" ? <InputBlock handleDelete={handleDelete} handleComponent={handleComponents} item={item} active={active === item.id ? true: false}></InputBlock> : 
             item.title === "heading" ? <HeadingBlock handleComponent={handleComponents} handleDelete={handleDelete} item={item} active={active === item.id ? true: false}></HeadingBlock> :
             item.title === "para" ? <ParaBlock handleComponent={handleComponents} handleDelete={handleDelete} item={item} active={active === item.id ? true: false}></ParaBlock>: 
-            item.title === "textarea" ? <TextAreaBlock handleComponent={handleComponents} handleDelete={handleDelete} item={item} active={active === item.id ? true: false}></TextAreaBlock> : ""
+            item.title === "textarea" ? <TextAreaBlock handleComponent={handleComponents} handleDelete={handleDelete} item={item} active={active === item.id ? true: false}></TextAreaBlock> : 
+            item.title === "button" ? <ButtonBlock handleComponent={handleComponents} handleDelete={handleDelete} item={item} active={active === item.id ? true: false}></ButtonBlock> : ""
             }
         </div>
     )

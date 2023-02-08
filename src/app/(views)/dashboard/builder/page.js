@@ -32,9 +32,11 @@ export default function Builder() {
                 : title === "Text Area" ?
                     { id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'textarea', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false } }
                 : title === "Heading" ?
-                    { id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'heading', text: "Lorem", styles: { align: "center", size: 24, italic: false, underline: false }}
+                    { id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'heading', text: "Click to edit", styles: { align: "center", size: 24, italic: false, underline: false, color: "#000", padding: "10px", margin: "10px", bgColor: "none" }}
                 : title === "Text" ?
-                    { id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'para', text: "Lorem ipsum dolor", styles: { align: "center", bold: false, size: 14, italic: false, underline: false, link: false, strike: false } }
+                    { id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'para', text: "Click to edit", styles: { align: "center", bold: false, size: 14, italic: false, underline: false, link: false, strike: false, color: "#000", padding: "10px", margin: "10px", bgColor: "none"} }
+                : title === "Button" ?
+                { id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'button', text: "Submit", styles: { color: "#000", padding: "10px", margin: "10px", bgColor: "none"} }
                 : ""
             ])
     }

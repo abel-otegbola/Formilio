@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from "react"
-import { BsFileText, BsInputCursorText, BsLayoutSidebarInsetReverse, BsTextParagraph } from "react-icons/bs"
+import { useEffect, useRef, useState } from "react"
+import { BsFileText, BsImage, BsInputCursorText, BsLayoutSidebarInsetReverse, BsSquareFill, BsTextParagraph } from "react-icons/bs"
 import { FaHeading, FaTimes } from "react-icons/fa"
 import { TfiLayoutColumn2Alt, TfiLayoutColumn3Alt } from "react-icons/tfi"
 
 export default function BuilderSidebar({ addComponent }) {
     const [open, setOpen] = useState(false)
+    const menuRef = useRef(null)
     const components = [
         {
             id: 1,
@@ -27,9 +28,32 @@ export default function BuilderSidebar({ addComponent }) {
             id: 4,
             title: "Text",
             icon: <BsTextParagraph />
+        },
+        {
+            id: 5,
+            title: "Button",
+            icon: <BsSquareFill />
+        },
+        {
+            id: 6,
+            title: "Image",
+            icon: <BsImage />
         }
     ]
     const layouts = [< TfiLayoutColumn2Alt className="w-[60%] h-[40%]"/>, <TfiLayoutColumn3Alt className="w-[60%] h-[40%]"/>]
+
+    // Close sidebar when clicked outside
+    useEffect(() => {
+        const checkIfClickedOutside = e => {
+            if(open && menuRef.current && !menuRef.current.contains(e.target)) {
+                setOpen(false)
+            }
+        }
+        document.addEventListener("mousedown", checkIfClickedOutside)
+        return () => {
+            document.removeEventListener("mousedown", checkIfClickedOutside)
+        }
+    }, [open])
 
     return(
         <>
@@ -38,7 +62,7 @@ export default function BuilderSidebar({ addComponent }) {
                         open ? <FaTimes /> : <BsLayoutSidebarInsetReverse />
                     }
         </div>
-        <div className={`lg:relative absolute lg:pt-0 pt-[115px] top-0 lg:right-0 right-2 h-full w-[250px] lg:mt-[20px] bg-slate-50 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
+        <div ref={menuRef} className={`lg:relative absolute lg:pt-0 pt-[115px] top-0 lg:right-0 right-2 h-full w-[250px] lg:mt-[20px] bg-slate-50 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
            
             <h4 className="m-2 p-2 border-2 border-gray-50/[0.1] border-b-blue">COMPONENTS</h4>
 
