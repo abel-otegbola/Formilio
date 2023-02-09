@@ -2,7 +2,8 @@
 
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-import { FaEnvelope, FaEye, FaEyeSlash, FaLock, FaSpinner } from "react-icons/fa";
+import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
+import { CgSpinner } from "react-icons/cg";
 
 export default function Signup() {
     const [show, setShow] = useState(false)
@@ -17,11 +18,20 @@ export default function Signup() {
         setLoading(true);
         await fetch(`/api/auth/signup`, {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({ fullname, email, password })
         })
         .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(error => console.log(error))
+        .then(data => {
+            console.log(data)
+            setLoading(false)
+        })
+        .catch(err => {
+            console.log(err)
+            setLoading(false)
+        })
     }
 
     return (
@@ -58,7 +68,7 @@ export default function Signup() {
                     <div className="m-2 mx-3 text-xl text-gray-500 " onClick={() => setShow(!show)}>{show ? <FaEyeSlash /> : <FaEye />}</div>
                 </div>
 
-                <button type="submit" onClick={(e) => submitForm(e)} className="flex justify-center items-center p-[13px] w-full bg-blue hover:bg-hoverblue text-white rounded mt-5">{loading ? <FaSpinner /> : ""} Sign up</button>
+                <button type="submit" onClick={(e) => submitForm(e)} className="flex justify-center items-center p-[13px] w-full bg-blue hover:bg-hoverblue text-white rounded mt-5">{loading ? <CgSpinner className="animate-spin" /> : ""} Sign up</button>
 
                 <div className="my-10 flex flex-wrap justify-between">
                     <p>Already have an Account? <a href="/login" className="text-blue mt-3">Signin</a></p>
