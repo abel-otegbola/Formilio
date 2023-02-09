@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
         Users.create({ fullname, email, password: await hash(password, 12) }, function(err, data){
             if(err) return res.status(404).json({ error: err });
-            res.status(200).redirect("/login")
+            res.status(200).json({ msg: "Signed up successfully", user: data })
         })
 
     }

@@ -12,20 +12,21 @@ export default function Signup() {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
 
-    // const submitForm = async (e) => {
-    //     e.preventDefault();
-    //     setLoading(true);
-    //     await fetch(`http://localhost:3000/api/auth/signup`, {
-    //         method: "POST",
-    //         body: JSON.stringify({ fullname, email, password })
-    //     })
-    //     .then(res => console.log(res.json()))
-    //     .catch(error => console.log(error))
-    // }
+    const submitForm = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        await fetch(`/api/auth/signup`, {
+            method: "POST",
+            body: JSON.stringify({ fullname, email, password })
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+    }
 
     return (
         <div className="md:px-[10%] px-[5%] py-[5%] dark:bg-gray-900">
-            <form className="p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded md:w-[500px] w-full m-auto" action={`${process.env.NEXTAUTH_URL}/api/auth/signup`} method="post">
+            <form className="p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded md:w-[500px] w-full m-auto" method="post">
                 <h1 className="text-center py-6 text-blue text-2xl font-bold">Create your Account</h1>
                 <p className="text-center pb-10">Sign up to create and manage your forms</p>
 
@@ -57,7 +58,7 @@ export default function Signup() {
                     <div className="m-2 mx-3 text-xl text-gray-500 " onClick={() => setShow(!show)}>{show ? <FaEyeSlash /> : <FaEye />}</div>
                 </div>
 
-                <button type="submit" onSubmit={() => si} className="flex justify-center items-center p-[13px] w-full bg-blue hover:bg-hoverblue text-white rounded mt-5">{loading ? <FaSpinner /> : ""} Sign up</button>
+                <button type="submit" onClick={(e) => submitForm(e)} className="flex justify-center items-center p-[13px] w-full bg-blue hover:bg-hoverblue text-white rounded mt-5">{loading ? <FaSpinner /> : ""} Sign up</button>
 
                 <div className="my-10 flex flex-wrap justify-between">
                     <p>Already have an Account? <a href="/login" className="text-blue mt-3">Signin</a></p>
