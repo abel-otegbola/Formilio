@@ -17,7 +17,6 @@ export default function Signup() {
         setLoading(true);
         await fetch(`https://mailme.vercel.app/api/auth/signup`, {
             method: "POST",
-            mode: "no-cors",
             body: JSON.stringify({ fullname, email, password })
         })
         .then(res => res.json())
