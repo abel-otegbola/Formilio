@@ -10,17 +10,16 @@ export default async function handler(req, res) {
         const { fullname, email, password } = req.body;
 
         //Check duplicate users
-        // const checkexisting = await Users.findOne({ email });
-        // if(checkexisting) return res.status(422).json({ error: "User already exists" })
+        const checkexisting = await Users.findOne({ email });
+        if(checkexisting) return res.status(422).json({ error: "User already exists" })
 
         Users.create({ fullname, email, password: await hash(password, 12) }, function(err, data){
             if(err) return res.status(404).json({ error: err });
-            res.status(201).json({ status: true, user: data })
+            return res.status(200).json({ msg: "Signed up successfully", user: data })
         })
 
     }
     else {
         res.status(500).json({ error: "HTTPS Method not valid" })
     }
-    res.json({ message: "Signed up" })
 }
