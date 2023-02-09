@@ -15,7 +15,7 @@ export default function Signup() {
     const submitForm = async (e) => {
         e.preventDefault();
         setLoading(true);
-        await fetch(`http://localhost:3000/api/auth/signup`, {
+        await fetch(`https://mailme.vercel.app/api/auth/signup`, {
             method: "POST",
             mode: "no-cors",
             body: JSON.stringify({ fullname, email, password })
