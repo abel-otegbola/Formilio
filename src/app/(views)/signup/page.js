@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
+import { validateSignup } from "@/helper/validateSignup";
 
 export default function Signup() {
     const [show, setShow] = useState(false)
@@ -11,27 +12,36 @@ export default function Signup() {
     const [fullname, setFullname] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [cpassword, setCPassword] = useState("")
     const [error, setError] = useState("")
 
     const submitForm = async (e) => {
         e.preventDefault();
-        setLoading(true);
-        await fetch(`/api/auth/signup`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ fullname, email, password })
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setLoading(false)
-        })
-        .catch(err => {
-            console.log(err)
-            setLoading(false)
-        })
+        let valid = validateSignup({ fullname, email, password, cpassword }).error
+        if (!valid) {
+            setLoading(true);
+            await fetch(`/api/auth/signup`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ fullname, email, password })
+            })
+            .then(res => res.json())
+            .then(data => {
+                setError(data.msg)
+                signIn("Credentials", data.user)
+                setLoading(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoading(false)
+            }) 
+            
+        }
+        else {
+            setError(valid)
+        }
     }
 
     return (
@@ -64,7 +74,7 @@ export default function Signup() {
                 <label className="pb-2" htmlFor="cpassword">Confirm Password:</label>
                 <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-5">
                     <FaLock className="m-2 mx-3 text-xl text-gray-500" />
-                    <input type={show? "text" : "password"} id="cpassword" className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " />
+                    <input type={show? "text" : "password"} id="cpassword" onChange={(e) => setCPassword(e.target.value)} className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " />
                     <div className="m-2 mx-3 text-xl text-gray-500 " onClick={() => setShow(!show)}>{show ? <FaEyeSlash /> : <FaEye />}</div>
                 </div>
 
