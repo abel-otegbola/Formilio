@@ -12,7 +12,7 @@ export default function Login() {
         <div className="md:px-[10%] px-[5%] py-[5%] dark:bg-gray-900">
             <form className="p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded md:w-[500px] w-full m-auto">
 
-                <h1 className="text-center py-2 text-2xl font-bold">Sign in to your Account</h1>
+                <h1 className="text-center py-6 text-blue text-2xl font-bold">Sign in to your Account</h1>
                 <p className="text-center pb-10">Sign in to access all your forms, manage submissions and create new ones with ease</p>
 
                 <div className="py-[30px] grid md:grid-cols-2 grid-cols-1 gap-2">

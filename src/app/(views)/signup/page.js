@@ -12,21 +12,21 @@ export default function Signup() {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
 
-    const submitForm = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        await fetch(`https://mailme.vercel.app/api/auth/signup`, {
-            method: "POST",
-            body: JSON.stringify({ fullname, email, password })
-        })
-        .then(res => console.log(res.json()))
-        .catch(error => console.log(error))
-    }
+    // const submitForm = async (e) => {
+    //     e.preventDefault();
+    //     setLoading(true);
+    //     await fetch(`http://localhost:3000/api/auth/signup`, {
+    //         method: "POST",
+    //         body: JSON.stringify({ fullname, email, password })
+    //     })
+    //     .then(res => console.log(res.json()))
+    //     .catch(error => console.log(error))
+    // }
 
     return (
         <div className="md:px-[10%] px-[5%] py-[5%] dark:bg-gray-900">
-            <form className="p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded md:w-[500px] w-full m-auto" onSubmit={(e) => submitForm(e)} method="post">
-                <h1 className="text-center py-2 text-2xl font-bold">Create your Account</h1>
+            <form className="p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded md:w-[500px] w-full m-auto" action={`${process.env.NEXTAUTH_URL}/api/auth/signup`} method="post">
+                <h1 className="text-center py-6 text-blue text-2xl font-bold">Create your Account</h1>
                 <p className="text-center pb-10">Sign up to create and manage your forms</p>
 
                 { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
