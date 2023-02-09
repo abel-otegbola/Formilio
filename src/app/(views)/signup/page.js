@@ -1,10 +1,10 @@
 'use client'
 
-import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
 import { validateSignup } from "@/helper/validateSignup";
+import { redirect } from "next/navigation";
 
 export default function Signup() {
     const [show, setShow] = useState(false)
@@ -29,8 +29,13 @@ export default function Signup() {
             })
             .then(res => res.json())
             .then(data => {
-                setError(data.msg)
-                signIn("Credentials", data.user)
+                if(data.error) {
+                    setError(data.error)
+                }
+                else {
+                    setError(data.msg)
+                    redirect("/login")
+                }
                 setLoading(false)
             })
             .catch(err => {
