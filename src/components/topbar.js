@@ -29,7 +29,10 @@ export default function Topbar() {
 
     return (
         <div className="fixed w-full flex shadow-sm font-body justify-between items-center p-2 md:py-2 py-4 md:px-[10%] px-[5%] bg-white dark:bg-gray-900 border border-slate-50/[0.1] border-b-gray-100 dark:border-b-gray-200/[0.1] z-[100]">
-            <a href="/" className={`flex items-center text-2xl font-bold ${router.indexOf("dashboard") !== -1 ? "md:ml-0 ml-[40px]" : ""}`}><Image src={"/logo.png"} className="mr-2" width={30} height={30} alt="formilio logo" /> Formilio</a>
+            
+            <a href="/" className={`flex items-center text-2xl font-bold ${router.indexOf("dashboard") !== -1 ? "md:ml-0 ml-[40px]" : ""}`}><Image src={"/Group 1.png"} className="mr-2" width={30} height={30} alt="formilio logo" /> Formilio</a>
+            
+            {/* Navigation menu */}
             <ul ref={menuRef} className={`bg-white dark:bg-gray-900 flex md:flex-row flex-col md:w-auto h-full md:relative md:shadow-none shadow-lg fixed top-0 right-0 transition-all duration-700 overflow-hidden ml-[4%] z-10 ${open ? "w-[75%]": "w-0"}`}>
                 
                 {(session) ?  // Show user details for mobile menu if signed in
