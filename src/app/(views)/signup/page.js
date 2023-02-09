@@ -19,11 +19,7 @@ export default function Signup() {
             method: "POST",
             body: JSON.stringify({ fullname, email, password })
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setLoading(false)
-        })
+        .then(res => console.log(res.json()))
         .catch(error => console.log(error))
     }
 
