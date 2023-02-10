@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
 import { validateSignup } from "@/helper/validateSignup";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Signup() {
     const [show, setShow] = useState(false)
@@ -14,6 +14,7 @@ export default function Signup() {
     const [password, setPassword] = useState("")
     const [cpassword, setCPassword] = useState("")
     const [error, setError] = useState("")
+    const router = useRouter()
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -34,7 +35,7 @@ export default function Signup() {
                 }
                 else {
                     setError(data.msg)
-                    redirect("/login")
+                    router.push("/login")
                 }
                 setLoading(false)
             })

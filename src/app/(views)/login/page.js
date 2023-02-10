@@ -1,12 +1,33 @@
 'use client'
 import { signIn } from "next-auth/react";
 import React, { useState } from "react";
+import { CgSpinner } from "react-icons/cg";
 import { FaEnvelope, FaEye, FaEyeSlash, FaGithub, FaLock } from "react-icons/fa";
 import { FcGoogle } from 'react-icons/fc'
 
 export default function Login() {
     const [show, setShow] = useState(false)
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false)
 
+    const submitForm = (e) => {
+        e.preventDefault()
+        setLoading(true)
+        fetch("/api/auth/signin", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            setLoading(false)
+        })
+        .catch(err => console.log(err))
+    }
 
     return (
         <div className="md:px-[10%] px-[5%] py-[5%] dark:bg-gray-900">
@@ -29,19 +50,19 @@ export default function Login() {
                 <label className="mb-2">Email:</label>
                 <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-7 mt-2">
                     <FaEnvelope className="m-2 mx-3 text-xl text-gray-500" />
-                    <input type="email" className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " />
+                    <input type="email" onChange={(e) => setEmail(e.target.value)} className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " />
                 </div>
                 
                 <label className="mb-2">Password:</label>
                 <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-7 mt-2">
                     <FaLock className="m-2 mx-3 text-xl text-gray-500" />
-                    <input type={show ? "text" : "password"} className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " />
+                    <input type={show ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " />
                     <div className="p-2 px-3 text-xl text-gray-500" onClick={() => setShow(!show)}>
                         {show ? <FaEyeSlash/> : <FaEye />}
                     </div>
                 </div>
 
-                <button type="submit" className="p-[13px] w-full bg-blue hover:bg-hoverblue text-white rounded mt-5">Login</button>
+                <button type="submit" onClick={e => submitForm(e)} className="flex justify-center items-center p-[13px] w-full bg-blue hover:bg-hoverblue text-white rounded mt-5">{loading ? <CgSpinner className="animate-spin" /> : ""} Login</button>
 
                 <div className="my-10 flex flex-wrap justify-between">
                     <p>Don't have an Account? <a href="/signup" className="text-blue">Signup</a></p>
