@@ -57,11 +57,14 @@ export default function BuilderSidebar({ addComponent }) {
 
     return(
         <>
+        {/* Button to close and open builder sidebar */}
         <div className="absolute top-[70px] right-2 text-gray-500 font-bold text-2xl p-4 border border-gray-100/[0.2] lg:hidden block z-50" onClick={() => setOpen(!open)} title="Layouts and components">
                     {
                         open ? <FaTimes /> : <BsLayoutSidebarInsetReverse />
                     }
         </div>
+
+        {/* Builder side bar  */}
         <div ref={menuRef} className={`lg:relative absolute lg:pt-0 pt-[115px] top-0 lg:right-0 right-2 h-full w-[250px] lg:mt-[20px] bg-slate-50 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
            
             <h4 className="m-2 p-2 border-2 border-gray-50/[0.1] border-b-blue">COMPONENTS</h4>

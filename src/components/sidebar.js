@@ -39,11 +39,14 @@ export default function Sidebar() {
 
     return(
         <>
+        {/* Button to close and open sidebar */}
         <div className="fixed top-1 left-1 text-gray-500 font-bold text-2xl p-4 border border-gray-100/[0.2] md:hidden block z-[150]" onClick={() => setOpen(!open)} >
                     {
                         open ? <FaTimes /> : <BsLayoutSidebarInset />
                     }
         </div>
+
+        {/* Sidebar for dashboard */}
         <div ref={menuRef} className={`md:relative fixed md:pt-0 pt-[50px] top-0 left-0 w-[250px] h-full md:h-auto z-10 bg-white dark:bg-gray-900 shadow-lg text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "md:w-[250px] w-0"}`}>
             
             <ul className="my-3 w-full p-2">

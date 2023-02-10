@@ -1,8 +1,11 @@
-import { BsFillEmojiSmileFill, BsTextCenter, BsTextLeft, BsTextRight } from "react-icons/bs";
-import { FaStrikethrough, FaTrashAlt } from "react-icons/fa";
-import { FiBold, FiItalic, FiLink, FiUnderline } from "react-icons/fi";
+'use client'
+import { useEffect, useRef, useState } from "react";
+import { FaTrashAlt } from "react-icons/fa";
+import { FiBold } from "react-icons/fi";
 
 export default function ButtonBlock({ active, item, handleComponent, handleDelete }) {
+    const [show, setShow] = useState(false)
+    const buttonRef = useRef(null)
 
     const { text, id, styles } = item
    
@@ -29,17 +32,31 @@ export default function ButtonBlock({ active, item, handleComponent, handleDelet
             })
         )
     }
+    
+    // Close edit when clicked outside
+    useEffect(() => {
+        const checkIfClickedOutside = e => {
+            if(show && buttonRef.current && !buttonRef.current.contains(e.target)) {
+                setShow(false)
+            }
+        }
+        document.addEventListener("mousedown", checkIfClickedOutside)
+        return () => {
+            document.removeEventListener("mousedown", checkIfClickedOutside)
+        }
+    }, [show])
 
     return(
-        <div className={`bg-white dark:bg-gray-900 shadow-lg rounded-xl border cursor-pointer mb-4 ${active ? "border-blue": "border-gray-100/[0.2]"}`}>
-            <div className="flex items-center justify-between dark:bg-gray-900/[0.3]">
+        <div ref={buttonRef} className={`bg-white dark:bg-gray-900 rounded border cursor-pointer mb-4 ${(active && show) ? "border-blue": "border-gray-100/[0.2]"}`}>
+            <div className={`flex items-center justify-between dark:bg-gray-900/[0.3] ${show ? "block" : "hidden"}`}>
                 <div className="flex items-center">
                     <FiBold className={`p-2 text-3xl ${styles.bold ? "text-blue": ""}`} onClick={() => handleTypo("bold", !styles.bold)} />
                 </div>
                 <FaTrashAlt className="p-2 text-3xl text-blue mr-2" onClick={() => handleDelete(id)} />
             </div>
                 <input 
-                    className={`w-full bg-blue text-white rounded-b-xl p-[12px] text-center ${styles.bold ? "font-bold" : ""}`}
+                    onFocus={() => setShow(true)}
+                    className={`w-full bg-blue text-white mt-6 rounded p-[12px] text-center ${styles.bold ? "font-bold" : ""}`}
                     onChange={(e) => handleText(e.target.value)}
                     defaultValue={text}
                 />
