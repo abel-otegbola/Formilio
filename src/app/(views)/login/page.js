@@ -10,6 +10,7 @@ export default function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState("")
 
     const submitForm = (e) => {
         e.preventDefault()
@@ -23,7 +24,13 @@ export default function Login() {
         })
         .then(res => res.json())
         .then(data => {
-            signIn("Credentials", data)
+            if(data.error) {
+                setError(data.error)
+            }
+            else {
+                setError(data.msg)
+                signIn("Credentials", data, {callbackUrl: `${window.location.origin}/dashboard`})
+            }
             setLoading(false)
         })
         .catch(err => console.log(err))
@@ -35,6 +42,8 @@ export default function Login() {
 
                 <h1 className="text-center py-6 text-blue text-2xl font-bold">Sign in to your Account</h1>
                 <p className="text-center pb-10">Sign in to access all your forms, manage submissions and create new ones with ease</p>
+                
+                { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
 
                 <div className="py-[30px] grid md:grid-cols-2 grid-cols-1 gap-2">
                     {
