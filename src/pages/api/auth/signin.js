@@ -21,7 +21,7 @@ export default async function handler(req, res) {
             }
 
             //Else send success response
-            return res.status(200).json({ msg: "Login successful", data: checkexisting.email });
+            return res.status(200).json({ msg: "Login successful", data: checkexisting });
         }
         else {
             res.status(400).json({ error: "User does not exist" })
