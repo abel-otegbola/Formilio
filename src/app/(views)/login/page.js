@@ -17,17 +17,17 @@ export default function Login() {
     const submitForm = async (e) => {
         e.preventDefault()
         setLoading(true)
-        const res = await signIn("Credentials", { redirect: false, email, password, callbackUrl: `${window.location.origin}/dashboard` })
-        if(res?.error) {
-            setError(res.error)
-        }
-        else {
-            setError(null)
-        }
-        if (res.msg) {
-            router.push("/dashboard")
-        }
-        settLoading(false)
+        await signIn("credentials", { redirect: false, email, password, callbackUrl: `/dashboard` })
+        .then(res => {
+            if(res.ok) {
+                router.push(res.url)
+            }
+            else {
+                setError(res.error)
+            }
+        })
+        .catch(error => console.log(error))
+        setLoading(false)
     }
 
     return (
