@@ -1,5 +1,6 @@
 'use client'
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { FaEnvelope, FaEye, FaEyeSlash, FaGithub, FaLock } from "react-icons/fa";
@@ -11,29 +12,22 @@ export default function Login() {
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
+    const router = useRouter()
 
-    const submitForm = (e) => {
+    const submitForm = async (e) => {
         e.preventDefault()
         setLoading(true)
-        fetch("/api/auth/signin", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.error) {
-                setError(data.error)
-            }
-            else {
-                setError(data.msg)
-                signIn("Credentials", data, {callbackUrl: `${window.location.origin}/dashboard`})
-            }
-            setLoading(false)
-        })
-        .catch(err => console.log(err))
+        const res = await signIn("Credentials", { redirect: false, email, password, callbackUrl: `${window.location.origin}/dashboard` })
+        if(res?.error) {
+            setError(res.error)
+        }
+        else {
+            setError(null)
+        }
+        if (res.msg) {
+            router.push("/dashboard")
+        }
+        settLoading(false)
     }
 
     return (

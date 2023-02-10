@@ -30,12 +30,24 @@ export const authOptions = {
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
+        email: { label: 'email', type: 'email', placeholder: 'jsmith@example.com' },
+        password: { label: 'Password', type: 'password' }
       },
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        const user = { email: credentials.email, fullname: credentials.fullname };
-  
-        if (user) {
+        const res = await fetch("/api/auth/signin", {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ credentials })
+      })
+      
+        const user = await res.json();
+        if(!res.ok) {
+          throw new Error(user.error)
+        }
+        if (res.ok && user) {
           // Any object returned will be saved in `user` property of the JWT
           return user
         } else {
