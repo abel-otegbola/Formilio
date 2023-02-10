@@ -23,7 +23,7 @@ export default function Login() {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            signIn("Credentials", data)
             setLoading(false)
         })
         .catch(err => console.log(err))

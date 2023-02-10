@@ -33,8 +33,7 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         // Add logic here to look up the user from the credentials supplied
-        const { fullname, email } = credentials;
-        const user = { fullname, email }
+        const user = { email: credentials.email, fullname: credentials.fullname };
   
         if (user) {
           // Any object returned will be saved in `user` property of the JWT
