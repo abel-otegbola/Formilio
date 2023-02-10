@@ -5,6 +5,7 @@ import { compare } from "bcryptjs";
 export default async function handler(req, res) {
     await connectMongo().catch(error => res.json({ error: "Connection Failed"}))
 
+    console.log(req.body)
     if(!req.body) return res.status(404).json({ error: "Don't have form data" })
     const { email, password } = req.body;
 
