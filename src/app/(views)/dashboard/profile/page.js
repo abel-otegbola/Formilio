@@ -1,19 +1,15 @@
 'use client'
 import { useSession } from "next-auth/react"
-import { useEffect } from "react"
 import { FaUserCircle } from "react-icons/fa"
+import { FiLoader } from "react-icons/fi"
 
 export default function Profile() {
     const { data: session } = useSession()
 
-    useEffect(() => {
-        console.log(session)
-    }, [session])
-
     return (
         <div className="p-4">
             {(session) ?  
-                <div className=" border border-gray-100/[0.1] border-b-gray-300/[0.2] px-6 py-3">
+                <div className=" border border-gray-100/[0.1] border-b-gray-300/[0.2] px-4 pb-3">
                     <div className="w-full h-[130px] bg-blue"></div>
                     <div className="relative -top-10 ml-3">
                     {(!session.user.image)
@@ -29,7 +25,10 @@ export default function Profile() {
                         <p className="font-semibold mb-2"> Email Address:</p> 
                         <p>{session.user.email}</p>
                     </div>
-                </div> : ""}
+                </div> : 
+                <div className="flex justify-center items-center min-h-[70vh]">
+                    <FiLoader className="animate-spin text-blue text-3xl" />    
+                </div>}
         </div>
     )
 }
