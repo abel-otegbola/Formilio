@@ -1,14 +1,16 @@
 'use client'
+import hljs from "highlight.js"
 import { useRef } from "react"
+import "./preview.css"
 
 export default function Preview({ components }) {
-    const hRef = useRef(null)
+    const hRef = useRef("")
 
     return (
-        <div className="m-2 p-4 rounded">
-            <h4 className="text-semibold text-xl">Preview :</h4>
-            <div ref={hRef} className="p-4 mb-10 bg-gray-100 dark:bg-gray-900">
-            <form action="formilio.com/user/form2" method="post">
+        <div className="p-4 rounded">
+            <h4 className="text-semibold text-xl ml-2">Preview :</h4>
+            <div ref={hRef} className="mb-10 bg-gray-200 dark:bg-gray-800 p-4">
+            <form action="formilio.com/user/form2" method="post" className="p-2">
             {
                 components.map((item, i) => (
                     item.title === "heading" ? 
@@ -40,10 +42,11 @@ export default function Preview({ components }) {
                         key={i} 
                         style={{ marginTop: "10px", alignItems: "center", display: item.options.type === "checkbox" || item.options.type === "radio" ? "flex" : "block" }}
                     >
+                        { item.options.label !== "" ? 
                         <div style={{ display: "flex", marginTop: "5px", alignItems: "center", order: item.options.type === "checkbox" || item.options.type === "radio" ? 2 : 0} }>
-                            { item.options.label !== "" ? <label htmlFor={item.options.id}>{item.options.label}</label>: "" }
+                             <label htmlFor={item.options.id}>{item.options.label}</label>
                             { item.settings.required ? <sup style={{ marginLeft: 5, color: "red" }}>*</sup> : "" }
-                        </div> 
+                        </div> : "" }
                         <input 
                             type={item.options.type}
                             placeholder={item.options.placeholder} 
@@ -93,8 +96,10 @@ export default function Preview({ components }) {
             </div>
             <div className="bg-gray-200 dark:bg-gray-800 p-4">
                 <h4 className="text-semibold text-xl">HTML code:</h4>
-                <div className="py-3">
-                    { hRef.current && hRef.current.innerHTML }
+                <div className="py-3 hljs ">
+                    <div className={`block mt-2`}
+                            dangerouslySetInnerHTML={{ __html: hljs.highlight(hRef.current && hRef.current.innerHTML, { language: "xml" }).value }}>
+                    </div> 
                 </div>
                 
             </div>

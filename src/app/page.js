@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FaPaperPlane } from "react-icons/fa";
 import { FiArrowRightCircle } from "react-icons/fi";
 
+
 export default function Home() {
     return(
         <div>
@@ -13,7 +14,7 @@ export default function Home() {
                     </p>
                     <div className="md:flex mt-7">
                         <a href="/signup" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue text-white rounded">Get Started <FaPaperPlane className="ml-2"/></a>
-                        <a href="/try" className="flex items-center justify-center p-[10px] px-[20px] md:ml-4 hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Try it out <FiArrowRightCircle className="ml-2"/></a>
+                        <a href="/signin" className="flex items-center justify-center p-[10px] px-[20px] md:ml-4 hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Try it out <FiArrowRightCircle className="ml-2"/></a>
                     </div>
                 </div>
                 <div className="md:w-[50%] w-full flex justify-center items-center py-[5%]">

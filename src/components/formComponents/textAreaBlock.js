@@ -47,7 +47,7 @@ export default function TextAreaBlock({ active, handleComponent, handleDelete, i
     }, [show])
 
     return (
-        <div ref={inputRef} className={`bg-white dark:bg-gray-900 rounded border cursor-pointer mb-4 relative border ${(active && show) ? "border-blue": "border-gray-100/[0.2]"}`}>
+        <div ref={inputRef} className={`bg-white dark:bg-gray-900 rounded cursor-pointer mb-4 relative ${(active && show) ? "border border-blue": ""}`}>
             <div className={`flex items-center justify-between px-2 py-1 ${show ? "block" : "hidden"}`}>
                 <h4 className="font-semibold text-blue flex items-center"><FaTextHeight className="p-2 mr-2 rounded bg-gray-300/[0.3] dark:bg-gray-800 text-3xl"/> Textarea</h4>
                 <div className="flex items-center">
@@ -96,15 +96,16 @@ export default function TextAreaBlock({ active, handleComponent, handleDelete, i
 
             
             {/* input block display */}
-            <div className={` w-full rounded overflow-hidden p-2 pt-3`}>
-                <label className="">{options.label}{settings.required ? <sup className="text-red-500 ml-2">*</sup> : ""}</label>
-                <textarea className={`p-2 mt-2 border dark:bg-gray-900 w-full border-gray-400/[0.2] focus:outline focus:outline-blue`}
+            <div className={` w-full rounded overflow-hidden`}>
+                {(options.type === "checkbox" || options.type === "radio") ? "" : <label htmlFor={options.id}>{options.label}{settings.required ? <sup className="text-red-500 ml-2">*</sup> : ""}</label>}
+                <textarea className={`focus:outline focus:outline-blue`}
                     name={options.name} 
                     placeholder={options.placeholder} 
                     id={options.id}
                     required={settings.required}
                     disabled={settings.disabled}
                     onFocus={() => setShow(true)}
+                    style={{ backgroundColor: "#fff", color: "#000", padding: "12px", marginRight: "5px", border: "1px solid #777", borderRadius: "5px", width: (options.type === "checkbox" || options.type === "radio") ? "15px" : "100%" }}
                 ></textarea>
             </div>
         </div>

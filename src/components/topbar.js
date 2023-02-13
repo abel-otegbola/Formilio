@@ -71,7 +71,7 @@ export default function Topbar() {
                     <Link href="/dashboard" className="md:flex hidden items-center p-[10px] px-[20px] bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/>dashboard</Link> : 
                     <Link href="/login" className="md:flex hidden items-center p-[10px] px-[20px] bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
                 }
-                <div className="text-gray-500 font-bold text-2xl md:hidden block z-50" onClick={() => setOpen(!open)} >
+                <div className="text-gray-500 font-bold text-2xl md:hidden block z-50" onClick={() =>  setOpen(!open) }>
                     {
                         open ? <FaTimes /> : <FaBars />
                     }

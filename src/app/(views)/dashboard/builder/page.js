@@ -49,24 +49,29 @@ export default function Builder() {
 
 
     return (
-        <div className="">
-            <h3 className="font-semibold text-lg text-gray-300">DASHBOARD / BUILDER</h3>
+        <div className="px-4">
+            <div className="w-full h-[130px] bg-blue p-4 mb-4 rounded">
+                <h4 className="text-white my-4 text-lg">Form builder</h4>
+                <div className="flex">
+                    <a href="/dashboard/manage" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Manage created forms</a>
+                </div>
+            </div>
+            <div className="flex items-center justify-between mt-5 ml-4">
+                <ul className="flex">
+                    <li className={`p-2 px-5 border border-gray-100/[0.1] hover:border-b-blue hover:text-blue cursor-pointer mr-2 ${show === "Build" ? "border-b-blue text-blue": ""}`} onClick={() => setShow("Build")}>Build</li>
+                    <li className={`p-2 px-5 border border-gray-100/[0.1] hover:border-b-blue hover:text-blue cursor-pointer mr-2 ${show === "Preview" ? "border-b-blue text-blue": ""}`} onClick={() => setShow("Preview")}>Preview</li>
+                    <li className={`p-2 px-5 border border-gray-100/[0.1] hover:border-b-blue hover:text-blue cursor-pointer mr-2 ${show === "Publish" ? "border-b-blue text-blue": ""}`} onClick={() => setShow("Publish")}>Publish</li>
+                </ul>
+            </div>
             <div className="flex">
                 <div className="flex-1">
-                    <div className="flex items-center justify-between mt-5 mr-2">
-                        <ul className="flex">
-                            <li className={`p-2 px-5 border border-gray-100/[0.1] hover:border-b-blue hover:text-blue cursor-pointer mr-2 ${show === "Build" ? "border-b-blue text-blue": ""}`} onClick={() => setShow("Build")}>Build</li>
-                            <li className={`p-2 px-5 border border-gray-100/[0.1] hover:border-b-blue hover:text-blue cursor-pointer mr-2 ${show === "Preview" ? "border-b-blue text-blue": ""}`} onClick={() => setShow("Preview")}>Preview</li>
-                            <li className={`p-2 px-5 border border-gray-100/[0.1] hover:border-b-blue hover:text-blue cursor-pointer mr-2 ${show === "Publish" ? "border-b-blue text-blue": ""}`} onClick={() => setShow("Publish")}>Publish</li>
-                        </ul>
-                    </div>
-                    <div className={`${show === "Build" ? "block": "hidden"}`}>
+                    <div className={`${show === "Build" ? "block": "hidden"} p-4 bg-gray-500/[0.2] dark:bg-gray-800`}>
                         {
                             components.length === 0 ?
                             <DropBox />
                             :
                                 <div 
-                                    className="p-4 bg-gray-300/[0.2] dark:bg-gray-800"
+                                    className="p-6 bg-gray-300/[0.2] dark:bg-gray-900"
                                     >
                                     { 
                                         components.map((item, index) => {

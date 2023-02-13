@@ -47,7 +47,7 @@ export default function InputBlock({ active, handleComponent, handleDelete, item
     }, [show])
 
     return (
-        <div ref={inputRef} className={`bg-white dark:bg-gray-900 rounded border cursor-pointer mb-4 relative border ${(active && show) ? "border-blue": "border-gray-100/[0.2]"}`}>
+        <div ref={inputRef} className={`bg-white dark:bg-gray-900 rounded cursor-pointer mb-4 relative ${(active && show) ? "border border-blue p-2": ""}`}>
             <div className={`flex items-center justify-between px-2 py-1 ${show ? "block" : "hidden"}`}>
                 <h4 className="font-semibold text-blue flex items-center"><FaTextHeight className="p-2 mr-2 rounded bg-gray-300/[0.3] dark:bg-gray-800 text-3xl"/> Input</h4>
                 <div className="flex items-center">
@@ -107,10 +107,9 @@ export default function InputBlock({ active, handleComponent, handleDelete, item
                 </div>
             </div>
 
-            
-            <div className={`w-full rounded overflow-hidden p-2 pt-3 ${(options.type === "checkbox" || options.type === "radio") ? "flex items-center" : ""}`}>
-                {(options.type === "checkbox" || options.type === "radio") ? "" : <label >{options.label}{settings.required ? <sup className="text-red-500 ml-2">*</sup> : ""}</label>}
-                <input className={`border dark:bg-gray-900 border-gray-400/[0.2] rounded focus:outline focus:outline-blue ${(options.type === "checkbox" || options.type === "radio") ? "w-[25px]" : "w-full mt-2 p-2"}`}
+            <div className={`w-full rounded overflow-hidden ${(options.type === "checkbox" || options.type === "radio") ? "flex items-center" : ""}`}>
+                {(options.type === "checkbox" || options.type === "radio") ? "" : <label htmlFor={options.id}>{options.label}{settings.required ? <sup className="text-red-500 ml-2">*</sup> : ""}</label>}
+                <input className={`focus:outline focus:outline-blue`}
                     type={options.type} 
                     name={options.name} 
                     placeholder={options.placeholder} 
@@ -118,6 +117,7 @@ export default function InputBlock({ active, handleComponent, handleDelete, item
                     required={settings.required}
                     disabled={settings.disabled}
                     onFocus={() => setShow(true)}
+                    style={{ backgroundColor: "#fff", color: "#000", padding: "12px", marginRight: "5px", border: "1px solid #777", borderRadius: "5px", width: (options.type === "checkbox" || options.type === "radio") ? "15px" : "100%" }}
                 />
                 
                 {(options.type === "checkbox" || options.type === "radio") ? <label for={options.id} >{options.label}{settings.required ? <sup className="text-red-500 ml-2">*</sup> : ""}</label> : ""}

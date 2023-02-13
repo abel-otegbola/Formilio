@@ -8,7 +8,7 @@ export default function HeadingBlock({ active, item, handleComponent, handleDele
     const headingRef = useRef(null)
 
     const { text, id, styles } = item
-    
+
     // Change the typography [bold, italic, underline], alignment and size of the element
     const handleTypo = (index, value) => {
         handleComponent.setComponents(
@@ -20,6 +20,7 @@ export default function HeadingBlock({ active, item, handleComponent, handleDele
             })
         )
     }
+
 
     // Change the text
     const handleText = (value) => {
@@ -47,7 +48,7 @@ export default function HeadingBlock({ active, item, handleComponent, handleDele
     }, [show])
 
     return(
-        <div ref={headingRef} className={`bg-white dark:bg-gray-900 rounded border cursor-pointer ${(active && show) ? "border-blue": "border-gray-300/[0.2]"}`}>
+        <div ref={headingRef} className={`bg-white dark:bg-gray-900 rounded cursor-pointer ${(active && show) ? "border border-blue": ""}`}>
             {/* Heading block options */}
             <div  className={`flex items-center justify-between dark:bg-gray-900/[0.3] ${show ? "block" : "hidden"}`}>
                 <div className="flex items-center">
@@ -82,7 +83,7 @@ export default function HeadingBlock({ active, item, handleComponent, handleDele
             <input
                 onFocus={() => setShow(true)}
                 className={`w-full p-2 rounded ${styles.bold ? "font-bold" : ""} ${styles.italic ? "italic" : ""} ${styles.underline ? "underline" : ""} ${styles.strike ? "line-through" : ""}`}
-                style={{ fontSize: styles.size, textAlign: styles.align }}
+                style={{ fontSize: styles.size, textAlign: styles.align, backgroundColor: "transparent" }}
                 onChange={(e) => handleText(e.target.value)}
                 defaultValue={text}
             />
