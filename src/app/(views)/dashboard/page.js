@@ -1,5 +1,4 @@
 'use client'
-import Sidebar from "@/components/sidebar";
 import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
