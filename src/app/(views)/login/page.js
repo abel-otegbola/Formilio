@@ -36,8 +36,6 @@ export default function Login() {
 
                 <h1 className="text-center py-6 text-blue text-2xl font-bold">Sign in to your Account</h1>
                 <p className="text-center pb-10">Sign in to access all your forms, manage submissions and create new ones with ease</p>
-                
-                { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
 
                 <div className="py-[30px] grid md:grid-cols-2 grid-cols-1 gap-2">
                     {
@@ -49,6 +47,8 @@ export default function Login() {
                         ))
                     }
                 </div>
+                
+                { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
 
                 <label className="mb-2">Email:</label>
                 <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-7 mt-2">

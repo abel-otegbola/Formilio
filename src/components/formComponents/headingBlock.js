@@ -48,7 +48,7 @@ export default function HeadingBlock({ active, item, handleComponent, handleDele
     }, [show])
 
     return(
-        <div ref={headingRef} className={`bg-white dark:bg-gray-900 rounded cursor-pointer ${(active && show) ? "border border-blue": ""}`}>
+        <div ref={headingRef} className={`bg-none dark:bg-gray-900 rounded cursor-pointer ${(active && show) ? "border border-blue": ""}`}>
             {/* Heading block options */}
             <div  className={`flex items-center justify-between dark:bg-gray-900/[0.3] ${show ? "block" : "hidden"}`}>
                 <div className="flex items-center">

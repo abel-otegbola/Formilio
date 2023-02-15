@@ -10,7 +10,7 @@ export default function Profile() {
         <div className="p-4">
             {(session) ?  
                 <div className=" border border-gray-100/[0.1] border-b-gray-300/[0.2] px-4 pb-3">
-                    <div className="w-full h-[130px] bg-blue"></div>
+                    <div className="w-full h-[130px] rounded bg-blue"></div>
                     <div className="relative -top-10 ml-3">
                     {(!session.user.image)
                         ? <FaUserCircle className="p-2 mr-2 text-gray-300 w-[80px] h-[80px] bg-gray-400 rounded-full" /> : 

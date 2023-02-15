@@ -9,5 +9,10 @@
     color: rgb(79, 79, 214);
 }
 .hljs .hljs-string {
-    color: #fff;
+    color: #000;
+}
+@media (prefers-color-scheme: dark) {
+    .hljs .hljs-string {
+        color: #fff;
+    }
 }

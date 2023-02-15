@@ -47,7 +47,7 @@ export default function TextAreaBlock({ active, handleComponent, handleDelete, i
     }, [show])
 
     return (
-        <div ref={inputRef} className={`bg-white dark:bg-gray-900 rounded cursor-pointer mb-4 relative ${(active && show) ? "border border-blue": ""}`}>
+        <div ref={inputRef} className={`bg-none dark:bg-gray-900 rounded cursor-pointer mb-4 relative ${(active && show) ? "border border-blue": ""}`}>
             <div className={`flex items-center justify-between px-2 py-1 ${show ? "block" : "hidden"}`}>
                 <h4 className="font-semibold text-blue flex items-center"><FaTextHeight className="p-2 mr-2 rounded bg-gray-300/[0.3] dark:bg-gray-800 text-3xl"/> Textarea</h4>
                 <div className="flex items-center">

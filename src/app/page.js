@@ -7,8 +7,8 @@ export default function Home() {
     return(
         <div>
             <div className="flex md:flex-nowrap flex-wrap md:px-[10%] px-[5%] font-body bg-slate-200/[0.2] dark:bg-gray-900">
-                <div className="md:w-[50%] w-full mr-[5%] pb-5 pt-[8%]">
-                    <h1 className="md:text-5xl text-4xl md:leading-[60px] leading-[50px] font-bold">Streamline form creation and submision for your websites</h1>
+                <div className="md:w-[50%] w-full mr-[5%] pb-5 pt-[5%]">
+                    <h1 className="md:text-5xl text-4xl md:leading-[60px] leading-[50px] font-bold">Effortlessly Collect and Create HTML Forms with our Drag and Drop.</h1>
                     <p className="my-4 leading-[25px]">Simplify your website building process with our form generator- the perfect solution for creating custom forms on your static HTML website.
                         With user-friendly interface and intuitive drag and drop functionality,, you can effortlessly design forms that meet your specific need.
                     </p>

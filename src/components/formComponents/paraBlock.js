@@ -47,7 +47,7 @@ export default function ParaBlock({ active, item, handleComponent, handleDelete 
     }, [show])
 
     return(
-        <div ref={paraRef} className={`bg-white dark:bg-gray-900 rounded border cursor-pointer ${(active && show) ? "border-blue": "border-gray-100/[0.2]"}`}>
+        <div ref={paraRef} className={`bg-none dark:bg-gray-900 roundedcursor-pointer ${(active && show) ? " border border-blue": ""}`}>
             {/* paragragh block options */}
             <div className={`flex items-center justify-between dark:bg-gray-900/[0.3] ${show ? "block" : "hidden"}`}>
                 <div className="flex items-center">

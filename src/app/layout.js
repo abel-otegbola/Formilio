@@ -1,17 +1,18 @@
+'use client'
 import Topbar from '@/components/topbar'
 import './globals.css'
 import AppFooter from '@/components/footer'
-import AuthContext from './AuthContext'
+import { SessionProvider } from "next-auth/react";
 
 export default function RootLayout({ children, session }) {
   return (
     <html lang='en'>
       <body>
-        <AuthContext session={session}>
+        <SessionProvider session={session}>
           <Topbar />
             <main className='pt-[55px]' >{children}</main>
           <AppFooter />
-        </AuthContext>
+        </SessionProvider>
       </body>
     </html>
   )

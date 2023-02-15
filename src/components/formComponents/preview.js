@@ -70,10 +70,12 @@ export default function Preview({ components }) {
                         key={i} 
                         style={{ marginTop: "20px" }}
                     >
+                        { item.options.label !== "" ?
                         <div style={{ display: "flex", alignItems: "center" }}>
-                            { item.options.label !== "" ? <label htmlFor={item.settings.id}>{item.options.label}</label>: "" }
+                             <label htmlFor={item.settings.id}>{item.options.label}</label>
                             { item.settings.required ? <sup style={{ marginLeft: 5, color: "red" }}>*</sup> : "" }
                         </div>
+                        : "" }
                         <textarea 
                             placeholder={item.options.placeholder} 
                             id={item.options.id} name={item.options.name} 

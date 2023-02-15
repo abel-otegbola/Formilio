@@ -21,6 +21,7 @@ export default function Builder() {
             copy.splice(hoverIndex, 0, component);
             return copy;
         })
+        console.log(components)
     }
 
 

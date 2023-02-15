@@ -47,7 +47,7 @@ export default function ButtonBlock({ active, item, handleComponent, handleDelet
     }, [show])
 
     return(
-        <div ref={buttonRef} className={`bg-white dark:bg-gray-900 rounded border cursor-pointer mb-4 ${(active && show) ? "border-blue": "border-gray-100/[0.2]"}`}>
+        <div ref={buttonRef} className={`bg-none dark:bg-gray-900 rounded cursor-pointer mb-4 ${(active && show) ? "border border-blue": "border-gray-100/[0.2]"}`}>
             <div className={`flex items-center justify-between dark:bg-gray-900/[0.3] ${show ? "block" : "hidden"}`}>
                 <div className="flex items-center">
                     <FiBold className={`p-2 text-3xl ${styles.bold ? "text-blue": ""}`} onClick={() => handleTypo("bold", !styles.bold)} />
