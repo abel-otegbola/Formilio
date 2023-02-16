@@ -6,6 +6,14 @@ const userSchema = new Schema({
     password: String
 })
 
-const Users = models.user || model("user", userSchema);
+const endpointsSchema = new Schema({
+    user: String,
+    title: String,
+    address: String
+})
 
+const Users = models.user || model("user", userSchema);
+const Endpoints = models.endpoint || model("endpoint", endpointsSchema);
+
+export { Endpoints };
 export default Users;

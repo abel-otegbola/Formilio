@@ -5,20 +5,45 @@ import { FcEmptyFilter } from "react-icons/fc";
 import { useSession } from "next-auth/react";
 import "./jsonformat.css"
 import { FaLink, FaTrashAlt } from "react-icons/fa";
+import { CgSpinner } from "react-icons/cg";
 
 export default function Endpoints() {
     const [endpoints, setEndpoints] = useState([])
     const { data: session } = useSession()
     const [title, setTitle] = useState("")
+    const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
 
-    const handleEndpoint = () => {
+    const handleEndpoint = async () => {
         if(title !== "") {
             const newId = (endpoints.length > 0) ? endpoints[endpoints.length -1].id + 1 : 0;
             setEndpoints([
                 ...endpoints,
-                { id: newId, title: title, link: `https://mailme.vercel.app/api/endpoint:${session.user.name.split(" ")[0]}/form${newId}` }
+                
             ])
             setTitle("")
+            setLoading(true);
+            await fetch(`/api/generate`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: newId, title: title, link: `https://mailme.vercel.app/api/endpoint/${session.user.email}-${title}` })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.error) {
+                    setError(data.error)
+                }
+                else {
+                    setError(data.msg)
+                }
+                setLoading(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setLoading(false)
+            }) 
         }
     }
 
@@ -52,16 +77,19 @@ export default function Endpoints() {
                             }
                             <div className="flex md:w-[70%] p-2 rounded-lg w-full align-center bg-gray-100 dark:bg-gray-800 shadow-lg">
                                 <input className="p-[12px] flex-1 rounded bg-white text-black" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter endpoint title..." />
-                                <button className="p-[12px] px-6 rounded bg-blue text-white ml-2 hover:bg-hoverblue hover:border hover:border-white" onClick={() => handleEndpoint()}>Generate new endpoint</button>
+                                <button className="flex items-center p-[12px] px-6 rounded bg-blue text-white ml-2 hover:bg-hoverblue hover:border hover:border-white" onClick={() => handleEndpoint()}>{loading ? <CgSpinner className="animate-spin mr-2" /> : ""} Generate new endpoint</button>
                             </div>
                         </div>
+                        
+                        { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
+
                         <div className="my-4">
                             {
                                 endpoints.map(endpoint => (
-                                    <div key={endpoint.id} className="flex items-center p-2 my-1 bg-gray-100 dark:bg-gray-800 rounded">
-                                        <FaLink className="p-3 text-4xl rounded bg-slate-200[0.4] text-blue mr-2" />
-                                        <h3 className="w-[30%]">{endpoint.title}</h3>
-                                        <p className="text-blue-600 flex-1">{endpoint.link}</p>
+                                    <div key={endpoint.id} className="flex flex-wrap items-center p-2 my-1 bg-gray-100 dark:bg-gray-800 rounded">
+                                        <FaLink className="p-3 text-4xl rounded bg-slate-900/[0.4] text-blue mr-2" />
+                                        <h3 className="w-[22%] px-2">{endpoint.title}</h3>
+                                        <p className="text-sky-600 flex-1 p-3 rounded dark:bg-gray-900/[0.5]">{endpoint.link}</p>
                                         <FaTrashAlt className="p-3 text-4xl rounded text-red-600" onClick={() => handleDelete(endpoint.id)} />
                                     </div>
                                 ))
