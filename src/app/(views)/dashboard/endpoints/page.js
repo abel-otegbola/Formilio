@@ -41,7 +41,7 @@ export default function Endpoints() {
                 setLoading(false)
             })
             .catch(err => {
-                console.log(err)
+                setError(err)
                 setLoading(false)
             }) 
         }
