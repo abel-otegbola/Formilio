@@ -4,6 +4,8 @@ import Users, { Endpoints } from "@/model/Schema";
 
 export default async function handler(req, res) {
   const { user, title, address } = req.body
+
+  console.log(req.body)
   
   const checkexisting = await Users.findOne({ email: user });
   if(checkexisting) {

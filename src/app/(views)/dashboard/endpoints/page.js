@@ -28,7 +28,7 @@ export default function Endpoints() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id: newId, title: title, link: `https://mailme.vercel.app/api/endpoint/${session.user.email}-${title}` })
+                body: JSON.stringify({ user: session.user.email, title, address: `https://mailme.vercel.app/api/endpoint/${session.user.email}-${title}` })
             })
             .then(res => res.json())
             .then(data => {
@@ -75,9 +75,9 @@ export default function Endpoints() {
                                 </>
                                 : ""
                             }
-                            <div className="flex md:w-[70%] p-2 rounded-lg w-full align-center bg-gray-100 dark:bg-gray-800 shadow-lg">
-                                <input className="p-[12px] flex-1 rounded bg-white text-black" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter endpoint title..." />
-                                <button className="flex items-center p-[12px] px-6 rounded bg-blue text-white ml-2 hover:bg-hoverblue hover:border hover:border-white" onClick={() => handleEndpoint()}>{loading ? <CgSpinner className="animate-spin mr-2" /> : ""} Generate new endpoint</button>
+                            <div className="md:flex md:w-[70%] p-2 rounded-lg w-full align-center bg-gray-100 dark:bg-gray-800 shadow-lg">
+                                <input className="p-[12px] flex-1 md:mb-0 mb-4 md:w-auto w-full md:text-left text-center rounded bg-white text-black" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter endpoint title..." />
+                                <button className="flex items-center justify-center p-[12px] px-6 rounded bg-blue text-white md:w-auto w-full md:ml-2 hover:bg-hoverblue hover:border hover:border-white" onClick={() => handleEndpoint()}>{loading ? <CgSpinner className="animate-spin mr-2 text-2xl" /> : ""} Generate new endpoint</button>
                             </div>
                         </div>
                         
