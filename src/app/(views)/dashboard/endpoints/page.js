@@ -127,7 +127,7 @@ export default function Endpoints() {
                                     <div key={endpoint._id} className="flex md:flex-nowrap flex-wrap items-center p-2 my-1 bg-gray-100 dark:bg-gray-800 rounded">
                                         <FaLink className="p-3 text-4xl rounded bg-slate-900/[0.4] text-blue mr-2" />
                                         <h3 className="w-[22%] px-2">{endpoint.title}</h3>
-                                        <Link href={{pathname: `/dashboard/endpoints/view/`, query: endpoint.title}} className="text-sky-600 flex-1 p-3 rounded dark:bg-gray-900/[0.5]">{endpoint.address}</Link>
+                                        <Link href={{pathname: `/dashboard/endpoints/view/`, query: { title: endpoint.title}}} className="text-sky-600 flex-1 p-3 rounded dark:bg-gray-900/[0.5]">{endpoint.address}</Link>
                                         <FaTrashAlt className="p-3 text-4xl rounded text-red-600 cursor-pointer" onClick={() => handleDelete(endpoint._id)} />
                                     </div>
                                 ))

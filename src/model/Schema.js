@@ -12,8 +12,15 @@ const endpointsSchema = new Schema({
     address: String
 })
 
+const submissionsSchema = new Schema({
+    user: String,
+    title: String,
+    data: String
+})
+
 const Users = models.user || model("user", userSchema);
 const Endpoints = models.endpoint || model("endpoint", endpointsSchema);
+const Submissions = models.submission || model("submission", submissionsSchema);
 
-export { Endpoints };
+export { Endpoints, Submissions };
 export default Users;
