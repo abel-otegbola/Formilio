@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     if(checkexisting) {
         Endpoints.create({ user, title, address }, function(err, data){
             if(err) return res.status(404).json({ error: err });
-            res.status(200).json({ msg: "Endpoint created successfully", data })
+            res.status(200).json({ msg: "Endpoint created successfully", endpoints: data })
         })
     }
     else {
