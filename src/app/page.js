@@ -8,9 +8,8 @@ export default function Home() {
         <div>
             <div className="flex md:flex-nowrap flex-wrap md:px-[10%] px-[5%] font-body bg-slate-200/[0.2] dark:bg-gray-900">
                 <div className="md:w-[50%] w-full mr-[5%] pb-5 pt-[5%]">
-                    <h1 className="md:text-5xl text-4xl md:leading-[60px] leading-[50px] font-bold">Effortlessly Collect and Create HTML Forms with our Drag and Drop.</h1>
-                    <p className="my-4 leading-[25px]">Simplify your website building process with our form generator- the perfect solution for creating custom forms on your static HTML website.
-                        With user-friendly interface and intuitive drag and drop functionality,, you can effortlessly design forms that meet your specific need.
+                    <h1 className="md:text-5xl text-4xl md:leading-[60px] leading-[50px] font-bold">Effortlessly generate HTML endpoints and collect Form submissions with ease.</h1>
+                    <p className="my-4 leading-[25px]">Our HTML endpoint generator website is the best solution you've been looking for. With easy to use interface, you can effortlessly create HTML endpoints that arecustomized to your needs.
                     </p>
                     <div className="md:flex mt-7">
                         <a href="/signup" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue text-white rounded">Get Started <FaPaperPlane className="ml-2"/></a>

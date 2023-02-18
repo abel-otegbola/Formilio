@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import EndpointFields from "@/components/endpointFields";
 
 export default function View({ router }) {
-    const [submissions, setSubmission] = useState([{}])
+    const [submissions, setSubmission] = useState([])
     const [error, setError] = useState("")
     // const router = useSearchParams().get("title")
     const { data: session } = useSession()
@@ -34,14 +34,14 @@ export default function View({ router }) {
     }, [session, router])
 
     return(
-        <div className="lg:px-4 w-full">
+        <div className="lg:px-4 w-full shadow-lg">
             <div className="w-full bg-blue p-4 rounded">
                 <p className="p-3 px-6 rounded w-full bg-hoverblue text-white mr-2 break-all">{"https://mailme.vercel.app/api/endpoint/" + (session && session.user.email) + "/" + router}</p>
             </div>
-            <div className="p-2 dark:bg-gray-800">
+            <div className="py-2 dark:bg-gray-800">
                 {
                     submissions.filter(item => item.title === router).map(submission => (
-                        <div key={submission._id} className="grid gap-2 md:grid-cols-2 p-2 bg-gray-100 dark:bg-gray-900 my-1">
+                        <div key={submission._id} className="grid gap-2 md:grid-cols-2 bg-gray-100 dark:bg-gray-900 my-1">
                             { submission.data && <EndpointFields data={JSON.parse(submission.data)} />}
                         </div>
                     ))
