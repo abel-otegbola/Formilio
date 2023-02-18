@@ -34,12 +34,10 @@ export default function View() {
     }, [session])
 
     return(
-        <div className="px-4">
+        <div className="px-4 w-full">
             <div className="w-full bg-blue p-4 mb-4 rounded">
                 <h4 className="text-white my-4"><span className="text-lg">Endpoint:</span> {router}</h4>
-                <div className="flex flex-wrap">
-                    <p href="/dashboard/builder" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Address: https://mailme.vercel.app/api/endpoint/{session && session.user.email}/{router}</p>
-                </div>
+                <p className="p-3 px-6 rounded w-full bg-hoverblue text-white mr-2 break-all">{"https://mailme.vercel.app/api/endpoint/" + (session && session.user.email) + "/" + router}</p>
             </div>
             <div className="p-2">
                 {
