@@ -2,7 +2,7 @@ import connectMongo from "@/database/connection";
 import { Endpoints } from "@/model/Schema"
 
 export default async function handler(req, res) {
-    await connectMongo().catch(error => res.json({ error: "Connection Failed"}))
+    await connectMongo().catch(error => res.status(404).json({ error: "Connection Failed"}))
     const { slug } = req.query
     
     Endpoints.find({ user: slug[0] }, function(err, data){

@@ -1,13 +1,13 @@
 'use client'
-import { useSearchParams } from "next/navigation"
+// import { useSearchParams } from "next/navigation"
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import EndpointFields from "@/components/endpointFields";
 
-export default function View() {
+export default function View({ router }) {
     const [submissions, setSubmission] = useState([{}])
     const [error, setError] = useState("")
-    const router = useSearchParams().get("title")
+    // const router = useSearchParams().get("title")
     const { data: session } = useSession()
 
     useEffect(() => {
@@ -31,18 +31,17 @@ export default function View() {
         }
         fetchEndpoints()
 
-    }, [session])
+    }, [session, router])
 
     return(
-        <div className="px-4 w-full">
-            <div className="w-full bg-blue p-4 mb-4 rounded">
-                <h4 className="text-white my-4"><span className="text-lg">Endpoint:</span> {router}</h4>
+        <div className="lg:px-4 w-full">
+            <div className="w-full bg-blue p-4 rounded">
                 <p className="p-3 px-6 rounded w-full bg-hoverblue text-white mr-2 break-all">{"https://mailme.vercel.app/api/endpoint/" + (session && session.user.email) + "/" + router}</p>
             </div>
-            <div className="p-2">
+            <div className="p-2 dark:bg-gray-800">
                 {
                     submissions.filter(item => item.title === router).map(submission => (
-                        <div key={submission._id} className="p-2 bg-gray-100 dark:bg-gray-800 my-1">
+                        <div key={submission._id} className="grid gap-2 md:grid-cols-2 p-2 bg-gray-100 dark:bg-gray-900 my-1">
                             { submission.data && <EndpointFields data={JSON.parse(submission.data)} />}
                         </div>
                     ))

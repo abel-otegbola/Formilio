@@ -5,7 +5,7 @@ import "./jsonformat.css"
 import { FaLink, FaTrashAlt } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
 import { FiExternalLink } from "react-icons/fi";
-import Link from "next/link"
+import View from "./view/page";
 
 export default function Endpoints() {
     const [endpoints, setEndpoints] = useState([])
@@ -14,6 +14,7 @@ export default function Endpoints() {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [loading, setLoading] = useState(false)
+    const [active, setActive] = useState("Contracts")
 
     const handleEndpoint = async () => {
         if(title !== "") {
@@ -43,6 +44,9 @@ export default function Endpoints() {
                 setLoading(false)
             }) 
             setTitle("")
+        }
+        else {
+            setError("Please add the endpoint title")
         }
     }
 
@@ -87,7 +91,7 @@ export default function Endpoints() {
         }
         fetchEndpoints()
 
-    }, [session, error, success])
+    }, [session, success])
 
 
     return (
@@ -100,8 +104,8 @@ export default function Endpoints() {
             </div>
 
             <div className="flex flex-wrap gap-2">
-                <div className="md:w-[70%] w-full bg-gray-100 dark:bg-gray-800">
-                    <h4 className="p-2 px-4 rounded text-lg">All Created Endpoints:</h4>
+                <div className="w-full bg-gray-100 dark:bg-gray-800">
+                    <h4 className="p-2 px-4 rounded">All Created Endpoints:</h4>
                     <div className="px-1 py-4 bg-white dark:bg-gray-900">
                         <div className="flex flex-col min-h-[150px] p-4 justify-end items-center">
                             <div className="md:flex md:w-[70%] p-2 mb-4 rounded-lg w-full align-center bg-gray-100 dark:bg-gray-800 shadow-lg">
@@ -121,21 +125,30 @@ export default function Endpoints() {
                         { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
                         { (success !== "") ? <p className="text-green-500 text-center p-4">{success}</p> : "" }
 
-                        <div className="my-4">
+                        <div className="my-4 flex flex-wrap">
+                            <div className="lg:w-[30%] w-full">
                             {
                                 endpoints.map(endpoint => (
-                                    <div key={endpoint._id} className="flex md:flex-nowrap flex-wrap items-center p-2 my-1 bg-gray-100 dark:bg-gray-800 rounded">
-                                        <FaLink className="p-3 text-4xl rounded bg-slate-900/[0.4] text-blue mr-2" />
-                                        <h3 className="w-[22%] px-2">{endpoint.title}</h3>
-                                        <Link href={{pathname: `/dashboard/endpoints/view/`, query: { title: endpoint.title}}} className="text-sky-600 flex-1 p-3 rounded dark:bg-gray-900/[0.5] break-all">{endpoint.address}</Link>
-                                        <FaTrashAlt className="p-3 text-4xl rounded text-red-600 cursor-pointer" onClick={() => handleDelete(endpoint._id)} />
+                                    <div key={endpoint._id} 
+                                        onClick={() => setActive(endpoint.title)}
+                                        className={`flex justify-between md:flex-nowrap flex-wrap items-center p-2 my-1 hover:bg-blue rounded ${active === endpoint.title ? "bg-blue": "bg-gray-100 dark:bg-gray-800"}`}
+                                    >
+                                        <div className="flex items-center">
+                                            <FaLink className="p-3 text-4xl rounded bg-slate-900/[0.4] text-blue mr-2" />
+                                            <h3 className="w-[22%] px-2">{endpoint.title}</h3>
+                                        </div>
+                                        <FaTrashAlt className="p-3 text-4xl rounded text-red-400 cursor-pointer text-right" onClick={() => handleDelete(endpoint._id)} />
                                     </div>
                                 ))
                             }
+                            </div>
+                            <div className="lg:w-[70%] w-full">
+                                <View router={active} />
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="md:w-[27%] w-full dark:bg-gray-900 p-5">
+                <div className="w-full dark:bg-gray-900 p-5">
                     {/* <pre className={`block mt-2`}
                             dangerouslySetInnerHTML={{ __html: hljs.highlight(JSON.stringify(data, null, 4), { language: "JSON" }).value }}>
                     </pre>  */}
