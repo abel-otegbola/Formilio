@@ -75,9 +75,7 @@ export default function Endpoints() {
     useEffect(() => {
         const fetchEndpoints = async () => {
             if(session) {
-                await fetch(`/api/getEndpoints/${session.user.email} `, {
-                    method: "GET"
-                })
+                await fetch(`/api/getEndpoints/${session.user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     if(data.error) {
@@ -94,7 +92,7 @@ export default function Endpoints() {
         }
         fetchEndpoints()
 
-    }, [session, success])
+    }, [success, session])
 
 
     return (
@@ -115,7 +113,7 @@ export default function Endpoints() {
                                 <button className="flex items-center justify-center p-[12px] px-6 rounded bg-blue text-white md:w-auto w-full md:ml-2 hover:bg-hoverblue hover:border hover:border-white" onClick={() => handleEndpoint()}>{loading ? <CgSpinner className="animate-spin mr-2 text-2xl" /> : ""} Generate new endpoint</button>
                             </div>
                             {
-                                endpoints.length < 1 ? 
+                               endpoints && endpoints.length < 1 ? 
                                 <>
                                     <FiExternalLink className="text-4xl p-2 rounded bg-gray-200/[0.2]" />
                                     <h2 className="my-4">You have not generated any endpoint</h2>
@@ -129,8 +127,9 @@ export default function Endpoints() {
 
                         <div className="my-4 flex flex-wrap">
                             <div className="lg:w-[30%] w-full">
-                            {
-                                endpoints.map(endpoint => (
+
+                            { // 
+                                endpoints && endpoints.map(endpoint => (
                                     <div key={endpoint._id} 
                                         onClick={() => setActive(endpoint.title)}
                                         className={`flex justify-between md:flex-nowrap flex-wrap items-center p-2 my-1 hover:bg-blue hover:text-white rounded ${active === endpoint.title ? "bg-blue text-white": "bg-gray-100 dark:bg-gray-800"}`}
@@ -159,3 +158,24 @@ export default function Endpoints() {
         </div>
     )
 }
+
+// export async function getStaticProps(context) {
+//     const session = useSession(context)
+//     console.log(session)
+//     try {
+//         const res = await fetch(`/api/getEndpoints/${session.user.email}`)
+//         const endpoints = await res.json()
+//         return {
+//             props: {
+//                 endpoints,
+//             }
+//         }
+//     }
+//     catch(error) {
+//         return {
+//             props: {
+//                 error: true
+//             }
+//         }
+//     }
+// }

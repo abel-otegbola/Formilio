@@ -9,6 +9,6 @@ export default async function handler(req, res) {
 
   Submissions.create({ user: slug[0], title: slug[1], data: JSON.stringify(req.body) }, function(err, data){
     if(err) return res.status(404).json({ error: err });
-    res.status(200).json({ msg: "Submitted successfully", submission: data })
+    res.status(200).redirect("https://mailme.vercel.app/thankyou")
   })
 }
