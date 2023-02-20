@@ -6,6 +6,7 @@ import { FaLink, FaTrashAlt } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
 import { FiExternalLink } from "react-icons/fi";
 import View from "./view/page";
+import random from "random-key-generator"
 
 export default function Endpoints() {
     const [endpoints, setEndpoints] = useState([])
@@ -24,6 +25,7 @@ export default function Endpoints() {
     }
 
     const handleEndpoint = async () => {
+        const key = random(10)
         if(title !== "") {
             setLoading(true);
             await fetch(`/api/generate`, {
@@ -31,7 +33,7 @@ export default function Endpoints() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ user: session.user.email, title, address: `https://mailme.vercel.app/api/endpoint/${session.user.email}/${title}` })
+                body: JSON.stringify({ user: session.user.email, title, key,  address: `https://mailme.vercel.app/api/endpoint/${key}` })
             })
             .then(res => res.json())
             .then(data => {
@@ -107,7 +109,7 @@ export default function Endpoints() {
             <div className="flex flex-wrap gap-2">
                 <div className="w-full bg-gray-100 dark:bg-gray-800">
                     <div className="px-1 py-4 bg-white dark:bg-gray-900">
-                        <div className="flex flex-col min-h-[150px] p-4 justify-end items-center">
+                        <div className="flex flex-col p-4 justify-end items-center">
                             <div className="md:flex md:w-[70%] p-2 mb-4 rounded-lg w-full align-center bg-gray-100 dark:bg-gray-800 shadow-lg">
                                 <input className="p-[12px] flex-1 md:mb-0 mb-4 md:w-auto w-full md:text-left text-center rounded bg-white text-black" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter endpoint title..." />
                                 <button className="flex items-center justify-center p-[12px] px-6 rounded bg-blue text-white md:w-auto w-full md:ml-2 hover:bg-hoverblue hover:border hover:border-white" onClick={() => handleEndpoint()}>{loading ? <CgSpinner className="animate-spin mr-2 text-2xl" /> : ""} Generate new endpoint</button>
@@ -131,8 +133,8 @@ export default function Endpoints() {
                             { // 
                                 endpoints && endpoints.map(endpoint => (
                                     <div key={endpoint._id} 
-                                        onClick={() => setActive(endpoint.title)}
-                                        className={`flex justify-between md:flex-nowrap flex-wrap items-center p-2 my-1 hover:bg-blue hover:text-white rounded ${active === endpoint.title ? "bg-blue text-white": "bg-gray-100 dark:bg-gray-800"}`}
+                                        onClick={() => setActive(endpoint.key)}
+                                        className={`flex justify-between md:flex-nowrap flex-wrap items-center p-2 my-1 hover:bg-blue hover:text-white rounded ${active === endpoint.key ? "bg-blue text-white": "bg-gray-100 dark:bg-gray-800"}`}
                                     >
                                         <div className="flex items-center">
                                             <FaLink className="p-3 text-4xl rounded bg-gray-300/[0.3] dark:bg-slate-900/[0.4] text-blue mr-2" />
@@ -144,6 +146,7 @@ export default function Endpoints() {
                             }
                             </div>
                             <div className="lg:w-[70%] w-full">
+                                <p className="m-2 p-3 px-6 rounded w-full bg-hoverblue text-white mr-2 break-all">{endpoints.filter(item => item.key === active).map(submission => ( submission.address ))}</p>
                                 <View router={active} />
                             </div>
                         </div>

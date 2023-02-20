@@ -9,6 +9,7 @@ const userSchema = new Schema({
 const endpointsSchema = new Schema({
     user: String,
     title: String,
+    key: String,
     address: String
 })
 

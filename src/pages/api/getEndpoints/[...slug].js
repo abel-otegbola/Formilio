@@ -8,12 +8,10 @@ export default async function handler(req, res) {
         Endpoints.find({ user: slug[0] }, function(err, data){
             if(err) return res.status(404).json({ error: err });
             res.status(200).json({ data })
-            res.end()
         })
     }
     catch (err) {
         res.status(500).json({ error: "Connection Failed"})
-        res.end()
     }
     
 }
