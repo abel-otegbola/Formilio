@@ -3,7 +3,9 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import EndpointFields from "@/components/endpointFields";
-import { FaTrashAlt, FaUserCircle } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
+import { convert } from "@/helper/convertDate";
+import { getInitials } from "@/helper/getInitials";
 
 export default function View({ router }) {
     const [submissions, setSubmissions] = useState([])
@@ -68,7 +70,7 @@ export default function View({ router }) {
                         ["Submissions", "Setup", "Analytics", "Settings"].map((item, index) => (
                             <p 
                                 key={index} 
-                                className={`p-3 rounded w-full border hover:bg-white hover:shadow-lg hover:text-black text-white text-center mr-2 cursor-pointer ${active === item ? "bg-white shadow-lg text-black" : " border-gray-100/[0.3]"}`}
+                                className={`p-3 rounded w-full border hover:bg-white hover:shadow-lg hover:text-black text-center mr-2 cursor-pointer ${active === item ? "bg-white shadow-lg text-black" : " border-gray-100/[0.3]"}`}
                                 onClick={() => setActive(item)}
                             >{item}</p>
                         ))
@@ -82,11 +84,12 @@ export default function View({ router }) {
 
                 {
                     submissions.filter(item => item.key === router).map(submission => (
-                        <div key={submission._id} className="flex bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2]">
-                            <FaUserCircle className="text-4xl border-2 border-white/[0.5] text-white/[0.7] m-3 shadow-lg rounded-full" />
+                        <div key={submission._id} className="flex items-start bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2]">
+                            <p className="p-2 border-2 border-white/[0.5] text-fuchsia-500 uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(JSON.parse(submission.data).email || "user")}</p>
                             <div className="grid gap-2 md:grid-cols-3 flex-1">
                                 { submission.data && <EndpointFields data={JSON.parse(submission.data)} />}
                             </div>
+                            <p className="p-5 text-[10px]">{convert(submission.createdAt)}</p>
                             <FaTrashAlt className="text-red-400 m-5 cursor-pointer" onClick={() => handleDelete(submission._id)}/>
                         </div>
                     ))
