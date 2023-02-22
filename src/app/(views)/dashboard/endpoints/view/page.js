@@ -6,7 +6,7 @@ import EndpointFields from "@/components/endpointFields";
 import { FaTrashAlt, FaUserCircle } from "react-icons/fa";
 
 export default function View({ router }) {
-    const [submissions, setSubmission] = useState([])
+    const [submissions, setSubmissions] = useState([])
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [active, setActive] = useState("Submissions")
@@ -30,7 +30,7 @@ export default function View({ router }) {
                        console.log(data.error)
                     }
                     else {
-                        setSubmission(data.data)
+                        setSubmissions(data.data)
                     }
                 })
                 .catch(err => {
@@ -39,7 +39,6 @@ export default function View({ router }) {
             }
         }
         fetchEndpoints()
-
     }, [router, success])
 
     
@@ -79,11 +78,11 @@ export default function View({ router }) {
                 { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
                 { (success !== "") ? <p className="text-green-500 text-center p-4">{success}</p> : "" }
             </div>
-            <div className="py-2 dark:bg-gray-800">
+            <div className="dark:bg-gray-800">
 
                 {
-                    submissions.filter(item => item.title === router).map(submission => (
-                        <div key={submission._id} className="flex bg-gray-100 dark:bg-gray-900 m-1">
+                    submissions.filter(item => item.key === router).map(submission => (
+                        <div key={submission._id} className="flex bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2]">
                             <FaUserCircle className="text-4xl border-2 border-white/[0.5] text-white/[0.7] m-3 shadow-lg rounded-full" />
                             <div className="grid gap-2 md:grid-cols-3 flex-1">
                                 { submission.data && <EndpointFields data={JSON.parse(submission.data)} />}
