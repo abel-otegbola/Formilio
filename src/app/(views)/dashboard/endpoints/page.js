@@ -15,7 +15,7 @@ export default function Endpoints() {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [loading, setLoading] = useState(false)
-    const [active, setActive] = useState("Contracts")
+    const [active, setActive] = useState("")
 
     const handleMsg = (msg, action) => {
         action(msg)
@@ -81,14 +81,14 @@ export default function Endpoints() {
                 .then(res => res.json())
                 .then(data => {
                     if(data.error) {
-                        handleMsg(data.error, setError)
+                        console.log(data.error)
                     }
                     else {
                         setEndpoints(data.data)
                     }
                 })
                 .catch(err => {
-                    handleMsg(err, setError)
+                    console.log(err)
                 }) 
             }
         }
@@ -134,7 +134,7 @@ export default function Endpoints() {
                                 endpoints && endpoints.map(endpoint => (
                                     <div key={endpoint._id} 
                                         onClick={() => setActive(endpoint.key)}
-                                        className={`flex justify-between md:flex-nowrap flex-wrap items-center p-2 my-1 hover:bg-blue hover:text-white rounded ${active === endpoint.key ? "bg-blue text-white": "bg-gray-100 dark:bg-gray-800"}`}
+                                        className={`flex justify-between md:flex-nowrap flex-wrap items-center p-2 my-2 hover:bg-blue hover:text-white rounded ${active === endpoint.key ? "bg-blue text-white": "bg-gray-100 dark:bg-gray-800"}`}
                                     >
                                         <div className="flex items-center">
                                             <FaLink className="p-3 text-4xl rounded bg-gray-300/[0.3] dark:bg-slate-900/[0.4] text-blue mr-2" />
@@ -146,7 +146,7 @@ export default function Endpoints() {
                             }
                             </div>
                             <div className="lg:w-[70%] w-full">
-                                <p className="m-2 p-3 px-6 rounded w-full bg-hoverblue text-white mr-2 break-all">{endpoints.filter(item => item.key === active).map(submission => ( submission.address ))}</p>
+                                <p className="md:m-2 p-4 px-6 rounded w-full bg-hoverblue text-white break-all">{endpoints.filter(item => item.key === active).map(submission => ( submission.address ))}</p>
                                 <View router={active} />
                             </div>
                         </div>

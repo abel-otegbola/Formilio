@@ -4,6 +4,8 @@ const userSchema = new Schema({
     fullname: String,
     email: String,
     password: String
+}, {
+    timestamps: true
 })
 
 const endpointsSchema = new Schema({
@@ -11,12 +13,15 @@ const endpointsSchema = new Schema({
     title: String,
     key: String,
     address: String
+}, {
+    timestamps: true
 })
 
 const submissionsSchema = new Schema({
-    user: String,
-    title: String,
+    key: String,
     data: String
+}, {
+    timestamps: true
 })
 
 const Users = models.user || model("user", userSchema);

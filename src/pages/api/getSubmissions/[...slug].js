@@ -4,6 +4,7 @@ import { Submissions } from "@/model/Schema"
 export default async function handler(req, res) {
     await connectMongo().catch(error => res.json({ error: "Connection Failed"}))
     const { slug } = req.query
+    console.log(slug[0])
     
     Submissions.find({ key: slug[0] }, function(err, data){
         if(err) return res.status(404).json({ error: err });

@@ -23,24 +23,24 @@ export default function View({ router }) {
     useEffect(() => {
         const fetchEndpoints = async () => {
             if(session) {
-                await fetch(`/api/getSubmissions/${session.user.email}/${router}`)
+                await fetch(`/api/getSubmissions/${router}`)
                 .then(res => res.json())
                 .then(data => {
                     if(data.error) {
-                       handleMsg(data.error, setError)
+                       console.log(data.error)
                     }
                     else {
                         setSubmission(data.data)
                     }
                 })
                 .catch(err => {
-                    handleMsg(err, setError)
+                    console.log(err)
                 }) 
             }
         }
         fetchEndpoints()
 
-    }, [router, session, error, success])
+    }, [router, success])
 
     
     const handleDelete=  async (id) => {
@@ -63,13 +63,13 @@ export default function View({ router }) {
 
     return(
         <div className="lg:px-4 w-full shadow-lg">
-            <div className="w-full bg-blue p-4 rounded">
+            <div className="w-full bg-gray-200[0.2] p-4 rounded">
                 <div className="flex gap-1">
                     {
                         ["Submissions", "Setup", "Analytics", "Settings"].map((item, index) => (
                             <p 
                                 key={index} 
-                                className={`p-3 rounded w-full border hover:border-white text-white text-center mr-2 cursor-pointer ${active === item ? "border-white" : " border-blue"}`}
+                                className={`p-3 rounded w-full border hover:bg-white hover:shadow-lg hover:text-black text-white text-center mr-2 cursor-pointer ${active === item ? "bg-white shadow-lg text-black" : " border-gray-100/[0.3]"}`}
                                 onClick={() => setActive(item)}
                             >{item}</p>
                         ))
