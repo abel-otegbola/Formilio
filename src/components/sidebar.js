@@ -47,7 +47,7 @@ export default function Sidebar() {
         </div>
 
         {/* Sidebar for dashboard */}
-        <div ref={menuRef} className={`md:relative fixed md:pt-0 pt-[50px] top-0 left-0 w-[250px] h-full md:h-auto z-10 bg-white dark:bg-gray-900 shadow-lg text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "md:w-[250px] w-0"}`}>
+        <div ref={menuRef} className={`md:sticky fixed md:pt-0 pt-[50px] top-0 left-0 w-[250px] h-full md:h-screen z-10 bg-white dark:bg-gray-900 shadow-lg text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "md:w-[250px] w-0"}`}>
             
             <ul className="my-3 w-full p-2">
                 {
@@ -66,7 +66,7 @@ export default function Sidebar() {
                     })
                 }
             </ul>
-            <hr className="mx-2 text-gray-200/[0.2]" />
+            <hr className="mx-2 text-gray-200/[0.2]g" />
             <ul className="my-3 w-full p-2">
                 {
                     links.slice(5,10).map((link,i) => {

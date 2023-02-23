@@ -1,3 +1,6 @@
+/* .hljs-name {
+    color: rgb(71, 71, 248);
+} */
 .hljs-attr {
     color: rgb(192, 42, 192);
 }
@@ -5,5 +8,5 @@
     color: rgb(223, 223, 56);
 }
 .hljs-string {
-    color: aliceblue;
+    color: rgb(90, 211, 118);
 }

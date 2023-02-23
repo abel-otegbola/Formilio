@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
-import "./jsonformat.css"
 import { FaLink, FaTrashAlt } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
 import { FiExternalLink } from "react-icons/fi";
