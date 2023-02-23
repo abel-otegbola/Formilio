@@ -97,7 +97,7 @@ export default function View({ router }) {
                 }
             </div>
             <div className={`dark:bg-gray-800 ${active === "Setup"? "block" : "hidden"}`}>
-                <Setup submissions={submissions} />
+                <Setup key={router} />
             </div>
         </div>
     )

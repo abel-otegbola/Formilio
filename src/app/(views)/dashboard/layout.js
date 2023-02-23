@@ -10,7 +10,7 @@ export default function Layout({ children }) {
             <Sidebar />
             
             <DndProvider backend={HTML5Backend}>
-                <div className="md:ml-2 flex-1 min-h-screen bg-white dark:bg-gray-900 p-[20px] px-2">
+                <div className="md:ml-2 flex-1 min-h-screen bg-white dark:bg-gray-900 py-[20px]">
                     {children}
                 </div>
             </DndProvider>

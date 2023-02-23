@@ -3,10 +3,10 @@ import hljs from "highlight.js"
 import { useState } from "react"
 import "./jsonformat.css"
 
-export default function Setup () {
+export default function Setup ({ key }) {
     const [active, setActive] = useState("HTML")
     return (
-        <div className="mt-4">
+        <div className="mt-4 p-2">
             <div className="flex gap-2">
                 {
                     ["HTML", "JQuery", "React"].map((item, index) => (
@@ -24,7 +24,7 @@ export default function Setup () {
                     <div className="flex p-4 my-4 overflow-x-auto">
                         <div className={`block mt-2`}
                             dangerouslySetInnerHTML={{ __html: hljs.highlight(
-                                `<form action="https://formilio.com/api/endpoint/" method="POST" accept-charset="UTF-8">
+                                `<form action="https://formilio.com/api/endpoint/${ key }" method="POST" accept-charset="UTF-8">
                                 
                                 </form>`
                                 , { language: "HTML" }).value }}>
@@ -51,7 +51,7 @@ export default function Setup () {
             </div>
             
             <div className="flex items-start py-6">
-                <p className="p-1 px-3 bg-fuchsia-400 rounded-full border-2 border-white shadow-lg mr-2">2</p>
+                <p className="p-1 px-3 bg-fuchsia-400 rounded-full border-2 border-white shadow-lg mr-2">3</p>
                 <div>
                     <h3 className="font-semibold">Your form is ready</h3>
                     <p className="opacity-[0.5]">Your form is ready to recieve submissions</p>
