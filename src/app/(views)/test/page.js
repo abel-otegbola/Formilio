@@ -34,7 +34,7 @@ export default function Login() {
                 <label className="mb-2">Message:</label>
                 <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-7 mt-2">
                     <FaPen className="m-2 mx-3 text-xl text-gray-500" />
-                    <input type="text" name="message" className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " required={true} />
+                    <textarea type="text" name="message" className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " required={true}></textarea>
                 </div>
 
                 <button type="submit" className="flex justify-center items-center p-[13px] w-full bg-blue hover:bg-hoverblue text-white rounded mt-5">Submit</button>
