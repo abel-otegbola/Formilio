@@ -8,7 +8,7 @@ export default function Login() {
 
     return (
         <div className="md:px-[10%] px-[5%] py-[5%] dark:bg-gray-900">
-            <form action={`${process.env.NEXTAUTH_URL}/api/endpoint/${query}`} className="p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded md:w-[500px] w-full m-auto">
+            <form action={`${process.env.NEXTAUTH_URL}/api/endpoint/${query}`} method="post" className="p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded md:w-[500px] w-full m-auto">
 
                 <h1 className="text-center py-6 text-blue text-2xl font-bold">Test the endpoint generated</h1>
                 <p className="text-center pb-10">Fill the form and submit</p>
