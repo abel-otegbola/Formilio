@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import "./jsonformat.css"
 import { FaLink, FaTrashAlt } from "react-icons/fa";
@@ -16,6 +16,7 @@ export default function Endpoints() {
     const [success, setSuccess] = useState("")
     const [loading, setLoading] = useState(false)
     const [active, setActive] = useState("")
+    const inputRef = useRef(null)
 
     const handleMsg = (msg, action) => {
         action(msg)
@@ -102,7 +103,7 @@ export default function Endpoints() {
             <div className="w-full h-[130px] bg-blue p-4 mb-4 rounded">
                 <h4 className="text-white my-4 text-lg">Endpoints</h4>
                 <div className="flex">
-                    <a href="/dashboard/builder" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Create new endpoint</a>
+                    <button onClick={() => inputRef.current.focus()} className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Create new endpoint</button>
                 </div>
             </div>
 
@@ -111,7 +112,7 @@ export default function Endpoints() {
                     <div className="px-1 py-4 bg-white dark:bg-gray-900">
                         <div className="flex flex-col p-4 justify-end items-center">
                             <div className="md:flex md:w-[70%] p-2 mb-4 rounded-lg w-full align-center bg-gray-100 dark:bg-gray-800 shadow-lg">
-                                <input className="p-[12px] flex-1 md:mb-0 mb-4 md:w-auto w-full md:text-left text-center rounded bg-white text-black" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter endpoint title..." />
+                                <input ref={inputRef} className="p-[12px] flex-1 md:mb-0 mb-4 md:w-auto w-full md:text-left text-center rounded bg-white text-black" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter endpoint title..." />
                                 <button className="flex items-center justify-center p-[12px] px-6 rounded bg-blue text-white md:w-auto w-full md:ml-2 hover:bg-hoverblue hover:border hover:border-white" onClick={() => handleEndpoint()}>{loading ? <CgSpinner className="animate-spin mr-2 text-2xl" /> : ""} Generate new endpoint</button>
                             </div>
                             {
@@ -145,8 +146,9 @@ export default function Endpoints() {
                                 ))
                             }
                             </div>
-                            <div className="lg:w-[70%] w-full">
-                                <p className="md:m-2 p-4 px-6 rounded w-full bg-hoverblue text-white break-all">{endpoints.filter(item => item.key === active).map(submission => ( submission.address ))}</p>
+                            <div className="lg:w-[70%] w-full my-2">
+                                <p className="px-6 font-semibold">Form Endpoint:</p>
+                                <p className="p-4 px-6 rounded w-full bg-gray-300/[0.2] break-all">{endpoints.filter(item => item.key === active).map(submission => ( submission.address ))}</p>
                                 <View router={active} />
                             </div>
                         </div>

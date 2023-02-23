@@ -22,8 +22,8 @@ export default function EndpointFields({ data }) {
                     </div>
                 :
                 <div key={index} className="py-2 w-full">
-                    <h5 className="text-[10px]" placeholder="Name">{key}</h5>
-                    <p className="pb-2 text-blue">{data[key].substring(0, 50)}</p>
+                    <h5 className="text-[12px] opacity-[0.5]" placeholder="Name">{key}</h5>
+                    <p className="pb-2">{data[key].substring(0, 50)}</p>
                 </div>
             ))
         }

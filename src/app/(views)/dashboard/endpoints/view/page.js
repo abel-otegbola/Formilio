@@ -6,6 +6,7 @@ import EndpointFields from "@/components/endpointFields";
 import { FaTrashAlt } from "react-icons/fa";
 import { convert } from "@/helper/convertDate";
 import { getInitials } from "@/helper/getInitials";
+import Setup from "@/components/setup";
 
 export default function View({ router }) {
     const [submissions, setSubmissions] = useState([])
@@ -64,7 +65,7 @@ export default function View({ router }) {
 
     return(
         <div className="lg:px-4 w-full shadow-lg">
-            <div className="w-full bg-gray-200[0.2] p-4 rounded">
+            <div className="w-full bg-gray-200[0.2] py-4 rounded">
                 <div className="flex gap-1">
                     {
                         ["Submissions", "Setup", "Analytics", "Settings"].map((item, index) => (
@@ -80,12 +81,12 @@ export default function View({ router }) {
                 { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
                 { (success !== "") ? <p className="text-green-500 text-center p-4">{success}</p> : "" }
             </div>
-            <div className="dark:bg-gray-800">
+            <div className={`dark:bg-gray-800 ${active === "Submissions"? "block" : "hidden"}`}>
 
                 {
                     submissions.filter(item => item.key === router).map(submission => (
-                        <div key={submission._id} className="flex items-start bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2]">
-                            <p className="p-2 border-2 border-white/[0.5] text-fuchsia-500 uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(JSON.parse(submission.data).email || "user")}</p>
+                        <div key={submission._id} className="flex items-start bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:shadow-lg">
+                            <p className="p-2 border-2 border-white/[0.5] bg-fuchsia-500/[0.5] uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(JSON.parse(submission.data).email || "user")}</p>
                             <div className="grid gap-2 md:grid-cols-3 flex-1">
                                 { submission.data && <EndpointFields data={JSON.parse(submission.data)} />}
                             </div>
@@ -94,6 +95,9 @@ export default function View({ router }) {
                         </div>
                     ))
                 }
+            </div>
+            <div className={`dark:bg-gray-800 ${active === "Setup"? "block" : "hidden"}`}>
+                <Setup submissions={submissions} />
             </div>
         </div>
     )
