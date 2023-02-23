@@ -71,7 +71,7 @@ export default function View({ router }) {
                         ["Submissions", "Setup", "Analytics", "Settings"].map((item, index) => (
                             <p 
                                 key={index} 
-                                className={`p-3 rounded w-full border hover:bg-white hover:shadow-lg hover:text-black text-center mr-2 cursor-pointer ${active === item ? "bg-white shadow-lg text-black" : " border-gray-100/[0.3]"}`}
+                                className={`p-3 rounded w-full border text-sm hover:bg-white hover:shadow-lg hover:text-black text-center mr-2 cursor-pointer ${active === item ? "bg-white shadow-lg text-black" : " border-gray-100/[0.3]"}`}
                                 onClick={() => setActive(item)}
                             >{item}</p>
                         ))
@@ -86,7 +86,7 @@ export default function View({ router }) {
                 {
                     submissions.filter(item => item.key === router).map(submission => (
                         <div key={submission._id} className="flex items-start bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:shadow-lg">
-                            <p className="p-2 border-2 border-white/[0.5] bg-fuchsia-500/[0.5] uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(JSON.parse(submission.data).email || "user")}</p>
+                            <p className="p-2 px-[10px] border-2 border-white/[0.5] bg-fuchsia-500/[0.2] uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(JSON.parse(submission.data).email || "user")}</p>
                             <div className="grid gap-2 md:grid-cols-3 flex-1">
                                 { submission.data && <EndpointFields data={JSON.parse(submission.data)} />}
                             </div>
@@ -97,7 +97,7 @@ export default function View({ router }) {
                 }
             </div>
             <div className={`dark:bg-gray-800 ${active === "Setup"? "block" : "hidden"}`}>
-                <Setup key={router} />
+                <Setup endpoint={router} />
             </div>
         </div>
     )
