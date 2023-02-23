@@ -2,7 +2,7 @@
 // import { useSearchParams } from "next/navigation"
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import EndpointFields from "@/components/endpointFields";
+import Submission from "@/components/submission";
 import { FaTrashAlt } from "react-icons/fa";
 import { convert } from "@/helper/convertDate";
 import { getInitials } from "@/helper/getInitials";
@@ -84,11 +84,11 @@ export default function View({ router }) {
             <div className={`dark:bg-gray-800 ${active === "Submissions"? "block" : "hidden"}`}>
 
                 {
-                    submissions.filter(item => item.key === router).map(submission => (
-                        <div key={submission._id} className="flex items-start bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:shadow-lg">
+                    submissions.map(submission => (
+                        <div key={submission._id} className="flex items-start bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white">
                             <p className="p-2 px-[10px] border-2 border-white/[0.5] bg-fuchsia-500/[0.2] uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(JSON.parse(submission.data).email || "user")}</p>
                             <div className="grid gap-2 md:grid-cols-3 flex-1">
-                                { submission.data && <EndpointFields data={JSON.parse(submission.data)} />}
+                                { submission.data && <Submission data={JSON.parse(submission.data)} />}
                             </div>
                             <p className="p-5 text-[10px]">{convert(submission.createdAt)}</p>
                             <FaTrashAlt className="text-red-400 m-5 cursor-pointer" onClick={() => handleDelete(submission._id)}/>
