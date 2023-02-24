@@ -1,5 +1,4 @@
 'use client'
-// import { useSearchParams } from "next/navigation"
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Submission from "@/components/submission";
@@ -7,13 +6,15 @@ import { FaTrashAlt } from "react-icons/fa";
 import { convert } from "@/helper/convertDate";
 import { getInitials } from "@/helper/getInitials";
 import Setup from "@/components/setup";
+import SubmissionModal from "@/components/submissionModal";
 
 export default function View({ router }) {
     const [submissions, setSubmissions] = useState([])
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [active, setActive] = useState("Submissions")
-    // const router = useSearchParams().get("title")
+    const [openModal, setOpenModal] = useState(false)
+    const [activeSubmission, setActiveSubmission] = useState({})
     const { data: session } = useSession()
 
     const handleMsg = (msg, action) => {
@@ -64,7 +65,7 @@ export default function View({ router }) {
     }
 
     return(
-        <div className="lg:px-4 w-full shadow-lg">
+        <div className="relative lg:px-4 w-full shadow-lg">
             <div className="w-full bg-gray-200[0.2] py-4 rounded">
                 <div className="flex gap-1">
                     {
@@ -85,13 +86,15 @@ export default function View({ router }) {
 
                 {
                     submissions.map(submission => (
-                        <div key={submission._id} className="flex items-start bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white">
+                        <div key={submission._id} className="flex items-start bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer" onClick={() => {setOpenModal(true); setActiveSubmission(submission)}}>
                             <p className="p-2 px-[10px] border-2 border-white/[0.5] bg-fuchsia-500/[0.2] uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(JSON.parse(submission.data).email || "user")}</p>
                             <div className="grid gap-2 md:grid-cols-3 flex-1">
                                 { submission.data && <Submission data={JSON.parse(submission.data)} />}
                             </div>
                             <p className="p-5 text-[10px]">{convert(submission.createdAt)}</p>
                             <FaTrashAlt className="text-red-400 m-5 cursor-pointer" onClick={() => handleDelete(submission._id)}/>
+
+                            {openModal ? <SubmissionModal data={JSON.parse(activeSubmission.data)} closeModal={setOpenModal} open={openModal} /> : ""}
                         </div>
                     ))
                 }

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaBars, FaSignOutAlt, FaTimes } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { closeBlock } from "@/helper/closeBlock";
 
 export default function Topbar() {
     const [open, setOpen] = useState(false)
@@ -16,15 +17,7 @@ export default function Topbar() {
 
     // Close navbar for mobile when clicked outside
     useEffect(() => {
-        const checkIfClickedOutside = e => {
-            if(open && menuRef.current && !menuRef.current.contains(e.target)) {
-                setOpen(false)
-            }
-        }
-        document.addEventListener("mousedown", checkIfClickedOutside)
-        return () => {
-            document.removeEventListener("mousedown", checkIfClickedOutside)
-        }
+        closeBlock(menuRef, open, setOpen)
     }, [open])
 
     return (

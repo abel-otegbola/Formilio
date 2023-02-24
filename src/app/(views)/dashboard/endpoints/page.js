@@ -102,7 +102,7 @@ export default function Endpoints() {
             <div className="w-full bg-blue p-4 mb-4 rounded">
                 <h4 className="text-white my-4 text-lg">Endpoints</h4>
                 <div className="flex">
-                    <div className="md:flex md:w-[70%] p-2 mb-4 rounded-lg w-full align-center bg-gray-100 dark:bg-gray-800 shadow-lg">
+                    <div className="md:flex md:w-[70%] p-2 mb-2 rounded-lg w-full align-center bg-gray-100 dark:bg-gray-800">
                         <input ref={inputRef} className="p-[12px] flex-1 md:mb-0 mb-4 md:w-auto w-full md:text-left text-center rounded bg-white text-black" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter endpoint title..." />
                         <button className="flex items-center justify-center p-[12px] px-6 rounded bg-blue text-white md:w-auto w-full md:ml-2 hover:bg-hoverblue hover:border hover:border-white" onClick={() => handleEndpoint()}>{loading ? <CgSpinner className="animate-spin mr-2 text-2xl" /> : ""} Generate new endpoint</button>
                     </div>
@@ -111,7 +111,7 @@ export default function Endpoints() {
 
             <div className="flex flex-wrap gap-2">
                 <div className="w-full bg-gray-100 dark:bg-gray-800">
-                    <div className="px-1 py-4 bg-white dark:bg-gray-900">
+                    <div className="px-1 bg-white dark:bg-gray-900">
                         <div className="flex flex-col p-4 justify-end items-center">
                             {
                                endpoints?.length < 1 ? 

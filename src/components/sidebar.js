@@ -5,6 +5,7 @@ import { FaAdjust, FaArrowAltCircleRight, FaAtom, FaBoxes, FaChartLine, FaCog, F
 import { FiCheckCircle } from "react-icons/fi";
 import { BsLayoutSidebarInset } from "react-icons/bs";
 import { signOut } from "next-auth/react";
+import { closeBlock } from "@/helper/closeBlock";
 
 export default function Sidebar() {
     const [open, setOpen] = useState(false)
@@ -21,20 +22,12 @@ export default function Sidebar() {
         { name: "Profile", to: "/profile", icon: <FaUserCircle />,  iconRight: <FaAdjust/> },
         { name: "Settings", to: "/settings", icon: <FaCog />,  iconRight: <FaInfoCircle/> },
         { name: "Billing & Payments", to: "/billing", icon: <FaMoneyBill />,  iconRight: <FiCheckCircle/> },
-        { name: "Logout", to: "/", icon: <FaSignOutAlt />,  iconRight: <FaArrowAltCircleRight/> },
+        { name: "Logout", to: "#", icon: <FaSignOutAlt />,  iconRight: <FaArrowAltCircleRight/> },
     ]
 
     // Close sidebar when clicked outside
     useEffect(() => {
-        const checkIfClickedOutside = e => {
-            if(open && menuRef.current && !menuRef.current.contains(e.target)) {
-                setOpen(false)
-            }
-        }
-        document.addEventListener("mousedown", checkIfClickedOutside)
-        return () => {
-            document.removeEventListener("mousedown", checkIfClickedOutside)
-        }
+        closeBlock(menuRef, open, setOpen)
     }, [open])
 
     return(

@@ -44,21 +44,13 @@ export default function BuilderSidebar({ addComponent }) {
 
     // Close sidebar when clicked outside
     useEffect(() => {
-        const checkIfClickedOutside = e => {
-            if(open && menuRef.current && !menuRef.current.contains(e.target)) {
-                setOpen(false)
-            }
-        }
-        document.addEventListener("mousedown", checkIfClickedOutside)
-        return () => {
-            document.removeEventListener("mousedown", checkIfClickedOutside)
-        }
+        closeBlock(menuRef, open, setOpen)
     }, [open])
 
     return(
         <>
         {/* Button to close and open builder sidebar */}
-        <div className="absolute top-[70px] right-2 text-gray-500 font-bold text-2xl p-4 border border-gray-100/[0.2] lg:hidden block z-50" onClick={() => setOpen(!open)} title="Layouts and components">
+        <div className="absolute top-[70px] right-2 text-gray-600 font-bold text-2xl p-4 bg-gray-100/[0.3] lg:hidden block z-50" onClick={() => setOpen(!open)} title="Layouts and components">
                     {
                         open ? <FaTimes /> : <BsLayoutSidebarInsetReverse />
                     }
