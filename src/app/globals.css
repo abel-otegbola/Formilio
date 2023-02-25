@@ -35,4 +35,7 @@ a {
   html {
     color-scheme: dark;
   }
+  body {
+    background-color: rgb(17, 24, 39)
+  }
 }
