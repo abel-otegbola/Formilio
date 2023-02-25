@@ -45,7 +45,7 @@ export default function Topbar() {
                 <li className="flex md:p-0 p-2"><a href="/contact" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/contact"? "text-blue": ""}`}>Contact</a></li>
                 {
                     session ? // Show logout button instead of login if signed in
-                    <li className="flex md:p-0 p-2 mx-4"><a href="/" onClick={() => signOut()} className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaSignOutAlt className="mr-3" /> Logout</a></li> :
+                    <li className="flex md:p-0 p-2 mx-4"><a href="#" onClick={() => signOut()} className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaSignOutAlt className="mr-3" /> Logout</a></li> :
                     
                     <Link href="/login" className="md:hidden flex items-center justify-center p-[10px] px-4 mx-[4%] mt-4 bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
                     

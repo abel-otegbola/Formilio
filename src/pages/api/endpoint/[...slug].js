@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   await connectMongo().catch(error => res.json({ error: "Connection Failed"}))
   const { slug } = req.query
 
-  Submissions.create({ key: slug[0], data: JSON.stringify(req.body) }, function(err, data){
+  Submissions.create({ key: slug[0], data: JSON.stringify(req.body)}, function(err, data){
     if(err) return res.status(404).json({ error: err });
     res.status(200).redirect("https://mailme.vercel.app/thankyou")
   })

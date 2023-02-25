@@ -16,7 +16,7 @@ export default function Setup ({ endpoint }) {
             </div>
 
             <div className="md:flex items-start py-6">
-                <p className="p-1 w-fit px-3 bg-fuchsia-200 rounded-full border-2 border-white shadow-lg mr-2">1</p>
+                <p className="p-1 w-fit px-3 bg-fuchsia-200/[0.5] rounded-full border-2 border-white shadow-lg mr-2">1</p>
                 <div>
                     <h3 className="font-semibold">Paste your endpoint into your form</h3>
                     <p className="opacity-[0.5]">Change the form action attribute to the endpoint</p>
@@ -34,7 +34,7 @@ export default function Setup ({ endpoint }) {
                 </div>
             </div>
             <div className="md:flex items-start py-6">
-                <p className="p-1 w-fit px-3 bg-fuchsia-200 rounded-full border-2 border-white shadow-lg mr-2">2</p>
+                <p className="p-1 w-fit px-3 bg-fuchsia-200/[0.5] rounded-full border-2 border-white shadow-lg mr-2">2</p>
                 <div>
                     <h3 className="font-semibold">Name each field of your form</h3>
                     <p className="opacity-[0.5]">All the fields should have name attribute so formilio can detect them</p>
@@ -51,7 +51,7 @@ export default function Setup ({ endpoint }) {
             </div>
             
             <div className="md:flex items-start py-6">
-                <p className="p-1 w-fit px-3 bg-fuchsia-200 rounded-full border-2 border-white shadow-lg mr-2">3</p>
+                <p className="p-1 w-fit px-3 bg-fuchsia-200/[0.5] rounded-full border-2 border-white shadow-lg mr-2">3</p>
                 <div>
                     <h3 className="font-semibold">Your form is ready</h3>
                     <p className="opacity-[0.5]">Your form is ready to recieve submissions</p>
