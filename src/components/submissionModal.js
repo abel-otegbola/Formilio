@@ -30,13 +30,13 @@ export default function SubmissionModal({ data, submission, setSuccess, setError
     }
 
     return (
-        <div ref={modalRef}>
-            <div className="flex flex-wrap py-2 overflow-auto items-start bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer" onClick={() => setOpenModal(!openModal)}>
-                <div className="flex md:w-[85%] w-full items-center flex-1 overflow-hidden">
-                    <p className="p-1 px-[7px] border-2 border-white/[0.5] bg-fuchsia-500/[0.2] uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(data.email || "user")}</p>
+        <div ref={modalRef} className="w-full">
+            <div className="flex md:flex-no-wrap flex-wrap py-2 items-center bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer" onClick={() => setOpenModal(!openModal)}>
+                <p className="p-1 px-[7px] border-2 border-white/[0.5] bg-fuchsia-500/[0.2] md:block hidden uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(data.email || "user")}</p>
+                <div className="grid grid-cols-3 items-center overflow-x-auto">
                     <Submission data={data} />
                 </div>
-                <p className="p-5 text-[10px]">{convert(submission.createdAt)}</p>
+                <p className="pl-2 text-[10px]">{convert(submission.createdAt)}</p>
                 <FaTrashAlt className="text-red-400 m-5 cursor-pointer" onClick={() => handleDelete(submission._id)}/>
             </div>
 

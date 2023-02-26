@@ -70,7 +70,7 @@ export default function Endpoints() {
                 }
             })
             .catch(err => {
-                handleMsg(err, setError)
+                console.log(err)
             }) 
         }
     }
@@ -109,48 +109,31 @@ export default function Endpoints() {
                     </div>
                 </div>
             </div>
-
-            <div className="flex flex-wrap gap-2">
-                <div className="w-full bg-gray-100 dark:bg-gray-800">
-                    <div className="px-1 bg-white dark:bg-gray-900">
-                        <div className="flex flex-col p-4 justify-end items-center">
-                            {
-                               endpoints?.length < 1 ? 
-                                <>
-                                    <FiExternalLink className="text-4xl p-2 rounded bg-gray-200/[0.2]" />
-                                    <h2 className="my-4">You have not generated any endpoint</h2>
-                                </>
-                                : ""
-                            }
-                        </div>
                         
-                        { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
-                        { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
+            { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
+            { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
 
-                        <div className="my-4 flex flex-wrap">
-                            <div className="lg:w-[30%] w-full">
+            <div className="my-4 flex flex-wrap">
+                <div className="lg:w-[30%] w-full">
 
-                            { // 
-                                endpoints && endpoints.map(endpoint => (
-                                    <div key={endpoint._id} 
-                                        onClick={() => setActive(endpoint.key)}
-                                        className={`flex justify-between md:flex-nowrap flex-wrap items-center p-2 my-2 hover:bg-blue hover:text-white rounded ${active === endpoint.key ? "bg-blue text-white": "bg-gray-100 dark:bg-gray-800"}`}
-                                    >
-                                        <div className="flex items-center">
-                                            <FaLink className="p-3 text-4xl rounded bg-gray-300/[0.3] dark:bg-slate-900/[0.4] text-blue mr-2" />
-                                            <h3 className="w-[22%] px-2">{endpoint.title}</h3>
-                                        </div>
-                                        <FaTrashAlt className="p-3 text-4xl rounded text-red-400 cursor-pointer text-right" onClick={() => handleDelete(endpoint._id)} />
-                                    </div>
-                                ))
-                            }
+                { // 
+                    endpoints && endpoints.map(endpoint => (
+                        <div key={endpoint._id} 
+                            onClick={() => setActive(endpoint.key)}
+                            className={`flex justify-between md:flex-nowrap flex-wrap items-center p-2 my-2 hover:bg-blue hover:text-white rounded ${active === endpoint.key ? "bg-blue text-white": "bg-gray-100 dark:bg-gray-800"}`}
+                        >
+                            <div className="flex items-center">
+                                <FaLink className="p-3 text-4xl rounded bg-gray-300/[0.3] dark:bg-slate-900/[0.4] text-blue mr-2" />
+                                <h3 className="w-[22%] px-2">{endpoint.title}</h3>
                             </div>
-                            <div className="lg:w-[70%] w-full my-2">
-                                <p className="p-4 px-6 rounded w-full bg-gray-300/[0.2] break-all">{endpoints.filter(item => item.key === active).map(submission => ( submission.address ))}</p>
-                                <View router={active} />
-                            </div>
+                            <FaTrashAlt className="p-3 text-4xl rounded text-red-400 cursor-pointer text-right" onClick={() => handleDelete(endpoint._id)} />
                         </div>
-                    </div>
+                    ))
+                }
+                </div>
+                <div className="lg:w-[70%] w-full my-2">
+                    <p className="md:mx-2 mb-5 p-4 px-6 rounded bg-gray-300/[0.2] break-all">{endpoints.filter(item => item.key === active).map(submission => ( submission.address ))}</p>
+                    <View router={active} />
                 </div>
             </div>
         </div>

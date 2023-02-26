@@ -45,12 +45,12 @@ export default function View({ router }) {
     return(
         <div className="relative lg:px-4 w-full shadow-lg">
             <div className="w-full bg-gray-200[0.2] py-4 rounded">
-                <div className="flex gap-1">
+                <div className="flex">
                     {
-                        ["Submissions", "Setup", "Analytics", "Settings"].map((item, index) => (
+                        ["Submissions", "Setup", "Settings"].map((item, index) => (
                             <p 
                                 key={index} 
-                                className={`p-3 rounded w-full border text-sm hover:bg-white hover:shadow-lg hover:text-black text-center mr-2 cursor-pointer ${active === item ? "bg-white shadow-lg text-black" : " border-gray-100/[0.3]"}`}
+                                className={`p-3 rounded-t-xl w-full border text-sm hover:border-x-blue hover:border-b-transparent hover:border-t-blue hover:text-blue text-center cursor-pointer border border-transparent ${active === item ? "border-x-blue border-t-blue text-blue" : "border-b-gray-100/[0.3]"}`}
                                 onClick={() => setActive(item)}
                             >{item}</p>
                         ))
