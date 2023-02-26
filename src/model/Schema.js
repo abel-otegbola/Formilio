@@ -19,6 +19,7 @@ const endpointsSchema = new Schema({
 
 const submissionsSchema = new Schema({
     key: String,
+    user: String,
     data: String
 }, {
     timestamps: true

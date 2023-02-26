@@ -38,26 +38,24 @@ export default function Dashboard() {
         }
     }, [session])
 
-    // const getSubmissionsFetch = async (data) => {
-    //     let keys = [] 
-    //     data.map(endpoint => (
-    //         keys.push(endpoint.key)
-    //     ))
-    //     await fetch(`/api/getSubmissions/all/${keys}`)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         if(data.error) {
-    //             console.log(data.error)
-    //         }
-    //         else {
-    //             console.log(data.data)
-    //             setSubmissions(data.data)
-    //         }
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //     })
-    // }
+    useEffect(() => {
+        const getSubmissionsFetch = async () => {
+            await fetch(`/api/getSubmissions/all/${session.user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                if(data.error) {
+                    console.log(data.error)
+                }
+                else {
+                    setSubmissions(data.data)
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+        getSubmissionsFetch()
+    }, [endpoints])
 
     return (
         <div className="px-4">

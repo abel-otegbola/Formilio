@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     
     if(slug[0] === "all") {
         if(slug[1]) {
-            Submissions.find({ "key": { $in: slug[1].split(",") } }, function(err, data){
+            Submissions.find({ "user": slug[1] }, function(err, data){
                 if(err) return res.status(404).json({ error: err });
                 res.status(200).json({data})
             })
