@@ -10,13 +10,12 @@ export default async function handler(req, res) {
 
   Endpoints.findOne({ key: slug[0] }, function(err, data) {
     if(err) return res.status(404).json({ error: "User not found" })
-    user = data.user
-  })
-
-  if(user !== "") {
-    Submissions.create({ key: slug[0], user, data: JSON.stringify(req.body)}, function(err, data){
+    Submissions.create({ key: slug[0], user: data.user, data: JSON.stringify(req.body)}, function(err, data){
       if(err) return res.status(404).json({ error: err });
       res.status(200).redirect("https://mailme.vercel.app/thankyou")
     })
+  })
+
+  if(user !== "") {
   }
 }
