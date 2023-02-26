@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Setup from "@/components/setup";
 import SubmissionModal from "@/components/submissionModal";
+import Popup from "@/components/popup";
 
 export default function View({ router }) {
     const [submissions, setSubmissions] = useState([])
@@ -56,8 +57,8 @@ export default function View({ router }) {
                     }
                 </div>
                 
-                { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
-                { (success !== "") ? <p className="text-green-500 text-center p-4">{success}</p> : "" }
+                { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
+                { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
             </div>
             <div className={`dark:bg-gray-800 ${active === "Submissions"? "block" : "hidden"}`}>
 

@@ -6,6 +6,7 @@ import { CgSpinner } from "react-icons/cg";
 import { FiExternalLink } from "react-icons/fi";
 import View from "./view/page";
 import random from "random-key-generator"
+import Popup from "@/components/popup";
 
 export default function Endpoints() {
     const [endpoints, setEndpoints] = useState([])
@@ -123,8 +124,8 @@ export default function Endpoints() {
                             }
                         </div>
                         
-                        { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
-                        { (success !== "") ? <p className="text-green-500 text-center p-4">{success}</p> : "" }
+                        { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
+                        { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
 
                         <div className="my-4 flex flex-wrap">
                             <div className="lg:w-[30%] w-full">
@@ -151,33 +152,7 @@ export default function Endpoints() {
                         </div>
                     </div>
                 </div>
-                <div className="w-full dark:bg-gray-900 p-5">
-                    {/* <pre className={`block mt-2`}
-                            dangerouslySetInnerHTML={{ __html: hljs.highlight(JSON.stringify(data, null, 4), { language: "JSON" }).value }}>
-                    </pre>  */}
-                </div>
             </div>
         </div>
     )
 }
-
-// export async function getStaticProps(context) {
-//     const session = useSession(context)
-//     console.log(session)
-//     try {
-//         const res = await fetch(`/api/getEndpoints/${session.user.email}`)
-//         const endpoints = await res.json()
-//         return {
-//             props: {
-//                 endpoints,
-//             }
-//         }
-//     }
-//     catch(error) {
-//         return {
-//             props: {
-//                 error: true
-//             }
-//         }
-//     }
-// }

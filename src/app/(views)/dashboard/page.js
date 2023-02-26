@@ -18,43 +18,47 @@ export default function Dashboard() {
     }
 
     useEffect(() => {
-        const fetchEndpoints = async () => {
-                await fetch(`/api/getEndpoints/${session.user.email}`)
-                .then(res => res.json())
-                .then(data => {
-                    if(data.error) {
-                       console.log(data.error)
-                    }
-                    else {
-                        setEndpoints(data.data)
-                    }
-                })
-                .catch(err => {
-                    console.log(err)
-                }) 
-        }
         if(session) {
-            fetchEndpoints()
+            const fetchEndpoints = async () => {
+                    await fetch(`/api/getEndpoints/${session.user.email}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.error) {
+                        console.log(data.error)
+                        }
+                        else {
+                            setEndpoints(data.data)
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    }) 
+            }
+            if(session) {
+                fetchEndpoints()
+            }
         }
     }, [session])
 
     useEffect(() => {
-        const getSubmissionsFetch = async () => {
-            await fetch(`/api/getSubmissions/all/${session.user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                if(data.error) {
-                    console.log(data.error)
-                }
-                else {
-                    setSubmissions(data.data)
-                }
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        if(session) {
+            const getSubmissionsFetch = async () => {
+                await fetch(`/api/getSubmissions/all/${session.user.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    if(data.error) {
+                        console.log(data.error)
+                    }
+                    else {
+                        setSubmissions(data.data)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }
+            getSubmissionsFetch()
         }
-        getSubmissionsFetch()
     }, [endpoints])
 
     return (
@@ -67,18 +71,18 @@ export default function Dashboard() {
                 </div>
             </div>
             <div className="flex flex-wrap">
-                <div className="md:w-[70%] w-full bg-gray-100 dark:bg-gray-800 p-2">
-                    <div className="p-[5%] min-h-[200px] rounded bg-gray-200 dark:bg-gray-900">
+                <div className="md:w-[70%] w-full bg-gray-100 dark:bg-gray-800 md:p-2">
+                    <div className="p-[5%] min-h-[200px] rounded bg-white dark:bg-gray-900">
                         <h4 className="p-2 font-semibold text-blue">SUBMISSIONS</h4>
                         <SubmissionChart submissions={submissions}/>
                     </div>
                 </div>
-                <div className="md:w-[70%] w-full bg-gray-100 dark:bg-gray-800 p-2">
-                    <div className="p-[5%] rounded bg-gray-200 dark:bg-gray-900">
+                <div className="md:w-[70%] w-full bg-gray-100 dark:bg-gray-800 md:p-2">
+                    <div className="p-[5%] rounded bg-white dark:bg-gray-900">
                         <h4 className="p-2 font-semibold text-blue">LATEST SUBMISSIONS</h4>
                         <div className="p-2">
                 
-                            { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
+                            { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
                             {
                                 submissions.reverse().splice(0,3).map(submission => (
                                     <div key={submission._id} className="grid gap-2 md:grid-cols-3 flex-1 border border-transparent border-y-gray-400/[0.2]">

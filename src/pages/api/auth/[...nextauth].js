@@ -40,7 +40,7 @@ export const authOptions = {
           const checkPassword = await compare(credentials.password, res.password);
           
           if(!checkPassword || res.email !== credentials.email) {
-            throw new Error("Username or Password do not match")
+            throw new Error("Email or Password not correct")
           }
 
           return { email: res.email, name: res.fullname }

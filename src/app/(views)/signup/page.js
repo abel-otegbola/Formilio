@@ -5,6 +5,7 @@ import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
 import { validateSignup } from "@/helper/validateSignup";
 import { useRouter } from "next/navigation";
+import Popup from "@/components/popup";
 
 export default function Signup() {
     const [show, setShow] = useState(false)
@@ -14,6 +15,7 @@ export default function Signup() {
     const [password, setPassword] = useState("")
     const [cpassword, setCPassword] = useState("")
     const [error, setError] = useState("")
+    const [success, setSuccess] = useState("")
     const router = useRouter()
 
     const submitForm = async (e) => {
@@ -34,7 +36,7 @@ export default function Signup() {
                     setError(data.error)
                 }
                 else {
-                    setError(data.msg)
+                    setSuccess("User created successfully")
                     router.push("/login")
                 }
                 setLoading(false)
@@ -56,7 +58,8 @@ export default function Signup() {
                 <h1 className="text-center py-6 text-blue text-2xl font-bold">Create your Account</h1>
                 <p className="text-center pb-10">Sign up to create and manage your forms</p>
 
-                { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
+                { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
+                { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
 
                 <label className="pb-2" htmlFor="fullname">Full Name:</label>
                 <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-5">

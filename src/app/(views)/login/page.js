@@ -1,4 +1,5 @@
 'use client'
+import Popup from "@/components/popup";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -12,6 +13,7 @@ export default function Login() {
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
+    const [success, setSuccess] = useState("")
     const router = useRouter()
 
     const submitForm = async (e) => {
@@ -20,6 +22,7 @@ export default function Login() {
         await signIn("credentials", { redirect: false, email, password, callbackUrl: `/dashboard` })
         .then(res => {
             if(res.ok) {
+                setSuccess("Login successful")
                 router.push(res.url)
             }
             else {
@@ -48,7 +51,8 @@ export default function Login() {
                     }
                 </div>
                 
-                { (error !== "") ? <p className="text-red-500 text-center p-4">{error}</p> : "" }
+                { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
+                { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
 
                 <label className="mb-2">Email:</label>
                 <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-7 mt-2">
