@@ -1,6 +1,8 @@
 'use client'
+import EndpointsChart from "@/components/endpointsDoughnut";
 import Submission from "@/components/submission";
 import SubmissionChart from "@/components/submissionChart";
+import { fetchData } from "@/helper/fetchData";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { FaLink } from "react-icons/fa";
@@ -9,6 +11,7 @@ export default function Dashboard() {
     const [submissions, setSubmissions] = useState([])
     const [endpoints, setEndpoints] = useState([])
     const [error, setError] = useState("")
+    const [loading, setLoading] = useState(false)
     const { data: session } = useSession()
     
     const handleMsg = (msg, action) => {
@@ -18,50 +21,17 @@ export default function Dashboard() {
         }, 3000)
     }
 
+  
     useEffect(() => {
-        if(session) {
-            const fetchEndpoints = async () => {
-                    await fetch(`/api/getEndpoints/${session.user.email}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        if(data.error) {
-                        console.log(data.error)
-                        }
-                        else {
-                            setEndpoints(data.data)
-                        }
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    }) 
-            }
-            if(session) {
-                fetchEndpoints()
-            }
+        setLoading(true)
+        if(session?.user.email) {
+            const email = session.user.email
+            fetchData("getEndpoints", email, setEndpoints)
+            fetchData("getSubmissions", email, setSubmissions)
+            setLoading(false)
         }
     }, [session])
-
-    useEffect(() => {
-        if(session) {
-            const getSubmissionsFetch = async () => {
-                await fetch(`/api/getSubmissions/all/${session.user.email}`)
-                .then(res => res.json())
-                .then(data => {
-                    if(data.error) {
-                        console.log(data.error)
-                    }
-                    else {
-                        console.log(data.data)
-                        setSubmissions(data.data)
-                    }
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-            }
-            getSubmissionsFetch()
-        }
-    }, [endpoints])
+    
 
     return (
         <div className="px-4">
@@ -93,17 +63,20 @@ export default function Dashboard() {
                     </div>
                 </div>
                 <div className="md:w-[30%] w-full p-2">
-                    <h4 className="p-2 font-semibold text-blue">ENDPOINTS</h4>
+                    <h4 className="p-2 font-semibold text-blue">LATEST ENDPOINTS</h4>
+                    <div className="md:p-[5%] p-4">
+                        <EndpointsChart endpoints={endpoints.reverse().splice(0, 3)} />
+                    </div>
                     { // 
-                    endpoints && endpoints.map(endpoint => (
-                        <div key={endpoint._id} 
-                            className={`flex md:flex-nowrap flex-wrap items-center p-2 my-2 hover:bg-blue hover:text-white rounded bg-gray-100 dark:bg-gray-800`}
-                        >
-                            <FaLink className="p-3 text-4xl rounded bg-gray-300/[0.3] dark:bg-slate-900/[0.4] text-blue mr-2" />
-                            <h3 className="w-[22%] px-2">{endpoint.title}</h3>
-                        </div>
-                    ))
-                }
+                        endpoints && endpoints.reverse().splice(0, 3).map(endpoint => (
+                            <div key={endpoint._id} 
+                                className={`flex md:flex-nowrap flex-wrap items-center p-2 my-2 hover:bg-blue hover:text-white rounded bg-gray-100 dark:bg-gray-800`}
+                            >
+                                <FaLink className="p-3 text-4xl rounded bg-gray-300/[0.3] dark:bg-slate-900/[0.4] text-blue mr-2" />
+                                <h3 className="w-[22%] px-2">{endpoint.title}</h3>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         </div>

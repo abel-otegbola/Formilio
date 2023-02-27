@@ -7,6 +7,7 @@ import { FiExternalLink } from "react-icons/fi";
 import View from "./view/page";
 import random from "random-key-generator"
 import Popup from "@/components/popup";
+import { fetchData } from "@/helper/fetchData";
 
 export default function Endpoints() {
     const [endpoints, setEndpoints] = useState([])
@@ -76,24 +77,12 @@ export default function Endpoints() {
     }
 
     useEffect(() => {
-        const fetchEndpoints = async () => {
-            if(session) {
-                await fetch(`/api/getEndpoints/${session.user.email}`)
-                .then(res => res.json())
-                .then(data => {
-                    if(data.error) {
-                        console.log(data.error)
-                    }
-                    else {
-                        setEndpoints(data.data)
-                    }
-                })
-                .catch(err => {
-                    console.log(err)
-                }) 
-            }
+        setLoading(true)
+        if(session?.user.email) {
+            const email = session.user.email
+            fetchData("getEndpoints", email, setEndpoints)
+            setLoading(false)
         }
-        fetchEndpoints()
 
     }, [success, session])
 
