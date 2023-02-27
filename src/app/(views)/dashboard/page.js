@@ -23,12 +23,10 @@ export default function Dashboard() {
 
   
     useEffect(() => {
-        setLoading(true)
         if(session?.user.email) {
             const email = session.user.email
             fetchData("getEndpoints", email, setEndpoints)
             fetchData("getSubmissions", email, setSubmissions)
-            setLoading(false)
         }
     }, [session])
     

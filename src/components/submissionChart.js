@@ -11,7 +11,6 @@ export default function SubmissionChart({ submissions }) {
     const [submissionData, setSubmissionData] = useState([0,0,0,0,0,0])
 
     useEffect(() => {
-        console.log(ChartDataX(submissions)[0])
         setSubmissionData(ChartDataX(submissions)[0])
     }, [submissions])
 

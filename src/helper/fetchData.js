@@ -3,10 +3,10 @@ export const fetchData = async (type, email, setState) => {
     .then(res => res.json())
     .then(data => {
         if(data.error) {
-        console.log(data.error)
+            return console.log(data.error)
         }
         else {
-            setState(data.data)
+            return setState(data.data)
         }
     })
     .catch(err => {
