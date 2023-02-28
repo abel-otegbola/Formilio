@@ -8,22 +8,22 @@ import { Doughnut } from 'react-chartjs-2';
 export default function EndpointsChart({ endpoints }) {
 
     const data = {
-        labels: endpoints.map(item => ( item.title )) || ['Loading', 'Loading', 'Loading'],
+        labels: ['Loading', 'Loading', 'Loading'],
         datasets: [
             {
                 data: [40, 20, 50],
                 borderColor: [
                     'rgba(227, 97, 200, 1)',
                     '#6252f2',
-                    'rgb(50, 200, 50, 1)'
+                    'rgb(239, 159, 11)'
                 ],
                 backgroundColor: [
                     'rgba(227, 97, 200, 0.7)',
                     'rgba(92, 82, 242, 0.7)',
-                    'rgb(50, 200, 50, 0.7)'
+                    'rgba(239, 159, 11, 0.7)'
                 ],
                 borderWidth: 2,
-                cutout: "80%",
+                cutout: "85%",
                 borderJoinStyle: "round",
                 borderRadius: 2
             }

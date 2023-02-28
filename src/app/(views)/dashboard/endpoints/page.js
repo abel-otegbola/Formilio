@@ -1,16 +1,15 @@
 'use client'
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { FaLink, FaTrashAlt } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
-import { FiExternalLink } from "react-icons/fi";
+import { FiLoader } from "react-icons/fi";
 import View from "./view/page";
 import random from "random-key-generator"
 import Popup from "@/components/popup";
 import { fetchData } from "@/helper/fetchData";
 
 export default function Endpoints() {
-    const [endpoints, setEndpoints] = useState([])
     const { data: session } = useSession()
     const [title, setTitle] = useState("")
     const [error, setError] = useState("")
@@ -76,15 +75,8 @@ export default function Endpoints() {
         }
     }
 
-    useEffect(() => {
-        setLoading(true)
-        if(session?.user.email) {
-            const email = session.user.email
-            fetchData("getEndpoints", email, setEndpoints)
-            setLoading(false)
-        }
-
-    }, [success, session])
+    
+    const { data: endpoints, isLoading: endpointsLoading, error: endpointsError } = fetchData("getEndpoints")
 
 
     return (
@@ -99,13 +91,17 @@ export default function Endpoints() {
                 </div>
             </div>
                         
-            { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
             { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
+            { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
 
             <div className="my-4 flex flex-wrap">
                 <div className="lg:w-[30%] w-full">
 
                 { // 
+                    endpointsError ? <Popup text={endpointsError} color={"red"} /> : (endpointsLoading) ? 
+                        <div className="flex justify-center items-center min-h-[70px]">
+                            <FiLoader className="animate-spin text-blue text-3xl" />    
+                        </div> : 
                     endpoints && endpoints.map(endpoint => (
                         <div key={endpoint._id} 
                             onClick={() => setActive(endpoint.key)}
@@ -121,7 +117,7 @@ export default function Endpoints() {
                 }
                 </div>
                 <div className="lg:w-[70%] w-full my-2">
-                    <p className="md:mx-2 mb-5 p-4 px-6 rounded bg-gray-300/[0.2] break-all">{endpoints.filter(item => item.key === active).map(submission => ( submission.address ))}</p>
+                    <p className="md:mx-2 mb-5 p-4 px-6 rounded bg-gray-300/[0.2] break-all">{endpoints && endpoints.filter(item => item.key === active).map(submission => ( submission.address ))}</p>
                     <View router={active} />
                 </div>
             </div>

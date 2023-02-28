@@ -1,16 +1,15 @@
 'use client'
-import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import Setup from "@/components/setup";
 import SubmissionModal from "@/components/submissionModal";
 import Popup from "@/components/popup";
+import { FiLoader } from "react-icons/fi";
+import { fetchData } from "@/helper/fetchData";
 
 export default function View({ router }) {
-    const [submissions, setSubmissions] = useState([])
-    const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
+    const [error, setError] = useState("")
     const [active, setActive] = useState("Submissions")
-    const { data: session } = useSession()
 
     const handleMsg = (msg, action) => {
         action(msg)
@@ -19,28 +18,11 @@ export default function View({ router }) {
         }, 3000)
     }
 
+    const { data: submissions, isLoading: submissionsLoading, error: submissionsError } = fetchData("getSubmissions", router)
+
     useEffect(() => {
-        const fetchEndpoints = async () => {
-            if(session) {
-                await fetch(`/api/getSubmissions/${router}`)
-                .then(res => res.json())
-                .then(data => {
-                    if(data.error) {
-                       handleMsg(data.error, setError)
-                    }
-                    else {
-                        setSubmissions(data.data)
-                    }
-                })
-                .catch(err => {
-                    handleMsg(err, setError)
-                }) 
-            }
-        }
-        fetchEndpoints()
-    }, [router, success])
-
-
+        console.log(submissions)
+    }, [submissions])
 
     return(
         <div className="relative lg:px-4 w-full shadow-lg">
@@ -57,14 +39,19 @@ export default function View({ router }) {
                     }
                 </div>
                 
-                { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
                 { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
+                { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
             </div>
             <div className={`dark:bg-gray-800 ${active === "Submissions"? "block" : "hidden"}`}>
 
                 {
-                    submissions.map(submission => (
-                        <SubmissionModal key={submission._id} data={JSON.parse(submission.data)} submission={submission} setSuccess={setSuccess} setError={setError} handleMsg={handleMsg} />
+                submissionsError ? <Popup text={submissionsError} color={"red"} /> : 
+                (submissionsLoading) ? 
+                    <div className="flex justify-center items-center min-h-[70px]">
+                        <FiLoader className="animate-spin text-blue text-3xl" />    
+                    </div> : 
+                    submissions && submissions.map(submission => (
+                        <SubmissionModal key={submission._id} data={submission.data && JSON.parse(submission.data)} submission={submission} setSuccess={setSuccess} setError={setError} handleMsg={handleMsg} />
                     ))
                 }
             </div>

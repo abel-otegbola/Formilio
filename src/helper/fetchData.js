@@ -1,15 +1,17 @@
-export const fetchData = async (type, email, setState) => {
-    await fetch(`/api/${type}/${email}`)
-    .then(res => res.json())
-    .then(data => {
-        if(data.error) {
-            return console.log(data.error)
-        }
-        else {
-            return setState(data.data)
-        }
-    })
-    .catch(err => {
-        console.log(err)
-    }) 
+'use-client'
+import { useSession } from "next-auth/react";
+import useSWR from 'swr'
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
+
+export const fetchData = (type, key) => {
+    const { data: session } = useSession()
+
+    const { data, error, isLoading } = useSWR(session ? `/api/${type}/${key || session.user.email}` : null, fetcher)
+
+    return {
+        data,
+        isLoading,
+        error
+    }
 }

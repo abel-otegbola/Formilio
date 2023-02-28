@@ -1,5 +1,5 @@
 import connectMongo from "@/database/connection";
-import { Endpoints, Submissions } from "@/model/Schema"
+import { Submissions } from "@/model/Schema"
 
 export default async function handler(req, res) {
     await connectMongo().catch(error => {
@@ -9,20 +9,9 @@ export default async function handler(req, res) {
 
     
     if(slug[0] === "all") {
-        if(slug[1]) {
-            Submissions.find({ "user": slug[1] }, function(err, data){
-                if(err) return res.status(404).json({ error: err });
-                return res.status(200).json({data})
-            })
-        }
+        return res.json(await Submissions.find({ 'user': slug[1] }).catch(err => res.status(400).json(err)))
     }
-    else  {
-        Submissions.find({ "key": slug[0] }, function(err, data){
-            if(err) {
-                return res.status(405).json({ error: err }); 
-            } else {
-                return res.status(200).json({ data })
-            }
-        })
+    else  {        
+        return res.json(await Submissions.find({ 'key': slug[0] }).catch(err => res.status(400).json(err)))
     }
 }

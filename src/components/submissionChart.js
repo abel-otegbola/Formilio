@@ -10,9 +10,9 @@ import { Line } from 'react-chartjs-2';
 export default function SubmissionChart({ submissions }) {
     const [submissionData, setSubmissionData] = useState([0,0,0,0,0,0])
 
-    useEffect(() => {
-        setSubmissionData(ChartDataX(submissions)[0])
-    }, [submissions])
+    // useEffect(() => {
+    //     setSubmissionData(ChartDataX(submissions)[0])
+    // }, [submissions])
 
     const data = {
         labels: ChartData(),
