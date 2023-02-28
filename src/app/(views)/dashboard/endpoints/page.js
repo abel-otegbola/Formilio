@@ -98,10 +98,13 @@ export default function Endpoints() {
                 <div className="lg:w-[30%] w-full">
 
                 { // 
-                    endpointsError ? <Popup text={endpointsError} color={"red"} /> : (endpointsLoading) ? 
-                        <div className="flex justify-center items-center min-h-[70px]">
-                            <FiLoader className="animate-spin text-blue text-3xl" />    
-                        </div> : 
+                    endpointsError || endpoints?.error
+                    ? 
+                    <Popup text={endpointsError || endpoints.error} color={"red"} /> : (endpointsLoading) 
+                    ? 
+                    <div className="flex justify-center items-center min-h-[70px]">
+                        <FiLoader className="animate-spin text-blue text-3xl" />    
+                    </div> : 
                     endpoints && endpoints.map(endpoint => (
                         <div key={endpoint._id} 
                             onClick={() => setActive(endpoint.key)}

@@ -32,7 +32,7 @@ export default function View({ router }) {
                         ["Submissions", "Setup", "Settings"].map((item, index) => (
                             <p 
                                 key={index} 
-                                className={`p-3 rounded-t-xl w-full border text-sm hover:border-x-blue hover:border-b-transparent hover:border-t-blue hover:text-blue text-center cursor-pointer border border-transparent ${active === item ? "border-x-blue border-t-blue text-blue" : "border-b-gray-100/[0.3]"}`}
+                                className={`p-3 rounded-lg w-full border text-sm hover:border-blue hover:text-blue text-center cursor-pointer border  ${active === item ? "border-blue text-blue" : "border-transparent"}`}
                                 onClick={() => setActive(item)}
                             >{item}</p>
                         ))
@@ -45,7 +45,10 @@ export default function View({ router }) {
             <div className={`dark:bg-gray-800 ${active === "Submissions"? "block" : "hidden"}`}>
 
                 {
-                submissionsError ? <Popup text={submissionsError} color={"red"} /> : 
+                submissionsError || submissions?.error
+                ? 
+                <Popup text={submissionsError || submissions.error} color={"red"} /> 
+                :
                 (submissionsLoading) ? 
                     <div className="flex justify-center items-center min-h-[70px]">
                         <FiLoader className="animate-spin text-blue text-3xl" />    
@@ -55,7 +58,7 @@ export default function View({ router }) {
                     ))
                 }
             </div>
-            <div className={`dark:bg-gray-800 ${active === "Setup"? "block" : "hidden"}`}>
+            <div className={`w-full overflow-x-auto dark:bg-gray-800 ${active === "Setup"? "block" : "hidden"}`}>
                 <Setup endpoint={router} />
             </div>
         </div>

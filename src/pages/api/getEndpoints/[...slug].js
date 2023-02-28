@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     const { slug } = req.query
 
     await connectMongo().catch(error => {
-        return res.json({ error: "Connection Failed"})
+        return res.status(404).json({ error: "Connection Failed"})
     })
     
     return res.json(await Endpoints.find({ 'user': slug[0] }).catch(err => res.status(400).json(err)))
