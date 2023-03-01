@@ -7,6 +7,7 @@ import Popup from "@/components/popup";
 import EndpointsList from "@/components/endpointsList";
 
 export default function Endpoints() {
+    const [endpoints, setEndpoints] = useState([])
     const { data: session } = useSession()
     const [title, setTitle] = useState("")
     const [error, setError] = useState("")
@@ -65,7 +66,7 @@ export default function Endpoints() {
             { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
 
             <div className="my-4">
-                <EndpointsList setError={setError} setSuccess={setSuccess} />
+                <EndpointsList setError={setError} setSuccess={setSuccess} setEndpoints={setEndpoints}/>
             </div>
         </div>
     )

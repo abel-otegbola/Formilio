@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSearchParams } from 'next/navigation'
 import Setup from "@/components/setup";
 import SubmissionList from "@/components/submissionsList";
+import Settings from "@/components/settings";
 
 export default function View() {
     const [submissions, setSubmissions] = useState([])
@@ -37,6 +38,9 @@ export default function View() {
             </div>
             <div className={`w-full overflow-x-auto dark:bg-gray-800 ${active === "Setup"? "block" : "hidden"}`}>
                 <Setup endpoint={router} />
+            </div>
+            <div className={`w-full overflow-x-auto dark:bg-gray-800 ${active === "Settings"? "block" : "hidden"}`}>
+                <Settings id={router} />
             </div>
         </div>
     )
