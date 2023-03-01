@@ -35,7 +35,7 @@ export default function EndpointsList({ setEndpoints }) {
 
 
     return (
-        <div className="w-full [&>*:nth-child(odd)]:bg-gray-300/[0.3] dark:[&>*:nth-child(odd)]:bg-gray-200/[0.1]">
+        <div className="w-full [&>*:nth-child(odd)]:bg-gray-300/[0.3] dark:[&>*:nth-child(odd)]:bg-gray-50/[0.1]">
 
             
             { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
@@ -53,11 +53,11 @@ export default function EndpointsList({ setEndpoints }) {
                     <div key={endpoint._id} 
                         className={`flex justify-between md:flex-nowrap flex-wrap items-center p-3 bg-white dark:bg-gray-900`}
                     >
-                        <div className="flex items-center">
+                        <div className="flex flex-1 items-center">
                             <FaLink className="p-3 text-4xl rounded bg-gray-300/[0.3] dark:bg-slate-900/[0.4] text-blue mr-2" />
                             <Link href={{pathname: '/dashboard/endpoints/view',
                                 query: {title: endpoint.title, endpoint: endpoint.key}
-                            }} className="w-[22%] px-2">{endpoint.title}</Link>
+                            }} className="px-2">{endpoint.title}</Link>
                         </div>
                         <FaTrashAlt className="p-3 text-4xl rounded text-red-400 cursor-pointer text-right" onClick={() => handleDelete(endpoint._id)} />
                     </div>

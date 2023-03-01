@@ -39,7 +39,7 @@ export default function SubmissionModal({ data, submission, setSuccess, setError
                 </div>
                 <div className="flex items-center">
                     <p className="pl-2 text-[10px]">{convert(submission.createdAt)}</p>
-                    <FaTrashAlt className="text-red-400 mx-5 cursor-pointer" onClick={() => handleDelete(submission._id)}/>
+                    <FaTrashAlt className="text-red-400 p-3 text-4xl cursor-pointer" onClick={() => handleDelete(submission._id)}/>
                 </div>
             </div>
 
