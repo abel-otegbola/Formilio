@@ -1,13 +1,10 @@
 'use client'
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
-import { FaLink, FaTrashAlt } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
-import { FiLoader } from "react-icons/fi";
 import random from "random-key-generator"
 import Popup from "@/components/popup";
-import { fetchData } from "@/helper/fetchData";
-import Link from "next/link";
+import EndpointsList from "@/components/endpointsList";
 
 export default function Endpoints() {
     const { data: session } = useSession()
@@ -16,13 +13,6 @@ export default function Endpoints() {
     const [success, setSuccess] = useState("")
     const [loading, setLoading] = useState(false)
     const inputRef = useRef(null)
-
-    const handleMsg = (msg, action) => {
-        action(msg)
-        setTimeout(() => {
-            action("")
-        }, 3000)
-    }
 
     const handleEndpoint = async () => {
         const key = random(10)
@@ -38,49 +28,27 @@ export default function Endpoints() {
             .then(res => res.json())
             .then(data => {
                 if(data.error) {
-                    handleMsg(data.error, setError)
+                    setError(data.error)
                 }
                 else {
-                    handleMsg("Endpoint created successfully", setSuccess)
+                    setSuccess("Endpoint created successfully")
                     window.location.reload()
                 }
                 setLoading(false)
             })
             .catch(err => {
-                handleMsg(err, setError)
+                setError(err)
                 setLoading(false)
             }) 
             setTitle("")
         }
         else {
-            handleMsg("Please add the endpoint title", setError)
+            setError("Please add the endpoint title")
         }
     }
 
-    const handleDelete=  async (id) => {
-        if(session) {
-            await fetch(`/api/deleteEndpoint/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                if(data.error) {
-                    setError(data.error)
-                }
-                else {
-                    handleMsg("Endpoint deleted successfully", setSuccess)
-                    window.location.reload()
-                }
-            })
-            .catch(err => {
-                console.log(err)
-            }) 
-        }
-    }
-    
-    const { data: endpoints, isLoading: endpointsLoading, error: endpointsError } = fetchData("getEndpoints")
-    
-    
 
-
+    
     return (
         <div className="px-4">
             <div className="w-full bg-blue p-4 mb-4 rounded">
@@ -97,31 +65,7 @@ export default function Endpoints() {
             { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
 
             <div className="my-4">
-                <div className="w-full [&>*:nth-child(odd)]:bg-gray-300/[0.3]">
-
-                { // 
-                    endpointsError || endpoints?.error
-                    ? 
-                    <Popup text={error || endpoints.error} color={"red"} /> : (endpointsLoading) 
-                    ? 
-                    <div className="flex justify-center items-center min-h-[70px]">
-                        <FiLoader className="animate-spin text-blue text-3xl" />    
-                    </div> : 
-                    endpoints?.map(endpoint => (
-                        <div key={endpoint._id} 
-                            className={`flex justify-between md:flex-nowrap flex-wrap items-center p-3 border border-transparent border-y-gray-200 dark:border-y-gray-200[0.2] bg-white dark:bg-gray-900`}
-                        >
-                            <div className="flex items-center">
-                                <FaLink className="p-3 text-4xl rounded bg-gray-300/[0.3] dark:bg-slate-900/[0.4] text-blue mr-2" />
-                                <Link href={{pathname: '/dashboard/endpoints/view',
-                                    query: {title: endpoint.title, endpoint: endpoint.key}
-                                }} className="w-[22%] px-2">{endpoint.title}</Link>
-                            </div>
-                            <FaTrashAlt className="p-3 text-4xl rounded text-red-400 cursor-pointer text-right" onClick={() => handleDelete(endpoint._id)} />
-                        </div>
-                    ))
-                }
-                </div>
+                <EndpointsList setError={setError} setSuccess={setSuccess} />
             </div>
         </div>
     )

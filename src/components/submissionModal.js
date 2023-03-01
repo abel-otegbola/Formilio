@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import Submission from "./submission";
 
-export default function SubmissionModal({ data, submission, setSuccess, setError, handleMsg }) {
+export default function SubmissionModal({ data, submission, setSuccess, setError }) {
     const [openModal, setOpenModal] = useState(false)
     const modalRef = useRef(null)
 
@@ -18,14 +18,15 @@ export default function SubmissionModal({ data, submission, setSuccess, setError
         .then(res => res.json())
         .then(data => {
             if(data.error) {
-                handleMsg(data.error, setError)
+                setError(data.error)
             }
             else {
-                handleMsg("Deleted successfully", setSuccess)
+                setSuccess("Deleted successfully")
+                window.location.reload()
             }
         })
         .catch(err => {
-            handleMsg(err, setError)
+            setError(err)
         }) 
     }
 
