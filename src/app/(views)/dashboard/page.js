@@ -31,7 +31,7 @@ export default function Dashboard() {
                         <h4 className="p-2 font-semibold text-blue">SUBMISSIONS</h4>
                         <SubmissionChart submissions={submissions && submissions}/>
                     </div>
-                    <div className="md:p-[5%] py-6 rounded bg-white dark:bg-gray-900">
+                    <div className="md:p-[5%] p-2 py-6 rounded bg-white dark:bg-gray-900">
                         <h4 className="p-2 font-semibold text-blue">LATEST SUBMISSIONS</h4>
                         <div className="p-2">
                 

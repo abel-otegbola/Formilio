@@ -6,7 +6,7 @@ import "./jsonformat.css"
 export default function Setup ({ endpoint }) {
     const [active, setActive] = useState("HTML")
     return (
-        <div className="mt-4 p-2">
+        <div className="mt-4 p-2 px-4">
             <div className="flex gap-2">
                 {
                     ["HTML"].map((item, index) => (
@@ -54,7 +54,7 @@ export default function Setup ({ endpoint }) {
                 <p className="p-1 w-fit px-3 bg-fuchsia-200/[0.5] rounded-full border-2 border-white shadow-lg mr-2">3</p>
                 <div>
                     <h3 className="font-semibold">Your form is ready</h3>
-                    <p className="opacity-[0.5]">Your form is ready to recieve submissions</p>
+                    <p className="opacity-[0.5] mb-6">Your form is ready to recieve submissions</p>
 
                     <div className="my-4">
                         <a href={`/test?endpoint=${endpoint}`} className="p-3 px-4 rounded bg-blue text-white">Test the endpoint</a>

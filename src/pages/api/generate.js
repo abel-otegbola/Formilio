@@ -6,9 +6,6 @@ import { Endpoints } from "@/model/Schema";
 export default async function handler(req, res) {
     await connectMongo().catch(error => res.json({ error: "Connection Failed"}))
     const { user, title, key, address } = req.body
-    
-    Endpoints.create({ user, title, key, address }, function(err, data){
-        if(err) return res.status(404).json({ error: err });
-        res.status(200).json({ msg: "Endpoint created successfully", endpoints: data })
-    })
+
+    return res.json(await Endpoints.create({ user, title, key, address }).catch(err => res.status(400).json(err)))
 }

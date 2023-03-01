@@ -1,13 +1,13 @@
 'use client'
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { FaLink, FaTrashAlt } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
 import { FiLoader } from "react-icons/fi";
-import View from "./view/page";
 import random from "random-key-generator"
 import Popup from "@/components/popup";
 import { fetchData } from "@/helper/fetchData";
+import Link from "next/link";
 
 export default function Endpoints() {
     const { data: session } = useSession()
@@ -15,7 +15,6 @@ export default function Endpoints() {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [loading, setLoading] = useState(false)
-    const [active, setActive] = useState("")
     const inputRef = useRef(null)
 
     const handleMsg = (msg, action) => {
@@ -42,7 +41,8 @@ export default function Endpoints() {
                     handleMsg(data.error, setError)
                 }
                 else {
-                    handleMsg(data.msg, setSuccess)
+                    handleMsg("Endpoint created successfully", setSuccess)
+                    window.location.reload()
                 }
                 setLoading(false)
             })
@@ -67,6 +67,7 @@ export default function Endpoints() {
                 }
                 else {
                     handleMsg("Endpoint deleted successfully", setSuccess)
+                    window.location.reload()
                 }
             })
             .catch(err => {
@@ -74,9 +75,10 @@ export default function Endpoints() {
             }) 
         }
     }
-
     
     const { data: endpoints, isLoading: endpointsLoading, error: endpointsError } = fetchData("getEndpoints")
+    
+    
 
 
     return (
@@ -94,34 +96,31 @@ export default function Endpoints() {
             { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
             { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
 
-            <div className="my-4 flex flex-wrap">
-                <div className="lg:w-[30%] w-full">
+            <div className="my-4">
+                <div className="w-full [&>*:nth-child(odd)]:bg-gray-300/[0.3]">
 
                 { // 
                     endpointsError || endpoints?.error
                     ? 
-                    <Popup text={endpointsError || endpoints.error} color={"red"} /> : (endpointsLoading) 
+                    <Popup text={error || endpoints.error} color={"red"} /> : (endpointsLoading) 
                     ? 
                     <div className="flex justify-center items-center min-h-[70px]">
                         <FiLoader className="animate-spin text-blue text-3xl" />    
                     </div> : 
-                    endpoints && endpoints.map(endpoint => (
+                    endpoints?.map(endpoint => (
                         <div key={endpoint._id} 
-                            onClick={() => setActive(endpoint.key)}
-                            className={`flex justify-between md:flex-nowrap flex-wrap items-center p-2 my-2 hover:bg-blue hover:text-white rounded ${active === endpoint.key ? "bg-blue text-white": "bg-gray-100 dark:bg-gray-800"}`}
+                            className={`flex justify-between md:flex-nowrap flex-wrap items-center p-3 border border-transparent border-y-gray-200 dark:border-y-gray-200[0.2] bg-white dark:bg-gray-900`}
                         >
                             <div className="flex items-center">
                                 <FaLink className="p-3 text-4xl rounded bg-gray-300/[0.3] dark:bg-slate-900/[0.4] text-blue mr-2" />
-                                <h3 className="w-[22%] px-2">{endpoint.title}</h3>
+                                <Link href={{pathname: '/dashboard/endpoints/view',
+                                    query: {title: endpoint.title, endpoint: endpoint.key}
+                                }} className="w-[22%] px-2">{endpoint.title}</Link>
                             </div>
                             <FaTrashAlt className="p-3 text-4xl rounded text-red-400 cursor-pointer text-right" onClick={() => handleDelete(endpoint._id)} />
                         </div>
                     ))
                 }
-                </div>
-                <div className="lg:w-[70%] w-full my-2">
-                    <p className="md:mx-2 mb-5 p-4 px-6 rounded bg-gray-300/[0.2] break-all">{endpoints && endpoints.filter(item => item.key === active).map(submission => ( submission.address ))}</p>
-                    <View router={active} />
                 </div>
             </div>
         </div>
