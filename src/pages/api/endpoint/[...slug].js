@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   })
   const { slug } = req.query
 
-  Endpoints.findOne({ key: slug[0] }, function(err, data) {
+  Endpoints.findOne({ "key": slug[0] }, function(err, data) {
     if(err) return res.status(404).json({ error: "User not found" })
     Submissions.create({ key: slug[0], user: data.user, data: JSON.stringify(req.body)}, function(err, data){
       if(err) return res.status(404).json({ error: err });

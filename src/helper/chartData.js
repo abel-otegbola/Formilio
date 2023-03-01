@@ -26,7 +26,7 @@ export const ChartDataX = (data) => {
     let numbers = [];
 
     numbers.push(getSixNumbers(currentMonth).map(number => (
-        data.filter(item => item.createdAt.split("T")[0].split("-")[1] -1 === number).length
+        data?.filter(item => item.createdAt.split("T")[0].split("-")[1] -1 === number).length
     )))
     return numbers
 }

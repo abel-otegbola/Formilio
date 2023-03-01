@@ -52,7 +52,7 @@ export default function Endpoints() {
     
     return (
         <div className="px-4">
-            <div className="w-full bg-blue p-4 mb-4 rounded">
+            <div className="relative w-full bg-blue p-4 mb-4 rounded ">
                 <h4 className="text-white my-4 text-lg">Endpoints</h4>
                 <div className="flex">
                     <div className="md:flex md:w-[70%] p-2 mb-2 gap-2 rounded-lg w-full align-center bg-gray-100 dark:bg-gray-800">

@@ -16,7 +16,7 @@ export default function EndpointsList({ setEndpoints }) {
 
 
     return (
-        <div className="w-full [&>*:nth-child(odd)]:bg-gray-300/[0.3] dark:[&>*:nth-child(odd)]:bg-gray-50/[0.1]">
+        <div className="w-full [&>*:nth-child(odd)]:bg-gray-300/[0.2] [&>*:nth-child(odd)]:bg-gray-50/[0.1]">
 
             {  
                 endpointsError || endpoints?.error
