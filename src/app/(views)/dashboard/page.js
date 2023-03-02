@@ -21,10 +21,10 @@ export default function Dashboard() {
     return (
         <div className="px-4">
                 <Header text={`Welcome: ${session?.user.name}`} icon={<FaPaperPlane />} image={"/formui.webp"}>
-                    <div className="flex">
-                        <a href="/dashboard/endpoints" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Generate endpoints</a>
-                        <a href="/dashboard/builder" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Build forms</a>
-                        <a href="/dashboard/templates" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Explore templates</a>
+                    <div className="flex flex-wrap gap-2">
+                        <a href="/dashboard/endpoints" className="p-2 text-sm px-6 rounded bg-hoverblue text-white hover:bg-blue hover:border hover:border-white">Generate endpoints</a>
+                        <a href="/dashboard/builder" className="p-2 text-sm px-6 rounded bg-hoverblue text-white hover:bg-blue hover:border hover:border-white">Build forms</a>
+                        <a href="/dashboard/templates" className="p-2 text-sm px-6 rounded bg-hoverblue text-white hover:bg-blue hover:border hover:border-white">Explore templates</a>
                     </div>
                 </Header>
             <div className="flex flex-wrap">

@@ -12,7 +12,7 @@ export default function Templates() {
     return (
         <div className="px-4">
             <Header text={"Templates"} icon={<FaDesktop />}>
-                <p>Choose a template for your forms.</p>
+                <p className="text-white">Choose a template for your forms.</p>
             </Header>
 
             <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-[40px] py-4">
