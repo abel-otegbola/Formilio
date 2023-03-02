@@ -1,5 +1,6 @@
 'use client'
 
+import { closeBlock } from "@/helper/closeBlock"
 import { useEffect, useRef, useState } from "react"
 import { BsFileText, BsImage, BsInputCursorText, BsLayoutSidebarInsetReverse, BsSquareFill, BsTextParagraph } from "react-icons/bs"
 import { FaHeading, FaTimes } from "react-icons/fa"

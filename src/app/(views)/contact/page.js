@@ -34,7 +34,7 @@ export default function Contact() {
                 </div> 
 
                 <div className="md:w-[70%] w-full">
-                    <form action={`https://mailme.vercel.app/api/endpoint/`} method="post" className="bg-slate-100 dark:bg-gray-800/[0.6] rounded p-[5%]">
+                    <form action={`https://mailme.vercel.app/api/endpoint/2y04cgf2mc`} method="post" className="bg-slate-100 dark:bg-gray-800/[0.6] rounded p-[5%]">
 
                         <div className="grid md:grid-cols-2 gap-2 ">
                             <label>Name:

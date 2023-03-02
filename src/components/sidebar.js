@@ -14,9 +14,9 @@ export default function Sidebar() {
 
     const links = [
         { name: "Dashboard", to: "", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
-        { name: "Endpoints", to: "/endpoints", icon: <FaLink />,  iconRight: <span className="bg-purple-500 text-white p-1 rounded text-[9px]">new</span> },
+        { name: "Endpoints", to: "/endpoints", icon: <FaLink />,  iconRight: <span className="bg-purple-500 text-white p-1 rounded text-[9px]">3</span> },
         { name: "Builder", to: "/builder", icon: <FaRobot />,  iconRight: <FaPlusCircle/> },
-        { name: "Manage forms", to: "/manage", icon: <FaBoxes />,  iconRight: <span className="bg-green-500 text-white p-1 px-2 rounded text-[9px]">3</span> },
+        { name: "Templates", to: "/templates", icon: <FaBoxes />,  iconRight: <span className="bg-green-500 text-white p-1 px-2 rounded text-[9px]">new</span> },
         { name: "Analytics", to: "/analytics", icon: <FaChartLine />,  iconRight: <FaArrowAltCircleRight/> },
         { name: "Notifications", to: "/notifications", icon: <FaCommentAlt />,  iconRight: <span className="bg-purple-400 text-white p-1 px-2 rounded text-[8px]">3</span> },
         { name: "Profile", to: "/profile", icon: <FaUserCircle />,  iconRight: <FaAdjust/> },

@@ -4,11 +4,15 @@ import DragCard from "@/components/formComponents/dragCard";
 import DropBox from "@/components/formComponents/dropBox";
 import Preview from "@/components/formComponents/preview";
 import { useState } from "react";
+import { useSearchParams } from 'next/navigation'
+import Header from "@/components/header";
+import { FaRobot } from "react-icons/fa";
 
 export default function Builder() {
     const [active, setActive] = useState()
     const [show, setShow] = useState("Build")
     const [components, setComponents] = useState([])
+    const id = useSearchParams().get("id")
     
 
     const handleDrag = (dragIndex, hoverIndex) => {
@@ -51,12 +55,11 @@ export default function Builder() {
 
     return (
         <div className="px-4">
-            <div className="w-full h-[130px] bg-blue p-4 mb-4 rounded">
-                <h4 className="text-white my-4 text-lg">Form builder</h4>
+            <Header text={id ? `Customizing ${id}` : "Builder"} icon={<FaRobot />}>
                 <div className="flex">
-                    <a href="/dashboard/manage" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Manage created forms</a>
+                    <a href="/dashboard/templates" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Find templates</a>
                 </div>
-            </div>
+            </Header>
             <div className="flex items-center justify-between mt-5 ml-4">
                 <ul className="flex">
                     <li className={`p-2 px-5 border border-gray-100/[0.1] hover:border-b-blue hover:text-blue cursor-pointer mr-2 ${show === "Build" ? "border-b-blue text-blue": ""}`} onClick={() => setShow("Build")}>Build</li>

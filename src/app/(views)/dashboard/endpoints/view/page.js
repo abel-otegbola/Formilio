@@ -15,7 +15,7 @@ export default function View() {
     return(
         <div className="relative px-4 w-full">
 
-            <div className="my-6">
+            <div className="my-6 md:mx-4">
                 <h1 className="text-3xl font-semibold py-2">{title}</h1>
                 <p>You have <span className="text-blue font-semibold p-2">{submissions?.length}</span> {submissions?.length === 1 ? "Submission" : "Submissions"}</p>
             </div>
@@ -26,7 +26,7 @@ export default function View() {
                         ["Submissions", "Setup", "Settings"].map((item, index) => (
                             <p 
                                 key={index} 
-                                className={`p-3 px-6 rounded border text-sm hover:border-blue hover:text-blue text-center cursor-pointer border  ${active === item ? "border-blue text-blue shadow-lg" : "border-transparent"}`}
+                                className={`p-3 px-6 rounded border text-sm hover:border-blue hover:text-blue text-center cursor-pointer border  ${active === item ? "border-blue text-blue shadow-lg dark:shadow-xl" : "border-transparent"}`}
                                 onClick={() => setActive(item)}
                             >{item}</p>
                         ))
@@ -39,7 +39,7 @@ export default function View() {
             <div className={`w-full overflow-x-auto dark:bg-gray-800 ${active === "Setup"? "block" : "hidden"}`}>
                 <Setup endpoint={router} />
             </div>
-            <div className={`w-full overflow-x-auto dark:bg-gray-800 ${active === "Settings"? "block" : "hidden"}`}>
+            <div className={`w-full ${active === "Settings"? "block" : "hidden"}`}>
                 <Settings id={router} />
             </div>
         </div>

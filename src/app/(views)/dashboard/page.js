@@ -2,11 +2,13 @@
 'use client'
 import EndpointsChart from "@/components/endpointsDoughnut";
 import EndpointsList from "@/components/endpointsList";
+import Header from "@/components/header";
 import Popup from "@/components/popup";
 import SubmissionChart from "@/components/submissionChart";
 import SubmissionList from "@/components/submissionsList";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { FaPaperPlane } from "react-icons/fa";
 
 
 export default function Dashboard() {
@@ -18,12 +20,13 @@ export default function Dashboard() {
 
     return (
         <div className="px-4">
-            <div className="w-full h-[130px] bg-blue p-4 mb-4 rounded">
-                <h4 className="text-white my-4"><span className="text-lg">Welcome:</span> {session?.user.name}</h4>
-                <div className="flex">
-                    <a href="/dashboard/endpoints" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Generate endpoints</a>
-                </div>
-            </div>
+                <Header text={`Welcome: ${session?.user.name}`} icon={<FaPaperPlane />} image={"/formui.webp"}>
+                    <div className="flex">
+                        <a href="/dashboard/endpoints" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Generate endpoints</a>
+                        <a href="/dashboard/builder" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Build forms</a>
+                        <a href="/dashboard/templates" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Explore templates</a>
+                    </div>
+                </Header>
             <div className="flex flex-wrap">
                 <div className="md:w-[70%] w-full md:p-2 py-5">
                     <div className="p-2 min-h-[200px] rounded bg-white dark:bg-gray-900">

@@ -16,12 +16,18 @@ export default function EndpointsList({ setEndpoints }) {
 
 
     return (
-        <div className="w-full [&>*:nth-child(odd)]:bg-gray-300/[0.2] [&>*:nth-child(odd)]:bg-gray-50/[0.1]">
+        <div className="w-full [&>*:nth-child(odd)]:bg-gray-300/[0.06] backdrop-opacity-10">
 
             {  
                 endpointsError || endpoints?.error
                 ? 
-                <Popup text={endpointsError || endpoints.error} color={"red"} /> : (endpointsLoading) 
+                <div>
+                    <Popup text={endpointsError || endpoints.error} color={"red"} />
+                    <div className="flex justify-center flex-col items-center p-[40px]">
+                        <p className="mb-4">Could not connect</p>
+                        <button className="p-2 px-6 rounded bg-blue text-white hover:bg-hoverblue" onClick={() => window.location.reload()}>Refresh</button>
+                    </div>
+                </div> : (endpointsLoading) 
                 ? 
                 <div className="flex justify-center items-center min-h-[70px]">
                     <FiLoader className="animate-spin text-blue text-3xl" />    
@@ -30,7 +36,7 @@ export default function EndpointsList({ setEndpoints }) {
                     <Link href={{pathname: '/dashboard/endpoints/view',
                                 query: {title: endpoint.title, endpoint: endpoint.key}
                             }}  key={endpoint._id} 
-                        className={`flex justify-between md:flex-nowrap flex-wrap items-center p-3 bg-white dark:bg-gray-900`}
+                        className={`flex justify-between md:flex-nowrap flex-wrap items-center p-3 bg-gray-100 dark:bg-gray-900`}
                     >
                         <div className="flex flex-1 items-center">
                             <FaLink className="p-3 text-4xl rounded bg-gray-300/[0.3] dark:bg-slate-900/[0.4] text-blue mr-2" />

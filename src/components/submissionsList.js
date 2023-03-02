@@ -24,7 +24,13 @@ export default function SubmissionList({ type, router, setSubmissions }) {
             {
                 submissionsError || submissions?.error
                 ? 
-                <Popup text={submissionsError || submissions.error} color={"red"} /> 
+                <div>
+                    <Popup text={submissionsError || submissions.error} color={"red"} /> 
+                    <div className="py-6">
+                        <p className="mb-4">Could not connect.</p>
+                        <button className="p-2 px-6 rounded bg-blue text-white hover:bg-hoverblue" onClick={() => window.location.reload()}>Refresh</button>
+                    </div>
+                </div>
                 :
                 (submissionsLoading) ? 
                 <div className="flex justify-center items-center min-h-[70px]">
