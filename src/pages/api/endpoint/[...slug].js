@@ -20,7 +20,7 @@ export default async function handler(req, res) {
   async function submitAction(user) {
     try{
       await Submissions.create({ key: slug[0], user, data: JSON.stringify(req.body)})
-      res.status(200).redirect(`${process.env.NEXTAUTH_URL}/thankyou`)
+      res.redirect(307, `${process.env.NEXTAUTH_URL}/thankyou`)
     }
     catch(err){
       res.redirect(307, `${process.env.NEXTAUTH_URL}/error`);
