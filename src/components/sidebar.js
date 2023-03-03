@@ -33,7 +33,7 @@ export default function Sidebar() {
     return(
         <>
         {/* Button to close and open sidebar */}
-        <div className="fixed top-0 left-0 text-gray-500 font-bold text-2xl p-4 md:hidden block z-[150]" onClick={() => setOpen(!open)} >
+        <div className="fixed top-1 left-0 text-gray-500 font-bold text-2xl p-4 md:hidden block z-[150]" onClick={() => setOpen(!open)} >
                     {
                         open ? <FaTimes /> : <BsLayoutSidebarInset />
                     }
