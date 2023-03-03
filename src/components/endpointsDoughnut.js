@@ -1,14 +1,20 @@
 'use client'
 import { Chart, ArcElement, Title, Tooltip, Legend, Filler } from 'chart.js'
+import { useEffect, useState } from 'react';
 
 Chart.register( ArcElement, Filler, Title, Tooltip, Legend );
 
 import { Doughnut } from 'react-chartjs-2';
 
-export default function EndpointsChart({ endpoints }) {
+export default function EndpointsChart({ endpoints, submissions }) {
+    const [endpointsData, setEndpointsData] = useState(['Loading', 'Loading', 'Loading'])
+
+    useEffect(() => {
+        endpoints.filter(endpoint => endpoint.key)
+    }, [endpoints, submissions])
 
     const data = {
-        labels: ['Loading', 'Loading', 'Loading'],
+        labels: endpointsData,
         datasets: [
             {
                 data: [40, 20, 50],

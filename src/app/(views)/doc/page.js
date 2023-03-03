@@ -4,16 +4,11 @@ import { usePathname } from "next/navigation"
 export default function Doc() {
     const path = usePathname()
     const links = [
-        { name: "Get Started", to: "#get-started"},
+        { name: "Get Started", to: "#"},
         { name: "Introduction", to: "#introduction"},
-        { name: "Builder", to: "/builder" },
-        { name: "Templates", to: "/templates" },
-        { name: "Analytics", to: "/analytics" },
-        { name: "Notifications", to: "/notifications" },
-        { name: "Profile", to: "/profile" },
-        { name: "Settings", to: "/settings" },
-        { name: "Billing & Payments", to: "/billing" },
-        { name: "Logout", to: "#" },
+        { name: "Features", to: "/builder" },
+        { name: "Builder", to: "/templates" },
+        { name: "Templates", to: "/analytics" },
     ]
 
     return (
