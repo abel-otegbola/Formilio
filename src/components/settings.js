@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { FaLink, FaPenFancy, FaTimes, FaTrashAlt, FaUpload } from "react-icons/fa"
 import Popup from "./popup"
+import { useRouter } from "next/navigation"
 
 export default function Settings({ id }) {
     const [error, setError] = useState("")
@@ -8,6 +9,7 @@ export default function Settings({ id }) {
     const [loading, setLoading] = useState(false)
     const [emails, setEmails] = useState([])
     const [name, setName] = useState("")
+    const router = useRouter()
 
     const addEmail = () => {
         if(name !== "") {
@@ -20,6 +22,7 @@ export default function Settings({ id }) {
     }
 
     const handleDelete = async () => {
+        console.log(id)
         setLoading(true)
         await fetch(`/api/deleteEndpoint/${id}`)
         .then(res => res.json())
@@ -30,7 +33,7 @@ export default function Settings({ id }) {
             else {
                 setSuccess("Endpoint deleted successfully")
                 setLoading(false)
-                window.location.pathname("/dashboard/endpoints")
+                router.push("/dashboard/endpoints")
             }
         })
         .catch(err => {

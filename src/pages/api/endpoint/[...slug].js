@@ -5,16 +5,26 @@ import { Endpoints, Submissions } from "@/model/Schema";
 
 export default async function handler(req, res) {
   await connectMongo().catch(error => {
-    return res.json({ error: "Connection Failed"})
+    return res.redirect(307, "http://localhost:3000/error");
   })
   const { slug } = req.query
 
-  Endpoints.findOne({ "key": slug[0] }, function(err, data) {
-    if(err) return res.status(404).json({ error: "User not found" })
-    Submissions.create({ key: slug[0], user: data.user, data: JSON.stringify(req.body)}, function(err, data){
-      if(err) return res.status(404).json({ error: err });
-      return res.status(200).redirect("https://mailme.vercel.app/thankyou")
-    })
-  })
+  try{
+    const data = await Endpoints.findOne({ "key": slug[0] })
+    submitAction(data.user)
+  }
+  catch(err){
+    res.redirect(307, "http://localhost:3000/error");
+  }
+
+  async function submitAction(user) {
+    try{
+      await Submissions.create({ key: slug[0], user, data: JSON.stringify(req.body)})
+      res.status(200).redirect("http://localhost:3000/thankyou")
+    }
+    catch(err){
+      res.redirect(307, "http://localhost:3000/error");
+    }
+  }
 
 }
