@@ -25,8 +25,7 @@ export const ChartDataX = (data) => {
 
     let numbers = [];
 
-    if(typeof data === "object") {
-      console.log(data)
+    if(!data.error) {
       numbers.push(getSixNumbers(currentMonth).map(number => (
           data.filter(item => item.createdAt.split("T")[0].split("-")[1] -1 === number).length
       )))

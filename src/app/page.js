@@ -8,7 +8,7 @@ import "../components/jsonformat.css"
 export default function Home() {
     return(
         <div>
-            <div className="flex md:flex-nowrap flex-wrap md:px-[10%] px-[5%] py-[10%] font-body bg-slate-200/[0.2] dark:bg-gray-900">
+            <div className="flex md:flex-nowrap flex-wrap md:px-[10%] px-[5%] py-[7%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
                 <div className="md:w-[50%] w-full mr-[3%] ">
                     <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">Effortlessly generate HTML endpoints for your static forms.</h1>
                     <p className="my-4 leading-[25px]">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
@@ -18,8 +18,8 @@ export default function Home() {
                         <a href="/test" className="flex items-center justify-center p-[10px] px-[20px] md:ml-4 hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Try it out <FiArrowRightCircle className="ml-2"/></a>
                     </div>
                 </div>
-                <div className="md:w-[50%] md:mt-0 mt-[40px] w-full">
-                    <Image src={"/formhero.png"} width="700" height="500" alt="form ui"/>
+                <div className="md:w-[50%] md:mt-0 mt-[40px] w-full bg-gradient-to-r p-[20px] backdrop-blur-xl from-blue/[0.2] to-fuchsia-500/[0.2]">
+                    <Image src={"/bgdashboard.png"} width="700" height="500" alt="form ui" className="drop-shadow-xl"/>
                 </div>
             </div>
             
