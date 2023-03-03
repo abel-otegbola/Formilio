@@ -21,7 +21,7 @@ export default function Topbar() {
     }, [open])
 
     return (
-        <div className="fixed w-full flex shadow-sm font-body justify-between items-center p-2 md:py-2 py-4 md:px-[10%] px-[5%] bg-white/[0.7] dark:bg-gray-900/[0.7] border border-slate-50/[0.1] border-b-gray-100 dark:border-b-gray-200/[0.1] z-[100]">
+        <div className="fixed w-full flex shadow-sm font-body justify-between items-center p-2 md:py-2 md:px-[10%] px-[5%] md:backdrop-blur-md bg-white/[0.7] dark:bg-gray-900/[0.7] border border-slate-50/[0.1] border-b-gray-100 dark:border-b-gray-200/[0.1] z-[100]">
             
             <a href="/" className={`flex items-center text-2xl font-display ${router.indexOf("dashboard") !== -1 ? "md:ml-0 ml-[40px]" : ""}`}><Image src={"/logo.png"} className="mr-1" width={15} height={25} alt="formilio logo" />ormilio<span className="text-blue">.</span></a>
             
@@ -47,7 +47,7 @@ export default function Topbar() {
                     session ? // Show logout button instead of login if signed in
                     <>
                         <li className="flex md:p-0 p-2 mx-4"><a href="/dashboard" className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaUserAlt className="mr-3" /> Dashboard</a></li>
-                        <li className="flex md:p-0 p-2 mx-4"><a href="#" onClick={() => signOut()} className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaSignOutAlt className="mr-3" /> Logout</a></li>
+                        <li className="flex md:p-0 p-2 mx-4"><a href="#" onClick={() => signOut()} className={`md:hidden flex rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaSignOutAlt className="mr-3" /> Logout</a></li>
                     </> :
                     
                     <Link href="/login" className="md:hidden flex items-center justify-center p-[10px] px-4 mx-[4%] mt-4 bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
@@ -58,21 +58,23 @@ export default function Topbar() {
                 <div className="relative mr-[25px] text-gray-500 font-bold text-2xl">
                     <FiSearch />
                 </div>
-                <div className="relative mr-[35px] text-gray-500 font-bold text-2xl">
-                    <FiBell />
-                    <sup className="absolute -top-2 -right-4 p-[5px] py-[7px] text-[8px] bg-purple-400 text-white rounded-full">2</sup>
-                </div>
                 {
                     (session) ? // Show dashboard button instead of login if signed in
-                    <Link href="/dashboard" className="p-1 rounded-full bg-blue/[0.1]">
-                        {(!session.user.image)
-                        ? <FaUserCircle className="p-2 mr-2 text-gray-300 w-[30px] h-[30px] bg-gray-400 rounded-full" /> : 
-                        <Image src={session.user.image} alt="user" width={30} height={30} className="rounded-full bg-gray-400 mr-2 border-2 border-white shadow-lg" />
-                        }
-                    </Link> : 
+                    <>
+                        <div className="relative mr-[25px] text-gray-500 font-bold text-2xl">
+                            <FiBell />
+                            <sup className="absolute -top-2 -right-2 p-[5px] py-[7px] text-[8px] bg-purple-400 text-white rounded-full">2</sup>
+                        </div>
+                        <Link href="/dashboard" className="w-fit p-1 rounded-full bg-blue/[0.1]">
+                            {(!session.user.image)
+                            ? <FaUserCircle className="p-2 text-gray-300 w-[30px] h-[30px] bg-gray-400 rounded-full" /> : 
+                            <img src={session.user.image} alt="user" width={30} height={30} className="rounded-full bg-gray-400 shadow-lg" />
+                            }
+                        </Link>
+                    </> : 
                     <Link href="/login" className="md:flex hidden items-center p-[10px] px-[20px] bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
                 }
-                <div className="text-gray-500 font-bold text-2xl md:hidden block z-50" onClick={() =>  setOpen(!open) }>
+                <div className="ml-4 text-gray-500 text-2xl md:hidden block z-50" onClick={() =>  setOpen(!open) }>
                     {
                         open ? <FaTimes /> : <FaBars />
                     }

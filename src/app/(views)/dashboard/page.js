@@ -20,7 +20,7 @@ export default function Dashboard() {
 
     return (
         <div className="px-4">
-                <Header text={`Welcome: ${session?.user.name}`} icon={<FaPaperPlane />} image={"/formui.webp"}>
+                <Header text={`Welcome: ${session?.user.name}`} icon={<FaPaperPlane />} >
                     <div className="flex flex-wrap gap-2">
                         <a href="/dashboard/endpoints" className="p-2 text-sm px-6 rounded bg-hoverblue text-white hover:bg-blue hover:border hover:border-white">Generate endpoints</a>
                         <a href="/dashboard/builder" className="p-2 text-sm px-6 rounded bg-hoverblue text-white hover:bg-blue hover:border hover:border-white">Build forms</a>
