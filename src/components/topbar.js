@@ -64,7 +64,12 @@ export default function Topbar() {
                 </div>
                 {
                     (session) ? // Show dashboard button instead of login if signed in
-                    <Link href="/dashboard" className="p-1 rounded-full bg-blue/[0.1]">{session.user.image ? <Image src={session.user.image} alt="user" width={30} height={30} className="rounded-full"/>: <FaUserCircle className="w-[27px] h-[27px] text-gray-300 bg-white rounded-full"/>}</Link> : 
+                    <Link href="/dashboard" className="p-1 rounded-full bg-blue/[0.1]">
+                        {(!session.user.image)
+                        ? <FaUserCircle className="p-2 mr-2 text-gray-300 w-[30px] h-[30px] bg-gray-400 rounded-full" /> : 
+                        <Image src={session.user.image} alt="user" width={30} height={30} className="rounded-full bg-gray-400 mr-2 border-2 border-white shadow-lg" />
+                        }
+                    </Link> : 
                     <Link href="/login" className="md:flex hidden items-center p-[10px] px-[20px] bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
                 }
                 <div className="text-gray-500 font-bold text-2xl md:hidden block z-50" onClick={() =>  setOpen(!open) }>
