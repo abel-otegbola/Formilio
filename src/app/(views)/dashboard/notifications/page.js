@@ -22,8 +22,8 @@ export default function Notifications() {
                     <p>You have no notifications</p>
                 </div>
                 :
-                <div className="flex">
-                    <div className="md:w-[30%]">
+                <div className="flex flex-wrap">
+                    <div className="md:w-[30%] w-full">
                     {
                         notifications.map(notification => (
                             <div key={notification.id} onClick={() => setActive(notification.id)} className="flex md:flex-no-wrap flex-wrap items-center justify-between bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer">
@@ -39,10 +39,10 @@ export default function Notifications() {
                         ))
                     }
                     </div>
-                    <div className="md:w-[70%]">
+                    <div className="md:w-[70%] w-full">
                     {
                         notifications.filter(element => element.id === active).map(item => (
-                            <div key={item.id} className="md:px-[5%] px-2">
+                            <div key={item.id} className="md:px-[5%] my-6">
                                 <div className="">
                                     <h3 className="text-xl font-semibold">{item.sender}</h3>
                                     <div className="flex items-center">

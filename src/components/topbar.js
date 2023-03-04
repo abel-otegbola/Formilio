@@ -26,7 +26,7 @@ export default function Topbar() {
             <a href="/" className={`flex items-center text-2xl font-display ${router.indexOf("dashboard") !== -1 ? "md:ml-0 ml-[40px]" : ""}`}><Image src={"/logo.png"} className="mr-1" width={15} height={25} alt="formilio logo" />ormilio<span className="text-blue">.</span></a>
             
             {/* Navigation menu */}
-            <ul ref={menuRef} className={`md:bg-transparent md:backdrop-blur-none backdrop-blur-md bg-white/[0.9] dark:bg-gray-900/[0.9] flex md:flex-row flex-col md:w-auto md:h-auto h-screen md:relative md:shadow-none overflow-hidden shadow-lg fixed top-0 right-0 transition-all duration-700  ml-[4%] z-10 ${open ? "w-[75%]": "w-0"}`}>
+            <ul ref={menuRef} className={`bg-white md:bg-transparent dark:bg-gray-900 md:dark:bg-transparent flex md:flex-row flex-col md:w-auto md:h-auto h-screen md:relative md:shadow-none overflow-hidden shadow-lg fixed top-0 right-0 transition-all duration-700  ml-[4%] z-10 ${open ? "w-[75%]": "w-0"}`}>
                 
                 {(session) ?  // Show user details for mobile menu if signed in
                 <a href="/dashboard" className="md:hidden border border-gray-100/[0.1] border-b-gray-300/[0.2] p-6">

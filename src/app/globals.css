@@ -30,12 +30,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    background-color: rgb(17, 24, 39)
-  }
-}

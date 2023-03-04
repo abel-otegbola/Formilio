@@ -13,6 +13,7 @@ export default function Builder() {
     const [show, setShow] = useState("Build")
     const [components, setComponents] = useState([])
     const id = useSearchParams().get("id")
+    const type = useSearchParams().get("type")
     
 
     const handleDrag = (dragIndex, hoverIndex) => {
@@ -55,7 +56,7 @@ export default function Builder() {
 
     return (
         <div className="px-4">
-            <Header text={id ? `Customizing ${id}` : "Builder"} icon={<FaRobot />}>
+            <Header text={id ? `Customizing ${type} (${id})` : "Builder"} icon={<FaRobot />}>
                 <div className="flex">
                     <a href="/dashboard/templates" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Find templates</a>
                 </div>

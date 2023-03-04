@@ -7,7 +7,7 @@ import { SessionProvider } from "next-auth/react";
 export default function RootLayout({ children, session }) {
   return (
     <html lang='en'>
-      <body>
+      <body className='text-black dark:text-white dark:bg-gray-900'>
         <SessionProvider session={session}>
           <Topbar />
             <main className='pt-[55px]' >{children}</main>
