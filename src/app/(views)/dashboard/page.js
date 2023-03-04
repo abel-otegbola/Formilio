@@ -16,7 +16,8 @@ export default function Dashboard() {
     const [endpoints, setEndpoints] = useState([])
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
-    const { data: session } = useSession()    
+    const [totalUsers, setTotalUsers] = useState(0)
+    const { data: session } = useSession()   
 
     return (
         <div className="px-4">
@@ -36,12 +37,12 @@ export default function Dashboard() {
                     <div className="p-2 py-6 rounded bg-white dark:bg-gray-900">
                         <h4 className="p-2 font-semibold text-blue">LATEST SUBMISSIONS</h4>
                         <div className="p-2">
-                            <SubmissionList type={"getSubmissions/all"} setSubmissions={setSubmissions} />
+                            <SubmissionList type={"getSubmissions/all"} setSubmissions={setSubmissions} limit={5} />
                         </div>
                     </div>
                 </div>
-                <div className="md:w-[30%] w-full p-2 py-6 dark:bg-gray-800">
-                    <h4 className="p-2 font-semibold text-blue">LATEST ENDPOINTS</h4>
+                <div className="md:w-[30%] w-full p-2 py-6 dark:bg-gray-800/[0.3]">
+                    <h4 className="p-2 font-semibold text-blue">LATEST ENDPOINTS <span className="text-blue">{totalUsers}</span></h4>
                     {/* <p className="p-2">Statistics of submissions for your latest endpoints</p> */}
                     <div className="relative flex justify-center items-center md:mx-[15%] mx-[5%] my-4 bg-white dark:bg-gray-900 rounded-full md:w-auto w-fit">
                         {/* <EndpointsChart endpoints={endpoints?.reverse().splice(0, 3)} submissions={submissions}/> */}
@@ -49,7 +50,13 @@ export default function Dashboard() {
                             <h3 className="text-blue font-semibold text-3xl ">70%</h3>
                         </div> */}
                     </div>
-                    <EndpointsList setError={setError} setSuccess={setSuccess} setEndpoints={setEndpoints} />
+                    <EndpointsList 
+                        setError={setError} 
+                        setSuccess={setSuccess} 
+                        setEndpoints={setEndpoints} 
+                        limit={5} 
+                        settotalUsers={setTotalUsers} 
+                    />
                     
                 </div>
             </div>

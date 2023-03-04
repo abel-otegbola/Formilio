@@ -5,11 +5,11 @@ import Popup from "./popup";
 import SubmissionModal from "./submissionModal";
 
 
-export default function SubmissionList({ type, router, setSubmissions }) {
+export default function SubmissionList({ type, router, setSubmissions, limit }) {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     
-    const { data: submissions, isLoading: submissionsLoading, error: submissionsError } = fetchData(type, router)
+    const { data: submissions, isLoading: submissionsLoading, error: submissionsError } = fetchData(type, router, true, limit)
 
     useEffect(() => {
         setSubmissions(submissions)

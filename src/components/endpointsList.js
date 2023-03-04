@@ -6,9 +6,9 @@ import { FaChevronRight, FaLink } from "react-icons/fa";
 import Popup from "./popup";
 import { useEffect } from "react";
 
-export default function EndpointsList({ setEndpoints }) {
+export default function EndpointsList({ setEndpoints, limit }) {
 
-    const { data: endpoints, isLoading: endpointsLoading, error: endpointsError } = fetchData("getEndpoints")
+    const { data: endpoints, isLoading: endpointsLoading, error: endpointsError } = fetchData("getEndpoints", null, true, limit)
 
     useEffect(() => {
         setEndpoints(endpoints)

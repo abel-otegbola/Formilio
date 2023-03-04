@@ -2,6 +2,7 @@ import { useState } from "react"
 import { FaLink, FaPenFancy, FaTimes, FaTrashAlt, FaUpload } from "react-icons/fa"
 import Popup from "./popup"
 import { useRouter } from "next/navigation"
+import { FiLoader } from "react-icons/fi"
 
 export default function Settings({ id }) {
     const [error, setError] = useState("")
@@ -67,12 +68,7 @@ export default function Settings({ id }) {
                 <h3 className="text-lg font-semibold p-4 bg-gray-100 dark:bg-gray-800">Email Notification template</h3>
                 <p className="opacity-[0.5] p-4">Create a custom template page or use the default.</p>
                 <button className=" flex items-center mx-4 p-2 px-6 bg-blue text-white rounded hover:bg-hoverblue">
-                    { loading ? 
-                    <div className="flex justify-center items-center min-h-[70px]">
-                        <FiLoader className="animate-spin text-blue text-3xl" />    
-                    </div>:
-                    <FaPenFancy className="mr-2"/> 
-                     }
+                    <FaPenFancy className="mr-2"/>
                     Customize
                 </button>
             </div>
@@ -91,9 +87,7 @@ export default function Settings({ id }) {
                 </div>
                 <button className="flex items-center mx-4 p-2 px-6 bg-blue text-white rounded hover:bg-hoverblue">
                     { loading ? 
-                    <div className="flex justify-center items-center min-h-[70px]">
-                        <FiLoader className="animate-spin text-blue text-3xl" />    
-                    </div>:
+                    <FiLoader className="animate-spin mr-2" />:
                     <FaUpload className="mr-2"/> 
                      }
                     Update
@@ -105,9 +99,7 @@ export default function Settings({ id }) {
                 <p className="opacity-[0.5] p-4">Create a custom template page or use the default.</p>
                 <button className=" flex items-center mx-4 p-2 px-6 bg-blue text-white rounded hover:bg-hoverblue">
                     { loading ? 
-                    <div className="flex justify-center items-center min-h-[70px]">
-                        <FiLoader className="animate-spin text-blue text-3xl" />    
-                    </div>:
+                    <FiLoader className="animate-spin mr-2" />:
                     <FaPenFancy className="mr-2"/> 
                      }
                     Customize
@@ -117,12 +109,10 @@ export default function Settings({ id }) {
             <div className="rounded border pb-4 border-gray-400/[0.2] dark:bg-gray-900 my-6">
                 <h3 className="text-lg font-semibold text-red-500 p-4 bg-gray-100 dark:bg-gray-800">Delete Endpoint?</h3>
                 <p className="opacity-[0.5] p-4">Click the button below to delete the endpoint permanently.</p>
-                <button className=" flex items-center mx-4 p-2 px-6 bg-red-500 text-white rounded hover:bg-red-700">
+                <button className=" flex items-center mx-4 p-2 px-6 bg-red-500 text-white rounded hover:bg-red-700" onClick={() => handleDelete()}>
                     { loading ? 
-                    <div className="flex justify-center items-center min-h-[70px]">
-                        <FiLoader className="animate-spin text-blue text-3xl" />    
-                    </div>:
-                    <FaTrashAlt className="mr-2" onClick={() => handleDelete()}/> 
+                    <FiLoader className="animate-spin mr-2" />:
+                    <FaTrashAlt className="mr-2" /> 
                      }
                     Delete
                 </button>

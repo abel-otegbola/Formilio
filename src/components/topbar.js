@@ -41,7 +41,7 @@ export default function Topbar() {
 
                 <li className="flex md:p-0 p-2"><a href="/" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/"? "text-blue": ""}`}>Home</a></li>
                 <li className="flex md:p-0 p-2"><a href="/about" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/about"? "text-blue": ""}`}>About</a></li>
-                <li className="flex md:p-0 p-2"><a href="/doc" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/doc"? "text-blue": ""}`}>Doc</a></li>
+                <li className="flex md:p-0 p-2"><a href="/documentations" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/documentations"? "text-blue": ""}`}>Doc</a></li>
                 <li className="flex md:p-0 p-2"><a href="/contact" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/contact"? "text-blue": ""}`}>Contact</a></li>
                 {
                     session ? // Show logout button instead of login if signed in

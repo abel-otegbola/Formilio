@@ -8,5 +8,5 @@ export default async function handler(req, res) {
         return res.status(404).json({ error: "Connection Failed"})
     })
     
-    return res.json(await Endpoints.find({ 'user': slug[0] }).catch(err => res.status(400).json(err)))
+    return res.json(await Endpoints.find({ 'user': slug[0] }).sort({ _id:- 1 }).skip(slug[1]).limit(slug[2]).catch(err => res.status(400).json(err)))
 }

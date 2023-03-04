@@ -10,6 +10,7 @@ export default function View() {
     const [active, setActive] = useState("Submissions")
     const router = useSearchParams().get("endpoint")
     const title = useSearchParams().get("title")
+    const [limit, setLimit] = useState(7)
 
 
     return(
@@ -17,7 +18,7 @@ export default function View() {
 
             <div className="my-6 md:mx-4">
                 <h1 className="text-3xl font-semibold py-2">{title}</h1>
-                <p>You have <span className="text-blue font-semibold p-2">{submissions?.length}</span> {submissions?.length === 1 ? "Submission" : "Submissions"}</p>
+                <p>You have <span className="text-blue font-semibold p-2">{submissions?.length}</span> new {submissions?.length === 1 ? "Submission" : "Submissions"}</p>
             </div>
 
             <div className="w-full bg-gray-200[0.2] py-4 rounded">
@@ -34,9 +35,17 @@ export default function View() {
                 </div>
             </div>
             <div className={`${active === "Submissions"? "block" : "hidden"}`}>
-                <SubmissionList type={"getSubmissions"} router={router} setSubmissions={setSubmissions} />
+                <SubmissionList type={"getSubmissions"} router={router} setSubmissions={setSubmissions} limit={limit} />
+                <div className="flex justify-center">
+                {
+                    submissions?.length < limit ?
+                    <p className="py-6">End of submission list</p>
+                    :
+                    <button className="p-2 px-6 rounded bg-blue hover: bg-hoverblue my-6 mx-auto" onClick={() => setLimit(limit + 5)}>Load more</button>
+                }
             </div>
-            <div className={`w-full overflow-x-auto dark:bg-gray-800 ${active === "Setup"? "block" : "hidden"}`}>
+            </div>
+            <div className={`w-full dark:bg-gray-800 ${active === "Setup"? "block" : "hidden"}`}>
                 <Setup endpoint={router} />
             </div>
             <div className={`w-full ${active === "Settings"? "block" : "hidden"}`}>

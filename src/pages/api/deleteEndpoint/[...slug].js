@@ -5,8 +5,16 @@ export default async function handler(req, res) {
     await connectMongo().catch(error => res.json({ error: "Connection Failed"}))
     const { slug } = req.query
 
-    Submissions.deleteMany({ "key": slug[0] }, function(err, data) {
-        if(err) return res.status(404).json({ error: "User not found" })
-        return res.json(Endpoints.deleteOne({  "key": slug[0] }).catch(err => res.status(400).json(err)))
-    })
+    try {
+        await Submissions.deleteMany({ "key": slug[0] })
+        deleteEndpoint()
+    }
+    catch(err) {
+        res.json({error: "Endpoint could not be deleted"})
+    }
+
+    async function deleteEndpoint() {
+        await Endpoints.deleteOne({  "key": slug[0] })
+        res.status(200).json({ msg: "Endpoint Deleted successfully" })
+    }
 }

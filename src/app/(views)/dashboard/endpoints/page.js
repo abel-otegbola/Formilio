@@ -15,6 +15,7 @@ export default function Endpoints() {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [loading, setLoading] = useState(false)
+    const [limit, setLimit] = useState(7)
     const inputRef = useRef(null)
 
     const handleEndpoint = async () => {
@@ -65,7 +66,16 @@ export default function Endpoints() {
             { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
 
             <div className="my-4">
-                <EndpointsList setError={setError} setSuccess={setSuccess} setEndpoints={setEndpoints}/>
+                <EndpointsList setError={setError} setSuccess={setSuccess} setEndpoints={setEndpoints} limit={limit}/>
+            </div>
+
+            <div className="flex justify-center">
+                {
+                    endpoints?.length < limit ?
+                    <p className="py-6">End of list</p>
+                    :
+                    <button className="p-2 px-6 rounded bg-blue hover: bg-hoverblue my-6 mx-auto" onClick={() => setLimit(limit + 5)}>Load more</button>
+                }
             </div>
         </div>
     )

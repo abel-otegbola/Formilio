@@ -15,7 +15,7 @@ export default function Setup ({ endpoint }) {
                 }
             </div>
 
-            <div className="md:flex items-start py-6">
+            <div className="w-full md:flex items-start py-6">
                 <p className="p-1 w-fit px-3 bg-fuchsia-200/[0.5] rounded-full border-2 border-white shadow-lg mr-2">1</p>
                 <div>
                     <h3 className="font-semibold">Paste your endpoint into your form</h3>
@@ -33,24 +33,23 @@ export default function Setup ({ endpoint }) {
                     
                 </div>
             </div>
-            <div className="md:flex items-start py-6">
+            <div className="w-full md:flex items-start py-6">
                 <p className="p-1 w-fit px-3 bg-fuchsia-200/[0.5] rounded-full border-2 border-white shadow-lg mr-2">2</p>
                 <div>
                     <h3 className="font-semibold">Name each field of your form</h3>
                     <p className="opacity-[0.5]">All the fields should have name attribute so formilio can detect them</p>
 
                     <div className="p-4 my-4 overflow-x-auto">
-                        <p dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type="email" name="email"><!-- use this to reply visitors and prevent spam -->`, { language: "HTML" }).value}}></p>
+                        <p dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type="email" name="email">`, { language: "HTML" }).value}}></p>
                         <p dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type="text" name="firstName">`, {language: "HTML" }).value}}></p>
                         <p dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type="text" name="lastName">`, {language: "HTML" }).value}}></p>
-                        <p dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type="text" name="anotherInput">`, {language: "HTML" }).value}}></p>
-                        <p dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type="hidden" name="_gotcha"><!-- use this to prevent spam -->`, {language: "HTML" }).value}}></p>
+                        <p dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type="hidden" name="_gotcha">`, {language: "HTML" }).value}}></p>
                     </div>
                     
                 </div>
             </div>
             
-            <div className="md:flex items-start py-6">
+            <div className="w-full md:flex items-start py-6">
                 <p className="p-1 w-fit px-3 bg-fuchsia-200/[0.5] rounded-full border-2 border-white shadow-lg mr-2">3</p>
                 <div>
                     <h3 className="font-semibold">Your form is ready</h3>
