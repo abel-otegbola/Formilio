@@ -8,10 +8,18 @@ import connectMongo from "@/database/connection";
 import { Endpoints, Submissions } from "@/model/Schema";
 
 export default async function handler(req, res) {
+
   await connectMongo().catch(error => {
     return res.redirect(303, `${process.env.NEXTAUTH_URL}/error`);
   })
   const { slug } = req.query
+  let formdata = {}
+  if(typeof req.body === "string") {
+    formdata = JSON.parse(req.body)
+  }
+  else {
+    formdata = req.body
+  }
 
   try{
     const data = await Endpoints.findOne({ "key": slug[0] })
@@ -23,9 +31,14 @@ export default async function handler(req, res) {
 
   async function submitAction(data) {
     try{
-      await Submissions.create({ key: slug[0], user: data.user, data: JSON.stringify(req.body)})
-      sendEmail(req.body.fullname, req.body.email, data, req.body.message)
-      res.redirect(303, `${process.env.NEXTAUTH_URL}/thankyou`)
+      await Submissions.create({ key: slug[0], user: data.user, data: JSON.stringify(formdata)})
+      sendEmail(data, formdata)
+      if(typeof req.body === "string") {
+        res.status(200).json({ msg: "Submitted successfully" })
+      }
+      else {
+        res.redirect(303, `${process.env.NEXTAUTH_URL}/thankyou`)
+      }
     }
     catch(err){
       console.log(err)
@@ -37,7 +50,7 @@ export default async function handler(req, res) {
 
 
 
-function sendEmail(name, useremail, data, message) {
+function sendEmail(data, formdata) {
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -51,7 +64,7 @@ function sendEmail(name, useremail, data, message) {
       },
     });
 
-    const emailHtml = render(EmailTemplate({ url: `https://mailme.vercel.app/dashboard/endpoints/view?title=${data.title}&endpoint=${data.key}`, name, data, useremail, message }));
+    const emailHtml = render(EmailTemplate({ url: `https://mailme.vercel.app/dashboard/endpoints/view?title=${data.title}&endpoint=${data.key}`, formdata, title: data.title }));
 
     const options = {
       from: 'no-reply@formilio.com',

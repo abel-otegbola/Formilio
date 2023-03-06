@@ -115,7 +115,7 @@ export default function Home() {
                 </div>
                 {
                     features.filter(item => item.title === activeFeature).map(feature => (
-                        <div className="md:w-[75%] w-full m-auto bg-gray-300[0.1]">
+                        <div className="md:w-[75%] w-full m-auto bg-gray-300[0.1]" key={feature.id}>
                             <div className="flex md:flex-nowrap flex-wrap md:px-[10%] px-[5%] py-[7%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
                                 <div className="md:w-[50%] w-full mr-[3%] ">
                                     <h1 className="md:text-3xl text-2xl md:leading-[40px] leading-[35px] font-bold">{feature.title}</h1>
