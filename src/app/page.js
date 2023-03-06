@@ -33,7 +33,7 @@ export default function Home() {
                 </div>
                 <div className="relative md:w-[50%] md:mt-0 mt-[40px] w-full bg-gradient-to-r p-[20px] backdrop-blur-xl from-blue/[0.2] to-fuchsia-500/[0.2]">
                     <Image src={"/bgdashboard.png"} width="700" height="500" alt="form ui" className="drop-shadow-xl"/>
-                    <div className="absolute bottom-[40px] w-[200px] left-4 p-4 px-8 pb-6 shadow-2xl w-fit rounded-lg rotate-12 text-white bg-gradient-to-tr p-[20px] backdrop-blur-lg via-blue/[0.8] via-fuchsia/[0.8]">
+                    <div className="absolute animate-bounce -bottom-5 w-[170px] left-4 p-[3%] px-[5%] shadow-2xl w-fit rounded-lg rotate-12 text-white bg-gradient-to-tr p-[20px] backdrop-blur-lg via-blue/[0.8] via-fuchsia/[0.8]">
                         <h3 className="font-bold pb-2">NEW SUBMISSION</h3>
                         <p className="flex items-center py-2"><FaUserCircle className="p-1 text-xl bg-blue text-white mr-2 rounded-full" /> John doe</p>
                         <p className="text-[8px]">Hello! Your skills are top-notch. Are you available for a web project?</p>
