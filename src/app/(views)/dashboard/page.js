@@ -34,7 +34,7 @@ export default function Dashboard() {
                         <h4 className="p-2 font-semibold text-blue">SUBMISSIONS</h4>
                         <SubmissionChart submissions={submissions}/>
                     </div>
-                    <div className="p-2 py-6 rounded bg-white dark:bg-gray-900">
+                    <div className="p-2 py-6 rounded bg-gray-200/[0.4] dark:bg-gray-800/[0.5]">
                         <h4 className="p-2 font-semibold text-blue">LATEST SUBMISSIONS</h4>
                         <div className="p-2">
                             <SubmissionList type={"getSubmissions/all"} setSubmissions={setSubmissions} limit={5} />

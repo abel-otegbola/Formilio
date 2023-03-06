@@ -51,7 +51,7 @@ function sendEmail(name, useremail, data, message) {
       },
     });
 
-    const emailHtml = render(EmailTemplate({ url: `http://localhost:3000/dashboard/endpoints/view?title=${data.title}&endpoint=${data.key}`, name, data, useremail, message }));
+    const emailHtml = render(EmailTemplate({ url: `https://mailme.vercel.app/dashboard/endpoints/view?title=${data.title}&endpoint=${data.key}`, name, data, useremail, message }));
 
     const options = {
       from: 'no-reply@formilio.com',

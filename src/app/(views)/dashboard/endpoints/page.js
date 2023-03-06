@@ -74,7 +74,7 @@ export default function Endpoints() {
                     endpoints?.length < limit ?
                     <p className="py-6">End of list</p>
                     :
-                    <button className="p-2 px-6 rounded bg-blue hover: bg-hoverblue my-6 mx-auto" onClick={() => setLimit(limit + 5)}>Load more</button>
+                    <button className="p-2 px-6 rounded text-white bg-blue hover:bg-hoverblue my-6 mx-auto" onClick={() => setLimit(limit + 5)}>Load more</button>
                 }
             </div>
         </div>

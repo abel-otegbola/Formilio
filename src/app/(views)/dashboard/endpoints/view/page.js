@@ -34,14 +34,14 @@ export default function View() {
                     }
                 </div>
             </div>
-            <div className={`${active === "Submissions"? "block" : "hidden"}`}>
+            <div className={`${active === "Submissions"? "block" : "hidden"} bg-gray-200/[0.2]`}>
                 <SubmissionList type={"getSubmissions"} router={router} setSubmissions={setSubmissions} limit={limit} />
                 <div className="flex justify-center">
                 {
                     submissions?.length < limit ?
                     <p className="py-6">End of submission list</p>
                     :
-                    <button className="p-2 px-6 rounded bg-blue hover: bg-hoverblue my-6 mx-auto" onClick={() => setLimit(limit + 5)}>Load more</button>
+                    <button className="p-2 px-6 rounded text-white bg-blue hover:bg-hoverblue my-6 mx-auto" onClick={() => setLimit(limit + 5)}>Load more</button>
                 }
             </div>
             </div>

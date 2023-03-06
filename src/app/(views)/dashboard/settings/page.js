@@ -24,7 +24,7 @@ export default function Settings() {
     }
 
     useEffect(() => {
-        setTheme(localStorage.theme === null ? "theme" : localStorage.theme)
+        setTheme(!localStorage.theme || localStorage.theme === null ? "theme" : localStorage.theme)
     }, [])
 
     return (
