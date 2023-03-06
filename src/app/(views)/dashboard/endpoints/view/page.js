@@ -22,12 +22,12 @@ export default function View() {
             </div>
 
             <div className="w-full bg-gray-200[0.2] py-4 rounded">
-                <div className="flex gap-2">
+                <div className="flex gap-2 p-2 rounded bg-gray-100 dark:bg-gray-800">
                     {
                         ["Submissions", "Setup", "Settings"].map((item, index) => (
                             <p 
                                 key={index} 
-                                className={`p-3 px-6 rounded border text-sm hover:border-blue hover:text-blue text-center cursor-pointer border  ${active === item ? "border-blue text-blue shadow-lg dark:shadow-xl" : "border-transparent"}`}
+                                className={`p-3 px-6 rounded border text-sm hover:bg-white hover:dark:bg-gray-900 hover:border-blue hover:text-blue text-center cursor-pointer border  ${active === item ? "border-blue text-blue shadow-lg bg-white dark:bg-gray-900 dark:shadow-3xl" : "border-transparent"}`}
                                 onClick={() => setActive(item)}
                             >{item}</p>
                         ))

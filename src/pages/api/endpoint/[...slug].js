@@ -37,7 +37,7 @@ export default async function handler(req, res) {
 
 
 
-function sendEmail(name, data, useremail, message) {
+function sendEmail(name, useremail, data, message) {
 
     const transporter = nodemailer.createTransport({
       service: "gmail",

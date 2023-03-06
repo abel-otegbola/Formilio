@@ -32,7 +32,7 @@ export default function SubmissionModal({ data, submission, setSuccess, setError
 
     return (
         <div ref={modalRef} className="w-full">
-            <div className="flex md:flex-no-wrap flex-wrap items-center justify-between bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer" onClick={() => setOpenModal(!openModal)}>
+            <div className="flex md:flex-no-wrap flex-wrap items-center justify-between my-1 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer" onClick={() => setOpenModal(!openModal)}>
                 <p className="px-[10px] border-2 border-white/[0.3] bg-fuchsia-500/[0.1] md:block hidden uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(data.email || "user")}</p>
                 <div className="grid grid-cols-3 flex-1 items-center overflow-x-auto">
                     <Submission data={data} />

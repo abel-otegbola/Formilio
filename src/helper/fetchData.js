@@ -1,7 +1,6 @@
 'use-client'
 import { useSession } from "next-auth/react";
 import useSWR from 'swr'
-import useSWRInfinite from 'swr/infinite'
 
 const getKey = (type, key, limit) => {
     return `/api/${type}/${key}/0/${limit}`

@@ -11,6 +11,6 @@ export default async function handler(req, res) {
         return res.json(await Submissions.find({ 'user': slug[1] }).sort({ _id: -1 }).skip(slug[2]).limit(slug[3]).catch(err => res.status(400).json(err)))
     }
     else  {        
-        return res.json(await Submissions.find({ 'key': slug[0] }).catch(err => res.status(400).json(err)))
+        return res.json(await Submissions.find({ 'key': slug[0] }).sort({ _id: -1 }).skip(slug[1]).limit(slug[2]).catch(err => res.status(400).json(err)))
     }
 }
