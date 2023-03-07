@@ -61,10 +61,10 @@ export default function Topbar() {
                 {
                     (session) ? // Show dashboard button instead of login if signed in
                     <>
-                        <div className="relative mr-[25px] text-gray-500 font-bold text-2xl">
+                        <Link href="/dashboard/notifications" className="relative mr-[25px] text-gray-500 font-bold text-2xl">
                             <FiBell />
                             <sup className="absolute -top-2 -right-2 p-[5px] py-[7px] text-[8px] bg-purple-400 text-white rounded-full">2</sup>
-                        </div>
+                        </Link>
                         <Link href="/dashboard" className="w-fit p-1 rounded-full bg-blue/[0.1]">
                             {(!session.user.image)
                             ? <FaUserCircle className="p-2 text-gray-300 w-[30px] h-[30px] bg-gray-400 rounded-full" /> : 
