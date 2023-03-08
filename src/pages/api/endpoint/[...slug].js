@@ -3,7 +3,7 @@ const Email = require('email-templates')
 
 import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
-import { EmailTemplate } from '@/components/emailTemplate';
+import { EmailTemplate } from '@/components/templates/emailTemplate';
 import connectMongo from "@/database/connection";
 import { Endpoints, Submissions } from "@/model/Schema";
 

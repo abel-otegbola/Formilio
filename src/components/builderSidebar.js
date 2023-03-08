@@ -7,6 +7,7 @@ import { FaHeading, FaTimes } from "react-icons/fa"
 import { TfiLayoutColumn2Alt, TfiLayoutColumn3Alt } from "react-icons/tfi"
 
 export default function BuilderSidebar({ addComponent }) {
+    const [active, setActive] = useState("Components")
     const [open, setOpen] = useState(false)
     const menuRef = useRef(null)
     const components = [
@@ -41,7 +42,7 @@ export default function BuilderSidebar({ addComponent }) {
             icon: <BsImage />
         }
     ]
-    const layouts = [< TfiLayoutColumn2Alt className="w-[60%] h-[40%]"/>, <TfiLayoutColumn3Alt className="w-[60%] h-[40%]"/>]
+    // const layouts = [< TfiLayoutColumn2Alt className="w-[60%] h-[40%]"/>, <TfiLayoutColumn3Alt className="w-[60%] h-[40%]"/>]
 
     // Close sidebar when clicked outside
     useEffect(() => {
@@ -51,17 +52,25 @@ export default function BuilderSidebar({ addComponent }) {
     return(
         <>
         {/* Button to close and open builder sidebar */}
-        <div className="absolute top-[70px] right-2 text-gray-600 font-bold text-2xl p-4 bg-gray-100/[0.3] lg:hidden block z-50" onClick={() => setOpen(!open)} title="Layouts and components">
+        <div className="absolute bottom-[10px] right-6 text-gray-600 font-bold text-sm p-4 bg-gray-100/[0.3] shadow-xl dark:bg-gray-800 lg:hidden block z-50" onClick={() => setOpen(!open)} title="Layouts and components">
                     {
-                        open ? <FaTimes /> : <BsLayoutSidebarInsetReverse />
+                        open ? <FaTimes /> : "Components"
                     }
         </div>
 
         {/* Builder side bar  */}
         <div ref={menuRef} className={`lg:relative absolute lg:pt-0 pt-[115px] top-0 lg:right-0 right-2 h-full w-[250px] bg-slate-50 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
-           
-            <h4 className="m-2 p-2 font-semibold">Components</h4>
-
+            <div className="grid grid-cols-2 gap-2 p-2 rounded bg-gray-100 dark:bg-gray-900">
+                {
+                    ["Components", "Styles"].map((item, i) => (
+                        <p 
+                            key={i} 
+                            className={`p-3 px-6 rounded border text-sm text-center hover:bg-white hover:dark:bg-gray-900 hover:border-blue hover:text-blue text-center cursor-pointer border  ${active === item ? "border-blue text-blue shadow-lg bg-white dark:bg-gray-900 dark:shadow-3xl" : "border-transparent"}`}
+                            onClick={() => setActive(item)}
+                        >{item}</p>
+                    ))
+                }
+            </div>
             <div className="m-2 my-5 mb-16">
                 {
                     components.map((item) => {
@@ -75,8 +84,8 @@ export default function BuilderSidebar({ addComponent }) {
                 }
             </div>
             
-            <h4 className="m-2 p-2 font-semibold">Layouts</h4>
-
+            {/* <h4 className="m-2 p-2 font-semibold">Layouts</h4> */}
+{/* 
             <div className="grid grid-cols-2 gap-2 m-2 my-5">
                 {
                     layouts.map((item,i) => {
@@ -85,7 +94,7 @@ export default function BuilderSidebar({ addComponent }) {
                         )
                     })
                 }
-            </div>
+            </div> */}
             
         </div>
         </>

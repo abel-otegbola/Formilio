@@ -12,6 +12,9 @@ const endpointsSchema = new Schema({
     user: String,
     title: String,
     key: String,
+    emailRecipients: Array,
+    autoRespond: String,
+    thankYou: String,
     address: String
 }, {
     timestamps: true

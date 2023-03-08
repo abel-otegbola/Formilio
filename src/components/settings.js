@@ -11,6 +11,7 @@ export default function Settings({ id }) {
     const [loading, setLoading] = useState(false)
     const [emails, setEmails] = useState([])
     const [name, setName] = useState("")
+    const [autoRespond, setAutoRespond] = useState("")
     const router = useRouter()
 
     const addEmail = () => {
@@ -24,7 +25,6 @@ export default function Settings({ id }) {
     }
 
     const handleDelete = async () => {
-        console.log(id)
         setLoading(true)
         await fetch(`/api/deleteEndpoint/${id}`)
         .then(res => res.json())
@@ -42,6 +42,31 @@ export default function Settings({ id }) {
             console.log(err)
             setLoading(false)
         }) 
+    }
+
+    const handleUpdate = async () => {
+        setLoading(true)
+        await fetch(`/api/updateEndpoint/${id}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ autoRespond })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.error) {
+                setError(data.error)
+            }
+            else {
+                setSuccess("Autorespond added successfully")
+                setLoading(false)
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            setLoading(false)
+        })
     }
 
     return (
@@ -85,22 +110,13 @@ export default function Settings({ id }) {
                     Update
                 </button>
             </div>
-
-            <div className="rounded border pb-4 border-gray-400/[0.2] dark:bg-gray-900 my-10">
-                <h3 className="text-lg font-semibold p-4 bg-gray-100 dark:bg-gray-800">Email Notification template</h3>
-                <p className="opacity-[0.5] p-4">Create a custom template page or use the default.</p>
-                <Link href={{pathname: `/dashboard/builder`, query: {type: "email template", endpoint: id}}} className="w-fit flex items-center mx-4 p-2 px-6 bg-blue text-white rounded hover:bg-hoverblue">
-                    <FaPenFancy className="mr-2"/>
-                    Customize
-                </Link>
-            </div>
             
             <div className="rounded border pb-4 border-gray-400/[0.2] dark:bg-gray-900 my-10">
                 <h3 className="text-lg font-semibold p-4 bg-gray-100 dark:bg-gray-800">Auto Respond email</h3>
                 <p className="opacity-[0.5] p-4">Send message to user email. Add the auto respond message below.</p>
                 <div className="m-4">
-                    <textarea className="w-full border border-gray-200 dark:border-gray-100/[0.3] p-2 bg-gray-900 rounded text-white" name="autoRespond" placeholder="Type message here"></textarea>
-                    <button className="p-2 px-6 mt-2 rounded-sm border border-green-500 text-green-500">Save</button>
+                    <textarea className="w-full border border-gray-200 dark:border-gray-100/[0.3] p-2 bg-gray-900 rounded text-white" name="autoRespond" onChange={(e) => setAutoRespond(e.target.value)} placeholder="Type message here"></textarea>
+                    <button className="p-2 px-6 mt-2 rounded-sm border border-green-500 text-green-500" onClick={() => handleUpdate()}>Save</button>
                 </div>
             </div>
 

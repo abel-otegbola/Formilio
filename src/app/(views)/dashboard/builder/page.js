@@ -61,13 +61,17 @@ export default function Builder() {
                     <a href="/dashboard/templates" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Find templates</a>
                 </div>
             </Header>
-            <div className="flex items-center justify-between mt-5 ml-4">
-                <ul className="flex">
-                    <li className={`p-2 px-5 border border-gray-100/[0.1] hover:border-b-blue hover:text-blue cursor-pointer mr-2 ${show === "Build" ? "border-b-blue text-blue": ""}`} onClick={() => setShow("Build")}>Build</li>
-                    <li className={`p-2 px-5 border border-gray-100/[0.1] hover:border-b-blue hover:text-blue cursor-pointer mr-2 ${show === "Preview" ? "border-b-blue text-blue": ""}`} onClick={() => setShow("Preview")}>Preview</li>
-                    <li className={`p-2 px-5 border border-gray-100/[0.1] hover:border-b-blue hover:text-blue cursor-pointer mr-2 ${show === "Publish" ? "border-b-blue text-blue": ""}`} onClick={() => setShow("Publish")}>Publish</li>
-                </ul>
-            </div>
+             <div className="md:w-[300px] grid grid-cols-3 gap-2 p-2 rounded bg-gray-100 dark:bg-gray-900">
+             {
+                 ["Build", "Preview", "Publish"].map((item, i) => (
+                     <p
+                         key={i} 
+                         className={`p-3 px-6 rounded border text-sm text-center hover:bg-white hover:dark:bg-gray-900 hover:border-blue hover:text-blue text-center cursor-pointer border  ${show === item ? "border-blue text-blue shadow-lg bg-white dark:bg-gray-900 dark:shadow-3xl" : "border-transparent"}`}
+                         onClick={() => setShow(item)}
+                     >{item}</p>
+                 ))
+             }
+         </div>
             <div className="flex">
                 <div className="flex-1">
                     <div className={`${show === "Build" ? "block": "hidden"} p-4 bg-gray-500/[0.2] dark:bg-gray-800`}>
