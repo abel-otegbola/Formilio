@@ -28,9 +28,20 @@ const submissionsSchema = new Schema({
     timestamps: true
 })
 
+const templatesSchema = new Schema({
+    key: String,
+    user: String,
+    type: String,
+    tags: Array,
+    html: String
+}, {
+    timestamps: true
+})
+
 const Users = models.user || model("user", userSchema);
 const Endpoints = models.endpoint || model("endpoint", endpointsSchema);
 const Submissions = models.submission || model("submission", submissionsSchema);
+const Templates = models.templates || model("templates", templatesSchema);
 
-export { Endpoints, Submissions };
+export { Endpoints, Submissions, Templates };
 export default Users;

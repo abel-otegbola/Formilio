@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation"
 import { FaEnvelope, FaPen, FaUser } from "react-icons/fa";
+import SubmissionList from "@/components/submissionsList";
 
 export default function Login() {
+    const [submissions, setSubmissions] = useState([])
     const query = useSearchParams().get("endpoint")
     const [fullname, setFullname] = useState("")
     const [email, setEmail] = useState("")
@@ -56,11 +58,13 @@ export default function Login() {
                     <button type="submit" className="flex justify-center items-center p-[13px] w-full bg-blue hover:bg-hoverblue text-white rounded mt-5">Submit</button>
 
                 </form>
+
+                <div className="md:w-[50%] w-full p-[20px] bg-gray-200/[0.05] md:px-[40px]">
+                    <h3 className="border border-transparent border-b-blue p-2 text-blue">Submissions</h3>
+                    <SubmissionList type={"getSubmissions"} router={query} setSubmissions={setSubmissions} limit={5}/>
+                </div>
             </div>
 
-            <div className="md:w-[50%] w-full p-[20px] md:px-[40px]">
-
-            </div>
         </div>
     )
 }
