@@ -56,7 +56,7 @@ export default async function handler(req, res) {
         return res.status(200).json({ msg: "Submitted successfully" })
       }
       else {
-        return res.redirect(303, `${process.env.NEXTAUTH_URL}/thankyou`)
+        return res.redirect(303, `${process.env.NEXTAUTH_URL}/thankyou?id=${slug[0]}`)
       }
     }
     catch(err){

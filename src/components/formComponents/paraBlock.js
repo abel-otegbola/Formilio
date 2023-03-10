@@ -84,7 +84,7 @@ export default function ParaBlock({ active, item, handleComponent, handleDelete 
                 <input 
                     onFocus={() => setShow(true)}
                     className={`w-full rounded p-2 ${styles.bold ? "font-bold" : ""} ${styles.italic ? "italic" : ""} ${styles.underline ? "underline" : ""} ${styles.strike ? "line-through" : ""}`}
-                    style={{ fontSize: styles.size, textAlign: styles.align }}
+                    style={{ fontSize: styles.size, textAlign: styles.align, backgroundColor: "transparent" }}
                     contentEditable="true"
                     onChange={(e) => handleText(e.target.value)}
                     defaultValue={text}

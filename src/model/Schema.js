@@ -32,8 +32,8 @@ const templatesSchema = new Schema({
     key: String,
     user: String,
     type: String,
-    tags: Array,
-    html: String
+    tags: String,
+    components: String
 }, {
     timestamps: true
 })

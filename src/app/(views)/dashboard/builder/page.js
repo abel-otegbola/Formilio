@@ -3,16 +3,18 @@ import BuilderSidebar from "@/components/builderSidebar";
 import DragCard from "@/components/formComponents/dragCard";
 import DropBox from "@/components/formComponents/dropBox";
 import Preview from "@/components/formComponents/preview";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation'
 import Header from "@/components/header";
 import { FaRobot } from "react-icons/fa";
+import Publish from "@/components/formComponents/publish";
+import { fetchData } from "@/helper/fetchData";
 
 export default function Builder() {
     const [active, setActive] = useState()
     const [show, setShow] = useState("Build")
     const [components, setComponents] = useState([])
-    const id = useSearchParams().get("id")
+    const id = useSearchParams().get("endpoint")
     const type = useSearchParams().get("type")
     
 
@@ -28,6 +30,22 @@ export default function Builder() {
         })
         console.log(components)
     }
+
+    const { data: template, isLoading: templateLoading, error: templateError } = fetchData(`getTemplates/one/${type}`, id, false)
+
+    useEffect(() => {
+        if(template && !template.error) {
+            setComponents(JSON.parse(template.components))
+            console.log(JSON.parse(template.components))
+        }
+        else {
+            setComponents([
+                { id: 0, title: 'heading', text: "Submission successful!", styles: { align: "center", size: 24, italic: false, underline: false, color: "#000", padding: "10px", margin: "10px", bgColor: "none" }},
+                { id: 1, title: 'para', text: "Thank you! Submission received. You will receive a feedback very soon.", styles: { align: "center", bold: false, size: 14, italic: false, underline: false, link: false, strike: false, color: "#000", padding: "10px", margin: "10px", bgColor: "none"} },
+                { id: 2, title: 'button', text: "Go back", styles: { color: "#000", padding: "10px", margin: "10px", bgColor: "none"} }
+            ])
+        }
+    }, [template])
 
 
     const handleAdd = (title) => {
@@ -56,7 +74,7 @@ export default function Builder() {
 
     return (
         <div className="px-4">
-            <Header text={id ? `Customizing ${type} (${id})` : "Builder"} icon={<FaRobot />}>
+            <Header text={type ? `Customizing ${type}` : "Builder"} icon={<FaRobot />}>
                 <div className="flex">
                     <a href="/dashboard/templates" className="p-3 px-6 rounded bg-hoverblue text-white mr-2 hover:bg-blue hover:border hover:border-white">Find templates</a>
                 </div>
@@ -97,7 +115,7 @@ export default function Builder() {
                         <Preview components={components} />
                     </div>
                     <div className={`${show === "Publish" ? "block": "hidden"}`}>
-                        <Preview components={components} />
+                        <Publish components={components} type={type} id={id} templateTags={template?.tags?.split(",")} />
                     </div>
                 </div>
                 <BuilderSidebar addComponent={handleAdd} />
