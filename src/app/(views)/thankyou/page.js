@@ -1,12 +1,15 @@
 'use client'
 import { fetchData } from "@/helper/fetchData";
-import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation"
+import { useSearchParams } from "next/navigation"
 import { FiInfo, FiLoader } from "react-icons/fi";
 import TemplatePreview from "@/components/formComponents/templatePreview";
 
 export default function Thankyou() {
-    const router = useRouter();
+    const defaultComponents = [
+        { id: 0, title: 'heading', text: "Submission successful!", styles: { align: "center", size: 24, italic: false, underline: false, color: "#000", padding: "10px", margin: "10px", bgColor: "none" }},
+        { id: 1, title: 'para', text: "Thank you! Your submission has been sent. You will receive a feedback very soon.", styles: { align: "center", bold: false, size: 14, italic: false, underline: false, link: false, strike: false, color: "#000", padding: "10px", margin: "10px", bgColor: "none"} },
+        { id: 2, title: 'button', text: "Go back", styles: { color: "#000", padding: "10px", margin: "10px", bgColor: "none"} }
+    ]
     const key = useSearchParams().get("id")
 
     if(key) {
@@ -32,13 +35,8 @@ export default function Thankyou() {
 
     else {
         return (
-            <div className="fixed top-0 left-0 w-full h-full bg-white dark:bg-gray-900 flex justify-center items-center flex-col z-[1000]">
-                <div className="flex flex-col justify-center items-center relative p-[5%] rounded shadow-2xl text-center">
-                    <p className="absolute text-[60px] font-bold opacity-[0.2] text-center w-full">Thank You!</p>
-                    <Image src="/successful.gif" width={200} height={200} alt="successful" className="m-auto" />
-                    <h1 className="text-lg font-semibold p-2 text-center py-4">Your submission was successful.</h1>
-                    <button className="p-2 px-6 rounded bg-blue text-white hover:bg-hoverblue" onClick={() => router.back()}>Go back</button>
-                </div>
+            <div className="flex justify-center items-center min-h-[70vh]">
+                <TemplatePreview components={defaultComponents} />
             </div>
         )
     }

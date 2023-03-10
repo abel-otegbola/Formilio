@@ -11,7 +11,7 @@ import Publish from "@/components/formComponents/publish";
 import { fetchData } from "@/helper/fetchData";
 
 export default function Builder() {
-    const [active, setActive] = useState()
+    const [active, setActive] = useState(0)
     const [show, setShow] = useState("Build")
     const [components, setComponents] = useState([])
     const id = useSearchParams().get("endpoint")
@@ -51,7 +51,9 @@ export default function Builder() {
     const handleAdd = (title) => {
             setComponents([
                 ...components,
-                title === "Input Field" ?
+                title === "Section" ?
+                    {id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'section', styles: {}}
+                : title === "Input Field" ?
                     {id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'input', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false }}
                 : title === "Text Area" ?
                     { id: components.length > 0 ? components[components.length - 1].id + 1 : 0, title: 'textarea', styles: {}, options: { label: "", placeholder: "", id: "", name: "" }, settings: { required: true, disabled: false, hidden: false } }
@@ -118,7 +120,7 @@ export default function Builder() {
                         <Publish components={components} type={type} id={id} templateTags={template?.tags?.split(",")} />
                     </div>
                 </div>
-                <BuilderSidebar addComponent={handleAdd} />
+                <BuilderSidebar addComponent={handleAdd} active={active} handleComponents={{components, setComponents}} item={components.filter(item => item.id === active)[0]} />
             </div>
         </div>
     )

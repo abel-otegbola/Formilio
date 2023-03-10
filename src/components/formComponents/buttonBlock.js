@@ -47,19 +47,19 @@ export default function ButtonBlock({ active, item, handleComponent, handleDelet
     }, [show])
 
     return(
-        <div ref={buttonRef} className={`bg-none dark:bg-gray-900 rounded cursor-pointer mb-4 ${(active && show) ? "border border-blue": "border-gray-100/[0.2]"}`}>
+        <div ref={buttonRef} className={`bg-none flex flex-col items-center dark:bg-gray-900 rounded cursor-pointer mb-4 ${(active && show) ? "border border-blue": "border-gray-100/[0.2]"}`}>
             <div className={`flex items-center justify-between dark:bg-gray-900/[0.3] ${show ? "block" : "hidden"}`}>
                 <div className="flex items-center">
                     <FiBold className={`p-2 text-3xl ${styles.bold ? "text-blue": ""}`} onClick={() => handleTypo("bold", !styles.bold)} />
                 </div>
                 <FaTrashAlt className="p-2 text-3xl text-blue mr-2" onClick={() => handleDelete(id)} />
             </div>
-                <input 
-                    onFocus={() => setShow(true)}
-                    className={`w-full bg-blue text-white mt-6 rounded p-[12px] text-center ${styles.bold ? "font-bold" : ""}`}
-                    onChange={(e) => handleText(e.target.value)}
-                    defaultValue={text}
-                />
+            <input 
+                onFocus={() => setShow(true)}
+                className={`w-fit bg-blue text-white mt-6 mx-auto rounded p-[12px] text-center ${styles.bold ? "font-bold" : ""}`}
+                onChange={(e) => handleText(e.target.value)}
+                defaultValue={text}
+            />
         </div>
     )
 }

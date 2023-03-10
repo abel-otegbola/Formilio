@@ -1,4 +1,9 @@
+'use client'
+import { useRouter } from "next/navigation"
+
 export default function TemplatePreview({ components }) {
+    const router = useRouter();
+
     return (
         <div className="p-2">
             {
@@ -75,12 +80,15 @@ export default function TemplatePreview({ components }) {
                         ></textarea>
                     </div>
                     : item.title === "button" ? 
-                    <button
-                        key={i} 
-                        style={{ padding: 12, borderRadius: 5, backgroundColor: "#6252f2", color: "#fff", width: "100%", marginTop: 20 }}
-                    >
-                        {item.text}
-                    </button>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        <button
+                            onClick={() => router.back()}
+                            key={i} 
+                            style={{ padding: 12, paddingInline: 30, borderRadius: 5, backgroundColor: "#6252f2", color: "#fff", width: "200px", marginTop: 20, cursor: "pointer" }}
+                        >
+                            {item.text}
+                        </button>
+                    </div>
                     : ""
                 ))
             }

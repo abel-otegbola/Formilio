@@ -4,40 +4,46 @@ import { closeBlock } from "@/helper/closeBlock"
 import { useEffect, useRef, useState } from "react"
 import { BsFileText, BsImage, BsInputCursorText, BsLayoutSidebarInsetReverse, BsSquareFill, BsTextParagraph } from "react-icons/bs"
 import { FaHeading, FaTimes } from "react-icons/fa"
-import { TfiLayoutColumn2Alt, TfiLayoutColumn3Alt } from "react-icons/tfi"
+import { TfiLayout, TfiLayoutColumn2Alt, TfiLayoutColumn3Alt } from "react-icons/tfi"
+import ComponentStyles from "./formComponents/componentStyles"
 
-export default function BuilderSidebar({ addComponent }) {
+export default function BuilderSidebar({ addComponent, item, handleComponent }) {
     const [active, setActive] = useState("Components")
     const [open, setOpen] = useState(false)
     const menuRef = useRef(null)
     const components = [
         {
             id: 1,
-            title: "Input Field",
-            icon: <BsInputCursorText />
+            title: "Section",
+            icon: <TfiLayout />
         },
         {
             id: 2,
-            title: "Text Area",
-            icon: <BsFileText />
-        },
-        {
-            id: 3,
             title: "Heading",
             icon: <FaHeading />
         },
         {
-            id: 4,
+            id: 3,
             title: "Text",
             icon: <BsTextParagraph />
         },
         {
+            id: 4,
+            title: "Input Field",
+            icon: <BsInputCursorText />
+        },
+        {
             id: 5,
+            title: "Text Area",
+            icon: <BsFileText />
+        },
+        {
+            id: 6,
             title: "Button",
             icon: <BsSquareFill />
         },
         {
-            id: 6,
+            id: 7,
             title: "Image",
             icon: <BsImage />
         }
@@ -59,7 +65,7 @@ export default function BuilderSidebar({ addComponent }) {
         </div>
 
         {/* Builder side bar  */}
-        <div ref={menuRef} className={`lg:relative absolute lg:pt-0 pt-[115px] top-0 lg:right-0 right-2 h-full w-[250px] bg-slate-50 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
+        <div ref={menuRef} className={`lg:relative absolute lg:pt-0 md:pt-0 pt-[115px] top-0 lg:right-0 right-2 h-full w-[250px] bg-slate-50 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
             <div className="grid grid-cols-2 gap-2 p-2 rounded bg-gray-100 dark:bg-gray-900">
                 {
                     ["Components", "Styles"].map((item, i) => (
@@ -71,18 +77,22 @@ export default function BuilderSidebar({ addComponent }) {
                     ))
                 }
             </div>
-            <div className="m-2 my-5 mb-16">
-                {
-                    components.map((item) => {
-                        return (
-                            <div key={item.id} onClick={() => addComponent(item.title)}  draggable="true" className="flex items-center p-2 py-4 my-2 border border-gray-100/[0.1] shadow-lg bg-white dark:bg-gray-800 hover:bg-blue hover:text-white cursor-pointer rounded">
-                                <span className="text-hoverblue">{item.icon}</span>
-                                <p className="ml-2 text-sm">{item.title}</p>
-                            </div>
-                        )
-                    })
-                }
-            </div>
+            {
+                active === "Components" ? 
+                <div className="m-2 my-5 mb-16">
+                    {
+                        components.map((item) => {
+                            return (
+                                <div key={item.id} onClick={() => addComponent(item.title)}  draggable="true" className="flex items-center p-2 py-4 my-2 border border-gray-100/[0.1] shadow-lg bg-white dark:bg-gray-800 hover:bg-blue hover:text-white cursor-pointer rounded">
+                                    <span className="text-hoverblue">{item.icon}</span>
+                                    <p className="ml-2 text-sm">{item.title}</p>
+                                </div>
+                            )
+                        })
+                    }
+                </div> :
+                <ComponentStyles active={active} handleComponents={handleComponent} item={item} />
+            }
             
             {/* <h4 className="m-2 p-2 font-semibold">Layouts</h4> */}
 {/* 
