@@ -65,7 +65,7 @@ export default function BuilderSidebar({ addComponent, item, handleComponent }) 
         </div>
 
         {/* Builder side bar  */}
-        <div ref={menuRef} className={`lg:relative absolute lg:pt-0 md:pt-0 pt-[115px] top-0 lg:right-0 right-2 h-full w-[250px] bg-slate-50 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
+        <div ref={menuRef} className={`lg:relative absolute lg:pt-0 md:pt-0 pt-[115px] top-0 lg:right-0 right-2 h-full w-[250px] bg-slate-50 dark:bg-gray-900 text-gray-500 dark:text-gray-300 transition-all duration-700 ${open ? "w-[250px]" : "lg:w-[250px] w-0"}`}>
             <div className="grid grid-cols-2 gap-2 p-2 rounded bg-gray-100 dark:bg-gray-900">
                 {
                     ["Components", "Styles"].map((item, i) => (

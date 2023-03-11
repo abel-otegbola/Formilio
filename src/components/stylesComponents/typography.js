@@ -4,14 +4,13 @@ import { BsTextCenter, BsTextLeft, BsTextRight } from "react-icons/bs";
 import { FaCaretDown, FaCaretRight, FaStrikethrough } from "react-icons/fa";
 import { FiBold, FiItalic, FiUnderline } from "react-icons/fi";
 
-export default function Typography({ styles, handleTypo }) {
-    const [open, setOpen] = useState(true)
+export default function Typography({ styles, open, setOpen, handleTypo }) {
 
     return(
         <div className="p-2">
-            <h3 className="flex items-center py-3" onClick={() => setOpen(!open)}>{ open ? <FaCaretDown className="mr-2" /> : <FaCaretRight className="mr-2" />} Typography</h3>
+            <h3 className="flex items-center py-3 cursor-pointer" onClick={() => setOpen(3)}>{ open === 3 ? <FaCaretDown className="mr-2" /> : <FaCaretRight className="mr-2" />} Typography</h3>
 
-            <div className={`${open ? "h-auto" : "h-0"} overflow-hidden transition-all duration-700`}>
+            <div className={`${open === 3 ? "h-auto" : "h-0"} overflow-hidden transition-all duration-700`}>
                 {/* paragraph alignment options */}
                 <div className="my-1 grid grid-cols-3 gap-1">
                         <BsTextLeft className={`p-2 w-full rounded-sm border border-gray-200/[0.05] text-4xl ${styles.align === "left" ? "bg-blue text-white": ""}`} onClick={() => handleTypo("align", "left")}/>

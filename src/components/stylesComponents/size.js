@@ -2,14 +2,13 @@
 import { useState } from "react";
 import { FaCaretDown, FaCaretRight } from "react-icons/fa";
 
-export default function Size({ styles, handleTypo }) {
-    const [open, setOpen] = useState(true)
+export default function Size({ styles, open, setOpen, handleTypo }) {
 
     return(
         <div className="p-2">
-            <h3 className="flex items-center py-3" onClick={() => setOpen(!open)}>{ open ? <FaCaretDown className="mr-2" /> : <FaCaretRight className="mr-2" />} Size</h3>
+            <h3 className="flex items-center py-3 cursor-pointer" onClick={() => setOpen(2)}>{ open === 2 ? <FaCaretDown className="mr-2" /> : <FaCaretRight className="mr-2" />} Size</h3>
 
-            <div className={`${open ? "h-auto" : "h-0"} overflow-hidden transition-all duration-700`}>
+            <div className={`${open === 2 ? "h-auto" : "h-0"} overflow-hidden transition-all duration-700`}>
                 {/* paragraph alignment options */}
                 <div className="my-1 grid grid-cols-2 gap-1">
                     <div className="flex items-center w-full border border-gray-200 dark:border-gray-200/[0.05] rounded">

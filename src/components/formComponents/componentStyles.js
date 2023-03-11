@@ -1,11 +1,11 @@
-import { BsTextCenter, BsTextLeft, BsTextRight } from "react-icons/bs";
-import { FaStrikethrough, FaTrashAlt } from "react-icons/fa";
-import { FiBold, FiItalic, FiLink, FiUnderline } from "react-icons/fi";
+import { useState } from "react";
+import Background from "../stylesComponents/background";
 import Layout from "../stylesComponents/layout";
 import Size from "../stylesComponents/size";
 import Typography from "../stylesComponents/typography";
 
 export default function ComponentStyles({ active, item, handleComponent }) {
+    const [open, setOpen] = useState(1)
 
     const { text, id, styles } = item
 
@@ -25,11 +25,13 @@ export default function ComponentStyles({ active, item, handleComponent }) {
         <div className={`dark:bg-gray-800/[0.3] p-2 ml-2`}>
             <div className="">
                 
-                <Layout styles={styles} handleTypo={handleTypo} />
+                <Layout styles={styles} setOpen={setOpen} open={open} handleTypo={handleTypo} />
                 
-                <Size styles={styles} handleTypo={handleTypo} />
+                <Size styles={styles} setOpen={setOpen} open={open} handleTypo={handleTypo} />
 
-                <Typography styles={styles} handleTypo={handleTypo} />
+                <Typography styles={styles} setOpen={setOpen} open={open} handleTypo={handleTypo} />
+
+                <Background styles={styles} setOpen={setOpen} open={open} handleTypo={handleTypo} />
 
             </div>
 
