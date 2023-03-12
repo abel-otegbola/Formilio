@@ -2,7 +2,7 @@
 import { fetchData } from "@/helper/fetchData";
 import { useSearchParams } from "next/navigation"
 import { FiInfo, FiLoader } from "react-icons/fi";
-import TemplatePreview from "@/components/formComponents/templatePreview";
+import TemplatePreview from "@/components/templatePreview";
 
 export default function Thankyou() {
     const defaultComponents = [

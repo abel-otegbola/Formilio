@@ -21,8 +21,8 @@ export default function Home() {
 
     return(
         <div>
-            <div className="flex md:flex-nowrap flex-wrap md:px-[10%] px-[5%] py-[7%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
-                <div className="md:w-[50%] w-full mr-[3%] ">
+            <div className="flex md:flex-nowrap flex-wrap items-center mb-[7%] md:px-[10%] px-[5%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
+                <div className="md:w-[50%] w-full md:pt-0 pt-10">
                     <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">Effortlessly generate HTML endpoints for your static forms.</h1>
                     <p className="my-4 leading-[25px]">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
                     </p>
@@ -31,12 +31,8 @@ export default function Home() {
                         <a href="/documentations" className="flex items-center justify-center p-[10px] px-[20px] md:ml-4 hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Learn more <FiArrowRightCircle className="ml-2"/></a>
                     </div>
                 </div>
-                <div className="relative md:w-[50%] md:mt-0 mt-[40px] w-full bg-gradient-to-r p-[20px] backdrop-blur-xl from-blue/[0.2] to-fuchsia-500/[0.2]">
-                    <Image src={"/bgdashboard.png"} width="700" height="500" alt="form ui" className="drop-shadow-xl"/>
-                    <div className="absolute animate-pulse top-[30px] w-[200px] right-4 p-4 px-6 shadow-2xl w-fit rounded-lg text-white backdrop-blur-sm bg-blue/[0.6]">
-                        <h3 className="font-bold pb-2">NEW ENDPOINT</h3>
-                        <p className="flex items-center py-2"><FaLink className="p-1 text-xl bg-blue text-white mr-2 rounded-full" /> Portfolio</p>
-                    </div>
+                <div className="md:w-[50%] md:mt-0 mt-[40px] w-full">
+                    <Image src={"/herobg.png"} width="700" height="500" alt="man sitting pressing laptop" className="drop-shadow-xl"/>
                 </div>
             </div>
             
@@ -47,21 +43,21 @@ export default function Home() {
                     </p>
                 </div>
                 <div className="flex flex-wrap w-full md:p-[5%] bg-[url('/bg.png')] bg-cover bg-gray-300[0.1]">
-                    <div className="md:w-[45%] w-full">
-                        <div className="my-2">
-                            <FaLink className="mb-2 text-4xl p-2 rounded-full text-blue border border-blue " />
+                    <div className="md:w-[45%] w-[90%] m-auto">
+                        <div className="my-2 md:text-left text-center mb-4">
+                            <FaLink className="mb-2 md:mx-0 mx-auto text-4xl p-2 rounded-full text-blue border border-blue " />
                             <h3 className="text-lg font-semibold">Generate the endpoint</h3>
-                            <p className="opacity-[0.5] py-4">Get an endpoint using the endpoint generator</p>
+                            <p className="opacity-[0.5] pb-4">Get an endpoint using the endpoint generator</p>
                         </div>
-                        <div className="my-2">
-                            <FaCode className="mb-2 text-4xl p-2 rounded-full text-blue border border-blue " />
+                        <div className="my-2 md:text-left text-center mb-4">
+                            <FaCode className="mb-2 md:mx-0 mx-auto text-4xl p-2 rounded-full text-blue border border-blue " />
                             <h3 className="text-lg font-semibold">Add the endpoint to your form</h3>
-                            <p className="opacity-[0.5] py-4">Copy and paste the endpoint into your form</p>
+                            <p className="opacity-[0.5] pb-4">Copy and paste the endpoint into your form</p>
                         </div>
-                        <div className="my-2">
-                            <FaSave className="mb-2 text-4xl p-2 rounded-full text-blue border border-blue " />
+                        <div className="my-2 md:text-left text-center mb-4">
+                            <FaSave className="mb-2 md:mx-0 mx-auto text-4xl p-2 rounded-full text-blue border border-blue " />
                             <h3 className="text-lg font-semibold">Start receiving submissions</h3>
-                            <p className="opacity-[0.5] py-4">With this, formilio will save your users submissions.</p>
+                            <p className="opacity-[0.5] pb-4">With this, formilio will save your users submissions.</p>
                         </div>
                     </div>
                     <div className="md:w-[50%] w-full">
