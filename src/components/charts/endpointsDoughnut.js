@@ -7,17 +7,35 @@ Chart.register( ArcElement, Filler, Title, Tooltip, Legend );
 import { Doughnut } from 'react-chartjs-2';
 
 export default function EndpointsChart({ endpoints, submissions }) {
-    const [endpointsData, setEndpointsData] = useState(['Loading', 'Loading', 'Loading'])
+    const [endpointsTitles, setEndpointsTitles] = useState(['Loading', 'Loading', 'Loading'])
+    const [endpointsData, setEndpointsData] = useState([0,0,0])
 
     useEffect(() => {
-        endpoints.filter(endpoint => endpoint.key)
+
+        //set Endpoints
+        let endpointsTitles = endpoints?.map(item => ( item.title )) || []
+
+        setEndpointsTitles(endpointsTitles)
+
+        // get the key fields from endpoints and submissions, store into an array
+        let endpointsKeys = endpoints?.map(item => ( item.key )) || []
+        let submissionsKeys = submissions?.map(item => ( item.key )) || []
+
+        //Find number of each submissions for all endpoints using the keys.
+        let resultArray = []
+
+        for(let i=0; i<endpointsKeys.length; i++) {
+            resultArray.push(submissionsKeys.filter(item => item === endpointsKeys[i]).length)
+        }
+
+        setEndpointsData(resultArray)
     }, [endpoints, submissions])
 
     const data = {
-        labels: endpointsData,
+        labels: endpointsTitles,
         datasets: [
             {
-                data: [40, 20, 50],
+                data: endpointsData,
                 borderColor: [
                     'rgba(227, 97, 200, 1)',
                     '#6252f2',

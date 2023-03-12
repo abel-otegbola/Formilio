@@ -38,10 +38,10 @@ export default function Dashboard() {
                     <h4 className="p-2 font-semibold text-blue">LATEST ENDPOINTS</h4>
                     {/* <p className="p-2">Statistics of submissions for your latest endpoints</p> */}
                     <div className="relative flex justify-center items-center md:mx-[15%] mx-[5%] my-4 bg-white dark:bg-gray-900 rounded-full md:w-auto w-fit">
-                        {/* <EndpointsChart endpoints={endpoints} submissions={submissions}/> */}
-                        {/* <div className="absolute flex justify-center items-center h-[60%] w-[60%]">
+                        <EndpointsChart endpoints={endpoints} submissions={submissions}/>
+                        <div className="absolute flex justify-center items-center h-[60%] w-[60%]">
                             <h3 className="text-blue font-semibold text-3xl ">70%</h3>
-                        </div> */}
+                        </div>
                     </div>
                     <EndpointsList 
                         setEndpoints={setEndpoints} 

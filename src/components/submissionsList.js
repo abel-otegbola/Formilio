@@ -36,7 +36,7 @@ export default function SubmissionList({ type, router, setSubmissions, limit }) 
                 <div className="flex justify-center items-center min-h-[70px]">
                     <FiLoader className="animate-spin text-blue text-3xl" />    
                 </div> : 
-                submissions && submissions.map(submission => (
+                submissions?.map(submission => (
                     <Submission key={submission._id} data={submission.data && JSON.parse(submission.data)} submission={submission} setSuccess={setSuccess} setError={setError} />
                 ))
             }

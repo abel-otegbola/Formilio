@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link";
-import { FiBell, FiSearch, FiUser } from "react-icons/fi";
+import { FiBell, FiUser } from "react-icons/fi";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FaBars, FaSignOutAlt, FaTimes, FaUserAlt, FaUserCircle } from "react-icons/fa";
