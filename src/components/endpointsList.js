@@ -25,7 +25,7 @@ export default function EndpointsList({ setEndpoints, limit }) {
                     <Popup text={endpointsError || endpoints.error} color={"red"} />
                     <div className="flex justify-center flex-col items-center p-[40px]">
                         <p className="mb-4">Could not connect</p>
-                        <button className="p-2 px-6 rounded bg-blue text-white hover:bg-hoverblue" onClick={() => window.location.reload()}>Refresh</button>
+                        <button className="p-2 px-6 text-sm rounded bg-blue text-white hover:bg-hoverblue" onClick={() => window.location.reload()}>Refresh</button>
                     </div>
                 </div> : (endpointsLoading) 
                 ? 

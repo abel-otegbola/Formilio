@@ -1,32 +1,25 @@
 
 'use client'
-import EndpointsChart from "@/components/endpointsDoughnut";
+import EndpointsChart from "@/components/charts/endpointsDoughnut";
 import EndpointsList from "@/components/endpointsList";
 import Header from "@/components/header";
-import Popup from "@/components/popup";
-import SubmissionChart from "@/components/submissionChart";
+import SubmissionChart from "@/components/charts/submissionChart";
 import SubmissionList from "@/components/submissionsList";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { FaPaperPlane } from "react-icons/fa";
+import GenerateEndpoint from "@/components/generateEndpoint";
 
 
 export default function Dashboard() {
     const [submissions, setSubmissions] = useState([])
     const [endpoints, setEndpoints] = useState([])
-    const [error, setError] = useState("")
-    const [success, setSuccess] = useState("")
-    const [totalUsers, setTotalUsers] = useState(0)
     const { data: session } = useSession()   
 
     return (
         <div className="px-4">
                 <Header text={`Welcome: ${session?.user.name}`} icon={<FaPaperPlane />} >
-                    <div className="flex flex-wrap gap-2">
-                        <a href="/dashboard/endpoints" className="p-2 text-sm px-6 rounded bg-hoverblue text-white hover:bg-blue hover:border hover:border-white">Generate endpoints</a>
-                        <a href="/dashboard/builder" className="p-2 text-sm px-6 rounded bg-hoverblue text-white hover:bg-blue hover:border hover:border-white">Build forms</a>
-                        <a href="/dashboard/templates" className="p-2 text-sm px-6 rounded bg-hoverblue text-white hover:bg-blue hover:border hover:border-white">Explore templates</a>
-                    </div>
+                    <GenerateEndpoint />
                 </Header>
             <div className="flex flex-wrap">
                 <div className="md:w-[70%] w-full md:p-2 py-5">
@@ -42,20 +35,17 @@ export default function Dashboard() {
                     </div>
                 </div>
                 <div className="md:w-[30%] w-full p-2 py-6 dark:bg-gray-800/[0.3]">
-                    <h4 className="p-2 font-semibold text-blue">LATEST ENDPOINTS <span className="text-blue">{totalUsers}</span></h4>
+                    <h4 className="p-2 font-semibold text-blue">LATEST ENDPOINTS</h4>
                     {/* <p className="p-2">Statistics of submissions for your latest endpoints</p> */}
                     <div className="relative flex justify-center items-center md:mx-[15%] mx-[5%] my-4 bg-white dark:bg-gray-900 rounded-full md:w-auto w-fit">
-                        {/* <EndpointsChart endpoints={endpoints?.reverse().splice(0, 3)} submissions={submissions}/> */}
+                        {/* <EndpointsChart endpoints={endpoints} submissions={submissions}/> */}
                         {/* <div className="absolute flex justify-center items-center h-[60%] w-[60%]">
                             <h3 className="text-blue font-semibold text-3xl ">70%</h3>
                         </div> */}
                     </div>
                     <EndpointsList 
-                        setError={setError} 
-                        setSuccess={setSuccess} 
                         setEndpoints={setEndpoints} 
-                        limit={5} 
-                        settotalUsers={setTotalUsers} 
+                        limit={5}  
                     />
                     
                 </div>

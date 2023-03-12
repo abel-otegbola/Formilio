@@ -8,6 +8,7 @@ import { FaBars, FaSignOutAlt, FaTimes, FaUserAlt, FaUserCircle } from "react-ic
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { closeBlock } from "@/helper/closeBlock";
+import Searchbar from "./searchbar";
 
 export default function Topbar() {
     const [open, setOpen] = useState(false)
@@ -55,9 +56,7 @@ export default function Topbar() {
                 }
             </ul>
             <div className="flex items-center">
-                <div className="relative mr-[25px] text-gray-500 font-bold text-2xl">
-                    <FiSearch />
-                </div>
+                <Searchbar />
                 {
                     (session) ? // Show dashboard button instead of login if signed in
                     <>

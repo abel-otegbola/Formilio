@@ -2,7 +2,7 @@
 import hljs from "highlight.js";
 import Image from "next/image";
 import { useState } from "react";
-import { FaCode, FaLink, FaPaperPlane, FaSave, FaUserCircle } from "react-icons/fa";
+import { FaCode, FaLink, FaPaperPlane, FaSave } from "react-icons/fa";
 import { FiArrowRightCircle } from "react-icons/fi";
 import "../components/jsonformat.css"
 
@@ -16,12 +16,13 @@ export default function Home() {
         {id: 3, title: "File Upload", description: "Formilio makes it easy to receive files when uploaded."},
         {id: 4, title: "Drag and Drop Builder", description: "Formilio allows you to build your own email template, Invoice and Quotes as well as a fully working form."}
     ]
-    const forms = ["HTML", "REACT", "VUE"]
+    const forms = ["HTML", "PREVIEW"]
 
 
     return(
         <div>
-            <div className="flex md:flex-nowrap flex-wrap items-center mb-[7%] md:px-[10%] px-[5%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
+            {/* header section */}
+            <header className="flex md:flex-nowrap flex-wrap items-center mb-[7%] md:px-[10%] px-[5%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
                 <div className="md:w-[50%] w-full md:pt-0 pt-10">
                     <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">Effortlessly generate HTML endpoints for your static forms.</h1>
                     <p className="my-4 leading-[25px]">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
@@ -31,12 +32,13 @@ export default function Home() {
                         <a href="/documentations" className="flex items-center justify-center p-[10px] px-[20px] md:ml-4 hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Learn more <FiArrowRightCircle className="ml-2"/></a>
                     </div>
                 </div>
+                {/* hero image */}
                 <div className="md:w-[50%] md:mt-0 mt-[40px] w-full">
                     <Image src={"/herobg.png"} width="700" height="500" alt="man sitting pressing laptop" className="drop-shadow-xl"/>
                 </div>
-            </div>
+            </header>
             
-            <div className="md:px-[10%] p-[5%] font-body dark:bg-gray-800">
+            <section className="md:px-[10%] p-[5%] font-body dark:bg-gray-800">
                 <div className="md:w-[60%] m-auto w-full pb-5 pt-[5%] text-center">
                     <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">Get Started in Minutes</h1>
                     <p className="my-4 mb-7 leading-[25px]">No coding knowledge required! Our user-friendly platform makes it easy for anyone to create endpoints for their static forms and start collecting data immediately.
@@ -61,7 +63,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="md:w-[50%] w-full">
-                        <div className="grid grid-cols-3 gap-2 p-2 rounded bg-gray-100 dark:bg-gray-900">
+                        <div className="grid grid-cols-2 gap-2 p-2 rounded bg-gray-100 dark:bg-gray-900">
                             {
                                 forms.map((item, i) => (
                                     <p 
@@ -85,9 +87,11 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
             
-            <div className="md:px-[10%] p-[5%] font-body">
+            {/* features section */}
+            <section className="md:px-[10%] p-[5%] font-body">
+                {/* features heading */}
                 <div className="md:w-[60%] m-auto w-full pb-5 pt-[5%] text-center">
                     <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">Features</h1>
                     <p className="my-4 mb-7 leading-[25px]">Formilio offers you the best features that you'll ever need in your form. Keeping simplicity in mind, we've crafted the best way to integrate powerful features into your form within minutes.
@@ -127,7 +131,7 @@ export default function Home() {
                         </div>
                     ))
                 }
-            </div>
+            </section>
         </div>
     )
 }

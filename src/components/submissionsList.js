@@ -2,7 +2,7 @@ import { fetchData } from "@/helper/fetchData";
 import { useEffect, useState } from "react";
 import { FiLoader } from "react-icons/fi";
 import Popup from "./popup";
-import SubmissionModal from "./submissionModal";
+import Submission from "./submission";
 
 
 export default function SubmissionList({ type, router, setSubmissions, limit }) {
@@ -28,7 +28,7 @@ export default function SubmissionList({ type, router, setSubmissions, limit }) 
                     <Popup text={submissionsError || submissions.error} color={"red"} /> 
                     <div className="py-6">
                         <p className="mb-4">Could not connect.</p>
-                        <button className="p-2 px-6 rounded bg-blue text-white hover:bg-hoverblue" onClick={() => window.location.reload()}>Refresh</button>
+                        <button className="p-2 text-sm px-6 rounded bg-blue text-white hover:bg-hoverblue" onClick={() => window.location.reload()}>Refresh</button>
                     </div>
                 </div>
                 :
@@ -37,7 +37,7 @@ export default function SubmissionList({ type, router, setSubmissions, limit }) 
                     <FiLoader className="animate-spin text-blue text-3xl" />    
                 </div> : 
                 submissions && submissions.map(submission => (
-                    <SubmissionModal key={submission._id} data={submission.data && JSON.parse(submission.data)} submission={submission} setSuccess={setSuccess} setError={setError} />
+                    <Submission key={submission._id} data={submission.data && JSON.parse(submission.data)} submission={submission} setSuccess={setSuccess} setError={setError} />
                 ))
             }
         </div>
