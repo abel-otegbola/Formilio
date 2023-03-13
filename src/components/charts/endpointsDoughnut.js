@@ -6,30 +6,8 @@ Chart.register( ArcElement, Filler, Title, Tooltip, Legend );
 
 import { Doughnut } from 'react-chartjs-2';
 
-export default function EndpointsChart({ endpoints, submissions }) {
-    const [endpointsTitles, setEndpointsTitles] = useState(['Loading', 'Loading', 'Loading'])
-    const [endpointsData, setEndpointsData] = useState([0,0,0])
+export default function EndpointsChart({ endpointsTitles, endpointsData }) {
 
-    useEffect(() => {
-
-        //set Endpoints
-        let endpointsTitles = endpoints?.map(item => ( item.title )) || []
-
-        setEndpointsTitles(endpointsTitles)
-
-        // get the key fields from endpoints and submissions, store into an array
-        let endpointsKeys = endpoints?.map(item => ( item.key )) || []
-        let submissionsKeys = submissions?.map(item => ( item.key )) || []
-
-        //Find number of each submissions for all endpoints using the keys.
-        let resultArray = []
-
-        for(let i=0; i<endpointsKeys.length; i++) {
-            resultArray.push(submissionsKeys.filter(item => item === endpointsKeys[i]).length)
-        }
-
-        setEndpointsData(resultArray)
-    }, [endpoints, submissions])
 
     const data = {
         labels: endpointsTitles,
@@ -39,12 +17,20 @@ export default function EndpointsChart({ endpoints, submissions }) {
                 borderColor: [
                     'rgba(227, 97, 200, 1)',
                     '#6252f2',
-                    'rgb(239, 159, 11)'
+                    'rgba(239, 159, 11, 1)',
+                    'rgba(255, 165, 0, 1)',
+                    'rgba(0, 128, 128, 1)',
+                    'rgba(0, 191, 255, 1)',
+                    'rgba(199, 21, 133, 1)'
                 ],
                 backgroundColor: [
                     'rgba(227, 97, 200, 0.7)',
                     'rgba(92, 82, 242, 0.7)',
-                    'rgba(239, 159, 11, 0.7)'
+                    'rgba(239, 159, 11, 0.7)',
+                    'rgba(255, 165, 0, 0.7)',
+                    'rgba(0, 128, 128, 0.7)',
+                    'rgba(0, 191, 255, 0.7)',
+                    'rgba(199, 21, 133, 0.7)'
                 ],
                 borderWidth: 2,
                 cutout: "85%",
