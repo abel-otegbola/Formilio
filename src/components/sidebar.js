@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FaAdjust, FaArrowAltCircleRight, FaAtom, FaChartLine, FaCog, FaCommentAlt, FaInfoCircle, FaLink, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
-import { BsLayoutSidebarInset } from "react-icons/bs";
+import { HiMenuAlt1 } from "react-icons/hi";
 import { signOut } from "next-auth/react";
 import { closeBlock } from "@/helper/closeBlock";
 
@@ -13,9 +13,9 @@ export default function Sidebar() {
 
     const links = [
         { name: "Dashboard", to: "", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
-        { name: "Endpoints", to: "/endpoints", icon: <FaLink />,  iconRight: <span className="bg-purple-500 text-white p-1 rounded text-[9px]">3</span> },
+        { name: "Endpoints", to: "/endpoints", icon: <FaLink />,  iconRight: <span className="bg-green-500 text-white p-1 px-2 rounded-full text-[9px]">1</span> },
         { name: "Analytics", to: "/analytics", icon: <FaChartLine />,  iconRight: <FaArrowAltCircleRight/> },
-        { name: "Notifications", to: "/notifications", icon: <FaCommentAlt />,  iconRight: <span className="bg-purple-400 text-white p-1 px-2 rounded text-[8px]">3</span> },
+        { name: "Notifications", to: "/notifications", icon: <FaCommentAlt />,  iconRight: <span className="bg-purple-400 text-white p-1 px-2 rounded text-[8px]">new</span> },
         { name: "Profile", to: "/profile", icon: <FaUserCircle />,  iconRight: <FaAdjust/> },
         { name: "Settings", to: "/settings", icon: <FaCog />,  iconRight: <FaInfoCircle/> },
         { name: "Logout", to: "#", icon: <FaSignOutAlt />,  iconRight: <FaArrowAltCircleRight/> },
@@ -29,9 +29,9 @@ export default function Sidebar() {
     return(
         <>
         {/* Button to close and open sidebar */}
-        <div className="fixed top-1 left-0 text-gray-500 font-bold text-2xl p-4 md:hidden block z-[150]" onClick={() => setOpen(!open)} >
+        <div className="fixed top-1 left-0 text-gray-500 font-bold text-2xl p-4 md:hidden block z-[150] transition-all duration-500" onClick={() => setOpen(!open)} >
                     {
-                        open ? <FaTimes /> : <BsLayoutSidebarInset />
+                        open ? <FaTimes /> : <HiMenuAlt1 />
                     }
         </div>
 

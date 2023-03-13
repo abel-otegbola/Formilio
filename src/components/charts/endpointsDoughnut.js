@@ -1,6 +1,5 @@
 'use client'
-import { Chart, ArcElement, Title, Tooltip, Legend, Filler } from 'chart.js'
-import { useEffect, useState } from 'react';
+import { Chart, ArcElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 
 Chart.register( ArcElement, Filler, Title, Tooltip, Legend );
 

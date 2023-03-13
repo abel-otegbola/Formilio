@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { FaLink, FaPenFancy, FaTimes, FaTrashAlt, FaUpload } from "react-icons/fa"
+import { FaPenFancy, FaSave, FaTimes, FaTrashAlt, FaUpload } from "react-icons/fa"
 import Popup from "./popup"
-import Link from 'next/link'
 import { useRouter } from "next/navigation"
 import { FiLoader } from "react-icons/fi"
+import ThankyouModal from "./thankyouModal"
 
 export default function Settings({ id }) {
     const [error, setError] = useState("")
@@ -12,6 +12,9 @@ export default function Settings({ id }) {
     const [emails, setEmails] = useState([])
     const [name, setName] = useState("")
     const [autoRespond, setAutoRespond] = useState("")
+    const [thankyouLink, setThankyouLink] = useState("")
+    const [active, setActive] = useState("Default")
+    const [openModal, setOpenModal] = useState(true)
     const router = useRouter()
 
     const addEmail = () => {
@@ -44,14 +47,21 @@ export default function Settings({ id }) {
         }) 
     }
 
-    const handleUpdate = async () => {
+    const handleUpdate = async (type) => {
         setLoading(true)
+        let data = {}
+        if(type === "autoRespond") {
+            data.autoRespond = autoRespond
+        }
+        else if(type === "thankyouLink") {
+            data.thankyouLink = thankyouLink
+        }
         await fetch(`/api/updateEndpoint/${id}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ autoRespond })
+            body: JSON.stringify(data)
         })
         .then(res => res.json())
         .then(data => {
@@ -59,7 +69,7 @@ export default function Settings({ id }) {
                 setError(data.error)
             }
             else {
-                setSuccess("Autorespond added successfully")
+                setSuccess(`${type} added successfully`)
                 setLoading(false)
             }
         })
@@ -77,16 +87,37 @@ export default function Settings({ id }) {
 
             <div className="rounded border pb-4 border-gray-400/[0.2] dark:bg-gray-900 my-10">
                 <h3 className="text-lg font-semibold p-4 bg-gray-100 dark:bg-gray-800">Thank you Page</h3>
-                <p className="opacity-[0.5] p-4">Create a custom thank you page or use the default.</p>
-                <div className="flex flex-wrap mx-4 gap-2">
-                    <Link href={{pathname: `/dashboard/builder`, query: {type: "thank you", endpoint: id}}} className=" flex items-center p-2 px-6 bg-blue text-white rounded hover:bg-hoverblue">
-                        <FaPenFancy className="mr-2"/> 
-                        Customize
-                    </Link>
-                    <button className=" flex items-center p-2 px-6 bg-blue text-white rounded hover:bg-hoverblue">
-                        <FaLink className="mr-2"/> 
-                        Custom link
-                    </button>
+                <p className="opacity-[0.5] p-4">Use a your custom link or customize the default.</p>
+                <div className="grid grid-cols-2 w-fit m-4 gap-2 p-2 bg-gray-100 dark:bg-gray-900">
+                {
+                    ["Default", "Custom link"].map((item, i) => (
+                        <p 
+                            key={i} 
+                            className={`p-3 px-6 rounded border text-sm text-center hover:bg-white hover:dark:bg-gray-900 hover:border-blue hover:text-blue text-center cursor-pointer border  ${active === item ? "border-blue text-blue shadow-lg bg-white dark:bg-gray-900 dark:shadow-3xl" : "border-transparent"}`}
+                            onClick={() => setActive(item)}
+                        >{item}</p>
+                    ))
+                }
+                </div>
+                <div className="p-4">
+                    {
+                        active === "Default" ?
+                            <div className="">
+                                <button className="flex items-center bg-blue text-white p-2 px-6 rounded" onClick={() => setOpenModal(!openModal)}><FaPenFancy className="mr-2" /> Customize</button>
+                                {openModal ? <ThankyouModal /> : ""}
+                            </div>
+                        :
+                            <div className="flex items-center gap-2">
+                                <input className="p-2 bg-transparent border border-gray-600/[0.3] rounded focus:outline-blue" onChange={(e) => setThankyouLink(e.target.value)} placeholder="Enter link" />
+                                <button className="flex items-center bg-green-500 text-white p-2 px-6 rounded" onClick={() => handleUpdate("thankyouLink")}>
+                                { loading ? 
+                                    <FiLoader className="animate-spin mr-2" />:
+                                    <FaSave className="mr-2"/> 
+                                }
+                                    Save
+                                </button>
+                            </div>
+                    }
                 </div>
             </div>
             
@@ -99,7 +130,7 @@ export default function Settings({ id }) {
                             <p className="p-3 px-6 bg-blue text-white rounded hover:bg-hoverblue flex items-center">{email} <FaTimes className="ml-2" onClick={() => setEmails(emails.filter(item => item !== email))} /></p>
                         ))
                     }
-                    <input className="border border-transparent p-2 bg-gray-900 rounded text-white" name="email" type="email" value={name} placeholder="Type email here" onChange={(e) => setName(e.target.value)} />
+                    <input className="border border-transparent p-2 bg-gray-100 dark:bg-gray-900 focus:outline-blue rounded" name="email" type="email" value={name} placeholder="Type email here" onChange={(e) => setName(e.target.value)} />
                     <button className="p-2 px-6 rounded-sm border border-blue text-blue" onClick={() => addEmail()} >Add</button>
                 </div>
                 <button className="flex items-center mx-4 p-2 px-6 bg-blue text-white rounded hover:bg-hoverblue">
@@ -115,8 +146,8 @@ export default function Settings({ id }) {
                 <h3 className="text-lg font-semibold p-4 bg-gray-100 dark:bg-gray-800">Auto Respond email</h3>
                 <p className="opacity-[0.5] p-4">Send message to user email. Add the auto respond message below.</p>
                 <div className="m-4">
-                    <textarea className="w-full border border-gray-200 dark:border-gray-100/[0.3] p-2 bg-gray-900 rounded text-white" name="autoRespond" onChange={(e) => setAutoRespond(e.target.value)} placeholder="Type message here"></textarea>
-                    <button className="p-2 px-6 mt-2 rounded-sm border border-green-500 text-green-500" onClick={() => handleUpdate()}>Save</button>
+                    <textarea className="w-full border border-gray-200 dark:border-gray-100/[0.3] p-2 bg-gray-100 dark:bg-gray-900 focus:outline-blue rounded text-white" name="autoRespond" onChange={(e) => setAutoRespond(e.target.value)} placeholder="Type message here"></textarea>
+                    <button className="p-2 px-6 mt-2 rounded text-white bg-green-500" onClick={() => handleUpdate()}>Save</button>
                 </div>
             </div>
 

@@ -7,6 +7,11 @@ export default async function handler(req, res) {
     await connectMongo().catch(error => {
         return res.status(404).json({ error: "Connection Failed"})
     })
-    return res.json(await Endpoints.updateOne({ "key": slug[0] }, { $set: { "autoRespond":  req.body.autoRespond } }).catch(err => res.status(400).json(err)))
+    if (req.body.thankyouLink) {
+        return res.json(await Endpoints.updateOne({ "key": slug[0] }, { $set: { "thankYou":  req.body.thankyouLink } }).catch(err => res.status(400).json(err)))
+    }
+    else if(req.body.autoRespond) {
+        return res.json(await Endpoints.updateOne({ "key": slug[0] }, { $set: { "autoRespond":  req.body.autoRespond } }).catch(err => res.status(400).json(err)))
+    }
 
 }
