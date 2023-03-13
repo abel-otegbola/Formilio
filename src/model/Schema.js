@@ -12,7 +12,6 @@ const endpointsSchema = new Schema({
     user: String,
     title: String,
     key: String,
-    emailRecipients: Array,
     autoRespond: String,
     thankYou: String,
     address: String
@@ -28,12 +27,9 @@ const submissionsSchema = new Schema({
     timestamps: true
 })
 
-const templatesSchema = new Schema({
-    key: String,
+const notificationsSchema = new Schema({
     user: String,
-    type: String,
-    tags: String,
-    components: String
+    message: String,
 }, {
     timestamps: true
 })
@@ -41,7 +37,7 @@ const templatesSchema = new Schema({
 const Users = models.user || model("user", userSchema);
 const Endpoints = models.endpoint || model("endpoint", endpointsSchema);
 const Submissions = models.submission || model("submission", submissionsSchema);
-const Templates = models.templates || model("templates", templatesSchema);
+const Notifications = models.notifications || model("notification", notificationsSchema);
 
-export { Endpoints, Submissions, Templates };
+export { Endpoints, Submissions, Notifications };
 export default Users;

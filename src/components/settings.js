@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { FaPenFancy, FaSave, FaTimes, FaTrashAlt, FaUpload } from "react-icons/fa"
+import { FaPenFancy, FaSave, FaTrashAlt } from "react-icons/fa"
 import Popup from "./popup"
 import { useRouter } from "next/navigation"
 import { FiLoader } from "react-icons/fi"
@@ -121,7 +121,7 @@ export default function Settings({ id }) {
                 </div>
             </div>
             
-            <div className="rounded border pb-4 border-gray-400/[0.2] dark:bg-gray-900 my-10">
+            {/* <div className="rounded border pb-4 border-gray-400/[0.2] dark:bg-gray-900 my-10">
                 <h3 className="text-lg font-semibold p-4 bg-gray-100 dark:bg-gray-800">Emails</h3>
                 <p className="opacity-[0.5] p-4">Email addresses to notify of submissions</p>
                 <div className="flex items-center flex-wrap w-fit gap-2 border border-gray-200 dark:border-gray-100/[0.3] p-1 m-4 rounded">
@@ -140,7 +140,7 @@ export default function Settings({ id }) {
                      }
                     Update
                 </button>
-            </div>
+            </div> */}
             
             <div className="rounded border pb-4 border-gray-400/[0.2] dark:bg-gray-900 my-10">
                 <h3 className="text-lg font-semibold p-4 bg-gray-100 dark:bg-gray-800">Auto Respond email</h3>

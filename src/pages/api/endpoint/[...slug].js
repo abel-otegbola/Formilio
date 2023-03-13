@@ -5,7 +5,7 @@ import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
 import { EmailTemplate } from '@/components/templates/emailTemplate';
 import connectMongo from "@/database/connection";
-import { Endpoints, Submissions } from "@/model/Schema";
+import { Endpoints, Notifications, Submissions } from "@/model/Schema";
 
 export default async function handler(req, res) {
 
@@ -43,6 +43,9 @@ export default async function handler(req, res) {
 
       //Send the information to the user email
       sendEmail(data, formdata, false)
+
+      //send notification to user account
+      await Notifications.create({ user: data.user, message: `You received a new submission from ${formdata.email || formdata.name || formdata.fullname}` })
 
       //Check if autoRespond is enabled and includes a message
       if(data.autoRespond && data.autoRespond !== "") {
