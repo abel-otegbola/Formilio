@@ -18,7 +18,6 @@ export default function EndpointsChart({ endpointsTitles, endpointsData }) {
                     'rgba(227, 97, 200, 1)',
                     '#6252f2',
                     'rgba(239, 159, 11, 1)',
-                    'rgba(255, 165, 0, 1)',
                     'rgba(0, 128, 128, 1)',
                     'rgba(0, 191, 255, 1)',
                     'rgba(199, 21, 133, 1)'
@@ -27,7 +26,6 @@ export default function EndpointsChart({ endpointsTitles, endpointsData }) {
                     'rgba(227, 97, 200, 0.7)',
                     'rgba(92, 82, 242, 0.7)',
                     'rgba(239, 159, 11, 0.7)',
-                    'rgba(255, 165, 0, 0.7)',
                     'rgba(0, 128, 128, 0.7)',
                     'rgba(0, 191, 255, 0.7)',
                     'rgba(199, 21, 133, 0.7)'
