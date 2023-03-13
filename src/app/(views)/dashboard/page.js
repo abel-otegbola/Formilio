@@ -73,7 +73,7 @@ export default function Dashboard() {
                     <div className="relative flex justify-center items-center md:mx-[15%] mx-[5%] my-4 bg-white dark:bg-gray-900 rounded-full md:w-auto w-fit">
                         <EndpointsChart endpointsTitles={endpointsTitles} endpointsData={endpointsData}/>
                         <div className="absolute flex flex-col justify-center items-center bg-gray-400/[0.1] rounded-full border-2 border-dashed border-gray-400/[0.5] items-center h-[70%] w-[70%]">
-                            <h3 className="font-semibold text-2xl flex items-center"><FaArrowAltCircleUp className="text-blue mr-2"/> {submissions.length}</h3>
+                            <h3 className="font-semibold text-2xl flex items-center"><FaArrowAltCircleUp className="text-blue mr-2"/> {submissions?.length}</h3>
                             <p className="text-[10px]">Total submissions</p>
                         </div>
                     </div>
