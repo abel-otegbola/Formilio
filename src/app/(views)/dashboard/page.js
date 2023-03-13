@@ -30,7 +30,7 @@ export default function Dashboard() {
                     <div className="p-2 py-6 rounded bg-gray-200/[0.4] dark:bg-gray-800/[0.5]">
                         <h4 className="p-2 font-semibold text-blue">LATEST SUBMISSIONS</h4>
                         <div className="p-2">
-                            <SubmissionList type={"getSubmissions/all"} setSubmissions={setSubmissions} limit={5} />
+                            <SubmissionList type={"getSubmissions/all"} setSubmissions={setSubmissions} limit={0} amount={4} />
                         </div>
                     </div>
                 </div>

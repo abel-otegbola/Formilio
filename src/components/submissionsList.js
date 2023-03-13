@@ -5,7 +5,7 @@ import Popup from "./popup";
 import Submission from "./submission";
 
 
-export default function SubmissionList({ type, router, setSubmissions, limit }) {
+export default function SubmissionList({ type, router, setSubmissions, limit, amount }) {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     
@@ -36,9 +36,18 @@ export default function SubmissionList({ type, router, setSubmissions, limit }) 
                 <div className="flex justify-center items-center min-h-[70px]">
                     <FiLoader className="animate-spin text-blue text-3xl" />    
                 </div> : 
-                submissions?.map(submission => (
-                    <Submission key={submission._id} data={submission.data && JSON.parse(submission.data)} submission={submission} setSuccess={setSuccess} setError={setError} />
-                ))
+
+                <div>
+                {
+                    amount ? 
+                    submissions?.splice(0, amount).map(submission => (
+                        <Submission key={submission._id} data={submission.data && JSON.parse(submission.data)} submission={submission} setSuccess={setSuccess} setError={setError} />
+                    ))
+                    : submissions?.map(submission => (
+                        <Submission key={submission._id} data={submission.data && JSON.parse(submission.data)} submission={submission} setSuccess={setSuccess} setError={setError} />
+                    ))
+                }
+                </div>
             }
         </div>
     )
