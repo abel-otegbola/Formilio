@@ -38,7 +38,7 @@ export default function EndpointsList({ setEndpoints, limit, colors, data }) {
                             query: {title: endpoint.title, endpoint: endpoint.key}
                             }}  
                         key={endpoint._id} 
-                        className={`flex justify-between md:flex-nowrap flex-wrap items-center p-3 bg-gray-100 dark:bg-gray-900 border border-transparent`}
+                        className={`flex justify-between md:flex-nowrap flex-wrap items-center p-3 bg-gray-100/[0.5] dark:bg-gray-900 rounded my-1 border-2 border-transparent`}
                         style={{ borderLeftColor: colors? colors[i] : "#6252f2" }}
                     >
                         <div className="flex flex-1 items-center">

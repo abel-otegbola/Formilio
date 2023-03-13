@@ -33,7 +33,7 @@ export default function EndpointsChart({ endpointsTitles, endpointsData }) {
                     'rgba(199, 21, 133, 0.7)'
                 ],
                 borderWidth: 2,
-                cutout: "85%",
+                cutout: "90%",
                 borderJoinStyle: "round",
                 borderRadius: 2
             }

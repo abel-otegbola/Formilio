@@ -39,11 +39,7 @@ export default function SubmissionList({ type, router, setSubmissions, limit, am
 
                 <div>
                 {
-                    amount ? 
-                    submissions?.splice(0, amount).map(submission => (
-                        <Submission key={submission._id} data={submission.data && JSON.parse(submission.data)} submission={submission} setSuccess={setSuccess} setError={setError} />
-                    ))
-                    : submissions?.map(submission => (
+                     submissions?.map(submission => (
                         <Submission key={submission._id} data={submission.data && JSON.parse(submission.data)} submission={submission} setSuccess={setSuccess} setError={setError} />
                     ))
                 }
