@@ -14,7 +14,6 @@ export default function Sidebar() {
     const links = [
         { name: "Dashboard", to: "", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
         { name: "Endpoints", to: "/endpoints", icon: <FaLink />,  iconRight: <span className="bg-green-500 text-white p-1 px-2 rounded-full text-[9px]">1</span> },
-        { name: "Analytics", to: "/analytics", icon: <FaChartLine />,  iconRight: <FaArrowAltCircleRight/> },
         { name: "Notifications", to: "/notifications", icon: <FaCommentAlt />,  iconRight: <span className="bg-purple-400 text-white p-1 px-2 rounded text-[8px]">new</span> },
         { name: "Profile", to: "/profile", icon: <FaUserCircle />,  iconRight: <FaAdjust/> },
         { name: "Settings", to: "/settings", icon: <FaCog />,  iconRight: <FaInfoCircle/> },
@@ -29,7 +28,7 @@ export default function Sidebar() {
     return(
         <>
         {/* Button to close and open sidebar */}
-        <div className="fixed top-1 left-0 text-gray-500 font-bold text-2xl p-4 md:hidden block z-[150] transition-all duration-500" onClick={() => setOpen(!open)} >
+        <div className="fixed top-3 left-0 text-gray-500 font-bold text-2xl p-4 md:hidden block z-[150] transition-all duration-500" onClick={() => setOpen(!open)} >
                     {
                         open ? <FaTimes /> : <HiMenuAlt1 />
                     }
@@ -42,15 +41,18 @@ export default function Sidebar() {
                 {
                     links.map((link,i) => {
                         return (
-                            <li key={i} className="flex w-full my-1">
-                                <a href={`/dashboard${link.to}`} onClick={() => link.name === "Logout" ? signOut() : ""} className={`p-[15px] flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}>
-                                    <div className="flex items-center">
-                                        <div className="mr-2 text-xl text-gray-300">{link.icon}</div> 
-                                        {link.name}
-                                    </div>
-                                    <span className="text-gray-300">{link.iconRight}</span>
-                                </a>
-                            </li> 
+                            <div key={i} >
+                                <li className="flex w-full my-1">
+                                    <a href={`/dashboard${link.to}`} onClick={() => link.name === "Logout" ? signOut() : ""} className={`p-[15px] flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}>
+                                        <div className="flex items-center">
+                                            <div className="mr-2 text-xl text-gray-300">{link.icon}</div> 
+                                            {link.name}
+                                        </div>
+                                        <span className="text-gray-300">{link.iconRight}</span>
+                                    </a>
+                                </li>
+                                { i === 2 ? <hr color="rgba(100, 100, 100, 0.5)" className="my-4"/> : "" } 
+                            </div>
                         )
                     })
                 }

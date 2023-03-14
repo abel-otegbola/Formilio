@@ -3,7 +3,6 @@ import { FaPenFancy, FaSave, FaTrashAlt } from "react-icons/fa"
 import Popup from "./popup"
 import { useRouter } from "next/navigation"
 import { FiLoader } from "react-icons/fi"
-import ThankyouModal from "./thankyouModal"
 
 export default function Settings({ id }) {
     const [error, setError] = useState("")
@@ -104,7 +103,7 @@ export default function Settings({ id }) {
                         active === "Default" ?
                             <div className="">
                                 <button className="flex items-center bg-blue text-white p-2 px-6 rounded" onClick={() => setOpenModal(!openModal)}><FaPenFancy className="mr-2" /> Customize</button>
-                                {openModal ? <ThankyouModal /> : ""}
+                                {openModal ? "" : ""}
                             </div>
                         :
                             <div className="flex items-center gap-2">

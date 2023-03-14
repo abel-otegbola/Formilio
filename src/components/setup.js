@@ -24,7 +24,7 @@ export default function Setup ({ endpoint }) {
                     <div className="flex p-4 my-4 overflow-x-auto">
                         <div className={`block mt-2`}
                             dangerouslySetInnerHTML={{ __html: hljs.highlight(
-                                `<form action="https://formilio.com/api/endpoint/${endpoint}" method="POST">
+                                `<form action="https://${process.env.NEXTAUTH_URL}/api/endpoint/${endpoint}" method="POST">
                                 
                                 </form>`
                                 , { language: "HTML" }).value }}>

@@ -1,8 +1,9 @@
 'use client'
 import Header from "@/components/header";
 import { convert } from "@/helper/convertDate";
+import { fetchData } from "@/helper/fetchData";
 import { getInitials } from "@/helper/getInitials";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCheckCircle, FaCommentAlt } from "react-icons/fa";
 
 export default function Notifications() {
@@ -10,6 +11,12 @@ export default function Notifications() {
         {id: 1, createdAt: "02-03-2023T12:00", msg: "Welcome to formilio. We are glad to have you here", sender: "Formilio", opened: false}
     ])
     const [active, setActive] = useState(1)
+
+    const { data, isLoading, error } = fetchData("getNotifications", null, true, 0)
+
+    useEffect(() => {
+        console.log(data, isLoading, error)
+    }, [data, isLoading, error])
 
     return (
         <div className="px-4">

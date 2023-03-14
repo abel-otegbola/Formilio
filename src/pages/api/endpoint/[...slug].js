@@ -5,7 +5,7 @@ import { render } from '@react-email/render';
 import nodemailer from 'nodemailer';
 import { EmailTemplate } from '@/components/templates/emailTemplate';
 import connectMongo from "@/database/connection";
-import { Endpoints, Notifications, Submissions } from "@/model/Schema";
+import { Endpoints, Messages, Submissions } from "@/model/Schema";
 
 export default async function handler(req, res) {
 
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
       sendEmail(data, formdata, false)
 
       //send notification to user account
-      await Notifications.create({ user: data.user, message: `You received a new submission from ${formdata.email || formdata.name || formdata.fullname}` })
+      await Messages.create({ user: data.user, message: `You received a new submission from ${formdata.email || formdata.name || formdata.fullname}`, sender: "Formilio", opened: false })
 
       //Check if autoRespond is enabled and includes a message
       if(data.autoRespond && data.autoRespond !== "") {
@@ -90,7 +90,7 @@ function sendEmail(data, formdata, respond) {
       },
     });
 
-    const emailHtml = render(EmailTemplate({ url: `https://mailme.vercel.app/dashboard/endpoints/view?title=${data.title}&endpoint=${data.key}`, formdata, data, respond })); //Change the template to html to send
+    const emailHtml = render(EmailTemplate({ url: `https://formilio.vercel.app/dashboard/endpoints/view?title=${data.title}&endpoint=${data.key}`, formdata, data, respond })); //Change the template to html to send
 
     const options = {
       from: 'no-reply@formilio.com',

@@ -27,9 +27,11 @@ const submissionsSchema = new Schema({
     timestamps: true
 })
 
-const notificationsSchema = new Schema({
+const messagesSchema = new Schema({
     user: String,
     message: String,
+    sender: String,
+    opened: Boolean
 }, {
     timestamps: true
 })
@@ -37,7 +39,7 @@ const notificationsSchema = new Schema({
 const Users = models.user || model("user", userSchema);
 const Endpoints = models.endpoint || model("endpoint", endpointsSchema);
 const Submissions = models.submission || model("submission", submissionsSchema);
-const Notifications = models.notifications || model("notification", notificationsSchema);
+const Messages = models.messages || model("messages", messagesSchema);
 
-export { Endpoints, Submissions, Notifications };
+export { Endpoints, Submissions, Messages };
 export default Users;

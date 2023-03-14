@@ -23,7 +23,7 @@ export default function Home() {
         <div>
             {/* header section */}
             <header className="flex md:flex-nowrap flex-wrap items-center mb-[7%] md:px-[10%] px-[5%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
-                <div className="md:w-[50%] w-full md:pt-0 pt-10">
+                <div className="md:w-[50%] w-full md:pt-0 pt-[7%]">
                     <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">Effortlessly generate HTML endpoints for your static forms.</h1>
                     <p className="my-4 leading-[25px]">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
                     </p>
@@ -77,7 +77,7 @@ export default function Home() {
                             
                         <div className="bg-[url('/form.png')] bg-no-repeat md:h-[350px] h-[300px] p-[10%] md:p-[10%] md:py-[15%]" style={{ backgroundSize: "100% 100%" }}>
                             <div className="overflow-x-auto leading-[25px] md:text-[14px] text-[12px]">
-                                <p>1<span className="ml-2" dangerouslySetInnerHTML={{__html: hljs.highlight(`<form action='https://formilio.com/api/endpoint/{My endpoint}' method='post'>`, { language: "HTML" }).value}}></span></p>
+                                <p>1<span className="ml-2" dangerouslySetInnerHTML={{__html: hljs.highlight(`<form action='https://formilio.vercel.app/api/endpoint/{My endpoint}' method='post'>`, { language: "HTML" }).value}}></span></p>
                                 <p>2<span className="ml-6" dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type='text' name='fullname'/>`, {language: "HTML" }).value}}></span></p>
                                 <p>3<span className="ml-6" dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type='email' name='email'/>`, {language: "HTML" }).value}}></span></p>
                                 <p>4<span className="ml-6" dangerouslySetInnerHTML={{__html: hljs.highlight(`<textarea name='message'></textarea>`, {language: "HTML" }).value}}></span></p>
