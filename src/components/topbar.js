@@ -66,7 +66,7 @@ export default function Topbar() {
                         </Link>
                         <Link href="/dashboard" className="w-fit p-1 rounded-full bg-blue/[0.1]">
                             {(!session.user.image)
-                            ? <FaUserCircle className="p-2 text-gray-300 w-[30px] h-[30px] bg-gray-400 rounded-full" /> : 
+                            ? <p className="p-[7px] px-[12px] text-gray-300 bg-gray-400 rounded-full">{session.user.email.charAt(0)}</p> : 
                             <img src={session.user.image} alt="user" width={30} height={30} className="rounded-full bg-gray-400 shadow-lg" />
                             }
                         </Link>

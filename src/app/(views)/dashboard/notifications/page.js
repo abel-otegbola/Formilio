@@ -15,7 +15,10 @@ export default function Notifications() {
     const { data, isLoading, error } = fetchData("getNotifications", null, true, 0)
 
     useEffect(() => {
-        console.log(data, isLoading, error)
+        if(data) {
+            setNotifications(data)
+        }
+        console.log(active)
     }, [data, isLoading, error])
 
     return (
@@ -32,7 +35,7 @@ export default function Notifications() {
                 <div className="flex flex-wrap">
                     <div className="md:w-[30%] w-full">
                     {
-                        notifications.map(notification => (
+                        [...new Map(notifications.map(m => [m.sender, m])).values()].map(notification => (
                             <div key={notification.id} onClick={() => setActive(notification.id)} className="flex md:flex-no-wrap flex-wrap items-center justify-between bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer">
                                 <p className="px-[10px] border-2 border-white/[0.3] bg-fuchsia-500/[0.1] md:block hidden uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(notification.sender || "user")}</p>
                                 <div className="flex-1 items-center overflow-x-auto">
@@ -56,7 +59,7 @@ export default function Notifications() {
                                         <p className="text-[10px]">{convert(item.createdAt)}</p>
                                         <FaCheckCircle className="text-green-400 p-3 text-4xl cursor-pointer"/>
                                     </div>
-                                    <div className="my-2 py-4 px-4 bg-gray-100 dark:bg-gray-800">{item.msg}</div>
+                                    <div className="my-2 py-4 px-4 bg-gray-100 dark:bg-gray-800">{item.message}</div>
                                 </div>
                             </div>
                         ))
