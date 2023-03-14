@@ -36,7 +36,9 @@ export default function Notifications() {
                     <div className="md:w-[30%] w-full">
                     {
                         [...new Map(notifications.map(m => [m.sender, m])).values()].map(notification => (
-                            <div key={notification.id} onClick={() => setActive(notification.id)} className="flex md:flex-no-wrap flex-wrap items-center justify-between bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer">
+                            <div key={notification.id} onClick={() => setActive(notification.sender)} 
+                                className={`flex md:flex-no-wrap flex-wrap items-center justify-between ${ notification.sender === active ? "bg-blue" : "bg-gray-100 dark:bg-gray-900" } border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer`}>
+
                                 <p className="px-[10px] border-2 border-white/[0.3] bg-fuchsia-500/[0.1] md:block hidden uppercase text-[12px] font-semibold m-3 shadow-lg rounded-full">{getInitials(notification.sender || "user")}</p>
                                 <div className="flex-1 items-center overflow-x-auto">
                                     {notification.sender}
@@ -51,7 +53,7 @@ export default function Notifications() {
                     </div>
                     <div className="md:w-[70%] w-full">
                     {
-                        notifications.filter(element => element.id === active).map(item => (
+                        notifications.filter(element => element.sender === active).map(item => (
                             <div key={item.id} className="md:px-[5%] my-6">
                                 <div className="">
                                     <h3 className="text-xl font-semibold">{item.sender}</h3>

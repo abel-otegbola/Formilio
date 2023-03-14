@@ -48,10 +48,10 @@ export default function Topbar() {
                     session ? // Show logout button instead of login if signed in
                     <>
                         <li className="flex md:p-0 p-2 mx-4"><a href="/dashboard" className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaUserAlt className="mr-3" /> Dashboard</a></li>
-                        <li className="flex md:p-0 p-2 mx-4"><a href="#" onClick={() => signOut()} className={`md:hidden flex rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaSignOutAlt className="mr-3" /> Logout</a></li>
+                        <li className="flex md:p-0 p-2 mx-4"><a href="#" onClick={() => signOut()} className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaSignOutAlt className="mr-3" /> Logout</a></li>
                     </> :
                     
-                    <Link href="/login" className="md:hidden flex items-center justify-center p-[10px] px-4 mx-[4%] mt-4 bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
+                    <Link href="/login" className="md:hidden flex items-center p-[10px] px-4 mx-[4%] mt-4 bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
                     
                 }
             </ul>
@@ -66,7 +66,7 @@ export default function Topbar() {
                         </Link>
                         <Link href="/dashboard" className="w-fit p-1 rounded-full bg-blue/[0.1]">
                             {(!session.user.image)
-                            ? <p className="p-[7px] px-[12px] text-gray-300 bg-gray-400 rounded-full">{session.user.email.charAt(0)}</p> : 
+                            ? <p className="flex items-start pt-[2px] justify-center w-[30px] h-[28px] text-gray-300 bg-gray-400 rounded-full">{session.user.email.charAt(0)}</p> : 
                             <img src={session.user.image} alt="user" width={30} height={30} className="rounded-full bg-gray-400 shadow-lg" />
                             }
                         </Link>
