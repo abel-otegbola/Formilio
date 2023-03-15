@@ -1,8 +1,9 @@
 "use client"
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { FaAdjust, FaArrowAltCircleRight, FaAtom, FaChartLine, FaCog, FaCommentAlt, FaInfoCircle, FaLink, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
+import { FaAdjust, FaArrowAltCircleRight, FaAtom, FaBriefcase, FaChartLine, FaCog, FaCommentAlt, FaInfoCircle, FaLink, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
 import { HiMenuAlt1 } from "react-icons/hi";
+import { BsFillEmojiSunglassesFill } from "react-icons/bs";
 import { signOut } from "next-auth/react";
 import { closeBlock } from "@/helper/closeBlock";
 
@@ -14,6 +15,7 @@ export default function Sidebar() {
     const links = [
         { name: "Dashboard", to: "", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
         { name: "Endpoints", to: "/endpoints", icon: <FaLink />,  iconRight: <span className="bg-green-500 text-white p-1 px-2 rounded-full text-[9px]">1</span> },
+        { name: "Portfolio", to: "/portfolio", icon: <FaBriefcase />,  iconRight: <BsFillEmojiSunglassesFill className="text-orange-500" /> },
         { name: "Notifications", to: "/notifications", icon: <FaCommentAlt />,  iconRight: <span className="bg-purple-400 text-white p-1 px-2 rounded text-[8px]">new</span> },
         { name: "Profile", to: "/profile", icon: <FaUserCircle />,  iconRight: <FaAdjust/> },
         { name: "Settings", to: "/settings", icon: <FaCog />,  iconRight: <FaInfoCircle/> },
@@ -45,7 +47,7 @@ export default function Sidebar() {
                                 <li className="flex w-full my-1">
                                     <a href={`/dashboard${link.to}`} onClick={() => link.name === "Logout" ? signOut() : ""} className={`p-[15px] flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}>
                                         <div className="flex items-center">
-                                            <div className="mr-2 text-xl text-gray-300">{link.icon}</div> 
+                                            <div className="mr-4 text-xl text-gray-300">{link.icon}</div> 
                                             {link.name}
                                         </div>
                                         <span className="text-gray-300">{link.iconRight}</span>

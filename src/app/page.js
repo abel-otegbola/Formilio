@@ -23,7 +23,7 @@ export default function Home() {
         <div>
             {/* header section */}
             <header className="flex md:flex-nowrap flex-wrap items-center mb-[7%] md:px-[10%] px-[5%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
-                <div className="md:w-[50%] w-full md:pt-0 pt-[7%]">
+                <div className="md:w-[50%] w-full md:pt-0 pt-[20%]">
                     <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">Effortlessly generate HTML endpoints for your static forms.</h1>
                     <p className="my-4 leading-[25px]">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
                     </p>
@@ -40,7 +40,7 @@ export default function Home() {
             
             <section className="md:px-[10%] p-[5%] font-body dark:bg-gray-800">
                 <div className="md:w-[60%] m-auto w-full pb-5 pt-[5%] text-center">
-                    <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">Get Started in Minutes</h1>
+                    <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">How it works</h1>
                     <p className="my-4 mb-7 leading-[25px]">No coding knowledge required! Our user-friendly platform makes it easy for anyone to create endpoints for their static forms and start collecting data immediately.
                     </p>
                 </div>
