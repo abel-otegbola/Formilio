@@ -36,10 +36,27 @@ const messagesSchema = new Schema({
     timestamps: true
 })
 
+const portfolioSchema = new Schema({
+    user: String,
+    fullname: String,
+    bio: String,
+    img: Object,
+    form: Boolean,
+    links: Array,
+    projects: Array,
+    experience: Array,
+    achievements: Array,
+    skills: Array,
+    endpoint: String
+}, {
+    timestamps: true
+})
+
 const Users = models.user || model("user", userSchema);
 const Endpoints = models.endpoint || model("endpoint", endpointsSchema);
 const Submissions = models.submission || model("submission", submissionsSchema);
 const Messages = models.messages || model("messages", messagesSchema);
+const Portfolio = models.portfolio || model("portfolio", portfolioSchema);
 
-export { Endpoints, Submissions, Messages };
+export { Endpoints, Submissions, Messages, Portfolio };
 export default Users;

@@ -1,22 +1,44 @@
 'use client'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FaBehance, FaDribbble, FaEnvelope, FaFacebook, FaGithub, FaInstagram, FaLink, FaPen, FaTimes, FaTwitter, FaUser } from "react-icons/fa"
 import { v4 } from "uuid"
 import Checkbox from "@/components/general/checkbox"
 import SettingBox from "@/components/dashboard/settingBox"
 import Preview from "@/components/portfolio/preview"
+import { fetchData } from "@/helper/fetchData"
 
 export default function Portfolio() {
     const [active, setActive] = useState("Editor")
+    const [loading, setLoading] = useState(false)
     const [fullname, setFullname] = useState("John Doe")
     const [bio, setBio] = useState("Android developer with 5+ years experience creating amazing android applications")
-    const [img, setImg] = useState({ title: "profile", url: "" })
+    const [img, setImg] = useState({ title: "profile", url: "", type: "" })
     const [form, setForm] = useState(true)
     const [links, setLinks] = useState([])
+    const [experience, setExperience] = useState([])
+    const [achievements, setAchievements] = useState([])
+    const [skills, setSkills] = useState([])
     const [projects, setProjects] = useState([
         { id: 1, title: "Formilio", description: "A form generation website for static html websites. Can be used for portfolios, landing pages etc.", img: {title: "project", type: "image/jpg" ,url: "/formui.webp", }, link: "https://mailme.vercel.app" },
         { id: 2, title: "Medium", description: "A blogging platform for developers, designers and all software engineers.", img: {title: "project", type: "image/jpg" ,url: "/formui.webp", }, link: "https://mailme.vercel.app" },
     ])
+
+    const { data, isLoading, error } = fetchData("getPortfolio", null, false, 0)
+
+    useEffect(() => {
+        setLoading(isLoading)
+        if (data && data !== []) {
+            setFullname(data.fullname)
+            setBio(data.bio)
+            setImg(data.img)
+            setForm(data.form)
+            setLinks(data.links)
+            setProjects(data.projects)
+            setExperience(data.experience)
+            setAchievements(data.achievements)
+            setSkills(data.skills)
+        }
+    }, [isLoading])
 
     const socials = [
         {id: 0, title: "Custom", icon: <FaLink />},
@@ -39,7 +61,7 @@ export default function Portfolio() {
     const handleThumbnail = (file) => {        
         filetoDataUri(file)
         .then(dataUri => {
-            setImg({ title: file.name, url: dataUri })
+            setImg({ title: file.name, url: dataUri, type: file.type })
         })
     }
 

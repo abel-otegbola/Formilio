@@ -9,7 +9,15 @@ export default function Preview({ data }) {
         <div>
             <div className="p-[5%] my-[20px]">
                             <div className="">
-                                <Image src={img.url} alt={img.title} className="border-2 border-blue rounded-lg mb-2" width={200} height={200} />
+                                {
+                                    img.type.indexOf("video") !== -1 ?
+                                    <video src={img.url} alt={img.title} width={200} height={200} className="rounded" autoPlay controls loop>
+                                        <source src={img.url} type="video/mp4"></source>
+                                        <source src={img.url} type="video/ogg"></source>
+                                    </video>
+                                    :
+                                    <Image src={img.url} alt={img.title} className="border-2 border-blue rounded-lg mb-2" width={200} height={200} />
+                                }
                                 <h1 className="text-3xl font-bold py-4">{fullname}</h1>
                                 <p className="py-2">{bio}</p>
                             </div>
