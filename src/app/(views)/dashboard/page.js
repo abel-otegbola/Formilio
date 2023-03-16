@@ -6,9 +6,11 @@ import Header from "@/components/dashboard/header";
 import SubmissionChart from "@/components/charts/submissionChart";
 import SubmissionList from "@/components/dashboard/submissionsList";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import { FaArrowAltCircleUp, FaArrowUp, FaPaperPlane } from "react-icons/fa";
+import { useContext, useEffect, useState } from "react";
+import { FaArrowAltCircleUp, FaArrowUp, FaCheckCircle, FaPaperPlane } from "react-icons/fa";
 import GenerateEndpoint from "@/components/dashboard/generateEndpoint";
+import { NotificationContext } from "./layout";
+import { convert } from "@/helper/convertDate";
 
 
 export default function Dashboard() {
@@ -25,6 +27,7 @@ export default function Dashboard() {
         'rgba(0, 191, 255, 0.7)',
         'rgba(199, 21, 133, 0.7)'
     ]
+    const { notifications } = useContext(NotificationContext)
 
 
     useEffect(() => {
@@ -78,12 +81,33 @@ export default function Dashboard() {
                     </div>
                     <EndpointsList 
                         setEndpoints={setEndpoints} 
-                        limit={5} 
                         colors={colors} 
                         data={endpointsData}
                     />
-                    <div className="mt-10 flex">
-                        <a href="/dashboard/endpoints" className="p-3 px-6 text-center rounded-full border border-blue text-blue hover:bg-blue hover:text-white">View all endpoints</a>
+                    <div className="mt-10 flex gap-2">
+                        <a href="/dashboard/endpoints" className="p-3 px-6 text-center rounded-full border border-blue text-white bg-blue hover:text-white">View all endpoints</a>
+                        <button className="flex-1 p-3 px-6 text-center rounded-full border border-blue text-blue hover:bg-blue hover:text-white">Total: {endpoints?.length}</button>
+                    </div>
+                    <div className="mt-10">
+                        <h4 className="p-2 font-semibold text-blue">LATEST NOTIFICATIONS</h4>
+                        {
+                            [...new Map(notifications?.map(m => [m.sender, m])).values()].map(notification => (
+                                <div key={notification.id}
+                                    className={`flex md:flex-no-wrap flex-wrap items-center justify-between bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer`}>
+                                    <div className="flex-1 items-center overflow-x-auto">
+                                        {notification.sender}
+                                    </div>
+                                    <div className="flex items-center p-1">
+                                        <p className="pl-2 text-[10px]">{convert(notification.createdAt)}</p>
+                                        <FaCheckCircle className="text-green-400 p-3 text-4xl cursor-pointer"/>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div className="mt-10 flex gap-2">
+                        <a href="/dashboard/notifications" className="p-3 px-6 text-center rounded-full border border-blue bg-blue text-white">View all notifications</a>
+                        <button className="flex-1 p-3 px-6 text-center rounded-full border border-blue text-blue hover:bg-blue hover:text-white">Total: {notifications?.length}</button>
                     </div>
                 </div>
             </div>

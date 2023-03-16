@@ -1,15 +1,30 @@
 'use client'
 import Sidebar from "@/components/dashboard/sidebar";
+import { fetchData } from "@/helper/fetchData";
+import { createContext } from "react";
+
+export const DataContext = createContext()
+
+export const NotificationContext = createContext()
 
 export default function Layout({ children }) {
-    return (
-        <div className="flex bg-slate-100 dark:bg-gray-800 p-2">
 
-            <Sidebar />
-            <div className="md:ml-2 flex-1 min-h-screen bg-white dark:bg-gray-900 py-[20px]">
-                {children}
-            </div>
-            
-        </div>
+    const { data: endpoints, isLoading: endpointsLoading, error: endpointsError } = fetchData("getEndpoints", null, true,  0)
+
+    const { data: notifications, isLoading: notificationsLoading, error: notificationsError } = fetchData("getNotifications", null, true, 0)
+
+    return (
+        <DataContext.Provider value={{ endpoints, endpointsError, endpointsLoading }}>
+            <NotificationContext.Provider value={{ notifications, notificationsLoading, notificationsError }}>
+                <div className="flex bg-slate-100 dark:bg-gray-800 p-2">
+
+                    <Sidebar />
+                    <div className="md:ml-2 flex-1 min-h-screen bg-white dark:bg-gray-900 py-[20px]">
+                        {children}
+                    </div>
+                    
+                </div>
+            </NotificationContext.Provider>
+        </DataContext.Provider>
     )
 }

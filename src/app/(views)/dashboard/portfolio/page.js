@@ -146,7 +146,7 @@ export default function Portfolio() {
                         </SettingBox>
 
                         
-                        <SettingBox text={"Bio (A brief introduction of yourself and what you do)"}>
+                        <SettingBox text={"Bio"} subtext={"A brief introduction of yourself and what you do"}>
                             <textarea 
                                 className="w-full border border-gray-200 dark:border-gray-100/[0.3] p-2 bg-gray-100 dark:bg-gray-900 focus:outline-blue rounded" 
                                 name="bio" 
@@ -178,7 +178,7 @@ export default function Portfolio() {
                             </div>
                         </SettingBox>
 
-                        <SettingBox text={"Projects & Works (Share some recent and amazing projects you worked on"}>
+                        <SettingBox text={"Projects & Works"} subtext={"Share some recent and amazing projects you worked on"}>
                             {
                                 projects.map((project) => (
                                     <div key={project.id} className="flex items-center justify-between gap-2 flex-wrap shadow-md border border-gray-500/[0.3] p-3">
@@ -195,7 +195,7 @@ export default function Portfolio() {
                             </div>
                         </SettingBox>
                                 
-                        <SettingBox text={"Contact Form (Add a contact me form to your portfolio and choose endpoint to save submissions.)"}>
+                        <SettingBox text={"Contact Form"} subtext={"Add a contact me form to your portfolio and choose endpoint to save submissions."}>
                             <Checkbox check={form} setCheck={setForm} text={"Add Contact Form"} />
                         </SettingBox>
                     </div>

@@ -9,7 +9,6 @@ export default function Endpoints() {
     const [endpoints, setEndpoints] = useState([])
     const [limit, setLimit] = useState(7)
 
-    
     return (
         <div className="px-4">
             <Header text={"Endpoints"} icon={<FaLink/>}>
@@ -17,7 +16,7 @@ export default function Endpoints() {
             </Header>
 
             <div className="my-4">
-                <EndpointsList setEndpoints={setEndpoints} limit={limit}/>
+                <EndpointsList setEndpoints={setEndpoints} />
             </div>
 
             <div className="flex justify-center">

@@ -5,7 +5,7 @@ import Popup from "../general/popup";
 import Submission from "./submission";
 
 
-export default function SubmissionList({ type, router, setSubmissions, limit, amount }) {
+export default function SubmissionList({ type, router, setSubmissions, limit }) {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     

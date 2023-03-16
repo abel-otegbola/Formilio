@@ -3,8 +3,9 @@ import Header from "@/components/dashboard/header";
 import { convert } from "@/helper/convertDate";
 import { fetchData } from "@/helper/fetchData";
 import { getInitials } from "@/helper/getInitials";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaCheckCircle, FaCommentAlt } from "react-icons/fa";
+import { NotificationContext } from "../layout";
 
 export default function Notifications() {
     const [notifications, setNotifications] = useState([
@@ -12,7 +13,7 @@ export default function Notifications() {
     ])
     const [active, setActive] = useState(1)
 
-    const { data, isLoading, error } = fetchData("getNotifications", null, true, 0)
+    const { notifications: data, notitficationsLoading, notificationsError } = useContext(NotificationContext)
 
     useEffect(() => {
         if(data) {

@@ -1,14 +1,14 @@
 'use client'
-import { fetchData } from "@/helper/fetchData";
 import Link from "next/link";
 import { FiLoader } from "react-icons/fi";
 import { FaChevronRight, FaLink } from "react-icons/fa";
 import Popup from "../general/popup";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { DataContext } from "@/app/(views)/dashboard/layout";
 
-export default function EndpointsList({ setEndpoints, limit, colors, data }) {
+export default function EndpointsList({ setEndpoints, colors, data }) {
 
-    const { data: endpoints, isLoading: endpointsLoading, error: endpointsError } = fetchData("getEndpoints", null, true, limit)
+    const { endpoints, endpointsLoading, endpointsError } = useContext(DataContext)
 
     useEffect(() => {
         setEndpoints(endpoints)
@@ -39,7 +39,7 @@ export default function EndpointsList({ setEndpoints, limit, colors, data }) {
                             }}  
                         key={endpoint._id} 
                         className={`flex justify-between md:flex-nowrap flex-wrap items-center p-3 bg-gray-100/[0.5] dark:bg-gray-900 rounded my-1 border-2 border-transparent`}
-                        style={{ borderLeftColor: colors? colors[i] : "#6252f2" }}
+                        style={{ borderLeftColor: colors ? colors[i] : "#6252f2" }}
                     >
                         <div className="flex flex-1 items-center">
                             <FaLink 

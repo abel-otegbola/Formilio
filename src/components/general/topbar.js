@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FiBell, FiUser } from "react-icons/fi";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { FaBars, FaSignOutAlt, FaTimes, FaUserAlt, FaUserCircle } from "react-icons/fa";
+import { FaBars, FaSignOutAlt, FaTimes, FaUserAlt } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { closeBlock } from "@/helper/closeBlock";
@@ -60,10 +60,6 @@ export default function Topbar() {
                 {
                     (session) ? // Show dashboard button instead of login if signed in
                     <>
-                        <Link href="/dashboard/notifications" className="relative mr-[25px] text-gray-500 font-bold text-2xl">
-                            <FiBell />
-                            <sup className="absolute -top-2 -right-2 p-[5px] py-[7px] text-[8px] bg-purple-400 text-white rounded-full">2</sup>
-                        </Link>
                         <Link href="/dashboard" className="w-fit p-1 rounded-full bg-blue/[0.1]">
                             {(!session.user.image)
                             ? <p className="flex items-start pt-[2px] justify-center w-[30px] h-[28px] text-gray-300 bg-gray-400 rounded-full">{session.user.email.charAt(0)}</p> : 
