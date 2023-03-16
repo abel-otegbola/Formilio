@@ -13,7 +13,7 @@ export default function Notifications() {
     ])
     const [active, setActive] = useState(1)
 
-    const { notifications: data, notitficationsLoading, notificationsError } = useContext(NotificationContext)
+    const { notifications: data, notitficationsLoading: isLoading, notificationsError: error } = useContext(NotificationContext)
 
     useEffect(() => {
         if(data) {

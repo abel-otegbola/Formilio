@@ -91,16 +91,19 @@ export default function Dashboard() {
                     <div className="mt-10">
                         <h4 className="p-2 font-semibold text-blue">LATEST NOTIFICATIONS</h4>
                         {
-                            [...new Map(notifications?.map(m => [m.sender, m])).values()].map(notification => (
-                                <div key={notification.id}
-                                    className={`flex md:flex-no-wrap flex-wrap items-center justify-between bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer`}>
-                                    <div className="flex-1 items-center overflow-x-auto">
-                                        {notification.sender}
+                            notifications?.map(notification => (
+                                <div key={notification.id} className="my-2 bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] ">
+                                    <div
+                                        className={`flex md:flex-no-wrap flex-wrap items-center justify-between hover:bg-blue hover:text-white cursor-pointer`}>
+                                        <div className="flex-1 ml-2 items-center overflow-x-auto">
+                                            {notification.sender}
+                                        </div>
+                                        <div className="flex items-center p-1">
+                                            <p className="pl-2 text-[10px]">{convert(notification.createdAt)}</p>
+                                            <FaCheckCircle className="text-green-400 p-3 text-4xl cursor-pointer"/>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center p-1">
-                                        <p className="pl-2 text-[10px]">{convert(notification.createdAt)}</p>
-                                        <FaCheckCircle className="text-green-400 p-3 text-4xl cursor-pointer"/>
-                                    </div>
+                                    <p className="p-2">{notification.message}</p>
                                 </div>
                             ))
                         }
