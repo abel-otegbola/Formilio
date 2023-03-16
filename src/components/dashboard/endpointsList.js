@@ -3,7 +3,7 @@ import { fetchData } from "@/helper/fetchData";
 import Link from "next/link";
 import { FiLoader } from "react-icons/fi";
 import { FaChevronRight, FaLink } from "react-icons/fa";
-import Popup from "./popup";
+import Popup from "../general/popup";
 import { useEffect } from "react";
 
 export default function EndpointsList({ setEndpoints, limit, colors, data }) {

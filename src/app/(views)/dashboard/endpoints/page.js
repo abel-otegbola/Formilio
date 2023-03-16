@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
-import EndpointsList from "@/components/endpointsList";
-import Header from "@/components/header";
+import EndpointsList from "@/components/dashboard/endpointsList";
+import Header from "@/components/dashboard/header";
 import { FaLink } from "react-icons/fa";
 import GenerateEndpoint from "@/components/generateEndpoint";
 

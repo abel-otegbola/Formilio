@@ -1,14 +1,14 @@
 
 'use client'
 import EndpointsChart from "@/components/charts/endpointsDoughnut";
-import EndpointsList from "@/components/endpointsList";
-import Header from "@/components/header";
+import EndpointsList from "@/components/dashboard/endpointsList";
+import Header from "@/components/dashboard/header";
 import SubmissionChart from "@/components/charts/submissionChart";
-import SubmissionList from "@/components/submissionsList";
+import SubmissionList from "@/components/dashboard/submissionsList";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { FaArrowAltCircleUp, FaArrowUp, FaPaperPlane } from "react-icons/fa";
-import GenerateEndpoint from "@/components/generateEndpoint";
+import GenerateEndpoint from "@/components/dashboard/generateEndpoint";
 
 
 export default function Dashboard() {

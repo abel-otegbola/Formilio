@@ -5,7 +5,7 @@ import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { CgSpinner } from "react-icons/cg";
 import { validateSignup } from "@/helper/validateSignup";
 import { useRouter } from "next/navigation";
-import Popup from "@/components/popup";
+import Popup from "@/components/general/popup";
 
 export default function Signup() {
     const [show, setShow] = useState(false)

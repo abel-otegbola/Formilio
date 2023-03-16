@@ -1,5 +1,5 @@
 'use client'
-import Header from "@/components/header";
+import Header from "@/components/dashboard/header";
 import { useEffect, useState } from "react";
 import { FaCogs, FaEdit, FaMoon, FaSun, FaTrashAlt } from "react-icons/fa";
 

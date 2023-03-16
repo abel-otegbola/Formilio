@@ -1,5 +1,5 @@
 'use client'
-import Header from "@/components/header";
+import Header from "@/components/dashboard/header";
 import { convert } from "@/helper/convertDate";
 import { fetchData } from "@/helper/fetchData";
 import { getInitials } from "@/helper/getInitials";

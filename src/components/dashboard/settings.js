@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { FaPenFancy, FaSave, FaTrashAlt } from "react-icons/fa"
-import Popup from "./popup"
+import Popup from "./general/popup"
 import { useRouter } from "next/navigation"
 import { FiLoader } from "react-icons/fi"
 

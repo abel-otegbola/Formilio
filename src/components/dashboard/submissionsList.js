@@ -1,7 +1,7 @@
 import { fetchData } from "@/helper/fetchData";
 import { useEffect, useState } from "react";
 import { FiLoader } from "react-icons/fi";
-import Popup from "./popup";
+import Popup from "../general/popup";
 import Submission from "./submission";
 
 

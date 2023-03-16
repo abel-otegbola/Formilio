@@ -1,5 +1,5 @@
 'use client'
-import Popup from "@/components/popup";
+import Popup from "@/components/general/popup";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";

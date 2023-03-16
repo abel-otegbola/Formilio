@@ -3,7 +3,7 @@ import { useRef, useState } from "react"
 import { useSession } from "next-auth/react";
 import { CgSpinner } from "react-icons/cg"
 import random from "random-key-generator"
-import Popup from "./popup";
+import Popup from "../general/popup";
 
 export default function GenerateEndpoint() {
     const [title, setTitle] = useState("")
