@@ -180,7 +180,7 @@ export default function Portfolio() {
                                     ))
                                 }
                                 <div className="my-4">
-                                    <button className="p-2 px-6 bg-blue text-white rounded border border-gray-500/[0.3] " onClick={(e) => setProjects([...projects, { id: v4(), title: "Custom", type: "", description: "Your project description", img: "/formui.png", link: "" }])}>Add new</button>
+                                    <button className="p-2 px-6 bg-blue text-white rounded border border-gray-500/[0.3] " onClick={(e) => setProjects([...projects, { id: v4(), title: "Custom", description: "Your project description", img: {title: "project", type: "image/jpg" ,url: "/formui.webp", }, link: "" }])}>Add new</button>
                                 </div>
                             </div>
                         </div>
@@ -237,12 +237,12 @@ export default function Portfolio() {
                                             <a href={project.link} key={project.id} className="p-4 dark:bg-gray-800 rounded-xl shadow-xl">
                                                 {
                                                     project.img.type.indexOf("video") !== -1 ?
-                                                    <video src={project.img.url} alt={project.img.title} className="w-full" controls>
+                                                    <video src={project.img.url} alt={project.img.title} className="w-full rounded" controls>
                                                         <source src={project.img.url} type="video/mp4"></source>
                                                         <source src={project.img.url} type="video/ogg"></source>
                                                     </video>
                                                     :
-                                                    <Image src={project.img.url} alt={project.img.title} className="w-full" width={300} height={300} />
+                                                    <Image src={project.img.url} alt={project.img.title} className="w-full rounded" width={300} height={300} />
                                                 }
                                                 <h2 className="text-2xl py-6">{project.title}</h2>
                                                 <p className="pt-2">{project.description}</p>
