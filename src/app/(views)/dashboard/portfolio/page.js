@@ -180,7 +180,7 @@ export default function Portfolio() {
                                     ))
                                 }
                                 <div className="my-4">
-                                    <button className="p-2 px-6 bg-blue text-white rounded border border-gray-500/[0.3] " onClick={(e) => setProjects([...projects, { id: v4(), title: "Custom", description: "Your project description", img: "", link: "" }])}>Add new</button>
+                                    <button className="p-2 px-6 bg-blue text-white rounded border border-gray-500/[0.3] " onClick={(e) => setProjects([...projects, { id: v4(), title: "Custom", type: "", description: "Your project description", img: "/formui.png", link: "" }])}>Add new</button>
                                 </div>
                             </div>
                         </div>
