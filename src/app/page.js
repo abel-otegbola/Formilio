@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaCode, FaLink, FaPaperPlane, FaSave } from "react-icons/fa";
 import { FiArrowRightCircle } from "react-icons/fi";
-import "../components/jsonformat.css"
+import "../components/dashboard/jsonformat.css"
 
 
 export default function Home() {

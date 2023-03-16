@@ -1,9 +1,9 @@
 'use client'
 import { useState } from "react";
 import { useSearchParams } from 'next/navigation'
-import Setup from "@/components/setup";
-import SubmissionList from "@/components/submissionsList";
-import Settings from "@/components/settings";
+import Setup from "@/components/dashboard/setup";
+import SubmissionList from "@/components/dashboard/submissionsList";
+import Settings from "@/components/dashboard/settings";
 
 export default function View() {
     const [submissions, setSubmissions] = useState([])

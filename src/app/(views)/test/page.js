@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useSearchParams } from "next/navigation"
 import { FaEnvelope, FaPen, FaUser } from "react-icons/fa";
-import SubmissionList from "@/components/submissionsList";
+import SubmissionList from "@/components/dashboard/submissionsList";
 
 export default function Login() {
     const [submissions, setSubmissions] = useState([])

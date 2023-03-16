@@ -1,9 +1,9 @@
 'use client'
 import { useState } from "react";
-import EndpointsList from "@/components/dashboard/endpointsList";
 import Header from "@/components/dashboard/header";
 import { FaLink } from "react-icons/fa";
-import GenerateEndpoint from "@/components/generateEndpoint";
+import EndpointsList from "@/components/dashboard/endpointsList";
+import GenerateEndpoint from "@/components/dashboard/generateEndpoint";
 
 export default function Endpoints() {
     const [endpoints, setEndpoints] = useState([])
