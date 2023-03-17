@@ -11,22 +11,6 @@ export default function Login() {
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("")
 
-    const submitForm = async (e) => {
-        e.preventDefault()
-        await fetch(`/api/endpoint/${query}`, {
-            method: "POST",
-            mode: "no-cors",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ fullname, email, message })
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
-    }
-
-
 
     return (
         <div className="md:px-[10%] px-[5%] py-[5%] dark:bg-gray-900">
@@ -35,7 +19,7 @@ export default function Login() {
             <p className="text-center pb-10">Fill the form and submit</p>
 
             <div className="flex flex-wrap">
-                <form onSubmit={(e) => submitForm(e)} method="post" className="md:w-[50%] w-full p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded">
+                <form action={`/api/endpoint/${query}`} method="post" className="md:w-[50%] w-full p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded">
 
                     <label className="mb-2">Full name:</label>
                     <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-7 mt-2">

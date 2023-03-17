@@ -1,7 +1,6 @@
 import { Html } from '@react-email/html';
 import { Text } from '@react-email/text';
 import { Button } from '@react-email/button';
-import { FaPenFancy } from 'react-icons/fa';
 
 export function EmailTemplate(props) {
   const { url, formdata, data, respond } = props;
@@ -25,12 +24,12 @@ export function EmailTemplate(props) {
               </div>
           ))
           }
-          <Button style={{ padding: 10, borderRadius: 5, margin: 5, marginTop: 10, backgroundColor: "#6252f2", color: "#fff" }} href={url}><FaPenFancy /> Check it out here</Button>
+          <Button style={{ padding: 10, borderRadius: 5, margin: 5, marginTop: 10, backgroundColor: "#6252f2", color: "#fff" }} href={url}>Check it out here</Button>
 
           <div style={{ display: "flex", justifyContent: "center", marginBlock: 20 }}>Get all your form submissions using our endpoints generator. <a href="https://formilio.com" style={{ color: "#6252f2" }}>Check it out</a></div>
           
           <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>If you have any questions, feedback, ideas or problems don't hesitate to contact us! support@formilio.com</div>
-          <div style={{ display: "flex", justifyContent: "center" }}>Formilio @ Copyright {new Date().getFullYear()} || Designed and created by <a href="https://abelo.tech" style={{ color: "#6252f2" }}>Abelo</a></div>
+          <div style={{ display: "flex", justifyContent: "center" }}>Formilio @Copyright {new Date().getFullYear()} || Designed and created by <a href="https://abelo.tech" style={{ color: "#6252f2" }}>Abelo</a></div>
         </>
       }
     </Html>

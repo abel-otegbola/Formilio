@@ -41,11 +41,11 @@ export default async function handler(req, res) {
       //Submit the information to database
       await Submissions.create({ key: slug[0], user: data.user, data: JSON.stringify(formdata)})
 
-      //Send the information to the user email
-      sendEmail(data, formdata, false)
-
       //send notification to user account
       await Messages.create({ user: data.user, message: `You received a new submission from ${formdata.email || formdata.name || formdata.fullname}`, sender: "Formilio", opened: false })
+
+      //Send the information to the user email
+      sendEmail(data, formdata, false)
 
       //Check if autoRespond is enabled and includes a message
       if(data.autoRespond && data.autoRespond !== "") {
@@ -59,12 +59,7 @@ export default async function handler(req, res) {
         return res.status(200).json({ msg: "Submitted successfully" })
       }
       else {
-        if(data.thankYou !== "") {
-            return res.redirect(303, data.thankYou)
-        }
-        else {
-          return res.redirect(303, `${process.env.NEXTAUTH_URL}/thankyou?id=${slug[0]}`)
-        }
+        return res.redirect(303, `${process.env.NEXTAUTH_URL}/thankyou`)
       }
     }
     catch(err){
@@ -77,7 +72,7 @@ export default async function handler(req, res) {
 
 //Email sending implementation
 function sendEmail(data, formdata, respond) {
-
+  console.log(data, formdata)
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -90,7 +85,7 @@ function sendEmail(data, formdata, respond) {
       },
     });
 
-    const emailHtml = render(EmailTemplate({ url: `https://formilio.vercel.app/dashboard/endpoints/view?title=${data.title}&endpoint=${data.key}`, formdata, data, respond })); //Change the template to html to send
+    const emailHtml = render(EmailTemplate({ url: `https://mailme.vercel.app/dashboard/endpoints/view?title=${data.title}&endpoint=${data.key}`, formdata, data, respond })); //Change the template to html to send
 
     const options = {
       from: 'no-reply@formilio.com',
