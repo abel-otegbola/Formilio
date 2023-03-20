@@ -31,9 +31,9 @@ export default function Portfolio() {
     }, [isLoading])
 
     return (
-        <div className="flex px-[5%]">
-            <div className="p-[5%] my-[20px] w-[40%]">
-                <div className="sticky top-0">
+        <div className="sm:flex px-[5%]">
+            <div className="p-[5%] my-[20px] sm:w-[40%]">
+                <div className="py-[10%] sticky top-0">
                     {
                         img.type.indexOf("video") !== -1 ?
                         <video src={img.url} alt={img.title} width={200} height={200} className="rounded" autoPlay controls loop>
@@ -101,7 +101,7 @@ export default function Portfolio() {
                 form ?
                     <div className="p-[5%] my-[20px] w-full">
                         <h2 className="font-bold text-xl my-8">CONTACT ME</h2>
-                        <form action="" method="post" className="md:w-[50%] w-full">
+                        <form action="" method="post" className="w-full">
 
                             <label className="mb-2">Full name:</label>
                             <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-7 mt-2">
