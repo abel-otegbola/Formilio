@@ -90,9 +90,9 @@ export default function Dashboard() {
                     </div>
                     <div className="mt-10">
                         <h4 className="p-2 font-semibold text-blue">LATEST NOTIFICATIONS</h4>
-                        {
+                        {                                               
                             notifications?.map(notification => (
-                                <div key={notification.id} className="my-2 bg-gray-100 dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] ">
+                                <div key={notification.id} className="my-2 bg-gray-100 dark:bg-gray-900 border border-transparent max-h-[400px] overflow-hidden border-y-gray-300/[0.2] ">
                                     <div
                                         className={`flex md:flex-no-wrap flex-wrap items-center justify-between hover:bg-blue hover:text-white cursor-pointer`}>
                                         <div className="flex-1 ml-2 items-center overflow-x-auto">
@@ -108,7 +108,7 @@ export default function Dashboard() {
                             ))
                         }
                     </div>
-                    <div className="mt-10 flex gap-2">
+                    <div className="mt-10 flex gap-2 overflow-hidden max-h-[400px]">
                         <a href="/dashboard/notifications" className="p-3 px-6 text-center rounded-full border border-blue bg-blue text-white">View all notifications</a>
                         <button className="flex-1 p-3 px-6 text-center rounded-full border border-blue text-blue hover:bg-blue hover:text-white">Total: {notifications?.length}</button>
                     </div>
