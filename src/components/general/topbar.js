@@ -60,7 +60,7 @@ export default function Topbar() {
                 {
                     (session) ? // Show dashboard button instead of login if signed in
                     <>
-                        <Link href="/dashboard" className="w-fit p-1 rounded-full bg-blue/[0.1]">
+                        <Link href="/dashboard" className="w-fit p-1 rounded-full mr-3 bg-blue/[0.1]">
                             {(!session.user.image)
                             ? <p className="flex items-start pt-[2px] justify-center w-[30px] h-[28px] text-gray-300 bg-gray-400 rounded-full">{session.user.email.charAt(0)}</p> : 
                             <img src={session.user.image} alt="user" width={30} height={30} className="rounded-full bg-gray-400 shadow-lg" />
