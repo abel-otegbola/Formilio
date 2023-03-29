@@ -55,7 +55,7 @@ export default function Home() {
                     <p className="my-4 mb-7 leading-[25px]">No coding knowledge required! Our user-friendly platform makes it easy for anyone to create endpoints for their static forms and start collecting data immediately.
                     </p>
                 </div>
-                <div className="flex flex-wrap justify-between w-full bg-[url('/bg.png')] bg-cover bg-gray-300[0.1]">
+                <div className="flex flex-wrap justify-between w-full">
                         {/* <div className="bg-[url('/macos.svg')] bg-no-repeat md:h-[350px] h-[300px] p-[25px]" style={{ backgroundSize: "100% 100%" }}> */}
                             
                             {/* <div className="overflow-x-auto leading-[25px] md:text-[14px] text-[12px]">
@@ -68,35 +68,35 @@ export default function Home() {
                             </div> */}
                             <div className="md:w-[30%] my-[30px] w-full text-center">
                                 <div className="w-fit m-auto rounded-xl bg-gradient-to-r p-[15px] backdrop-blur-xl from-blue/[0.2] to-fuchsia-500/[0.2]">
-                                    <video src={"/generate.webm"} alt={"generate"} width={200} height={150} className="rounded-lg" autoPlay  muted loop>
+                                    <video src={"/generate.webm"} alt={"generate"} width={300} height={250} className="rounded-lg" autoPlay  muted loop>
                                         <source src={"/generate.webm"} type="video/mp4"></source>
                                         <source src={"/generate.webm"} type="video/ogg"></source>
                                     </video>
                                 </div>
                                 <h2 className="text-blue py-2 font-semibold text-xl">Generate endpoint</h2>
-                                <p className="py-4">Once signed in, create a new endpoint indicating the title.</p>
+                                <p className="py-4 w-[70%] mx-auto">Once signed in, create a new endpoint indicating the title.</p>
                             </div>
                             
                             <div className="md:w-[30%] my-[30px] w-full text-center">
                                 <div className="w-fit m-auto rounded-xl bg-gradient-to-r p-[15px] backdrop-blur-xl from-blue/[0.2] to-fuchsia-500/[0.2]">
-                                    <video src={"/form.webm"} alt={"generate"} width={200} height={150} className="rounded-lg" autoPlay  muted loop>
+                                    <video src={"/form.webm"} alt={"form"} width={300} height={250} className="rounded-lg" autoPlay  muted loop>
                                         <source src={"/generate.webm"} type="video/mp4"></source>
                                         <source src={"/generate.webm"} type="video/ogg"></source>
                                     </video>
                                 </div>
                                 <h2 className="text-blue py-2 font-semibold text-xl">Add endpoint to your form</h2>
-                                <p className="py-4">Together with the generated key, add the url in your form</p>
+                                <p className="py-4 w-[70%] mx-auto">Together with the generated key, add the url in your form</p>
                             </div>
                             
                             <div className="md:w-[30%] my-[30px] w-full text-center">
                                 <div className="w-fit m-auto rounded-xl bg-gradient-to-r p-[15px] backdrop-blur-xl from-blue/[0.2] to-fuchsia-500/[0.2]">
-                                    <video src={"/submission.webm"} alt={"generate"} width={200} height={150} className="rounded-lg" autoPlay  muted loop>
+                                    <video src={"/submission.webm"} alt={"submission"} width={300} height={250} className="rounded-lg" autoPlay  muted loop>
                                         <source src={"/generate.webm"} type="video/mp4"></source>
                                         <source src={"/generate.webm"} type="video/ogg"></source>
                                     </video>
                                 </div>
                                 <h2 className="text-blue py-2 font-semibold text-xl">Receive submissions</h2>
-                                <p className="py-4">Publish your form and start receiving submissions.</p>
+                                <p className="py-4 w-[70%] mx-auto">Publish your form and start receiving submissions.</p>
                             </div>
                 </div>
             </section>
