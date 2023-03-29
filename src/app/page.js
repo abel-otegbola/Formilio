@@ -13,8 +13,8 @@ export default function Home() {
     const [activeFeature, setActiveFeature] = useState("Email")
     const features = [
         {id: 1, title: "Email", description: "Formilio sends the submission to your email. You can also set other emails to receive submissions."},
-        {id: 2, title: "Auto Respond", description: "Formilio sends the auto respond message when you set it up in the endpoint."},
-        {id: 3, title: "File Upload", description: "Formilio makes it easy to receive files when uploaded."}
+        {id: 2, title: "Auto-Respond", description: "Formilio sends the auto respond message when you set it up in the endpoint."},
+        {id: 3, title: "File-Upload", description: "Formilio makes it easy to receive files when uploaded."}
     ]
     const forms = ["HTML", "PREVIEW"]
 
