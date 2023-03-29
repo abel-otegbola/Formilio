@@ -10,12 +10,11 @@ import "../components/dashboard/jsonformat.css"
 
 export default function Home() {
     const [active, setActive] = useState("HTML")
-    const [activeFeature, setActiveFeature] = useState("Email Submission")
+    const [activeFeature, setActiveFeature] = useState("Email")
     const features = [
-        {id: 1, title: "Email Submission", description: "Formilio sends the submission to your email. You can also set other emails to receive submissions."},
-        {id: 2, title: "Auto Responder", description: "Formilio sends the auto respond message when you set it up in the endpoint."},
-        {id: 3, title: "File Upload", description: "Formilio makes it easy to receive files when uploaded."},
-        {id: 4, title: "Drag and Drop Builder", description: "Formilio allows you to build your own email template, Invoice and Quotes as well as a fully working form."}
+        {id: 1, title: "Email", description: "Formilio sends the submission to your email. You can also set other emails to receive submissions."},
+        {id: 2, title: "Auto Respond", description: "Formilio sends the auto respond message when you set it up in the endpoint."},
+        {id: 3, title: "File Upload", description: "Formilio makes it easy to receive files when uploaded."}
     ]
     const forms = ["HTML", "PREVIEW"]
 
@@ -36,7 +35,7 @@ export default function Home() {
                     <p className="my-4 leading-[25px]">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
                     </p>
                     <div className="md:flex mt-7 gap-4">
-                        <a href="/login" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue text-white rounded">Get Started <FaPaperPlane className="ml-2"/></a>
+                        <a href="/login" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue border border-blue text-white rounded">Get Started <FaPaperPlane className="ml-2"/></a>
                         <a href="/documentations" className="flex items-center justify-center p-[10px] px-[20px] hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Learn more <FiArrowRightCircle className="ml-2"/></a>   
                     </div>
                 </div>
@@ -109,7 +108,7 @@ export default function Home() {
                     <p className="my-4 mb-7 leading-[25px]">Formilio offers you the best features that you'll ever need in your form. Keeping simplicity in mind, we've crafted the best way to integrate powerful features into your form within minutes.
                     </p>
                 </div>
-                <div className="grid md:grid-cols-4 grid-cols-2 gap-2 p-2 rounded bg-gray-100 dark:bg-gray-800">
+                <div className="grid grid-cols-3 gap-2 p-2 rounded bg-gray-100 dark:bg-gray-800">
                     {
                         features.map((item) => (
                             <p 
