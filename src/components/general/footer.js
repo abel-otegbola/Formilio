@@ -1,9 +1,9 @@
 
 
 export default function AppFooter() {
-    const products = [ "Documentations", "FAQs", "Features & Pricing", "Contact Us" ]
+    const products = [ "Documentations", "FAQs", "Contact Us" ]
     const guides = [ "How to build a simple HTML contact form", "How to create a file upload form", "How to upload files from your HTML forms", "How to create email templates" ]
-    const resources = [ "Documentations", "Blog", "Tutorials", "Examples" ]
+    const resources = [ "Documentations","Tutorials", "Examples" ]
     const templates = [ "Contact form", "Job application", "Event schedule", "All templates" ]
 
     return (

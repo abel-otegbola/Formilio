@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaCode, FaLink, FaPaperPlane, FaSave } from "react-icons/fa";
 import { FiArrowRightCircle } from "react-icons/fi";
+import { IoIosRocket } from "react-icons/io";
 import "../components/dashboard/jsonformat.css"
 
 
@@ -23,18 +24,28 @@ export default function Home() {
         <div>
             {/* header section */}
             <header className="flex md:flex-nowrap flex-wrap items-center mb-[7%] md:px-[10%] px-[5%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
-                <div className="md:w-[50%] w-full md:pt-0 pt-[20%]">
+                <div className="md:w-[50%] w-full md:pt-0 pt-[20%] md:text-left text-center">
+                    <div className="flex items-center p-1 pl-6 border border-blue mb-4 rounded-full w-fit md:mx-0 m-auto bg-white/[0.1] backdrop-blur-sm">
+                        <IoIosRocket className="text-orange-500 mr-2" /> 
+                        All your data in one place
+                        <div className="ml-4">
+                            <Image src={"/memoji_man_18.webp"} width="30" height="30" alt="memoji man" className="border border-white bg-blue rounded-full"/>
+                        </div>
+                    </div>
                     <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">Effortlessly generate HTML endpoints for your static forms.</h1>
                     <p className="my-4 leading-[25px]">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
                     </p>
-                    <div className="md:flex mt-7">
+                    <div className="md:flex mt-7 gap-4">
                         <a href="/login" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue text-white rounded">Get Started <FaPaperPlane className="ml-2"/></a>
-                        <a href="/documentations" className="flex items-center justify-center p-[10px] px-[20px] md:ml-4 hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Learn more <FiArrowRightCircle className="ml-2"/></a>
+                        <a href="/documentations" className="flex items-center justify-center p-[10px] px-[20px] hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Learn more <FiArrowRightCircle className="ml-2"/></a>   
                     </div>
                 </div>
                 {/* hero image */}
-                <div className="md:w-[50%] md:mt-0 mt-[40px] w-full">
+                <div className="relative md:w-[50%] md:mt-0 mt-[40px] w-full">
                     <Image src={"/herobg.png"} width="700" height="500" alt="man sitting pressing laptop" className="drop-shadow-xl"/>
+                    <div className="absolute top-[40px] right-[30px] p-2 rounded-full bg-white">
+                        <Image src={"/memoji_man_14.webp"} width="100" height="100" alt="memoji man" className="rounded-full bg-blue/[0.6] backdrop-blur-sm p-4 shadow-xl"/>
+                    </div>
                 </div>
             </header>
             
@@ -44,48 +55,49 @@ export default function Home() {
                     <p className="my-4 mb-7 leading-[25px]">No coding knowledge required! Our user-friendly platform makes it easy for anyone to create endpoints for their static forms and start collecting data immediately.
                     </p>
                 </div>
-                <div className="flex flex-wrap w-full md:p-[5%] bg-[url('/bg.png')] bg-cover bg-gray-300[0.1]">
-                    <div className="md:w-[45%] w-[90%] m-auto">
-                        <div className="my-2 md:text-left text-center mb-4">
-                            <FaLink className="mb-2 md:mx-0 mx-auto text-4xl p-2 rounded-full text-blue border border-blue " />
-                            <h3 className="text-lg font-semibold">Generate the endpoint</h3>
-                            <p className="opacity-[0.5] pb-4">Get an endpoint using the endpoint generator</p>
-                        </div>
-                        <div className="my-2 md:text-left text-center mb-4">
-                            <FaCode className="mb-2 md:mx-0 mx-auto text-4xl p-2 rounded-full text-blue border border-blue " />
-                            <h3 className="text-lg font-semibold">Add the endpoint to your form</h3>
-                            <p className="opacity-[0.5] pb-4">Copy and paste the endpoint into your form</p>
-                        </div>
-                        <div className="my-2 md:text-left text-center mb-4">
-                            <FaSave className="mb-2 md:mx-0 mx-auto text-4xl p-2 rounded-full text-blue border border-blue " />
-                            <h3 className="text-lg font-semibold">Start receiving submissions</h3>
-                            <p className="opacity-[0.5] pb-4">With this, formilio will save your users submissions.</p>
-                        </div>
-                    </div>
-                    <div className="md:w-[50%] w-full">
-                        <div className="grid grid-cols-2 gap-2 p-2 rounded bg-gray-100 dark:bg-gray-900">
-                            {
-                                forms.map((item, i) => (
-                                    <p 
-                                        key={i} 
-                                        className={`p-3 px-6 rounded border text-sm text-center hover:bg-white hover:dark:bg-gray-900 hover:border-blue hover:text-blue text-center cursor-pointer border  ${active === item ? "border-blue text-blue shadow-lg bg-white dark:bg-gray-900 dark:shadow-3xl" : "border-transparent"}`}
-                                        onClick={() => setActive(item)}
-                                    >{item}</p>
-                                ))
-                            }
-                        </div>
+                <div className="flex flex-wrap justify-between w-full bg-[url('/bg.png')] bg-cover bg-gray-300[0.1]">
+                        {/* <div className="bg-[url('/macos.svg')] bg-no-repeat md:h-[350px] h-[300px] p-[25px]" style={{ backgroundSize: "100% 100%" }}> */}
                             
-                        <div className="bg-[url('/form.png')] bg-no-repeat md:h-[350px] h-[300px] p-[10%] md:p-[10%] md:py-[15%]" style={{ backgroundSize: "100% 100%" }}>
-                            <div className="overflow-x-auto leading-[25px] md:text-[14px] text-[12px]">
+                            {/* <div className="overflow-x-auto leading-[25px] md:text-[14px] text-[12px]">
                                 <p>1<span className="ml-2" dangerouslySetInnerHTML={{__html: hljs.highlight(`<form action='https://formilio.vercel.app/api/endpoint/{My endpoint}' method='post'>`, { language: "HTML" }).value}}></span></p>
                                 <p>2<span className="ml-6" dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type='text' name='fullname'/>`, {language: "HTML" }).value}}></span></p>
                                 <p>3<span className="ml-6" dangerouslySetInnerHTML={{__html: hljs.highlight(`<input type='email' name='email'/>`, {language: "HTML" }).value}}></span></p>
                                 <p>4<span className="ml-6" dangerouslySetInnerHTML={{__html: hljs.highlight(`<textarea name='message'></textarea>`, {language: "HTML" }).value}}></span></p>
                                 <p>5<span className="ml-6" dangerouslySetInnerHTML={{__html: hljs.highlight(`<button type='submit'>Send message</button>`, {language: "HTML" }).value}}></span></p>
                                 <p>6<span className="ml-2" dangerouslySetInnerHTML={{__html: hljs.highlight(`</form>`, {language: "HTML" }).value}}></span></p>
+                            </div> */}
+                            <div className="md:w-[30%] my-[30px] w-full text-center">
+                                <div className="w-fit m-auto rounded-xl bg-gradient-to-r p-[15px] backdrop-blur-xl from-blue/[0.2] to-fuchsia-500/[0.2]">
+                                    <video src={"/generate.webm"} alt={"generate"} width={200} height={150} className="rounded-lg" autoPlay  muted loop>
+                                        <source src={"/generate.webm"} type="video/mp4"></source>
+                                        <source src={"/generate.webm"} type="video/ogg"></source>
+                                    </video>
+                                </div>
+                                <h2 className="text-blue py-2 font-semibold text-xl">Generate endpoint</h2>
+                                <p className="py-4">Once signed in, create a new endpoint indicating the title.</p>
                             </div>
-                        </div>
-                    </div>
+                            
+                            <div className="md:w-[30%] my-[30px] w-full text-center">
+                                <div className="w-fit m-auto rounded-xl bg-gradient-to-r p-[15px] backdrop-blur-xl from-blue/[0.2] to-fuchsia-500/[0.2]">
+                                    <video src={"/form.webm"} alt={"generate"} width={200} height={150} className="rounded-lg" autoPlay  muted loop>
+                                        <source src={"/generate.webm"} type="video/mp4"></source>
+                                        <source src={"/generate.webm"} type="video/ogg"></source>
+                                    </video>
+                                </div>
+                                <h2 className="text-blue py-2 font-semibold text-xl">Add endpoint to your form</h2>
+                                <p className="py-4">Together with the generated key, add the url in your form</p>
+                            </div>
+                            
+                            <div className="md:w-[30%] my-[30px] w-full text-center">
+                                <div className="w-fit m-auto rounded-xl bg-gradient-to-r p-[15px] backdrop-blur-xl from-blue/[0.2] to-fuchsia-500/[0.2]">
+                                    <video src={"/submission.webm"} alt={"generate"} width={200} height={150} className="rounded-lg" autoPlay  muted loop>
+                                        <source src={"/generate.webm"} type="video/mp4"></source>
+                                        <source src={"/generate.webm"} type="video/ogg"></source>
+                                    </video>
+                                </div>
+                                <h2 className="text-blue py-2 font-semibold text-xl">Receive submissions</h2>
+                                <p className="py-4">Publish your form and start receiving submissions.</p>
+                            </div>
                 </div>
             </section>
             
