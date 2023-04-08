@@ -22,7 +22,7 @@ export default function GenerateEndpoint() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ user: session.user.email, title, key, emailRecipients: [session.user.email], autoRespond: "", thankYou: "",  address: `https://formilio.vercel.app/api/endpoint/${key}` })
+                body: JSON.stringify({ user: session.user.email, title, key, emailRecipients: [session.user.email], autoRespond: "", thankYou: "",  address: `https://formilio.com/api/endpoint/${key}` })
             })
             .then(res => res.json())
             .then(data => {

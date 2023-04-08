@@ -1,8 +1,7 @@
 "use client"
-import hljs from "highlight.js";
 import Image from "next/image";
 import { useState } from "react";
-import { FaCode, FaLink, FaPaperPlane, FaSave } from "react-icons/fa";
+import { FaLink, FaPaperPlane } from "react-icons/fa";
 import { FiArrowRightCircle } from "react-icons/fi";
 import { IoIosRocket } from "react-icons/io";
 import "../components/dashboard/jsonformat.css"
@@ -63,7 +62,7 @@ export default function Home() {
                         </div>
                     </div>
                     
-                    <div className="my-[50px] flex flex-wrap items-center">
+                    <div className="my-[50px] py-[20px] flex flex-wrap items-center bg-gray-500/[0.05]">
                         <div className="mx-[5%] mt-[30px] md:order-1 order-2 md:pl-[5%]">
                             <h2 className="text-blue py-2 font-bold text-3xl">Add endpoint to your form</h2>
                             <p className="py-4 w-[70%]">Together with the generated key, add the url in your form</p>

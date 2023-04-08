@@ -16,10 +16,10 @@ export default function Layout({ children }) {
     return (
         <DataContext.Provider value={{ endpoints, endpointsError, endpointsLoading }}>
             <NotificationContext.Provider value={{ notifications, notificationsLoading, notificationsError }}>
-                <div className="flex bg-slate-100 dark:bg-gray-800 p-2">
+                <div className="flex bg-slate-100 dark:bg-gray-800 md:p-2">
 
                     <Sidebar />
-                    <div className="md:ml-2 flex-1 min-h-screen bg-white dark:bg-gray-900 py-[20px]">
+                    <div className="md:ml-2 py-4 flex-1 min-h-screen bg-white dark:bg-gray-900">
                         {children}
                     </div>
                     

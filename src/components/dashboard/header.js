@@ -2,9 +2,9 @@
 
 export default function Header({ text, icon, children }) {
     return (
-        <div className="relative w-full bg-blue p-4 mb-4 rounded overflow-hidden">
+        <div className="relative w-full p-4 bg-gradient-to-r mb-[30px] from-blue to-fuchsia-500 rounded-lg">
             <h4 className="flex items-center text-white my-4 text-lg">
-                <div className="animate-bounce text-3xl opacity-[0.5] mr-2">
+                <div className="text-2xl opacity-[0.5] mr-2">
                     {icon}
                 </div>
                 {text}

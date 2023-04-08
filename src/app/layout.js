@@ -11,7 +11,7 @@ export default function RootLayout({ children, session }) {
       <body className='text-black dark:text-white dark:bg-gray-900'>
         <SessionProvider session={session}>
             <Topbar />
-              <main className='pt-[55px]' >{children}</main>
+              <main className='pt-[60px]' >{children}</main>
             <AppFooter />
         </SessionProvider>
       </body>
