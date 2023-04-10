@@ -22,6 +22,9 @@ module.exports = {
         'hoverblue': '#4F3FC7',
         'disabledblue': '#B6ADFB'
       },
+      animation: {
+        "spin-slow": "spin 10s linear infinite"
+      }
     },
   },
   plugins: [],

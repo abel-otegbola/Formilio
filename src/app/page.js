@@ -11,6 +11,7 @@ import "../components/dashboard/jsonformat.css"
 
 export default function Home() {
     const [active, setActive] = useState("HTML")
+    const [dark, setDark] = useState(false)
     const [activeFeature, setActiveFeature] = useState("Email")
     const features = [
         {id: 1, title: "Email", description: "Formilio sends the submission to your email. You can also set other emails to receive submissions."},
@@ -21,9 +22,14 @@ export default function Home() {
 
     useEffect(() => {
         Aos.init({
-            duration: 600,
+            duration: 800,
             easing: "ease-in-out-cubic",
         });
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setDark(true)
+        } else {
+        setDark(false)
+        }
     })
 
     useEffect(() => {
@@ -57,15 +63,15 @@ export default function Home() {
                     <p className="my-4 leading-[25px]" data-aos="fade-up" data-aos-delay="400">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
                     </p>
                     <div className="md:flex mt-7 gap-4" data-aos="fade-up" data-aos-delay="600">
-                        <a href="/login" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue border border-blue text-white rounded">Get Started <FaPaperPlane className="ml-2"/></a>
+                        <a href="/login" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue border border-blue text-white rounded">Get Started <FaPaperPlane className="animate-bounce ml-2"/></a>
                         <a href="/documentations" className="flex items-center justify-center p-[10px] px-[20px] hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Learn more <FiArrowRightCircle className="ml-2"/></a>   
                     </div>
                 </div>
                 {/* hero image */}
                 <div className="relative md:w-[50%] md:mt-0 mt-[40px] w-full" data-aos="zoom-in">
                     <Image src={"/herobg.png"} width="700" height="500" alt="man sitting pressing laptop" className="drop-shadow-xl"/>
-                    <div className="absolute top-[40px] right-[30px] p-2 rounded-full bg-white">
-                        <Image src={"/memoji_man_14.webp"} width="100" height="100" alt="memoji man" className="rounded-full bg-blue/[0.6] backdrop-blur-sm p-4 shadow-xl"/>
+                    <div className="absolute top-[40px] right-[30px] rounded-full bg-gray-100 dark:bg-gray-800 p-2">
+                        <Image src={"/curve.svg"} width="120" height="120" alt="formilio - enpoints generator" className="animate-spin-slow bg-white dark:bg-gray-600 rounded-full"/>
                     </div>
                 </div>
             </header>
@@ -78,7 +84,7 @@ export default function Home() {
                 </div>
                 <div className="">
                     <div className=" my-[50px] flex flex-wrap items-center">
-                        <Image src="/create.svg" width={450} height={200} alt="create" className="m-auto " data-aos="zoom-in" />
+                        <Image src={dark? "create-dark.svg" : "/create.svg"} width={450} height={200} alt="create" className="m-auto" data-aos="zoom-in" />
                         <div className="mx-[5%] mt-[30px]">
                             <p className="text-blue"  data-aos="fade-up" data-aos-delay="200">1. Create</p>
                             <h2 className="py-2 font-bold text-3xl"  data-aos="fade-up" data-aos-delay="400">Generate endpoint</h2>
@@ -92,11 +98,11 @@ export default function Home() {
                             <h2 className="py-2 font-bold text-3xl"  data-aos="fade-up" data-aos-delay="400">Add endpoint to your form</h2>
                             <p className="py-4 w-[70%]"  data-aos="fade-up" data-aos-delay="600">Together with the generated key, add the url in your form</p>
                         </div>
-                        <Image src="/form.svg" width={500} height={200} alt="form" className="m-auto   md:order-2" />
+                        <Image src={dark? "form-dark.svg" : "/form.svg"} width={500} height={200} alt="form" className="m-auto md:order-2" data-aos="zoom-in" />
                     </div>
                     
                     <div className=" my-[50px] flex flex-wrap items-center">
-                        <Image src="/submission.svg" width={500} height={200} alt="submission" className="m-auto " />
+                        <Image src={dark? "submission-dark.svg" : "/submission.svg"} width={500} height={200} alt="submission" className="m-auto" data-aos="zoom-in" />
                         <div className="mx-[5%] mt-[30px]">
                             <p className="text-blue"  data-aos="fade-up" data-aos-delay="200">3. Publish</p>
                             <h2 className="py-2 font-bold text-3xl"  data-aos="fade-up" data-aos-delay="400">Publish & Receive submissions</h2>
@@ -130,15 +136,15 @@ export default function Home() {
                         <div className="md:w-[85%] w-full m-auto bg-gray-300[0.1]" key={feature.id}>
                             <div className="flex md:flex-nowrap flex-wrap py-[7%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
                                 <div className="md:w-[50%] w-full mr-[3%] ">
-                                    <h1 className="md:text-3xl text-2xl md:leading-[40px] leading-[35px] font-bold" data-aos="fade-up">{feature.title}</h1>
-                                    <p className="my-4 leading-[25px]" data-aos="fade-up" data-aos-delay="200">{feature.description}
+                                    <h1 className="md:text-3xl text-2xl md:leading-[40px] leading-[35px] font-bold" data-aos="fade-up" data-aos-duration="1000">{feature.title}</h1>
+                                    <p className="my-4 leading-[25px]" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">{feature.description}
                                     </p>
-                                    <div className="md:flex mt-7" data-aos="fade-up" data-aos-delay="400">
+                                    <div className="md:flex mt-7" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
                                         <a href="/documentations" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue text-white rounded">Visit Documentations <FaPaperPlane className="ml-2"/></a>
                                     </div>
                                 </div>
-                                <div className="md:w-[50%] md:mt-0 mt-[40px] w-full" data-aos="flip-right">
-                                    <Image src={"/email.svg"} width="500" height="400" alt="form ui" className="drop-shadow-xl"/>
+                                <div className="md:w-[50%] md:mt-0 mt-[40px] w-full" data-aos="flip-right" data-aos-duration="1200">
+                                    <Image src={"/email.svg"} width="350" height="350" alt="form ui" className="drop-shadow-xl"/>
                                 </div>
                             </div>
                         </div>
