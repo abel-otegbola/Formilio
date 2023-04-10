@@ -18,7 +18,6 @@ export default function Sidebar() {
     const links = [
         { name: "Dashboard", to: "", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
         { name: "Endpoints", to: "/endpoints", icon: <FaLink />,  iconRight: <span className="bg-green-500 text-white p-1 px-2 rounded-full text-[9px]">{endpoints?.length}</span> },
-        { name: "Portfolio", to: "/portfolio", icon: <FaBriefcase />,  iconRight: <BsFillEmojiSunglassesFill className="text-orange-500" /> },
         { name: "Notifications", to: "/notifications", icon: <FaCommentAlt />,  iconRight: <span className="bg-purple-400 text-white p-1 px-2 rounded text-[8px]">{notifications?.length}</span> },
         { name: "Profile", to: "/profile", icon: <FaUserCircle />,  iconRight: <FaAdjust/> },
         { name: "Settings", to: "/settings", icon: <FaCog />,  iconRight: <FaInfoCircle/> },
