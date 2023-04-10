@@ -153,7 +153,7 @@ export default function Home() {
             </section>
 
             <section className="md:px-[10%] px-[5%] py-[50px] font-body">
-                <div className="flex flex-col items-center justify-center items-center bg-blue/[0.8] backdrop-blur-sm w-full py-[10%] md:text-left text-center rounded-lg">
+                <div className="flex flex-col items-center justify-center items-center bg-blue/[0.8] backdrop-blur-sm w-full py-[10%] text-center rounded-lg">
                     <div className="flex items-center p-1 pl-6 border border-blue mb-4 rounded-full w-fit md:mx-0 m-auto bg-white/[0.1] backdrop-blur-sm" data-aos="fade-up">
                         <IoIosRocket className="text-orange-500 mr-2" /> 
                             Start creating your endpoints
@@ -162,7 +162,7 @@ export default function Home() {
                         </div>
                     </div>
                     <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold" data-aos="fade-up" data-aos-delay="200">Lets Get Started</h1>
-                    <p className="my-4 leading-[25px]" data-aos="fade-up" data-aos-delay="400">Get started by signing up and create your first endpoint.
+                    <p className="my-4 w-[75%] mx-auto leading-[25px]" data-aos="fade-up" data-aos-delay="400">Get started by signing up and create your first endpoint.
                     </p>
                     <div className="flex justify-center mt-7 gap-4" data-aos="fade-up" data-aos-delay="600">
                         <a href="/login" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue border border-blue text-white rounded">Get Started <FaPaperPlane className="animate-bounce ml-2"/></a> 
