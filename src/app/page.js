@@ -14,9 +14,9 @@ export default function Home() {
     const [dark, setDark] = useState(false)
     const [activeFeature, setActiveFeature] = useState("Email")
     const features = [
-        {id: 1, title: "Email", description: "Formilio sends the submission to your email. You can also set other emails to receive submissions."},
-        {id: 2, title: "Auto-Respond", description: "Formilio sends the auto respond message when you set it up in the endpoint."},
-        {id: 3, title: "File-Upload", description: "Formilio makes it easy to receive files when uploaded."}
+        {id: 1, title: "Email", description: "Formilio sends the submission to your email. You can also set other emails to receive submissions.", img: dark ? "email-dark.svg" : "/email.svg"},
+        {id: 2, title: "Auto-Respond", description: "Formilio sends the auto respond message when you set it up in the endpoint.", img: dark ? "auto-respond-dark.svg" : "/auto-respond.svg"},
+        {id: 3, title: "File-Upload", description: "Formilio makes it easy to receive files when uploaded.", img: dark ? "email-dark.svg" : "email.svg"}
     ]
     const forms = ["HTML", "PREVIEW"]
 
@@ -144,12 +144,30 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div className="md:w-[50%] md:mt-0 mt-[40px] w-full" data-aos="flip-right" data-aos-duration="1200">
-                                    <Image src={"/email.svg"} width="350" height="350" alt="form ui" className="drop-shadow-xl"/>
+                                    <Image src={feature.img} width="350" height="350" alt="form ui" className="drop-shadow-xl"/>
                                 </div>
                             </div>
                         </div>
                     ))
                 }
+            </section>
+
+            <section className="md:px-[10%] px-[5%] py-[50px] font-body">
+                <div className="flex flex-col items-center justify-center items-center bg-blue/[0.8] backdrop-blur-sm w-full py-[10%] md:text-left text-center rounded-lg">
+                    <div className="flex items-center p-1 pl-6 border border-blue mb-4 rounded-full w-fit md:mx-0 m-auto bg-white/[0.1] backdrop-blur-sm" data-aos="fade-up">
+                        <IoIosRocket className="text-orange-500 mr-2" /> 
+                            Start creating your endpoints
+                        <div className="ml-4">
+                            <Image src={"/memoji_man_18.webp"} width="30" height="30" alt="memoji man" className="border border-white bg-blue rounded-full"/>
+                        </div>
+                    </div>
+                    <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold" data-aos="fade-up" data-aos-delay="200">Lets Get Started</h1>
+                    <p className="my-4 leading-[25px]" data-aos="fade-up" data-aos-delay="400">Get started by signing up and create your first endpoint.
+                    </p>
+                    <div className="flex justify-center mt-7 gap-4" data-aos="fade-up" data-aos-delay="600">
+                        <a href="/login" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue border border-blue text-white rounded">Get Started <FaPaperPlane className="animate-bounce ml-2"/></a> 
+                    </div>
+                </div>
             </section>
         </div>
     )
