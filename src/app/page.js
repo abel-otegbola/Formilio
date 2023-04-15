@@ -63,16 +63,13 @@ export default function Home() {
                     <p className="my-4 leading-[25px]" data-aos="fade-up" data-aos-delay="400">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
                     </p>
                     <div className="md:flex mt-7 gap-4" data-aos="fade-up" data-aos-delay="600">
-                        <a href="/login" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue border border-blue text-white rounded">Get Started <FaPaperPlane className="animate-bounce ml-2"/></a>
-                        <a href="/documentations" className="flex items-center justify-center p-[10px] px-[20px] hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Learn more <FiArrowRightCircle className="ml-2"/></a>   
+                        <a href="/login" className="flex items-center justify-center p-[13px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue border border-blue text-white rounded">Get Started <FaPaperPlane className="animate-bounce ml-2"/></a>
+                        <a href="/documentations" className="flex items-center justify-center p-[13px] px-[20px] hover:text-white hover:bg-hoverblue border border-blue text-blue rounded">Learn more <FiArrowRightCircle className="ml-2"/></a>   
                     </div>
                 </div>
                 {/* hero image */}
                 <div className="relative md:w-[50%] md:mt-0 mt-[40px] w-full" data-aos="zoom-in">
                     <Image src={"/herobg.png"} width="700" height="500" alt="man sitting pressing laptop" className="drop-shadow-xl"/>
-                    <div className="absolute top-[40px] right-[30px] rounded-full bg-gray-100 dark:bg-gray-800 p-2">
-                        <Image src={"/curve.svg"} width="120" height="120" alt="formilio - enpoints generator" className="animate-spin-slow bg-white dark:bg-gray-600 rounded-full"/>
-                    </div>
                 </div>
             </header>
             

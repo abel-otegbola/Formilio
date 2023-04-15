@@ -55,7 +55,7 @@ export default function Signup() {
     return (
         <div className="md:px-[10%] px-[5%] py-[5%] dark:bg-gray-900">
             <form className="p-[20px] md:px-[40px] bg-slate-100 dark:bg-gray-800 rounded md:w-[500px] w-full m-auto" method="post">
-                <h1 className="text-center py-6 text-blue text-2xl font-bold">Create your Account</h1>
+                <h1 className="text-center py-6 text-blue text-2xl font-bold">SIGN UP</h1>
                 <p className="text-center pb-10">Sign up to create and manage your forms</p>
 
                 { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
@@ -87,7 +87,7 @@ export default function Signup() {
                     <div className="m-2 mx-3 text-xl text-gray-500 " onClick={() => setShow(!show)}>{show ? <FaEyeSlash /> : <FaEye />}</div>
                 </div>
 
-                <button type="submit" onClick={(e) => submitForm(e)} className="flex justify-center items-center p-[13px] w-full bg-blue hover:bg-hoverblue text-white rounded mt-5">{loading ? <CgSpinner className="animate-spin" /> : ""} Sign up</button>
+                <button type="submit" onClick={(e) => submitForm(e)} className="flex justify-center items-center p-[13px] w-full bg-blue hover:bg-hoverblue text-white rounded my-[30px]">{loading ? <CgSpinner className="animate-spin" /> : ""} Sign up</button>
 
                 <div className="my-10 flex flex-wrap justify-between">
                     <p>Already have an Account? <a href="/login" className="text-blue mt-3">Signin</a></p>

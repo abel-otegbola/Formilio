@@ -11,7 +11,7 @@ export default function Layout({ children }) {
 
     const { data: endpoints, isLoading: endpointsLoading, error: endpointsError } = fetchData("getEndpoints", null, true,  0)
 
-    const { data: notifications, isLoading: notificationsLoading, error: notificationsError } = fetchData("getNotifications", null, true, 0)
+    const { data: notifications, isLoading: notificationsLoading, error: notificationsError } = fetchData("getNotifications", null, true, 5)
 
     return (
         <DataContext.Provider value={{ endpoints, endpointsError, endpointsLoading }}>
