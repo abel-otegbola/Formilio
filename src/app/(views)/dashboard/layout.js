@@ -20,7 +20,7 @@ export default function Layout({ children }) {
                 <div className="flex bg-slate-100 dark:bg-gray-800 md:p-2">
 
                     <div className="md:block hidden">
-                        <Sidebar open ={true} setOpen={setOpen}/>
+                        <Sidebar open ={open} setOpen={setOpen}/>
                     </div>
                     <div className="md:ml-2 py-4 flex-1 min-h-screen bg-white dark:bg-gray-900">
                         {children}

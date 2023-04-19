@@ -34,7 +34,7 @@ export default function EndpointsList({ setEndpoints, colors, data }) {
                     <FiLoader className="animate-spin text-blue text-3xl" />    
                 </div> : 
 
-                (endpoints && endpoints.error) && endpoints.map((endpoint, i) => (
+                endpoints?.map((endpoint, i) => (
                     <Link href={{
                             pathname: '/dashboard/endpoints/view',
                             query: {title: endpoint.title, endpoint: endpoint.key}

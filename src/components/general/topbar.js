@@ -13,7 +13,7 @@ import Sidebar from "../dashboard/sidebar";
 
 export default function Topbar() {
     const [open, setOpen] = useState(false)
-    const router = usePathname();
+    const path = usePathname();
     const { data: session } = useSession()
     const menuRef = useRef(null)
 
@@ -27,9 +27,9 @@ export default function Topbar() {
             
             <ul ref={menuRef} className={`bg-transparent dark:bg-transparent md:flex hidden md:flex-rowmd:w-auto md:h-auto md:relative ml-[4%]`}>
                
-                <li className="flex md:p-0 p-2"><a href="/" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/"? "text-blue": ""}`}>Home</a></li>
-                <li className="flex md:p-0 p-2"><a href="/about" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/about"? "text-blue": ""}`}>About</a></li>
-                <li className="flex md:p-0 p-2"><a href="/documentations" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${router === "/documentations"? "text-blue": ""}`}>Documentations</a></li>
+                <li className="flex md:p-0 p-2"><a href="/" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${path === "/"? "text-blue": ""}`}>Home</a></li>
+                <li className="flex md:p-0 p-2"><a href="/about" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${path === "/about"? "text-blue": ""}`}>About</a></li>
+                <li className="flex md:p-0 p-2"><a href="/documentations" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${path === "/documentations"? "text-blue": ""}`}>Documentations</a></li>
                 {
                     session ? // Show logout button instead of login if signed in
                     <>
@@ -57,12 +57,12 @@ export default function Topbar() {
                 }
             </div> 
             </div>
-            <div className={`${router.indexOf("dashboard") !== -1 ? "md:hidden" : ""} fixed md:top-[1%] top-[1.7%] ml-4 text-gray-500 text-2xl p-4 transition-all duration-700 z-50 ${open ? "md:right-[3%] right-[3%]": " md:right-[10%] right-[5%]"}`} onClick={() =>  setOpen(!open) }>
+            <div className={`${path.indexOf("dashboard") !== -1 ? "md:hidden" : ""} fixed md:top-[1%] top-[1.7%] ml-4 text-gray-500 text-2xl p-4 transition-all duration-700 z-50 ${open ? "md:right-[3%] right-[3%]": " md:right-[10%] right-[5%]"}`} onClick={() =>  setOpen(!open) }>
                 {
                     open ? <FaTimes /> : <FaBars />
                 }
             </div>
-            <div className={`${router.indexOf("dashboard") !== -1 ? "md:hidden" : ""} absolute top-0 right-0 h-screen z-20`}>
+            <div className={`${path.indexOf("dashboard") !== -1 ? "md:hidden" : ""} absolute top-0 right-0 h-screen z-20`}>
                 <Sidebar open={open} setOpen={setOpen} />
             </div>
         </>

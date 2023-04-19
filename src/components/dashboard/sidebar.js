@@ -55,8 +55,8 @@ export default function Sidebar({ open, setOpen }) {
                     links.map((link,i) => {
                         return (
                             <div key={i} >
-                                <li className={`flex w-full ${link.name === "Logout" ? "mt-[50px]" : ""} my-1  ${(!session && [1,2,4].indexOf(i) !== -1) ? "hidden" : ""}`}>
-                                    <a href={link.name !== "Logout" ? link.to : session ? "#" : "login"} onClick={() => link.name === "Logout" ? signOut() : ""} className={`flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `${link.to}`? "bg-blue text-white": ""} ${link.name !== "Logout" ? "p-[15px]" : !session ? "p-[10px] px-[15px] bg-blue text-white" : "p-[10px] px-[15px] bg-gray-800 text-white"}`}>
+                                <li className={`flex w-full ${link.name === "Logout" ? "mt-[50px]" : (i === 0 && path.indexOf("dashboard") !== -1) ? "hidden" : ""} my-1  ${(!session && [1,2,4].indexOf(i) !== -1) ? "hidden" : ""}`}>
+                                    <a href={link.name !== "Logout" ? link.to : session ? "#" : "login"} onClick={() => link.name === "Logout" ? signOut() : ""} className={`flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path.indexOf(link.to) !== -1 ? "bg-blue text-white": ""} ${link.name !== "Logout" ? "p-[15px]" : !session ? "p-[10px] px-[15px] bg-blue text-white" : "p-[10px] px-[15px] bg-gray-800 text-white"}`}>
                                         <div className="flex items-center">
                                             <div className="mr-4 text-xl text-gray-300">{link.icon}</div> 
                                             {link.name !== "Logout" ? link.name : session ? "Logout" : "Login"}
