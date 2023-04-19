@@ -1,27 +1,29 @@
 "use client"
 import { usePathname } from "next/navigation";
 import { useContext, useEffect, useRef, useState } from "react";
-import { FaAdjust, FaArrowAltCircleRight, FaAtom, FaBriefcase, FaChartLine, FaCog, FaCommentAlt, FaInfoCircle, FaLink, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
+import { FaAdjust, FaArrowAltCircleRight, FaAtom, FaBookOpen, FaCog, FaCommentAlt, FaHome, FaInfoCircle, FaLink, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
 import { HiMenuAlt1 } from "react-icons/hi";
-import { BsFillEmojiSunglassesFill } from "react-icons/bs";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { closeBlock } from "@/helper/closeBlock";
 import { DataContext, NotificationContext } from "@/app/(views)/dashboard/layout";
 
-export default function Sidebar() {
-    const [open, setOpen] = useState(false)
+export default function Sidebar({ open, setOpen }) {
+    const { data: session } = useSession()
     const path = usePathname()
     const menuRef = useRef(null)
-    const { endpoints } = useContext(DataContext)
-    const { notifications } = useContext(NotificationContext)
+    // const { endpoints } = useContext(DataContext)
+    // const { notifications } = useContext(NotificationContext)
 
     const links = [
-        { name: "Dashboard", to: "", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
-        { name: "Endpoints", to: "/endpoints", icon: <FaLink />,  iconRight: <span className="bg-green-500 text-white p-1 px-2 rounded-full text-[9px]">{endpoints?.length}</span> },
-        { name: "Notifications", to: "/notifications", icon: <FaCommentAlt />,  iconRight: <span className="bg-purple-400 text-white p-1 px-2 rounded text-[8px]">{notifications?.length}</span> },
-        { name: "Profile", to: "/profile", icon: <FaUserCircle />,  iconRight: <FaAdjust/> },
-        { name: "Settings", to: "/settings", icon: <FaCog />,  iconRight: <FaInfoCircle/> },
-        { name: "Logout", to: "#", icon: <FaSignOutAlt />,  iconRight: <FaArrowAltCircleRight/> },
+        { name: "Home", to: "", icon: <FaHome />, iconRight: <FaArrowAltCircleRight/> },
+        { name: "Dashboard", to: "dashboard", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
+        { name: "Endpoints", to: "dashboard/endpoints", icon: <FaLink />,  iconRight: <span className="bg-green-500 text-white p-1 px-2 rounded-full text-[9px]"></span> },
+        { name: "Documentations", to: "documentations", icon: <FaBookOpen />,  iconRight: <FaInfoCircle/> },
+        { name: "Notifications", to: "dashboard/notifications", icon: <FaCommentAlt />,  iconRight: <span className="bg-purple-400 text-white p-1 px-2 rounded text-[8px]"></span> },
+        { name: "Profile", to: "dashboard/profile", icon: <FaUserCircle />,  iconRight: <FaAdjust/> },
+        { name: "Settings", to: "settings", icon: <FaCog />,  iconRight: <FaInfoCircle/> },
+        { name: "About formilio", to: "about", icon: <FaInfoCircle />,  iconRight: <FaInfoCircle/> },
+        { name: "Logout", to: "#", icon: <FaSignOutAlt className="text-red-500" />,  iconRight: <FaArrowAltCircleRight className="text-red-500"/> },
     ]
 
     // Close sidebar when clicked outside
@@ -31,23 +33,31 @@ export default function Sidebar() {
 
     return(
         <>
-        {/* Button to close and open sidebar */}
-        <div className="fixed top-3 left-0 text-gray-500 font-bold text-2xl p-4 md:hidden block z-[150] transition-all duration-500" onClick={() => setOpen(!open)} >
-                    {
-                        open ? <FaTimes /> : <HiMenuAlt1 />
-                    }
-        </div>
 
         {/* Sidebar for dashboard */}
-        <div ref={menuRef} className={`md:relative fixed md:pt-0 pt-[50px] top-0 left-0 md:h-auto h-full z-10 bg-white dark:bg-gray-900 shadow-lg dark:shadow-2xl text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "md:w-[250px] w-0"}`}>
-            
-            <ul className="my-3 w-full p-2">
+        <div ref={menuRef} className={`md:relative fixed top-0 right-0 h-full z-10 bg-white dark:bg-gray-900 shadow-lg dark:shadow-2xl text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "w-0"}`}>
+        
+            {(session) ?  // Show user details for mobile menu if signed in
+            <a href="/dashboard" className="">
+                <div className="flex items-center p-[15px] border border-gray-100/[0.1] border-b-gray-300/[0.2]">
+                    {(!session.user.image)
+                        ? <p className="flex items-start pt-[2px] justify-center w-[30px] h-[28px] text-gray-300 bg-gray-400 rounded-full">{session.user.email.charAt(0)}</p> : 
+                        <img src={session.user.image} alt="user" width={30} height={30} className="rounded-full bg-gray-400 shadow-lg" />
+                    }
+                    <div className="ml-4">
+                        <p> {session.user.name}</p> 
+                        <p className="text-[9px]">{session.user.email}</p>
+                    </div>
+                </div>
+            </a> : ""}
+
+            <ul className="w-full p-2">
                 {
                     links.map((link,i) => {
                         return (
                             <div key={i} >
-                                <li className="flex w-full my-1">
-                                    <a href={`/dashboard${link.to}`} onClick={() => link.name === "Logout" ? signOut() : ""} className={`p-[15px] flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `/dashboard${link.to}`? "bg-blue text-white": ""}`}>
+                                <li className={`flex w-full my-1 ${(i === 0 || i === 3 || i === 5) ? "md:hidden" : ""}`}>
+                                    <a href={`/${link.to}`} onClick={() => link.name === "Logout" ? signOut() : ""} className={`p-[15px] flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === `${link.to}`? "bg-blue text-white": ""}`}>
                                         <div className="flex items-center">
                                             <div className="mr-4 text-xl text-gray-300">{link.icon}</div> 
                                             {link.name}
@@ -55,7 +65,7 @@ export default function Sidebar() {
                                         <span className="text-gray-300">{link.iconRight}</span>
                                     </a>
                                 </li>
-                                { i === 2 ? <hr color="rgba(100, 100, 100, 0.5)" className="my-4"/> : "" } 
+                                { i === 4 ? <hr color="rgba(100, 100, 100, 0.5)" className="my-4"/> : "" } 
                             </div>
                         )
                     })

@@ -11,6 +11,7 @@ export default function EndpointsList({ setEndpoints, colors, data }) {
     const { endpoints, endpointsLoading, endpointsError } = useContext(DataContext)
 
     useEffect(() => {
+        console.log(endpoints)
         setEndpoints(endpoints)
     }, [endpoints])
 
@@ -32,7 +33,8 @@ export default function EndpointsList({ setEndpoints, colors, data }) {
                 <div className="flex justify-center items-center min-h-[70px]">
                     <FiLoader className="animate-spin text-blue text-3xl" />    
                 </div> : 
-                endpoints?.map((endpoint, i) => (
+
+                (endpoints && endpoints.error) && endpoints.map((endpoint, i) => (
                     <Link href={{
                             pathname: '/dashboard/endpoints/view',
                             query: {title: endpoint.title, endpoint: endpoint.key}
