@@ -34,7 +34,7 @@ export default function Layout({ children }) {
             notifications, notificationsLoading, notificationsError,
             submissions, submissionsLoading, submissionsError,
         })
-    })
+    }, [])
 
     return (
         <DataContext.Provider value={data}>

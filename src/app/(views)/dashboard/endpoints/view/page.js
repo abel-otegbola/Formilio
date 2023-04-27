@@ -35,7 +35,7 @@ export default function View() {
                     }
                 </div>
             </div>
-            <div className={`${active === "Submissions"? "block" : "hidden"} bg-gray-200/[0.2]`}>
+            <div className={`${active === "Submissions"? "block" : "hidden"} bg-gray-200/[0.05]`}>
                 <SubmissionList submissions={submissions} limit={limit} />
                 <div className="flex justify-center">
                 {
