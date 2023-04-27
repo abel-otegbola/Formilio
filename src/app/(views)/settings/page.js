@@ -53,7 +53,7 @@ export default function Settings() {
             
             {(session) ?  
             <SettingBox text={"Account settings"} subtext={"Information, account settings"}>
-                <div className=" border border-gray-100/[0.1] border-b-gray-300/[0.2] px-4 pb-3">
+                <div className=" border border-gray-100/[0.1] border-b-gray-300/[0.2] pb-3">
                     <div className="">
                     {(!session.user.image)
                         ? <FaUserCircle className="p-1 mt-6 mx-2 text-gray-300 w-[40px] h-[40px] bg-gray-400 rounded-full" /> : 

@@ -75,7 +75,7 @@ export default function Settings({ id }) {
 
             
             <SettingBox text={"Thank you Page"} subtext={"Use a your custom link or customize the default"}>
-                <div className="grid grid-cols-2 w-fit m-4 gap-2 p-2 bg-gray-100 dark:bg-gray-900">
+                <div className="grid grid-cols-2 w-fit my-4 gap-2 p-2 rounded bg-gray-100 dark:bg-gray-800">
                 {
                     ["Default", "Custom link"].map((item, i) => (
                         <p 
@@ -86,7 +86,7 @@ export default function Settings({ id }) {
                     ))
                 }
                 </div>
-                <div className="p-4">
+                <div className="py-4">
                     {
                         active === "Default" ?
                             <div className="">
@@ -109,14 +109,14 @@ export default function Settings({ id }) {
             </SettingBox>
             
             <SettingBox text={"Auto-respond email"} subtext={"Send message to user email. Add the auto respond message below."}>
-                <div className="m-4">
+                <div className="my-4">
                     <textarea className="w-full border border-gray-200 dark:border-gray-100/[0.3] p-2 bg-gray-100 dark:bg-gray-900 focus:outline-blue rounded text-white" name="autoRespond" onChange={(e) => setAutoRespond(e.target.value)} placeholder="Type message here"></textarea>
                     <button className="p-2 px-6 mt-2 rounded text-white bg-green-500" onClick={() => handleUpdate()}>Save</button>
                 </div>
             </SettingBox>
                         
             <SettingBox text={"Delete Endpoint?"} subtext={"Click the button below to delete the endpoint permanently."}>
-                <button className=" flex items-center mx-4 p-2 px-6 bg-red-500 text-white rounded hover:bg-red-700" onClick={() => handleDelete()}>
+                <button className=" flex items-center p-2 px-6 bg-red-500 text-white rounded hover:bg-red-700" onClick={() => handleDelete()}>
                     { loading ? 
                     <FiLoader className="animate-spin mr-2" />:
                     <FaTrashAlt className="mr-2" /> 
