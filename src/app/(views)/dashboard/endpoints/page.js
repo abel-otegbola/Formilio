@@ -1,13 +1,15 @@
 'use client'
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Header from "@/components/dashboard/header";
 import { FaLink } from "react-icons/fa";
 import EndpointsList from "@/components/dashboard/endpointsList";
 import GenerateEndpoint from "@/components/dashboard/generateEndpoint";
+import { DataContext } from "../layout";
 
 export default function Endpoints() {
-    const [endpoints, setEndpoints] = useState([])
     const [limit, setLimit] = useState(7)
+
+    const { endpoints } = useContext(DataContext)
 
     return (
         <div className="px-4">
@@ -16,7 +18,7 @@ export default function Endpoints() {
             </Header>
 
             <div className="my-4">
-                <EndpointsList setEndpoints={setEndpoints} />
+                <EndpointsList endpoints={endpoints} />
             </div>
 
             <div className="flex justify-center">

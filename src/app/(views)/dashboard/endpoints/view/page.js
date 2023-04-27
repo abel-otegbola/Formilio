@@ -1,17 +1,18 @@
 'use client'
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useSearchParams } from 'next/navigation'
 import Setup from "@/components/dashboard/setup";
 import SubmissionList from "@/components/dashboard/submissionsList";
 import Settings from "@/components/dashboard/settings";
+import { DataContext } from "../../layout";
 
 export default function View() {
-    const [submissions, setSubmissions] = useState([])
     const [active, setActive] = useState("Submissions")
     const router = useSearchParams().get("endpoint")
     const title = useSearchParams().get("title")
     const [limit, setLimit] = useState(7)
 
+    const { submissions } = useContext(DataContext)
 
     return(
         <div className="relative px-4 w-full">
@@ -35,7 +36,7 @@ export default function View() {
                 </div>
             </div>
             <div className={`${active === "Submissions"? "block" : "hidden"} bg-gray-200/[0.2]`}>
-                <SubmissionList type={"getSubmissions"} router={router} setSubmissions={setSubmissions} limit={limit} />
+                <SubmissionList submissions={submissions} limit={limit} />
                 <div className="flex justify-center">
                 {
                     submissions?.length < limit ?

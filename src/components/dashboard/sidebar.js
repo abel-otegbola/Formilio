@@ -1,27 +1,23 @@
 "use client"
 import { usePathname } from "next/navigation";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { FaArrowAltCircleRight, FaAtom, FaBookOpen, FaCog, FaCommentAlt, FaHome, FaInfoCircle, FaLink, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
-import { HiMenuAlt1 } from "react-icons/hi";
 import { signOut, useSession } from "next-auth/react";
 import { closeBlock } from "@/helper/closeBlock";
-import { DataContext, NotificationContext } from "@/app/(views)/dashboard/layout";
 
 export default function Sidebar({ open, setOpen }) {
     const { data: session } = useSession()
     const path = usePathname()
     const menuRef = useRef(null)
-    // const { endpoints } = useContext(DataContext)
-    // const { notifications } = useContext(NotificationContext)
 
     const links = [
-        { name: "Home", to: "", icon: <FaHome />, iconRight: "" },
-        { name: "Dashboard", to: "dashboard", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
-        { name: "Endpoints", to: "dashboard/endpoints", icon: <FaLink />,  iconRight: <span className="bg-green-500 text-white p-1 px-2 rounded-full text-[9px]"></span> },
-        { name: "Documentations", to: "documentations", icon: <FaBookOpen />,  iconRight: <FaInfoCircle/> },
-        { name: "Notifications", to: "dashboard/notifications", icon: <FaCommentAlt />,  iconRight: <span className="bg-purple-400 text-white p-1 px-2 rounded text-[8px]"></span> },
-        { name: "Settings", to: "settings", icon: <FaCog />,  iconRight: "" },
-        { name: "About formilio", to: "about", icon: <FaInfoCircle />,  iconRight: <FaInfoCircle/> },
+        { name: "Home", to: "/", icon: <FaHome />, iconRight: "" },
+        { name: "Dashboard", to: "/dashboard", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
+        { name: "Endpoints", to: "/dashboard/endpoints", icon: <FaLink />,  iconRight: "" },
+        { name: "Documentations", to: "/documentations", icon: <FaBookOpen />,  iconRight: <FaInfoCircle/> },
+        { name: "Notifications", to: "/dashboard/notifications", icon: <FaCommentAlt />,  iconRight: ""},
+        { name: "Settings", to: "/settings", icon: <FaCog />,  iconRight: "" },
+        { name: "About formilio", to: "/about", icon: <FaInfoCircle />,  iconRight: <FaInfoCircle/> },
         { name: "Logout", to: "#", icon: <FaSignOutAlt />,  iconRight: "" },
     ]
 
@@ -56,7 +52,7 @@ export default function Sidebar({ open, setOpen }) {
                         return (
                             <div key={i} >
                                 <li className={`flex w-full ${link.name === "Logout" ? "mt-[50px]" : (i === 0 && path.indexOf("dashboard") !== -1) ? "hidden" : ""} my-1  ${(!session && [1,2,4].indexOf(i) !== -1) ? "hidden" : ""}`}>
-                                    <a href={link.name !== "Logout" ? link.to : session ? "#" : "login"} onClick={() => link.name === "Logout" ? signOut() : ""} className={`flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path.indexOf(link.to) !== -1 ? "bg-blue text-white": ""} ${link.name !== "Logout" ? "p-[15px]" : !session ? "p-[10px] px-[15px] bg-blue text-white" : "p-[10px] px-[15px] bg-gray-800 text-white"}`}>
+                                    <a href={link.name !== "Logout" ? link.to : session ? "#" : "login"} onClick={() => link.name === "Logout" ? signOut() : ""} className={`flex justify-between  items-center hover:bg-blue hover:text-white w-full rounded ${path === link.to ? "bg-blue text-white": ""} ${link.name !== "Logout" ? "p-[15px]" : !session ? "p-[10px] px-[15px] bg-blue text-white" : "p-[10px] px-[15px] bg-gray-800 text-white"}`}>
                                         <div className="flex items-center">
                                             <div className="mr-4 text-xl text-gray-300">{link.icon}</div> 
                                             {link.name !== "Logout" ? link.name : session ? "Logout" : "Login"}
