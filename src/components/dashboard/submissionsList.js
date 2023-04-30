@@ -14,21 +14,7 @@ export default function SubmissionList({ submissions }) {
             { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
 
             {
-                <div>
-                    {
-                        submissions?.splice(0,1).map(submission => (
-                            <div key={submission._id} className="grid grid-cols-3 flex-1 items-center overflow-x-auto">
-                            {
-                                Object.keys(submission.data && JSON.parse(submission.data)).splice(0, 3).map((key, index) => (
-                                    <div key={index} className="py-2 px-4 overflow-hidden">
-                                        <h5 className="text-[12px] opacity-[0.5] uppercase">{key}</h5>
-                                    </div>
-                                ))
-                            }
-                            </div>
-                        ))
-                    }
-                            
+                <div>                            
                 {
                      submissions?.map(submission => (
                         <div key={submission._id} >

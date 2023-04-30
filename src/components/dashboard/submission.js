@@ -2,10 +2,11 @@ import { closeBlock } from "@/helper/closeBlock";
 import { convert } from "@/helper/convertDate";
 import { getInitials } from "@/helper/getInitials";
 import { useEffect, useRef, useState } from "react";
-import { FaEllipsisV, FaTrashAlt } from "react-icons/fa";
+import { FaEllipsisV, FaInfoCircle, FaTrashAlt } from "react-icons/fa";
 
 export default function Submission({ data, submission, setSuccess, setError }) {
     const [openModal, setOpenModal] = useState(false)
+    const [openOptions, setOpenOptions] = useState(false)
     const modalRef = useRef(null)
 
     useEffect(() => {
@@ -33,13 +34,14 @@ export default function Submission({ data, submission, setSuccess, setError }) {
 
     return (
         <div ref={modalRef} className="w-full">
-            <div className="flex md:flex-no-wrap flex-wrap items-center justify-between shadow-md p-1 bg-white dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer" onClick={() => setOpenModal(!openModal)}>
+            <div className="flex md:flex-no-wrap flex-wrap items-center justify-between shadow-md p-1 bg-white dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-blue hover:text-white cursor-pointer">
                 
                 {/* list 3 fields in the submissions entry */}
-                <div className="grid grid-cols-3 flex-1 items-center overflow-x-auto">
+                <div className="grid grid-cols-3 flex-1 items-center overflow-x-auto" onClick={() => setOpenModal(!openModal)}>
                 {
                     Object.keys(data).splice(0, 3).map((key, index) => (
                         <div key={index} className="py-2 px-4 overflow-hidden">
+                            <p className="pb-2 text-[10px] opacity-[0.6]">{key}</p>
                             <p className="pb-2 text-[14px] truncate">{data[key]}</p>
                         </div>
                     ))
@@ -47,9 +49,13 @@ export default function Submission({ data, submission, setSuccess, setError }) {
                 </div>
 
                 {/* date, time of creation and button to delete endpoint */}
-                <div className="flex items-center">
+                <div className="flex items-center relative">
                     <p className="pl-2 text-[10px]">{convert(submission.createdAt)}</p>
-                    <FaEllipsisV className="text-red-400 p-3 text-4xl cursor-pointer" onClick={() => handleDelete(submission._id)}/>
+                    <FaEllipsisV className="text-red-400 p-3 text-4xl cursor-pointer" onClick={() => setOpenOptions(!openOptions)}/>
+                    <ul className={`absolute bottom-[50px] bg-white dark:bg-gray-800 text-[10px] rounded-lg shadow-xl right-0 ${ openOptions ? "h-[60px]" : "h-0" } overflow-hidden transition-all duration-500`}>
+                        <li className="flex items-center rounded px-4 py-2 hover:bg-blue"><FaInfoCircle className="mr-2" />Add to Spam</li>
+                        <li className="flex items-center rounded px-4 py-2 text-red-500 hover:bg-blue"><FaTrashAlt className="mr-2" onClick={() => handleDelete(submission._id)}/> Delete</li>
+                    </ul>
                 </div>
             </div>
 

@@ -19,7 +19,7 @@ export default function View() {
 
             <div className="my-6 md:mx-4">
                 <h1 className="text-3xl font-semibold py-2">{title}</h1>
-                <p>You have <span className="text-blue font-semibold p-2">{submissions?.length}</span> new {submissions?.length === 1 ? "Submission" : "Submissions"}</p>
+                <p>You have <span className="text-blue font-semibold p-2">{submissions?.filter(item => item.key === router).length}</span>total {submissions?.length === 1 ? "Submission" : "Submissions"}</p>
             </div>
 
             <div className="w-full bg-gray-200[0.2] py-4 rounded">
@@ -36,15 +36,7 @@ export default function View() {
                 </div>
             </div>
             <div className={`${active === "Submissions"? "block" : "hidden"} bg-gray-200/[0.05]`}>
-                <SubmissionList submissions={submissions} limit={limit} />
-                <div className="flex justify-center">
-                {
-                    submissions?.length < limit ?
-                    <p className="py-6">End of submission list</p>
-                    :
-                    <button className="p-2 px-6 rounded text-white bg-blue hover:bg-hoverblue my-6 mx-auto" onClick={() => setLimit(limit + 5)}>Load more</button>
-                }
-            </div>
+                <SubmissionList submissions={submissions?.filter(item => item.key === router)} limit={limit} />
             </div>
             <div className={`w-full dark:bg-gray-800 ${active === "Setup"? "block" : "hidden"}`}>
                 <Setup endpoint={router} />

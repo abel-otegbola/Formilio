@@ -10,6 +10,7 @@ export const NotificationContext = createContext()
 
 export default function Layout({ children }) {
     const [open, setOpen] = useState(true)
+    const [submissionsOptions, setSubmissionOptions] = useState({ start: 0, limit: 7, endpointKey: "" })
     const [data, setData] = useState(
         {
             endpoints: [], endpointsLoading: false, endpointsError: null,
@@ -22,7 +23,7 @@ export default function Layout({ children }) {
 
     const { data: notifications, isLoading: notificationsLoading, error: notificationsError } = fetchData("getData/messages", 3)
 
-    const { data: submissions, isLoading: submissionsLoading, error: submissionsError } = fetchData("getData/submissions", 7)
+    const { data: submissions, isLoading: submissionsLoading, error: submissionsError } = fetchData(submissionsOptions.endpointKey !== "" ? `getData/submissions/${submissionsOptions.endpointKey}/${submissonsOptons.start}/${submissionsOptions.limit}` : "getData/submissions", 0)
 
     const useOpen = () => {
         
@@ -32,9 +33,9 @@ export default function Layout({ children }) {
         setData({ 
             endpoints, endpointsLoading, endpointsError, 
             notifications, notificationsLoading, notificationsError,
-            submissions, submissionsLoading, submissionsError,
+            submissions, submissionsLoading, submissionsError, setSubmissionOptions
         })
-    }, [])
+    }, [endpointsLoading, notificationsLoading, submissionsLoading])
 
     return (
         <DataContext.Provider value={data}>

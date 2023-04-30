@@ -21,7 +21,7 @@ export default function Topbar() {
         <>    
         <div className="fixed w-full flex shadow-md font-body justify-between items-center p-2 md:py-2 py-3 md:pl-[10%] pl-[5%] pr-[15%] backdrop-blur-sm bg-white/[0.7] dark:bg-gray-900/[0.7] border border-slate-50/[0.1] border-b-gray-100 dark:border-b-gray-200/[0.1] z-10">
             
-            <a href="/" className={`flex items-center text-2xl font-display `}><Image src={"/logo.png"} className="mr-1" width={15} height={25} alt="formilio logo" />ormilio<span className="text-blue">.</span></a>
+            <a href="/" className={`flex items-end text-xl text-blue`}><Image src={"/logo.svg"} className="mr-2" width={30} height={30} alt="formilio logo" /> Formilio</a>
            
             {/* Navigation menu */}
             
