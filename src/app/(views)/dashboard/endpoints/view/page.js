@@ -28,7 +28,7 @@ export default function View() {
                         ["Submissions", "Setup", "Settings"].map((item, index) => (
                             <p 
                                 key={index} 
-                                className={`p-3 px-6 rounded border text-sm hover:bg-gray-900 hover:dark:bg-gray-900 hover:border-blue hover:text-blue text-center cursor-pointer border  ${active === item ? "border-blue text-blue shadow-lg bg-gray-900 dark:shadow-3xl" : "border-transparent"}`}
+                                className={`p-3 px-6 rounded border text-sm hover:bg-gray-900 hover:dark:bg-gray-900 text-center cursor-pointer border  ${active === item ? "border-white text-white shadow-lg bg-gray-900 dark:shadow-3xl" : "border-transparent"}`}
                                 onClick={() => setActive(item)}
                             >{item}</p>
                         ))

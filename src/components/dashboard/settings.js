@@ -110,7 +110,7 @@ export default function Settings({ id }) {
             
             <SettingBox text={"Auto-respond email"} subtext={"Send message to user email. Add the auto respond message below."}>
                 <div className="my-4">
-                    <textarea className="w-full border border-gray-200 dark:border-gray-100/[0.3] p-2 bg-gray-100 dark:bg-gray-900 focus:outline-blue rounded text-white" name="autoRespond" onChange={(e) => setAutoRespond(e.target.value)} placeholder="Type message here"></textarea>
+                    <textarea className="w-full border border-gray-200 dark:border-gray-100/[0.3] p-2 bg-gray-100 dark:bg-gray-900 focus:outline-blue rounded dark:text-white" name="autoRespond" onChange={(e) => setAutoRespond(e.target.value)} placeholder="Type message here"></textarea>
                     <button className="p-2 px-6 mt-2 rounded text-white bg-green-500" onClick={() => handleUpdate()}>Save</button>
                 </div>
             </SettingBox>
