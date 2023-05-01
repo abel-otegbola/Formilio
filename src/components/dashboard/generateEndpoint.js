@@ -53,7 +53,7 @@ export default function GenerateEndpoint() {
             { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
 
             <div className="flex md:w-[50%] mb-2 gap-2 rounded-lg w-full align-center">
-                <input ref={inputRef} className="p-[12px] flex-1 md:mb-0 mb-2 md:w-auto w-full md:text-left text-center rounded bg-transparent text-white border border-gray-300/[0.3]" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter endpoint title..." />
+                <input ref={inputRef} className="p-[12px] flex-1 md:w-auto md:text-left text-center rounded bg-transparent text-white border border-gray-300/[0.3]" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Enter endpoint title..." />
                 <button className="flex items-center justify-center p-[12px] px-6 rounded bg-blue text-white hover:bg-hoverblue" onClick={() => createEndpoint()}>{loading ? <CgSpinner className="animate-spin mr-2 text-2xl" /> : ""}Generate</button>
             </div>
         </div>
