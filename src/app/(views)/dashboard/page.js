@@ -64,7 +64,7 @@ export default function Dashboard() {
                     <div className="p-2 my-6 rounded bg-gray-200/[0.2] dark:bg-gray-800/[0.5]">
                         <h4 className="p-2 font-semibold text-blue">LATEST SUBMISSIONS</h4>
                         <div className="p-2">
-                            <SubmissionList type={"getData/submissions"} submissions={submissions} />
+                            <SubmissionList submissions={submissions} />
                         </div>
                     </div>
                 </div>
