@@ -34,7 +34,7 @@ export default function SubmissionList({ submissions }) {
                     { page.start/7 !== 0 ? "..." : "" }
                     {
                         submissions &&
-                        Array.from({length: Math.round((submissions.length+5)/7)}, (_, i) => i + 1).slice(page.start/7, 4).map(item => (
+                        Array.from({length: Math.round((submissions.length+6)/7)}, (_, i) => i + 1).slice(page.start/7, page.start/7 + 4).map(item => (
                             <span key={item} className={`p-2 px-4 rounded border border-gray-400/[0.4] hover:bg-blue hover:text-white cursor-pointer ${(page.start/7)+1 === item ? "bg-blue text-white": ""}`}
                                 onClick={() => setPage({ start: item === 1 ? 0 : (item-1) * 7, end: item * 7 })}
                             >{item}</span>
