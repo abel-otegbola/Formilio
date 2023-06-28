@@ -1,9 +1,12 @@
-## (Formilio) endpoint generation web application
-A next-js website for creation of endpoint to use in static pages and get submissions, email submissions and respond automatically.
+## Formilio - endpoint generation web application
+
+👋 Hey, There! 
+
+The website helps you create endpoints to use in static pages and get submissions, email submissions and respond automatically.
 
 <hr>
 
-# Features
+# 😎 Features
 
 - Generate endpoint url to use for your static form
 - Add autorespond functionality
@@ -14,7 +17,7 @@ A next-js website for creation of endpoint to use in static pages and get submis
 
 visit live site [here](https://formilio.com)
 
-## Snapshots
+## 💻 Snapshots
 ![Screenshot_20230628-104545](https://github.com/abel-otegbola/Formilio/assets/59369762/94783e93-8a06-4f67-9f6c-f28a6b2a43fa)
 ![Screenshot_20230628-104802](https://github.com/abel-otegbola/Formilio/assets/59369762/bb9e3261-c615-4669-b378-2b346c48e862)
 ![Screenshot_20230628-104913](https://github.com/abel-otegbola/Formilio/assets/59369762/bb109e40-5249-484f-9f3f-85c8ba252f50)
@@ -24,7 +27,7 @@ visit live site [here](https://formilio.com)
 
 <hr>
 
-## How to use
+## 🤔 How to use
 
 ### Download
 Download the zip file and unzip into your computer.
@@ -60,6 +63,8 @@ Once installed, run
 npm start
 ```
 
+### 👍 Want to motivate?
+Who doesn't need motivations? Want to motivate? Give this repo a Star (🌟).
 
 ### credits
 - [Tailwind-css](https://tailwindcss.com/docs/guides/nextjs)
