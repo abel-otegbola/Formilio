@@ -1,12 +1,10 @@
-
-
-
-
 ## (Formilio) endpoint generation web application
 A next-js website for creation of endpoint to use in static pages and get submissions, email submissions and respond automatically.
 
 <hr>
-Generat ures
+
+# Features
+
 - Generate endpoint url to use for your static form
 - Add autorespond functionality
 - Add page redirect for submissions
