@@ -52,16 +52,16 @@ export default function Home() {
     return(
         <div>
             {/* header section */}
-            <header className="flex md:flex-nowrap flex-wrap items-center mb-[7%] md:px-[10%] px-[5%] font-body bg-slate-200/[0.2] dark:bg-gray-900">
-                <div className="md:w-[50%] w-full md:pt-0 pt-[20%] md:text-left text-center">
-                    <div className="flex items-center p-1 pl-6 border border-blue mb-4 rounded-full w-fit md:mx-0 m-auto bg-white/[0.1] backdrop-blur-sm" data-aos="fade-up">
+            <header className="flex md:flex-nowrap flex-wrap items-center justify-between md:p-[10%] p-[5%] font-body bg-slate-200/[0.2] dark:bg-gray-900">
+                <div className="lg:w-[45%] w-full md:pt-0 pt-[10%] md:text-left text-center">
+                    <div className="flex items-center p-1 pl-6 border border-gray-300/[0.5] mb-4 rounded-full w-fit md:mx-0 m-auto bg-white/[0.1] backdrop-blur-sm" data-aos="fade-up">
                         <IoIosRocket className="text-orange-500 mr-2" /> 
                         All your data in one place
                         <div className="ml-4">
                             <Image src={"/memoji_man_18.webp"} width="30" height="30" alt="memoji man" className="border border-white bg-blue rounded-full"/>
                         </div>
                     </div>
-                    <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold" data-aos="fade-up" data-aos-delay="200">Effortlessly generate HTML endpoints for your static forms.</h1>
+                    <h1 className="md:text-6xl text-4xl md:leading-[55px] leading-[45px] font-bold" data-aos="fade-up" data-aos-delay="200">Effortlessly generate HTML endpoints for your static forms.</h1>
                     <p className="my-4 leading-[25px]" data-aos="fade-up" data-aos-delay="400">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
                     </p>
                     <div className="md:flex mt-7 gap-4" data-aos="fade-up" data-aos-delay="600">
@@ -70,9 +70,9 @@ export default function Home() {
                     </div>
                 </div>
                 {/* hero image */}
-                <div className="relative md:w-[50%] md:mt-0 mt-[40px] w-full" data-aos="zoom-in">
-                    <Image src={"/herobg.png"} width="700" height="500" alt="man sitting pressing laptop" className="drop-shadow-xl"/>
-                </div>
+                <div className="relative lg:w-[50%] md:mt-0 mt-[40px] w-full" data-aos="zoom-in">
+                    <Image src={"/codesnippet.png"} width="700" height="500" alt="man sitting pressing laptop" className="drop-shadow-xl"/>
+                </div> 
             </header>
             
             <section className="md:px-[10%] px-[5%] py-[50px] font-body dark:bg-gray-800">
