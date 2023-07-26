@@ -1,10 +1,10 @@
 
 
 export default function AppFooter() {
-    const products = [ "Documentations", "FAQs", "Contact Us" ]
+    const products = [ "documentations", "FAQs", "contact" ]
     const guides = [ "How to build a simple HTML contact form", "How to create a file upload form", "How to upload files from your HTML forms", "How to create email templates" ]
-    const resources = [ "Documentations","Tutorials", "Examples" ]
-    const templates = [ "Contact form", "Job application", "Event schedule", "All templates" ]
+    const resources = [ "documentations","features", "examples" ]
+    const templates = [ "contact form", "job application", "event schedule", "more templates" ]
 
     return (
         <div className="bg-slate-100 dark:bg-gray-800">
@@ -14,7 +14,7 @@ export default function AppFooter() {
                     <li className="font-bold my-3">PRODUCTS</li>
                     { 
                     products.map((item,i) => (
-                        <li key={i} className="w-full flex"><a href={`/${item.split(" ")[0].toLowerCase()}`} className="w-full py-2 hover:text-blue">{item}</a></li>
+                        <li key={i} className="w-full flex"><a href={`/${item}`} className="w-full py-2 hover:text-blue capitalize">{item}</a></li>
                     )) 
                     }
 
@@ -24,7 +24,7 @@ export default function AppFooter() {
 
                     { 
                     guides.map((item,i) => (
-                        <li key={i} className="w-full flex"><a href={`/guides/${item.replaceAll(" ", "-")}`} className="w-full py-2 hover:text-blue">{item}</a></li>
+                        <li key={i} className="w-full flex"><a href={`/documentation#guides?${item}`} className="w-full py-2 hover:text-blue">{item}</a></li>
                     )) 
                     }
 
@@ -34,7 +34,7 @@ export default function AppFooter() {
 
                     { 
                     resources.map((item,i) => (
-                        <li key={i} className="w-full flex"><a href={`/${item.toLowerCase()}`} className="w-full py-2 hover:text-blue">{item}</a></li>
+                        <li key={i} className="w-full flex"><a href={`/${item}}`} className="w-full py-2 hover:text-blue capitalize">{item}</a></li>
                     )) 
                     }
 
@@ -44,7 +44,7 @@ export default function AppFooter() {
 
                     { 
                     templates.map((item,i) => (
-                        <li key={i} className="w-full flex"><a href={`/documentations#examples?${item.toLowerCase()}`} className="w-full py-2 hover:text-blue">{item}</a></li>
+                        <li key={i} className="w-full flex"><a href={`/documentations#examples?${item}`} className="w-full py-2 hover:text-blue capitalize">{item}</a></li>
                     )) 
                     }
                     

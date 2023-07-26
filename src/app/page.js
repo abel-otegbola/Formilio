@@ -22,7 +22,9 @@ export default function Home() {
 
     useEffect(() => {
         Aos.init({
-            duration: 800,
+            once: true,
+            mirror: false,
+            duration: 600,
             easing: "ease-in-out-cubic",
         });
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -50,7 +52,7 @@ export default function Home() {
     return(
         <div>
             {/* header section */}
-            <header className="flex md:flex-nowrap flex-wrap items-center mb-[7%] md:px-[10%] px-[5%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
+            <header className="flex md:flex-nowrap flex-wrap items-center mb-[7%] md:px-[10%] px-[5%] font-body bg-slate-200/[0.2] dark:bg-gray-900">
                 <div className="md:w-[50%] w-full md:pt-0 pt-[20%] md:text-left text-center">
                     <div className="flex items-center p-1 pl-6 border border-blue mb-4 rounded-full w-fit md:mx-0 m-auto bg-white/[0.1] backdrop-blur-sm" data-aos="fade-up">
                         <IoIosRocket className="text-orange-500 mr-2" /> 
@@ -131,7 +133,7 @@ export default function Home() {
                 {
                     features.filter(item => item.title === activeFeature).map(feature => (
                         <div className="md:w-[85%] w-full m-auto bg-gray-300[0.1]" key={feature.id}>
-                            <div className="flex md:flex-nowrap flex-wrap py-[7%] font-body bg-[url('/bg.png')] bg-cover bg-slate-200/[0.2] dark:bg-gray-900">
+                            <div className="flex md:flex-nowrap flex-wrap py-[7%] font-body dark:bg-gray-900">
                                 <div className="md:w-[50%] w-full mr-[3%] ">
                                     <h1 className="md:text-3xl text-2xl md:leading-[40px] leading-[35px] font-bold" data-aos="fade-up" data-aos-duration="1000">{feature.title}</h1>
                                     <p className="my-4 leading-[25px]" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">{feature.description}
@@ -140,7 +142,7 @@ export default function Home() {
                                         <a href="/documentations" className="flex items-center justify-center p-[10px] px-[20px] md:my-0 my-2 md:mb-0 mb-6 bg-blue hover:bg-hoverblue text-white rounded">Visit Documentations <FaPaperPlane className="ml-2"/></a>
                                     </div>
                                 </div>
-                                <div className="md:w-[50%] md:mt-0 mt-[40px] w-full" data-aos="flip-right" data-aos-duration="1200">
+                                <div className="md:w-[50%] md:mt-0 mt-[40px] w-full" data-aos="zoom-in" data-aos-duration="1200">
                                     <Image src={feature.img} width="350" height="350" alt="form ui" className="drop-shadow-xl"/>
                                 </div>
                             </div>

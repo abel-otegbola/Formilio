@@ -33,16 +33,16 @@ export default function Submission({ data, submission, setSuccess, setError }) {
     }
 
     return (
-        <div ref={modalRef} className="w-full">
-            <div className="flex md:flex-no-wrap flex-wrap items-center justify-between p-1 bg-white dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-gray-200/[0.3] cursor-pointer">
+        <div ref={modalRef} className="">
+            <div className="flex md:flex-no-wrap items-center justify-between p-1 bg-white dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-gray-200/[0.3] cursor-pointer">
                 
                 {/* list 3 fields in the submissions entry */}
-                <div className="grid grid-cols-3 flex-1 items-center overflow-x-auto" onClick={() => setOpenModal(!openModal)}>
+                <div className="flex flex-1 items-center" onClick={() => setOpenModal(!openModal)}>
                 {
                     Object.keys(data).splice(0, 3).map((key, index) => (
-                        <div key={index} className="py-2 px-4 overflow-hidden">
+                        <div key={index} className="py-2 px-4 min-w-[200px]">
                             <p className="pb-2 text-[10px] opacity-[0.6]">{key}</p>
-                            <p className="pb-2 text-[14px] truncate">{data[key]}</p>
+                            <p className="pb-2 text-[14px]">{data[key]}</p>
                         </div>
                     ))
                 }

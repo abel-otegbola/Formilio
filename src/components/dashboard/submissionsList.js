@@ -9,13 +9,13 @@ export default function SubmissionList({ submissions }) {
     const [page, setPage] = useState({ start: 0, end: 7 })
 
     return (
-        <div>
+        <div className="w-full">
             
             { (success !== "") ? <Popup text={success} color={"green"} /> : "" }
             { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
 
             {
-                <div>              
+                <div className="overflow-x-auto">              
                 {
                      submissions?.slice(page.start, page.end).map(submission => (
                         <div key={submission._id} >
