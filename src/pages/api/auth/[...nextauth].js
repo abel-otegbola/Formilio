@@ -29,7 +29,7 @@ export const authOptions = {
       name: "Credentials",
       async authorize(credentials, req) {
         
-        await connectMongo().catch(error => res.json({ error: "Connection Failed"}))
+        await connectMongo().catch(error => {throw new Error(error)})
         const res = await Users.findOne({ email: credentials.email })
     
         if(!res) {

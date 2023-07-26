@@ -8,7 +8,7 @@ export default function Popup({ text, color }) {
         setMsg(text)
         setTimeout(() => {
             setMsg(null)
-        }, 6000)
+        }, 10000)
     }, [text])
 
     return (
