@@ -3,7 +3,7 @@
 export default function AppFooter() {
     const products = [ "documentations", "FAQs", "contact" ]
     const guides = [ "How to build a simple HTML contact form", "How to create a file upload form", "How to upload files from your HTML forms", "How to create email templates" ]
-    const resources = [ "documentations","features", "examples" ]
+    const resources = [ "features","templates", "examples" ]
     const templates = [ "contact form", "job application", "event schedule", "more templates" ]
 
     return (
@@ -24,7 +24,7 @@ export default function AppFooter() {
 
                     { 
                     guides.map((item,i) => (
-                        <li key={i} className="w-full flex"><a href={`/documentation#guides?${item}`} className="w-full py-2 hover:text-blue">{item}</a></li>
+                        <li key={i} className="w-full flex"><a href={`/documentations#guides?${item}`} className="w-full py-2 hover:text-blue">{item}</a></li>
                     )) 
                     }
 
@@ -34,7 +34,7 @@ export default function AppFooter() {
 
                     { 
                     resources.map((item,i) => (
-                        <li key={i} className="w-full flex"><a href={`/${item}}`} className="w-full py-2 hover:text-blue capitalize">{item}</a></li>
+                        <li key={i} className="w-full flex"><a href={`/documentations#${item}`} className="w-full py-2 hover:text-blue capitalize">{item}</a></li>
                     )) 
                     }
 
