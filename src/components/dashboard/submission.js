@@ -36,7 +36,7 @@ export default function Submission({ data, submission, setSuccess, setError }) {
         <div ref={modalRef} className="bg-white dark:bg-gray-900 border border-transparent border-t-gray-300/[0.2] hover:bg-gray-200/[0.3]">
             <div className="flex items-center p-1 cursor-pointer">
                 {/* list 3 fields in the submissions entry */}
-                <div className="grid grid-cols-3 items-center" onClick={() => setOpenModal(!openModal)}>
+                <div className="flex-1 grid grid-cols-3 items-center" onClick={() => setOpenModal(!openModal)}>
                 {
                     Object.keys(data).splice(0, 3).map((key, index) => (
                         <div key={index} className="py-2 px-4">

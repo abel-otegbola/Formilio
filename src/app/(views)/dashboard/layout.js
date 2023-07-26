@@ -39,7 +39,7 @@ export default function Layout({ children }) {
 
     return (
         <DataContext.Provider value={data}>
-            <div className="md:flex bg-slate-100 dark:bg-gray-800 md:p-2">
+            <div className="lg:flex bg-slate-100 dark:bg-gray-800 md:p-2">
 
                 {
                     endpointsError || notificationsError || submissionsError ?
@@ -47,10 +47,10 @@ export default function Layout({ children }) {
                     ""
                 }
 
-                <div className="md:block hidden z-[2]">
+                <div className="lg:block hidden z-[2]">
                     <Sidebar open={open} setOpen={useOpen}/>
                 </div>
-                <div className="md:ml-2 py-4 flex-1 min-h-screen bg-white dark:bg-gray-900">
+                <div className="md:ml-2 py-4 md:flex-1 bg-white dark:bg-gray-900">
                     {children}
                 </div>
                 

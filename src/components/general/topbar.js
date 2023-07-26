@@ -57,12 +57,12 @@ export default function Topbar() {
                 }
             </div> 
             </div>
-            <div className={`${path.indexOf("dashboard") !== -1 ? "md:hidden" : ""} fixed md:top-[1%] top-[1.7%] ml-4 text-gray-500 text-2xl p-4 transition-all duration-700 z-50 ${open ? "md:right-[3%] right-[3%]": " md:right-[10%] right-[5%]"}`} onClick={() =>  setOpen(!open) }>
+            <div className={`${path.indexOf("dashboard") !== -1 ? "lg:hidden" : ""} fixed md:top-[1%] top-[1.7%] ml-4 text-gray-500 text-2xl p-4 transition-all duration-700 z-50 ${open ? "md:right-[3%] right-[3%]": " md:right-[10%] right-[5%]"}`} onClick={() =>  setOpen(!open) }>
                 {
                     open ? <FaTimes /> : <FaBars />
                 }
             </div>
-            <div className={`${path.indexOf("dashboard") !== -1 ? "md:hidden" : ""} absolute top-0 right-0 h-screen z-20`}>
+            <div className={`${path.indexOf("dashboard") !== -1 ? "lg:hidden" : ""} absolute top-0 right-0 h-screen z-20`}>
                 <Sidebar open={open} setOpen={setOpen} />
             </div>
         </>

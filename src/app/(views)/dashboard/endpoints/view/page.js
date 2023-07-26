@@ -15,7 +15,7 @@ export default function View() {
     const { submissions } = useContext(DataContext)
 
     return(
-        <div className="relative px-4 w-full">
+        <div className="px-4 w-full">
 
             <div className="my-6 md:mx-4">
                 <h1 className="text-3xl font-semibold py-2">{title}</h1>

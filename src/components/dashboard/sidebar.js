@@ -30,7 +30,7 @@ export default function Sidebar({ open, setOpen }) {
         <>
 
         {/* Sidebar for dashboard */}
-        <div ref={menuRef} className={`md:relative fixed top-0 right-0 h-full z-10 bg-white dark:bg-gray-900 shadow-lg dark:shadow-2xl text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "w-0"}`}>
+        <div ref={menuRef} className={`lg:relative fixed top-0 right-0 h-full z-10 bg-white dark:bg-gray-900 shadow-lg dark:shadow-2xl text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "w-0"}`}>
         
             {(session) ?  // Show user details for mobile menu if signed in
             <a href="/dashboard" className="">
