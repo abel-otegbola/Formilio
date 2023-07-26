@@ -29,7 +29,6 @@ export default function Login() {
                 setError(res.error)
             }
         })
-        .catch(error => console.log(error))
         setLoading(false)
     }
 

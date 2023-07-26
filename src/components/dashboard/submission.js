@@ -33,16 +33,16 @@ export default function Submission({ data, submission, setSuccess, setError }) {
     }
 
     return (
-        <div ref={modalRef} className="">
-            <div className="flex md:flex-no-wrap items-center justify-between p-1 bg-white dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-gray-200/[0.3] cursor-pointer">
+        <div ref={modalRef} className="bg-white dark:bg-gray-900 border border-transparent border-y-gray-300/[0.2] hover:bg-gray-200/[0.3]">
+            <div className="flex items-center justify-between p-1 cursor-pointer">
                 
                 {/* list 3 fields in the submissions entry */}
-                <div className="flex flex-1 items-center" onClick={() => setOpenModal(!openModal)}>
+                <div className="flex items-center" onClick={() => setOpenModal(!openModal)}>
                 {
                     Object.keys(data).splice(0, 3).map((key, index) => (
-                        <div key={index} className="py-2 px-4 min-w-[200px]">
+                        <div key={index} className="py-2 px-4 w-[200px]">
                             <p className="pb-2 text-[10px] opacity-[0.6]">{key}</p>
-                            <p className="pb-2 text-[14px]">{data[key]}</p>
+                            <p className="pb-2 text-[14px] truncate">{data[key]}</p>
                         </div>
                     ))
                 }
@@ -50,7 +50,7 @@ export default function Submission({ data, submission, setSuccess, setError }) {
 
                 {/* date, time of creation and button to delete endpoint */}
                 <div className="flex items-center relative">
-                    <p className="pl-2 text-[10px]">{convert(submission.createdAt)}</p>
+                    <p className="pl-2 pt-2 text-[10px] w-[100px]">{convert(submission.createdAt)}</p>
                     <FaEllipsisV className="text-red-400 p-3 text-4xl cursor-pointer" onClick={() => setOpenOptions(!openOptions)}/>
                     <ul className={`absolute bottom-[50px] bg-white dark:bg-gray-800 text-[12px] rounded-lg shadow-xl right-0 ${ openOptions ? "h-[70px]" : "h-0" } overflow-hidden transition-all duration-500`}>
                         <li className="flex items-center rounded px-4 py-2 hover:bg-blue hover:text-white"><FaInfoCircle className="mr-2" />Add to Spam</li>

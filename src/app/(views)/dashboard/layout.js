@@ -39,7 +39,7 @@ export default function Layout({ children }) {
 
     return (
         <DataContext.Provider value={data}>
-            <div className="flex bg-slate-100 dark:bg-gray-800 md:p-2">
+            <div className="md:flex bg-slate-100 dark:bg-gray-800 md:p-2">
 
                 {
                     endpointsError || notificationsError || submissionsError ?

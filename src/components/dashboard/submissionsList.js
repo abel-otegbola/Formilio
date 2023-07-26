@@ -15,7 +15,7 @@ export default function SubmissionList({ submissions }) {
             { (error !== "") ? <Popup text={error} color={"red"} /> : "" }
 
             {
-                <div className="overflow-x-auto">              
+                <div className="w-full overflow-x-auto">              
                 {
                      submissions?.slice(page.start, page.end).map(submission => (
                         <div key={submission._id} >
