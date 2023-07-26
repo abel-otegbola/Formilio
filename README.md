@@ -18,9 +18,12 @@ The website helps you create endpoints to use in static pages and get submission
 visit live site [here](https://formilio.com)
 
 ## 💻 Snapshots
+
 Formilio dark             |  Formilio light
 :-------------------------:|:-------------------------:
-![Screenshot_20230628-104913](https://github.com/abel-otegbola/Formilio/assets/59369762/bb109e40-5249-484f-9f3f-85c8ba252f50)  | ![Screenshot_20230628-104545](https://github.com/abel-otegbola/Formilio/assets/59369762/94783e93-8a06-4f67-9f6c-f28a6b2a43fa)
+![formilio-home](https://github.com/abel-otegbola/Formilio/assets/59369762/c03c7b12-4605-4efc-a1a6-f2887538c3e9) | ![formilio-home-light](https://github.com/abel-otegbola/Formilio/assets/59369762/fe9e7faa-d886-4151-b636-4cda7686bc61)
+
+
 
 
 
