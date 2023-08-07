@@ -72,23 +72,18 @@ export default async function handler(req, res) {
 
 //Email sending implementation
 function sendEmail(data, formdata, respond) {
-  console.log(data, formdata)
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        type: 'OAuth2',
-        user: 'abel.d.otegbola@gmail.com',
-        pass: 'Gbengaotes1',
-        clientId: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
-        refreshToken: process.env.OAUTH_REFRESH_TOKEN
-      },
-    });
+  const transporter = nodemailer.createTransport({
+    service: "hotmail",
+    auth: {
+      user: process.env.NEXT_PUBLIC_MAIL_USER,
+      pass: process.env.NEXT_PUBLIC_MAIL_PASSWORD,
+    },
+  });
 
     const emailHtml = render(EmailTemplate({ url: `https://mailme.vercel.app/dashboard/endpoints/view?title=${data.title}&endpoint=${data.key}`, formdata, data, respond })); //Change the template to html to send
 
     const options = {
-      from: 'no-reply@formilio.com',
+      from: process.env.NEXT_PUBLIC_MAIL_USER,
       to: respond ? formdata.email : data.user, //Send to the user or the recipient
       subject: 'New Submission',
       html: emailHtml,
