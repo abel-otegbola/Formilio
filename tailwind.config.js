@@ -11,12 +11,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
-        'display': ['Oswald'],
-        'body': ['"Inter"', ...defaultTheme.fontFamily.sans ]
-      },
       colors: {
         'blue': '#6652FD',
         'hoverblue': '#4F3FC7',

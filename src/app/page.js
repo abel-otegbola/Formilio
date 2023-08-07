@@ -52,7 +52,7 @@ export default function Home() {
     return(
         <div>
             {/* header section */}
-            <header className="flex md:flex-nowrap flex-wrap items-center justify-between md:p-[10%] p-[5%] font-body bg-slate-200/[0.2] dark:bg-gray-900">
+            <header className="flex md:flex-nowrap flex-wrap items-center justify-between md:p-[10%] p-[5%] font-display bg-slate-200/[0.2] dark:bg-gray-900">
                 <div className="lg:w-[45%] w-full md:pt-0 pt-[10%] md:text-left text-center">
                     <div className="flex items-center p-1 pl-6 border border-gray-300/[0.5] mb-4 rounded-full w-fit md:mx-0 m-auto bg-white/[0.1] backdrop-blur-sm" data-aos="fade-up">
                         <IoIosRocket className="text-orange-500 mr-2" /> 
@@ -61,7 +61,7 @@ export default function Home() {
                             <Image src={"/memoji_man_18.webp"} width="30" height="30" alt="memoji man" className="border border-white bg-blue rounded-full"/>
                         </div>
                     </div>
-                    <h1 className="md:text-6xl text-4xl md:leading-[55px] leading-[45px] font-bold" data-aos="fade-up" data-aos-delay="200">Effortlessly generate HTML endpoints for your static forms.</h1>
+                    <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">Effortlessly generate HTML endpoints for your static forms.</h1>
                     <p className="my-4 leading-[25px]" data-aos="fade-up" data-aos-delay="400">With our website, you can easily generate endpoints for your static forms and start collecting data in no time.
                     </p>
                     <div className="md:flex mt-7 gap-4" data-aos="fade-up" data-aos-delay="600">
@@ -71,7 +71,7 @@ export default function Home() {
                 </div>
                 {/* hero image */}
                 <div className="relative lg:w-[50%] md:mt-0 mt-[40px] w-full" data-aos="zoom-in">
-                    <Image src={"/codesnippet.png"} width="700" height="500" alt="man sitting pressing laptop" className="drop-shadow-xl"/>
+                    <Image src={"/code_snippet.png"} width="700" height="500" alt="man sitting pressing laptop" className="drop-shadow-xl"/>
                 </div> 
             </header>
             
