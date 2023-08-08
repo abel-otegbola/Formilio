@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { useSearchParams } from "next/navigation"
 import { FaEnvelope, FaPen, FaUser } from "react-icons/fa";
 import SubmissionList from "@/components/dashboard/submissionsList";
-import { DataContext } from "../dashboard/layout";
+import { DataContext } from "../../layout";
 
 export default function Login() {
     const query = useSearchParams().get("endpoint")
@@ -11,7 +11,7 @@ export default function Login() {
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("")
 
-    const { submissions } = useContext(DataContext);
+    const { submissions } = useContext(DataContext); 
 
 
     return (
@@ -47,7 +47,7 @@ export default function Login() {
 
                 <div className="md:w-[50%] w-full p-[20px] bg-gray-200/[0.05] md:px-[40px]">
                     <h3 className="border border-transparent border-b-blue p-2 text-blue">Submissions</h3>
-                    <SubmissionList submissions={submissions}/>
+                    <SubmissionList submissions={submissions?.filter(item => item.key === query)}/>
                 </div>
             </div>
 

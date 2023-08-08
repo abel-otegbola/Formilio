@@ -56,7 +56,7 @@ export default function Setup ({ endpoint }) {
                     <p className="opacity-[0.5] mb-6">Your form is ready to recieve submissions</p>
 
                     <div className="my-4">
-                        <a href={`/test?endpoint=${endpoint}`} className="p-3 px-4 rounded bg-blue text-white">Test the endpoint</a>
+                        <a href={`/dashboard/endpoints/test?endpoint=${endpoint}`} className="p-3 px-4 rounded bg-blue text-white">Test the endpoint</a>
                     </div>
                     
                 </div>
