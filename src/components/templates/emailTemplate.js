@@ -20,11 +20,11 @@ export function EmailTemplate(props) {
               </div>
           ))
           }
-          <button style={{ padding: 10, borderRadius: 5, margin: 5, marginTop: 10, backgroundColor: "#6252f2", color: "#fff" }} href={url}>Check it out here</button>
+          <button style={{ padding: 10, borderRadius: 5, margin: 5, marginTop: 10, marginBottom: 50 , backgroundColor: "#6252f2", color: "#fff", border: "none" }} href={url}>Check it out here</button>
 
           <div style={{ display: "flex", justifyContent: "center", marginBlock: 20 }}>Get all your form submissions using our endpoints generator. <a href="https://formilio.com" style={{ color: "#6252f2" }}>Check it out</a></div>
           
-          <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>If you have any questions, feedback, ideas or problems don't hesitate to contact us! support@formilio.com</div>
+          <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>If you have any questions, feedback, ideas or problems don't hesitate to <a href="mailto:formilio@outlook.com">contact us!</a></div>
           <div style={{ display: "flex", justifyContent: "center" }}>Formilio @Copyright {new Date().getFullYear()} || Designed and created by <a href="https://abelo.tech" style={{ color: "#6252f2" }}>Abelo</a></div>
         </>
       }
