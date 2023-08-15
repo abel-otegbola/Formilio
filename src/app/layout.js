@@ -8,7 +8,7 @@ export default function RootLayout({ children, session }) {
 
   return (
     <html lang='en'>
-      <body className='text-black dark:text-white dark:bg-gray-900'>
+      <body className='text-gray-900 dark:text-white dark:bg-gray-900'>
         <SessionProvider session={session}>
             <Topbar />
               <main className='pt-[60px]' >{children}</main>
