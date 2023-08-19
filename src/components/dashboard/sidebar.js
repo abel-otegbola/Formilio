@@ -14,7 +14,7 @@ export default function Sidebar({ open, setOpen }) {
         { name: "Home", to: "/", icon: <FaHome />, iconRight: "" },
         { name: "Dashboard", to: "/dashboard", icon: <FaAtom />, iconRight: <FaArrowAltCircleRight/> },
         { name: "Endpoints", to: "/dashboard/endpoints", icon: <FaLink />,  iconRight: "" },
-        { name: "Documentations", to: "/documentations", icon: <FaBookOpen />,  iconRight: <FaInfoCircle/> },
+        { name: "Docs", to: "/docs", icon: <FaBookOpen />,  iconRight: <FaInfoCircle/> },
         { name: "Notifications", to: "/dashboard/notifications", icon: <FaCommentAlt />,  iconRight: ""},
         { name: "Settings", to: "/settings", icon: <FaCog />,  iconRight: "" },
         { name: "About formilio", to: "/about", icon: <FaInfoCircle />,  iconRight: <FaInfoCircle/> },
@@ -40,8 +40,7 @@ export default function Sidebar({ open, setOpen }) {
                         <img src={session.user.image} alt="user" width={30} height={30} className="rounded-full bg-gray-400 shadow-lg" />
                     }
                     <div className="ml-4">
-                        <p> {session.user.name}</p> 
-                        <p className="text-[9px]">{session.user.email}</p>
+                        <p> {session.user.name || session.user.email}</p> 
                     </div>
                 </div>
             </a> : ""}

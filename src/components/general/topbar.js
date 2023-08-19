@@ -1,13 +1,12 @@
 'use client'
 
 import Link from "next/link";
-import { FiBell, FiUser } from "react-icons/fi";
+import { FiUser } from "react-icons/fi";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { FaBars, FaSignOutAlt, FaTimes, FaUserAlt } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
-import { closeBlock } from "@/helper/closeBlock";
 import Searchbar from "./searchbar";
 import Sidebar from "../dashboard/sidebar";
 
