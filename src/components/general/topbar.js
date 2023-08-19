@@ -19,9 +19,11 @@ export default function Topbar() {
 
     return (
         <>    
-        <div className="fixed w-full flex shadow-md font-body justify-between items-center p-2 md:py-2 py-3 md:pl-[10%] pl-[5%] pr-[15%] backdrop-blur-sm bg-white/[0.7] dark:bg-gray-900/[0.7] border border-slate-50/[0.1] border-b-gray-100 dark:border-b-gray-200/[0.1] z-10">
+        <div className="fixed w-full flex shadow-sm font-body justify-between items-center p-2 md:py-[6px] py-3 md:pl-[10%] pl-[5%] pr-[15%] backdrop-blur-sm bg-white/[0.7] dark:bg-gray-900/[0.7] border border-slate-50/[0.1] border-b-gray-100 dark:border-b-gray-200/[0.1] z-10">
             
-            <a href="/" className={`flex items-end text-xl font-semibold text-blue`}><Image src={"/logo.png"} className="mr-2" width={17} height={17} alt="formilio logo" /> ormilio</a>
+            <a href="/" title="formilio" className={`flex items-end md:w-[22%] text-xl font-semibold text-blue`}>
+                <Image src={"/logo.png"} className="mr-2" width={17} height={17} alt="formilio logo" /> ormilio
+            </a>
            
             {/* Navigation menu */}
             
@@ -29,7 +31,7 @@ export default function Topbar() {
                
                 <li className="flex md:p-0 p-2"><a href="/" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${path === "/"? "text-blue": ""}`}>Home</a></li>
                 <li className="flex md:p-0 p-2"><a href="/about" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${path === "/about"? "text-blue": ""}`}>About</a></li>
-                <li className="flex md:p-0 p-2"><a href="/documentations" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${path === "/documentations"? "text-blue": ""}`}>Documentations</a></li>
+                <li className="flex md:p-0 p-2"><a href="/docs" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${path === "/documentations"? "text-blue": ""}`}>Docs</a></li>
                 {
                     session ? // Show logout button instead of login if signed in
                     <>
@@ -57,7 +59,7 @@ export default function Topbar() {
                 }
             </div> 
             </div>
-            <div className={`${path.indexOf("dashboard") !== -1 ? "lg:hidden" : ""} fixed md:top-[1%] top-[1.7%] ml-4 text-gray-500 text-2xl p-4 transition-all duration-700 z-50 ${open ? "md:right-[3%] right-[3%]": " md:right-[10%] right-[5%]"}`} onClick={() =>  setOpen(!open) }>
+            <div className={`${path.indexOf("dashboard") !== -1 ? "lg:hidden" : ""} fixed md:top-[5px] top-[12px] ml-4 text-gray-500 text-2xl p-4 transition-all duration-700 z-50 ${open ? "md:right-[1%] right-[3%]": " md:right-[10%] right-[5%]"}`} onClick={() =>  setOpen(!open) }>
                 {
                     open ? <FaTimes /> : <FaBars />
                 }
