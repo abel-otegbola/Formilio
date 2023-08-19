@@ -30,8 +30,8 @@ export default function Home() {
         <div>
             {/* header section */}
             <header className="flex flex-col md:flex-nowrap flex-wrap items-center justify-center p-[5%] font-display bg-slate-200/[0.2] dark:bg-gray-900">
-                <div className="lg:w-[70%] mb-[60px] w-full md:pt-0 pt-[10%] md:text-left text-center">
-                    <div className="flex items-center mx-auto p-1 pl-6 border border-gray-300/[0.5] mb-4 rounded-full w-fit m-auto bg-white/[0.1] backdrop-blur-sm">
+                <div className="lg:w-[70%] mb-[60px] w-full md:pt-0 pt-[10%] md:text-left md:text-center">
+                    <div className="flex items-center md:mx-auto p-1 pl-6 border border-gray-300/[0.5] mb-4 rounded-full w-fit bg-white/[0.1] backdrop-blur-sm">
                         <IoIosRocket className="text-orange-500 mr-2" /> 
                         All your data in one place
                         <div className="ml-4">
@@ -47,34 +47,34 @@ export default function Home() {
                     </div>
                 </div>
                 {/* hero image */}
-                <div className="lg:w-[50%] md:mt-0 mt-[40px] w-full">
+                <div className="lg:w-[50%] md:mt-0 my-[40px] w-full">
                     <Image src={"/code_snippet.png"} width="700" height="500" alt="man sitting pressing laptop" className="drop-shadow-xl rounded-[30px]"/>
                 </div> 
             </header>
             
             <section className="md:px-[10%] px-[5%] py-[50px] font-body bg-gray-800 text-white dark:bg-gray-800">
-                <div className="md:w-[60%] m-auto w-full pb-5 pt-[5%] text-center">
-                    <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold">How it works</h1>
+                <div className="md:w-[60%] m-auto w-full pb-5 pt-[5%] md:text-center">
+                    <h1 className="md:text-5xl text-3xl md:leading-[50px] leading-[45px] font-bold">How it works</h1>
                     <p className="my-4 mb-7 leading-[25px]" >No coding knowledge required! Our user-friendly platform makes it easy for anyone to create endpoints for their static forms and start collecting data immediately.
                     </p>
                 </div>
-                <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-                    <div className="p-[5%] flex flex-wrap items-center bg-gradient-to-b from-gray-500/[0.05] to-gray-500/[0.1] rounded-lg">
-                        <p className="text-blue text-4xl w-fit p-2 rounded bg-gray-500/[0.05]" ><FiPenTool /></p>
-                        <h2 className="py-2 font-bold text-2xl" >Sign up and create endpoint</h2>
-                        <p className="py-4 w-[70%]" >Once signed in, create a new endpoint indicating the title.</p>
+                <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
+                    <div className="p-[5%] bg-gradient-to-b from-gray-500/[0.05] to-gray-700/[0.1] rounded-lg">
+                        <p className="text-blue text-4xl w-fit md:mx-auto p-2 rounded bg-gray-500/[0.05]" ><FiPenTool /></p>
+                        <h2 className="py-2 md:text-center font-bold text-xl" >Sign up and create endpoint</h2>
+                        <p className="py-4 md:text-center" >Once signed in, create a new endpoint indicating the title.</p>
                     </div>
                     
-                    <div className="p-[5%] flex flex-wrap items-center bg-gradient-to-b from-gray-500/[0.05] to-gray-500/[0.1] rounded-lg">
-                        <p className="text-blue text-4xl w-fit p-2 rounded bg-gray-500/[0.05]" ><FiFolderPlus /></p>
-                        <h2 className="py-2 font-bold text-2xl" >Insert endpoint into your form</h2>
-                        <p className="py-4 w-[70%]" >Together with the generated key, add the url in your form</p>
+                    <div className="p-[5%] bg-gradient-to-b from-gray-500/[0.05] to-gray-700/[0.1] rounded-lg">
+                        <p className="text-blue text-4xl w-fit md:mx-auto p-2 rounded bg-gray-500/[0.05]" ><FiFolderPlus /></p>
+                        <h2 className="py-2 md:text-center font-bold text-xl" >Insert endpoint into your form</h2>
+                        <p className="py-4 md:text-center" >Together with the generated key, add the url in your form</p>
                     </div>
                     
-                    <div className="p-[5%] flex flex-wrap items-center bg-gradient-to-b from-gray-500/[0.05] to-gray-500/[0.1] rounded-lg">
-                        <p className="text-blue text-4xl w-fit p-2 rounded bg-gray-500/[0.05]" ><FiSave /></p>
-                        <h2 className="py-2 font-bold text-2xl" >Publish your form and receive data</h2>
-                        <p className="py-4 w-[70%]" >Make your form live and start receiving submissions.</p>
+                    <div className="p-[5%] bg-gradient-to-b from-gray-500/[0.05] to-gray-700/[0.1] rounded-lg">
+                        <p className="text-blue text-4xl w-fit md:mx-auto p-2 rounded bg-gray-500/[0.05]" ><FiSave /></p>
+                        <h2 className="py-2 md:text-center font-bold text-xl" >Publish your form and receive data</h2>
+                        <p className="py-4 md:text-center" >Make your form live and start receiving submissions.</p>
                     </div>
                 </div>
             </section>
@@ -82,8 +82,8 @@ export default function Home() {
             {/* features section */}
             <section className="md:px-[10%] px-[5%] py-[50px] font-body">
                 {/* features heading */}
-                <div className="md:w-[60%] m-auto w-full pb-5 pt-[5%] text-center">
-                    <h1 className="md:text-5xl text-4xl md:leading-[50px] leading-[45px] font-bold" >Features</h1>
+                <div className="md:w-[60%] m-auto w-full pb-5 pt-[5%] md:text-center">
+                    <h1 className="md:text-5xl text-3xl md:leading-[50px] leading-[45px] font-bold" >Features</h1>
                     <p className="my-4 mb-7 leading-[25px]" >Formilio offers you the best features that you'll ever need in your form. Keeping simplicity in mind, we've crafted the best way to integrate powerful features into your form within minutes.
                     </p>
                 </div>

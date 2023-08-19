@@ -85,9 +85,8 @@ export default function Dashboard() {
                         colors={colors} 
                         data={endpointsData}
                     />
-                    <div className="mt-10 flex gap-2">
-                        <a href="/dashboard/endpoints" className="p-3 px-6 text-center rounded-full border border-blue text-white bg-blue hover:text-white">View all endpoints</a>
-                        <button className="flex-1 p-3 px-6 text-center rounded-full border border-gray-500/[0.3] text-gray-500 hover:bg-blue hover:text-white">Total: {endpoints?.length}</button>
+                    <div className="mt-5 flex gap-2">
+                        <a href="/dashboard/endpoints" className="p-2 opacity-[0.6] hover:opacity-[1]">View all endpoints({endpoints?.length})</a>
                     </div>
 
                     {/* Notifications list display section */}
@@ -111,9 +110,8 @@ export default function Dashboard() {
                             ))
                         }
                     </div>
-                    <div className="mt-10 flex gap-2 overflow-hidden max-h-[400px]">
-                        <a href="/dashboard/notifications" className="p-3 px-6 text-center rounded-full border border-blue bg-blue text-white">View all notifications</a>
-                        <button className="flex-1 p-3 px-6 text-center rounded-full border border-gray-500/[0.3] text-gray-500 hover:bg-blue hover:text-white">New: {notifications?.length}</button>
+                    <div className="mt-5 flex gap-2 overflow-hidden max-h-[400px]">
+                        <a href="/dashboard/notifications" className="p-2 opacity-[0.6] hover:opacity-[1]">View all notifications({notifications?.length})</a>
                     </div>
                 </div>
             </div>
