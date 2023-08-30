@@ -1,14 +1,13 @@
 'use client'
 
 import Link from "next/link";
-import { FiUser } from "react-icons/fi";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import { FaBars, FaSignOutAlt, FaTimes, FaUserAlt } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Searchbar from "./searchbar";
-import Sidebar from "../dashboard/sidebar";
+import { FiHome, FiInfo, FiServer, FiSettings } from "react-icons/fi";
 
 export default function Topbar() {
     const [open, setOpen] = useState(false)
@@ -18,53 +17,47 @@ export default function Topbar() {
 
     return (
         <>    
-        <div className="fixed w-full flex shadow-sm font-body justify-between items-center p-2 md:py-[6px] py-3 md:pl-[10%] pl-[5%] pr-[15%] backdrop-blur-sm bg-white/[0.7] dark:bg-gray-900/[0.7] border border-slate-50/[0.1] border-b-gray-100 dark:border-b-gray-200/[0.1] z-10">
+            <div className="fixed w-full flex shadow-sm justify-between items-center font-semibold p-2 md:py-[6px] py-3 md:px-[10%] px-[5%] backdrop-blur-sm bg-white/[0.7] dark:bg-gray-900/[0.7] z-10">
             
-            <a href="/" title="formilio" className={`flex items-end md:w-[22%] text-xl font-semibold text-blue`}>
-                <Image src={"/logo.png"} className="mr-2" width={17} height={17} alt="formilio logo" /> ormilio
-            </a>
-           
-            {/* Navigation menu */}
+                <a href="/" title="formilio" className={`flex gap-2 text-xl items-center text-blue`}>
+                    <Image src={"/logo.png"} width={15} height={12} alt="formilio logo" /> 
+                    ormilio
+                </a>
             
-            <ul ref={menuRef} className={`bg-transparent dark:bg-transparent md:flex hidden md:flex-rowmd:w-auto md:h-auto md:relative ml-[4%]`}>
-               
-                <li className="flex md:p-0 p-2"><a href="/" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${path === "/"? "text-blue": ""}`}>Home</a></li>
-                <li className="flex md:p-0 p-2"><a href="/about" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${path === "/about"? "text-blue": ""}`}>About</a></li>
-                <li className="flex md:p-0 p-2"><a href="/docs" className={`lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full hover:text-blue ${path === "/documentations"? "text-blue": ""}`}>Docs</a></li>
-                {
-                    session ? // Show logout button instead of login if signed in
-                    <>
-                        <li className="flex md:p-0 p-2 mx-4"><a href="/dashboard" className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaUserAlt className="mr-3" /> Dashboard</a></li>
-                        <li className="flex md:p-0 p-2 mx-4"><a href="#" onClick={() => signOut()} className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-2 md:w-auto w-full bg-blue text-white`}><FaSignOutAlt className="mr-3" /> Logout</a></li>
-                    </> :
-                    
-                    <Link href="/login" className="md:hidden flex items-center p-[10px] px-4 mx-[4%] mt-4 bg-blue hover:bg-hoverblue text-white rounded">Login</Link>
-                    
-                }
-            </ul>
-            <div className="flex items-center">
-                <Searchbar />
-                {
-                    (session) ? // Show dashboard button instead of login if signed in
-                    <>
-                        <Link href="/dashboard" className="w-fit p-1 rounded-full mr-3 bg-blue/[0.1]">
-                            {(!session.user.image)
-                            ? <p className="flex items-start pt-[2px] justify-center w-[30px] h-[28px] text-gray-300 bg-gray-400 rounded-full">{session.user.email.charAt(0)}</p> : 
-                            <img src={session.user.image} alt="user" width={30} height={30} className="rounded-full bg-gray-400 shadow-lg" />
-                            }
-                        </Link>
-                    </> : 
-                    <Link href="/login" className="md:flex hidden items-center p-[10px] px-[20px] bg-blue hover:bg-hoverblue text-white rounded"><FiUser className="mr-2"/> Login</Link>
-                }
-            </div> 
-            </div>
-            <div className={`${path.indexOf("dashboard") !== -1 ? "lg:hidden" : ""} fixed md:top-[5px] top-[12px] ml-4 text-gray-500 text-2xl p-4 transition-all duration-700 z-50 ${open ? "md:right-[1%] right-[3%]": " md:right-[10%] right-[5%]"}`} onClick={() =>  setOpen(!open) }>
-                {
-                    open ? <FaTimes /> : <FaBars />
-                }
-            </div>
-            <div className={`${path.indexOf("dashboard") !== -1 ? "lg:hidden" : ""} absolute top-0 right-0 h-screen z-20`}>
-                <Sidebar open={open} setOpen={setOpen} />
+                {/* Navigation menu */}
+            
+                <div className="flex items-center gap-6">
+                    <nav ref={menuRef} className={`md:flex md:flex-row md:w-fit md:h-fit w-full h-[100vh] md:p-0 p-[5%] md:static fixed top-0 left-0 md:bg-transparent dark:md:bg-transparent bg-white dark:bg-gray-900 text-sm transition-all duration-700 z-[10] ${open ? "translate-x-0" : "md:translate-x-0 translate-x-[100%]"}`}>
+                        <h2 className="md:hidden text-blue text-xl m-4">Formilio</h2>
+                        <Link href="/" className={`flex items-center gap-2 lg:mx-3 md:mx-2 p-4 md:w-auto w-full hover:text-blue ${path === "/"? "text-blue": ""}`}><FiHome className="text-blue md:hidden text-xl" /> Home</Link>
+                        <Link href="/about" className={`flex items-center gap-2 lg:mx-3 md:mx-2 p-4 md:w-auto w-full hover:text-blue ${path === "/about"? "text-blue": ""}`}><FiInfo className="text-blue md:hidden text-xl" /> About</Link>
+                        <Link href="/docs" className={`flex items-center gap-2 lg:mx-3 md:mx-2 p-4 md:w-auto w-full hover:text-blue ${path === "/documentations"? "text-blue": ""}`}><FiServer className="text-blue md:hidden text-xl" /> Docs</Link>
+                        {
+                            session ? // Show logout button instead of login if signed in
+                            <div className="grid grid-cols-2 gap-2 md:hidden m-4 pt-8 border border-transparent border-t-gray-400/[0.6]">
+                                <Link href="/dashboard" className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-3 md:w-auto w-full bg-blue text-white`}><FaUserAlt className="mr-3" /> Dashboard</Link>
+                                <Link href="#" onClick={() => signOut()} className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-3 md:w-auto w-full bg-blue/[0.7] text-white`}><FaSignOutAlt className="mr-3" /> Logout</Link>
+                            </div> :
+                            
+                            <Link href="/login" className="md:hidden flex items-center p-[10px] px-4 mx-[4%] mt-4 bg-blue hover:bg-hoverblue text-white rounded">Login</Link>
+                        }
+                    </nav>
+                    <Searchbar />
+                    <Link href="/settings" className="text-lg"><FiSettings /></Link>
+                    {
+                        (session) ? // Show dashboard button instead of login if signed in
+                        <>
+                            <Link href="/dashboard" className="w-fit rounded-full p-1 bg-blue/[0.1]">
+                                {(!session.user.image)
+                                ? <p className="flex items-start pt-[2px] justify-center w-[30px] h-[28px] text-gray-300 bg-gray-400 rounded-full">{session.user.email.charAt(0)}</p> : 
+                                <img src={session.user.image} alt="user" width={30} height={30} className="rounded-full bg-gray-400 shadow-lg" />
+                                }
+                            </Link>
+                        </> : 
+                        <Link href="/login" className="md:flex hidden items-center p-[10px] px-[20px] bg-blue hover:bg-hoverblue text-white rounded">Login</Link>
+                    }
+                    <button className="text-lg md:hidden z-[50]" onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
+                </div> 
             </div>
         </>
     )
