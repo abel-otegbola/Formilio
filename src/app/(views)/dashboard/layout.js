@@ -47,10 +47,10 @@ export default function Layout({ children }) {
                     ""
                 }
 
-                <div className="lg:block hidden z-[2]">
+                <div className="md:block hidden z-[2]">
                     <Sidebar open={open} setOpen={useOpen}/>
                 </div>
-                <div className="md:ml-2 py-4 md:flex-1 bg-white dark:bg-gray-900">
+                <div className="lg:ml-2 py-4 md:flex-1 bg-white dark:bg-gray-900">
                     {children}
                 </div>
                 

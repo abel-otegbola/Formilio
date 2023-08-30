@@ -30,7 +30,7 @@ export default function Home() {
         <div>
             {/* header section */}
             <header className="flex flex-col md:flex-nowrap flex-wrap items-center justify-center p-[5%] font-display bg-slate-200/[0.2] dark:bg-gray-900">
-                <div className="lg:w-[70%] mb-[60px] w-full md:pt-0 pt-[10%] md:text-left md:text-center">
+                <div className="lg:w-[75%] mb-[60px] w-full md:pt-0 pt-[10%] md:text-left md:text-center">
                     <div className="flex items-center md:mx-auto p-1 pl-6 border border-gray-300/[0.5] mb-4 rounded-full w-fit bg-white/[0.1] backdrop-blur-sm">
                         <IoIosRocket className="text-orange-500 mr-2" /> 
                         All your data in one place
@@ -60,19 +60,19 @@ export default function Home() {
                 </div>
                 <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
                     <div className="p-[5%] bg-gradient-to-b from-gray-500/[0.05] to-gray-700/[0.1] rounded-lg">
-                        <p className="text-blue text-4xl w-fit md:mx-auto p-2 rounded bg-gray-500/[0.05]" ><FiPenTool /></p>
+                        <p className="text-white text-2xl w-fit md:mx-auto p-4 my-4 rounded bg-blue" ><FiPenTool /></p>
                         <h2 className="py-2 md:text-center font-bold text-xl" >Sign up and create endpoint</h2>
                         <p className="py-4 md:text-center" >Once signed in, create a new endpoint indicating the title.</p>
                     </div>
                     
                     <div className="p-[5%] bg-gradient-to-b from-gray-500/[0.05] to-gray-700/[0.1] rounded-lg">
-                        <p className="text-blue text-4xl w-fit md:mx-auto p-2 rounded bg-gray-500/[0.05]" ><FiFolderPlus /></p>
+                        <p className="text-white text-2xl w-fit md:mx-auto p-4 my-4 rounded bg-blue" ><FiFolderPlus /></p>
                         <h2 className="py-2 md:text-center font-bold text-xl" >Insert endpoint into your form</h2>
                         <p className="py-4 md:text-center" >Together with the generated key, add the url in your form</p>
                     </div>
                     
                     <div className="p-[5%] bg-gradient-to-b from-gray-500/[0.05] to-gray-700/[0.1] rounded-lg">
-                        <p className="text-blue text-4xl w-fit md:mx-auto p-2 rounded bg-gray-500/[0.05]" ><FiSave /></p>
+                        <p className="text-white text-2xl w-fit md:mx-auto p-4 my-4 rounded bg-blue" ><FiSave /></p>
                         <h2 className="py-2 md:text-center font-bold text-xl" >Publish your form and receive data</h2>
                         <p className="py-4 md:text-center" >Make your form live and start receiving submissions.</p>
                     </div>

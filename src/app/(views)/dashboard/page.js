@@ -56,7 +56,7 @@ export default function Dashboard() {
             <div className="flex flex-wrap">
 
                 {/* Submissions graph and list display section */}
-                <div className="md:w-[70%] w-full md:p-2 py-5">
+                <div className="lg:w-[70%] w-full md:p-2 py-5">
                     <div className="p-2 rounded bg-white dark:bg-gray-900">
                         <h4 className="p-2 font-semibold text-blue">SUBMISSIONS</h4>
                         <SubmissionChart submissions={submissions}/>
@@ -70,7 +70,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* Endpoints graph and list display section */}
-                <div className="md:w-[30%] w-full p-2 rounded my-6 dark:bg-gray-800/[0.3]">
+                <div className="lg:w-[30%] md:block w-full p-2 rounded my-6 dark:bg-gray-800/[0.3]">
                     <h4 className="p-2 font-semibold text-blue">LATEST ENDPOINTS</h4>
                     {/* <p className="p-2">Statistics of submissions for your latest endpoints</p> */}
                     <div className="relative flex justify-center items-center mx-auto my-4 bg-white dark:bg-gray-900 rounded-full md:w-auto w-fit">

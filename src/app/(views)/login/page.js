@@ -56,7 +56,7 @@ export default function Login() {
                 <label className="mb-2">Email:</label>
                 <div className="flex items-center w-full rounded border border-gray-500/[0.2] mb-7 mt-2">
                     <FaEnvelope className="m-2 mx-3 text-xl text-gray-500" />
-                    <input type="email" onChange={(e) => setEmail(e.target.value)} className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " />
+                    <input type="email" onChange={(e) => setEmail(e.target.value.toLowerCase())} className="p-[12px] flex-1 focus:outline-2 focus:outline-blue dark:bg-gray-900 " />
                 </div>
                 
                 <label className="mb-2">Password:</label>

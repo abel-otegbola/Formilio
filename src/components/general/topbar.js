@@ -7,7 +7,7 @@ import { FaBars, FaSignOutAlt, FaTimes, FaUserAlt } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Searchbar from "./searchbar";
-import { FiHome, FiInfo, FiServer, FiSettings } from "react-icons/fi";
+import { FiBell, FiHome, FiInfo, FiLink, FiServer, FiSettings } from "react-icons/fi";
 
 export default function Topbar() {
     const [open, setOpen] = useState(false)
@@ -29,10 +29,20 @@ export default function Topbar() {
                 <div className="flex items-center gap-6">
                     <nav ref={menuRef} className={`md:flex md:flex-row md:w-fit md:h-fit w-full h-[100vh] md:p-0 p-[5%] md:static fixed top-0 left-0 md:bg-transparent dark:md:bg-transparent bg-white dark:bg-gray-900 text-sm transition-all duration-700 z-[10] ${open ? "translate-x-0" : "md:translate-x-0 translate-x-[100%]"}`}>
                         <h2 className="md:hidden text-blue text-xl m-4">Formilio</h2>
+                        <div className="md:hidden m-4">
+                            <Searchbar />
+                        </div>
                         <Link href="/" className={`flex items-center gap-2 lg:mx-3 md:mx-2 p-4 md:w-auto w-full hover:text-blue ${path === "/"? "text-blue": ""}`}><FiHome className="text-blue md:hidden text-xl" /> Home</Link>
                         <Link href="/about" className={`flex items-center gap-2 lg:mx-3 md:mx-2 p-4 md:w-auto w-full hover:text-blue ${path === "/about"? "text-blue": ""}`}><FiInfo className="text-blue md:hidden text-xl" /> About</Link>
                         <Link href="/docs" className={`flex items-center gap-2 lg:mx-3 md:mx-2 p-4 md:w-auto w-full hover:text-blue ${path === "/documentations"? "text-blue": ""}`}><FiServer className="text-blue md:hidden text-xl" /> Docs</Link>
                         {
+                            path.indexOf("dashboard") !== -1 ?
+                            <>
+                            <Link href="/dashboard/endpoints" className={`flex items-center gap-2 lg:hidden lg:mx-3 md:mx-2 p-4 md:w-auto w-full hover:text-blue ${path === "/dashboard/endpoints"? "text-blue": ""}`}><FiLink className="text-blue md:hidden text-xl" /> Endpoints</Link>
+                            <Link href="/dashboard/notifications" className={`flex items-center gap-2 lg:hidden lg:mx-3 md:mx-2 p-4 md:w-auto w-full hover:text-blue ${path === "/dashboard/notifications"? "text-blue": ""}`}><FiBell className="text-blue md:hidden text-xl" /> Notifications</Link>
+                            </> : ""
+                        }
+                       {
                             session ? // Show logout button instead of login if signed in
                             <div className="grid grid-cols-2 gap-2 md:hidden m-4 pt-8 border border-transparent border-t-gray-400/[0.6]">
                                 <Link href="/dashboard" className={`md:hidden flex items-center rounded lg:mx-3 md:mx-2 px-4 p-3 md:w-auto w-full bg-blue text-white`}><FaUserAlt className="mr-3" /> Dashboard</Link>
@@ -42,7 +52,9 @@ export default function Topbar() {
                             <Link href="/login" className="md:hidden flex items-center p-[10px] px-4 mx-[4%] mt-4 bg-blue hover:bg-hoverblue text-white rounded">Login</Link>
                         }
                     </nav>
-                    <Searchbar />
+                    <div className="md:block hidden">
+                        <Searchbar />
+                    </div>
                     <Link href="/settings" className="text-lg"><FiSettings /></Link>
                     {
                         (session) ? // Show dashboard button instead of login if signed in

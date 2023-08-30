@@ -1,12 +1,13 @@
 "use client"
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
-import { FaArrowAltCircleRight, FaAtom, FaBookOpen, FaCog, FaCommentAlt, FaHome, FaInfoCircle, FaLink, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { FaArrowAltCircleRight, FaAtom, FaBars, FaBookOpen, FaCog, FaCommentAlt, FaHome, FaInfoCircle, FaLink, FaSignOutAlt, FaTimes } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import { closeBlock } from "@/helper/closeBlock";
 
-export default function Sidebar({ open, setOpen }) {
+export default function Sidebar() {
     const { data: session } = useSession()
+    const [open, setOpen] = useState(false)
     const path = usePathname()
     const menuRef = useRef(null)
 
@@ -28,10 +29,11 @@ export default function Sidebar({ open, setOpen }) {
 
     return(
         <>
+        <button className="text-lg fixed top-[80px] left-0 p-6 lg:hidden z-[100]" onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
 
         {/* Sidebar for dashboard */}
-        <div ref={menuRef} className={`lg:relative fixed top-0 right-0 h-full z-10 bg-white dark:bg-gray-900 shadow-lg dark:shadow-2xl text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden ${open ? "w-[250px]" : "w-0"}`}>
-        
+        <div ref={menuRef} className={`lg:relative fixed top-0 left-0 h-full z-10 bg-white dark:bg-gray-900 shadow-lg dark:shadow-2xl text-gray-500 dark:text-gray-300 transition-all duration-700 overflow-hidden w-[250px] ${open ? "translate-x-0" : "lg:translate-x-0 translate-x-[-100%]"}`}>
+                    
             {(session) ?  // Show user details for mobile menu if signed in
             <a href="/dashboard" className="">
                 <div className="flex items-center p-[15px] border border-gray-100/[0.1] border-b-gray-300/[0.2]">
