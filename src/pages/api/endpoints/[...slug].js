@@ -17,10 +17,12 @@ export default async function handler(req, res) {
   //Get the query from the api
   const { slug } = req.query
 
+  console.log(slug)
+
   //Check the data in req.body and save it
   let formdata = {}
   if(typeof req.body === "string") {
-    formdata = JSON.parse(req.body)
+    formdata= req.body
   }
   else {
     formdata = req.body

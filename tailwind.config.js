@@ -14,7 +14,8 @@ module.exports = {
       colors: {
         'blue': '#6652FD',
         'hoverblue': '#4F3FC7',
-        'disabledblue': '#B6ADFB'
+        'disabledblue': '#B6ADFB',
+        'black': '#151616'
       },
       animation: {
         "spin-slow": "spin 10s linear infinite"

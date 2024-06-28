@@ -7,7 +7,7 @@ export default function AppFooter() {
     const templates = [ "contact form", "job application", "event schedule", "more templates" ]
 
     return (
-        <div className="bg-slate-100 dark:bg-gray-800">
+        <div className="">
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 justify-between md:px-[10%] px-[5%] py-[7%]">
                 <ul className="my-2 mb-4 pr-[40px]">
 
@@ -50,7 +50,7 @@ export default function AppFooter() {
                     
                 </ul>
             </div>
-            <div className="px-[10%] py-[20px] bg-slate-200 dark:bg-gray-900 text-center">
+            <div className="px-[10%] py-[20px] text-center">
                 <p>Copyright &copy; {new Date().getFullYear()} || Abelo</p>
             </div>
         </div>

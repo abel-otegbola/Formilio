@@ -10,7 +10,7 @@ export default function EndpointsList({ endpoints, colors, data }) {
             {  
                 endpoints?.map((endpoint, i) => (
                     <Link href={{
-                            pathname: '/dashboard/endpoints/view',
+                            pathname: '/dashboard/inbox',
                             query: {title: endpoint.title, endpoint: endpoint.key}
                             }}  
                         key={endpoint._id} 

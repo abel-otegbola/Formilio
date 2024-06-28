@@ -17,7 +17,7 @@ export default function Topbar() {
 
     return (
         <>    
-            <div className="fixed w-full flex shadow-sm justify-between items-center font-semibold p-2 md:py-[6px] py-3 md:px-[10%] px-[5%] backdrop-blur-sm bg-white/[0.7] dark:bg-gray-900/[0.7] z-10">
+            <div className="fixed w-full flex shadow-sm justify-between items-center font-semibold p-2 md:py-[6px] py-3 md:px-[10%] px-[5%] backdrop-blur-sm bg-white/[0.7] dark:bg-black/[0.7] z-10">
             
                 <a href="/" title="formilio" className={`flex gap-2 text-xl items-center text-blue`}>
                     <Image src={"/logo.png"} width={15} height={12} alt="formilio logo" /> 
@@ -66,7 +66,7 @@ export default function Topbar() {
                                 }
                             </Link>
                         </> : 
-                        <Link href="/login" className="md:flex hidden items-center p-[10px] px-[20px] bg-blue hover:bg-hoverblue text-white rounded">Login</Link>
+                        <Link href="/login" className="md:flex hidden items-center p-[10px] px-[20px] bg-black hover:bg-hoverblue text-white rounded">Login</Link>
                     }
                     <button className="text-lg md:hidden z-[50]" onClick={() => setOpen(!open)}>{open ? <FaTimes /> : <FaBars />}</button>
                 </div> 

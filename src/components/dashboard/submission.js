@@ -33,7 +33,7 @@ export default function Submission({ data, submission, setSuccess, setError }) {
     }
 
     return (
-        <div ref={modalRef} className="bg-white dark:bg-gray-900 border border-transparent border-t-gray-300/[0.2] hover:bg-gray-200/[0.3]">
+        <div ref={modalRef} className="bg-white dark:bg-gray-600/[0.02] border border-gray-500/[0.2] rounded">
             <div className="flex items-center p-1 cursor-pointer">
                 {/* list 3 fields in the submissions entry */}
                 <div className="flex-1 grid grid-cols-3 items-center" onClick={() => setOpenModal(!openModal)}>

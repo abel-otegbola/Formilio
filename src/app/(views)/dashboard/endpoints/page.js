@@ -1,16 +1,15 @@
 'use client'
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Header from "@/components/dashboard/header";
 import { FaLink } from "react-icons/fa";
 import EndpointsList from "@/components/dashboard/endpointsList";
 import GenerateEndpoint from "@/components/dashboard/generateEndpoint";
-import { DataContext } from "../layout";
 import { FiLoader } from "react-icons/fi";
+import { EndpointsContext } from "@/context/endpointsContext";
 
 export default function Endpoints() {
-    const [limit, setLimit] = useState(7)
 
-    const { endpoints, endpointsLoading } = useContext(DataContext)
+    const { endpoints, isLoading } = useContext(EndpointsContext)
 
     return (
         <div className="px-4">
@@ -18,13 +17,13 @@ export default function Endpoints() {
                 <GenerateEndpoint />
             </Header>
 
-            {   endpointsLoading ? 
+            {   isLoading ? 
                 <div className="min-h-[200px] flex justify-center items-center">
                     <FiLoader className="animate-spin text-3xl text-blue" />
                 </div>
                 :
                 <div className="my-4">
-                    <EndpointsList endpoints={endpoints} />
+                    <EndpointsList endpoints={endpoints || []} />
                 </div>
             }
 
